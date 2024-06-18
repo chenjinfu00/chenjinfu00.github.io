@@ -22,11 +22,11 @@ repository               : "chenjinfu00/chenjinfu00.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
+  name             : "Jinfu Chen"
   pronouns         : # example: "she/her"  
   bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  location         : "Leiden"
+  employer         : "Leiden University"
   uri              : # URL
   email            : "none@example.org" 
 
