@@ -6,6 +6,7 @@ redirect_from:
   - /about/
   - /about.html
 ---
+---
 permalink: /
 title: "Tensor networks, Semidefinite Programming"
 author_profile: true
