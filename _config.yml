@@ -28,22 +28,22 @@ author:
   location         : "Leiden"
   employer         : "Leiden University"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "jinfuchen@lorentz.leidenuniv.nl" 
 
   # Academic websites
-  arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+  arxiv            : "https://arxiv.org/search/?query=Chen%2C+Jin-Fu&searchtype=author&source=header"# URL - Update with the correct link to your profile
+  googlescholar    : "https://scholar.google.ca/citations?user=2n7U598AAAAJ"
   impactstory      : # URL
-  orcid            : "http://orcid.org/yourorcidurl"
+  orcid            : "http://orcid.org/0000-0002-7207-969X"
   semantic         : # URL
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  researchgate     : # URL
+  researchgate     : "https://www.researchgate.net/profile/Jinfu-Chen-2"# URL
 
   # Repositories and software development
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "academicpages"
+  github           : "chenjinfu00"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
