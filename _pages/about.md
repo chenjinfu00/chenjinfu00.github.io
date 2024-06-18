@@ -14,6 +14,7 @@ Recently, I plan to build my homepage to introduce related works. I hope I can f
 Stochastic thermodynamics and fluctuation theorems
 ======
 TBD
+
 **Special Relativistic Covariant Fluctuation Theorems**
 
 
@@ -33,13 +34,18 @@ Shortcut strategy
 ------
 TBD
 
+**Geodesic Path for the Minimal Energy Cost in Shortcuts to Isothermality**
+
+**Optimizing Brownian heat engine with shortcut strategy**
+
 Quantum thermodynamics
 ======
-TBD
+**Quantum–Classical Correspondence Principle for Heat Distribution in Quantum Brownian Motion**
 
-Quantum heat engines
-------
-TBD
+**Exploring quasiprobability approaches to quantum work in the presence of initial coherence: Advantages of the Margenau-Hill distribution**
+
+
+
 
 
 
