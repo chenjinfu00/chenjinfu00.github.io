@@ -2,7 +2,7 @@
 title: "Advanced quantum mechanics"
 collection: TA
 type: "Graduate course"
-permalink: /teaching/2014-spring-teaching-1
+permalink: /teaching/2017-Advanced_quantum
 venue: "Graduate School of China Academy of Engineering Physics"
 date: 2017-09-01
 location: "Beijing, China"
