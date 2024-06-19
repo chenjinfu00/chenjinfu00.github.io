@@ -1,5 +1,5 @@
 ---
-title: "Teaching experience 2"
+title: "Group theory"
 collection: teaching
 type: "Workshop"
 permalink: /teaching/2015-spring-teaching-1
