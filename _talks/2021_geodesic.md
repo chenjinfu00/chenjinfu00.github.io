@@ -1,7 +1,7 @@
 ---
 title: "Geodesic path for the minimal energy cost in shortcuts to isothermality"
 collection: talks
-type: "Talk"
+type: "Seminar"
 permalink: /talks/2021_geodesic
 venue: "Zhejiang University"
 date: 2021-12-16
