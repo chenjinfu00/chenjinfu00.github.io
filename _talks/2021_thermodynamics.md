@@ -7,3 +7,5 @@ venue: "China Academy of Engineering Physics"
 date: 2021-06-16
 location: "Mianyang, China"
 ---
+
+The first "Boyou Forum" of the Graduate School of China Academy of Engineering Physics.
