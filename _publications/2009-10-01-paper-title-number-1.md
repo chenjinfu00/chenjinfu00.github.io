@@ -4,7 +4,7 @@ collection: publications
 permalink: /publication/2009-10-01-paper-title-number-1
 date: 2009-10-01
 venue: 'Chinese Phys. B 27 060502'
-paperurl: 'http://academicpages.github.io/files/paper1.pdf'
+paperurl: 'http://chenjinfu00.github.io/files/paper1.pdf'
 ---
 
 
