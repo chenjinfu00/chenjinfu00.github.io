@@ -15,8 +15,7 @@ I completed my Ph.D. in 2021 and then returned to PKU, becoming a postdoc in Pro
 In February 2024, I joined Leiden University (LU) as a postdoctoral researcher in Prof. Jordi Tura’s group. My research focuses on the intersection of quantum thermodynamics and many-body systems. Since “more is different”, this intersection will bring substantial opportunities for both fields, potentially leading to a deeper understanding of nonequilibrium quantum thermodynamics and effective control methods for many-body systems.
 
 
-Fugue of thermodynamics!
-------
+The following is a Fugue of thermodynamics, which is still under composing!
 
 Clasical mesoscopic thermodynamic
 ======
