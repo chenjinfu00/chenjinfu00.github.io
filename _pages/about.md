@@ -55,6 +55,7 @@ TBD
 
 Shortcut strategy
 ------
+
 **Geodesic Path for the Minimal Energy Cost in Shortcuts to Isothermality**
 see Phys. Rev. Lett. 128, 230603 (2022) and arXiv:2110.09137 
 
@@ -64,8 +65,10 @@ see Phys. Rev. E 106, 054108 (2022) and arXiv:2204.08015
 
 Quantum thermodynamics
 ======
+
 Quantum–Classical Correspondence Principle in thermodynamics
 ------
+
 **Quantum–Classical Correspondence Principle for Heat Distribution in Quantum Brownian Motion**
 see Entropy 23, 1602 (2021)
 
@@ -77,8 +80,11 @@ Quantum heat engines
 
 Thermodynamics for quantum many-body systems
 ======
+
 Spectral gap optimization
 ------
+
+
 **Spectral Gap Optimization for Enhanced Adiabatic State Preparation**
 see arXiv:2409.15433
 
