@@ -19,9 +19,18 @@ The following is a Fugue of thermodynamics, which is still under composing!
 
 Textbook thermodynamic
 ======
-Learn thermodynamics and equilibrium statistical physics in five minutes.
+Learn thermodynamics and equilibrium statistical physics in five minutes!
 
-Always consider equilibrium states $p(c)=e^{-\beta H}/Z(\beta)$.
+Always consider equilibrium states $p(c)=e^{-\beta E(c)}/Z(\beta)$. The internal energy is $U=\sum_{c} E(c) p(c)$. Here $c$ is the configuration, for example, the states of spins in Ising model.
+
+Define work and heat as $ \delta W=\delta\lambda\sum_{c}\frac{\partial p_{\beta}(c)}{\partial\lambda}$ and $\delta Q=\delta U-\delta W$
+
+First law and second law of thermodynamics in ensemble average
+
+Thermodynamics process: Quasistatic isothermal processes: The system have sufficient time to relax to equilibrium states at each $\lambda$
+
+Thermodynamic adiabatic processes: No energy exchange between system and environment
+
 
 Clasical mesoscopic thermodynamic
 ======
