@@ -69,6 +69,7 @@ Quantum thermodynamics
 Quantum–Classical Correspondence Principle in thermodynamics
 ------
 
+
 **Quantum–Classical Correspondence Principle for Heat Distribution in Quantum Brownian Motion**
 see Entropy 23, 1602 (2021)
 
