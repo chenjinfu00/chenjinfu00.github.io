@@ -17,6 +17,12 @@ In February 2024, I joined Leiden University (LU) as a postdoctoral researcher i
 
 The following is a Fugue of thermodynamics, which is still under composing!
 
+Textbook thermodynamic
+======
+Learn thermodynamics and equilibrium statistical physics in five minutes.
+
+Always consider equilibrium states $p(c)=e^{-\beta H}/Z(\beta)$.
+
 Clasical mesoscopic thermodynamic
 ======
 
@@ -59,9 +65,12 @@ see Phys. Rev. E 108, 054109 (2023) and arXiv:2306.10917
 Quantum heat engines
 ------
 
-Quantum many-body thermodynamics
+Thermodynamics for quantum many-body systems
 ======
-TBD
+Spectral gap optimization
+------
+**Spectral Gap Optimization for Enhanced Adiabatic State Preparation**
+see arXiv:2409.15433
 
 Thermodynamics and machine learning
 ======
