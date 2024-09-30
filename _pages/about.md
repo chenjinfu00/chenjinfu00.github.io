@@ -23,7 +23,7 @@ Learn thermodynamics and equilibrium statistical physics in five minutes!
 
 Always consider equilibrium states $p(c)=e^{-\beta E(c)}/Z(\beta)$. The internal energy is $U=\sum_{c} E(c) p(c)$. Here $c$ is the configuration, for example, the states of spins in Ising model.
 
-Define work and heat as $ \delta W=\delta\lambda\sum_{c}\frac{\partial p_{\beta}(c)}{\partial\lambda}$ and $\delta Q=\delta U-\delta W$
+Define work and heat as $\delta W=\delta\lambda\sum_{c}\frac{\partial p_{\beta}(c)}{\partial\lambda}$ and $\delta Q=\delta U-\delta W$
 
 First law and second law of thermodynamics in ensemble average
 
@@ -31,6 +31,7 @@ Thermodynamics process: Quasistatic isothermal processes: The system have suffic
 
 Thermodynamic adiabatic processes: No energy exchange between system and environment
 
+**There is no equation of motion, and only equilibrium states can be studied.**
 
 Clasical mesoscopic thermodynamic
 ======
