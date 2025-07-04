@@ -6,7 +6,7 @@ redirect_from:
   - /about/
   - /about.html
 ---
-I am Jinfu Chen. I was born in Mianyang, Sichuan, China on April 20, 1994. During high school, I appreciated a lot how physics describes the world with precise mathematic formulas, which motivated me to study for a B.S. in Physics and a double degree in Mathematics at Peking University (PKU) starting in 2012.
+I am Jinfu Chen. I was born in Mianyang, Sichuan, China on April 20, 1994. I began my studies in 2012 at Peking University for a B.S. in Physics. I also got a double degree in Mathematics.
 
 After my bachelor’s graduation in 2016, I joined Prof. [C. P. Sun’s group](http://suncp.gscaep.ac.cn) at the Beijing Computational Science Research Center (CSRC), China Academy of Engineering Physics (CAEP), where I pursued a Ph.D. in quantum physics under his supervision. My research focused on quantum thermodynamics, to understand thermodynamics and statistical physics exploiting quantum mechanics. We developed thermodynamic geometry for optimizing the control of quantum systems, e.g., improving the performance of quantum heat engines as an application.
 
