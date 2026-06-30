@@ -8,10 +8,10 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Jinfu's Homepage"
+title                    : "Jinfu Chen"
 title_separator          : "-"
 name                     : &name "Jinfu Chen"
-description              : &description "personal description"
+description              : &description "Postdoctoral researcher in physics at Leiden University working on quantum nonlocality, quantum thermodynamics, and many-body systems."
 url                      : https://chenjinfu00.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "chenjinfu00/chenjinfu00.github.io"
@@ -24,15 +24,15 @@ author:
   avatar           : "my_profile.png"
   name             : "Jinfu Chen"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Leiden"
+  bio              : "Postdoctoral researcher in physics at Leiden University, working on quantum nonlocality, quantum thermodynamics, and many-body systems."
+  location         : "Leiden, the Netherlands"
   employer         : "Leiden University"
-  uri              : # URL
+  uri              : "https://chenjinfu00.github.io"
   email            : "jinfuchen@lorentz.leidenuniv.nl" 
 
   # Academic websites
-  arxiv            : "https://arxiv.org/search/?query=Chen%2C+Jin-Fu&searchtype=author&source=header"# URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.ca/citations?user=2n7U598AAAAJ"
+  arxiv            : "https://arxiv.org/search/?query=Chen%2C+Jin-Fu&searchtype=author&source=header"
+  googlescholar    : "https://scholar.google.ca/citations?user=2n7U598AAAAJ&hl=en&oi=ao"
   impactstory      : # URL
   orcid            : "http://orcid.org/0000-0002-7207-969X"
   semantic         : # URL
@@ -43,7 +43,7 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  # github           : "chenjinfu00"
+  github           : "chenjinfu00"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
