@@ -19,12 +19,12 @@ Academic Positions
   * Group of H. T. Quan
   * Research topics: mesoscopic thermodynamics, fluctuation theorems, and optimal control
 
-* **Ph.D. Researcher in Quantum Physics**, Beijing Computational Science Research Center (CSRC), China Academy of Engineering Physics, 2016-2021
+* **Ph.D. Researcher in Quantum Physics**, Beijing Computational Science Research Center (CSRC), 2016-2021
   * Supervisor: C. P. Sun
 
 Education
 ======
-* **Ph.D. in Quantum Physics**, Beijing Computational Science Research Center (CSRC), China Academy of Engineering Physics, 2021
+* **Ph.D. in Quantum Physics**, Beijing Computational Science Research Center (CSRC), 2021
 * **B.S. in Physics**, Peking University, 2016
 * **B.S. in Mathematics** (double degree), Peking University, 2016
 
@@ -44,7 +44,7 @@ Profiles
 * [ResearchGate](https://www.researchgate.net/profile/Jinfu-Chen-2)
 * [GitHub](https://github.com/chenjinfu00)
 
-Selected Publications
+Selected Works
 ======
 <ul>{% for post in site.publications reversed %}
   {% include archive-single-cv.html %}
