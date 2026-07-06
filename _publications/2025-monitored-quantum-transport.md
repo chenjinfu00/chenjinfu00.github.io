@@ -7,6 +7,7 @@ venue: "Quantum"
 first_author: false
 journal_highlight: true
 selected_group: "representative"
+topic_group: "transport_nonequilibrium"
 selected_sort: "2025-04-10"
 citation: "C. W. J. Beenakker and J. F. Chen (2025). Monitored quantum transport: full counting statistics of a quantum Hall interferometer. Quantum 9, 1874."
 excerpt: "Shows what continuous monitoring changes, and what it preserves, in mesoscopic transport."

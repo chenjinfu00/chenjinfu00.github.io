@@ -7,6 +7,7 @@ venue: "Physical Review E"
 first_author: true
 journal_highlight: false
 selected_group: "first_author"
+topic_group: "stochastic_thermodynamics"
 selected_sort: "2023-02-01"
 citation: "J. F. Chen and H. T. Quan (2023). Hierarchical structure of fluctuation theorems for a driven system in contact with multiple heat reservoirs. Physical Review E 107, 024135."
 excerpt: "Organizes several fluctuation relations into one unified picture for driven systems."

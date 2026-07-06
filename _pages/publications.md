@@ -11,18 +11,32 @@ author_profile: true
 
 {% include base_path %}
 
-This page highlights selected first-author papers and other highly cited representative works, ordered from recent to earlier works.
+This page highlights selected works grouped by research topic. Within each topic, works are ordered from recent to earlier.
 
-## Selected First-Author Papers
+## Quantum Nonlocality and Many-Body Systems
 
-{% assign first_author_papers = site.publications | where: "selected_group", "first_author" | sort: "selected_sort" | reverse %}
-{% for post in first_author_papers %}
+{% assign nonlocality_papers = site.publications | where: "topic_group", "nonlocality_many_body" | sort: "selected_sort" | reverse %}
+{% for post in nonlocality_papers %}
   {% include archive-single.html %}
 {% endfor %}
 
-## Other Highly Cited Representative Papers
+## Quantum Stochastic Thermodynamics and Fluctuation Relations
 
-{% assign representative_papers = site.publications | where: "selected_group", "representative" | sort: "selected_sort" | reverse %}
-{% for post in representative_papers %}
+{% assign stochastic_papers = site.publications | where: "topic_group", "stochastic_thermodynamics" | sort: "selected_sort" | reverse %}
+{% for post in stochastic_papers %}
+  {% include archive-single.html %}
+{% endfor %}
+
+## Finite-Time Thermodynamics and Heat Engines
+
+{% assign heat_engine_papers = site.publications | where: "topic_group", "finite_time_heat_engines" | sort: "selected_sort" | reverse %}
+{% for post in heat_engine_papers %}
+  {% include archive-single.html %}
+{% endfor %}
+
+## Quantum Transport and Nonequilibrium Phenomena
+
+{% assign transport_papers = site.publications | where: "topic_group", "transport_nonequilibrium" | sort: "selected_sort" | reverse %}
+{% for post in transport_papers %}
   {% include archive-single.html %}
 {% endfor %}

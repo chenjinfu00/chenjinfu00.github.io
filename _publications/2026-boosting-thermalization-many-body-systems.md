@@ -7,6 +7,7 @@ venue: "Physical Review B"
 first_author: true
 journal_highlight: true
 selected_group: "first_author"
+topic_group: "nonlocality_many_body"
 selected_sort: "2026-01-01"
 citation: "J. F. Chen, K. S. Rai, P. Emonts, D. Farina, M. Plodzien, P. Grzybowski, et al. (2026). Boosting thermalization of classical and quantum many-body systems. Physical Review B 113, 184313."
 excerpt: "Provides a route to prepare thermal states faster in controllable many-body systems."

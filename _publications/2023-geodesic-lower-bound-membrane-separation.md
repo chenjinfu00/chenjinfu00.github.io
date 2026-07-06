@@ -7,6 +7,7 @@ venue: "PRX Energy"
 first_author: true
 journal_highlight: true
 selected_group: "first_author"
+topic_group: "finite_time_heat_engines"
 selected_sort: "2023-07-01"
 citation: "J. F. Chen, R. X. Zhai, C. P. Sun, and H. Dong (2023). Geodesic lower bound of the energy consumption to achieve membrane separation within finite time. PRX Energy 2, 033003."
 excerpt: "Sets a fundamental lower bound on the cost of separating membranes quickly."
