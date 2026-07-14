@@ -38,7 +38,13 @@
     {% elsif post.date %}
       <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.date | date: '%B %d, %Y' }}</p>
     {% endif %}
-    {% if post.venue%}<p class="archive__item-excerpt" itemprop="description">{{post.type}} at {{ post.venue }},  {{post.location}}</p>{% endif %}
+    {% if post.venue %}
+      <p class="archive__item-excerpt" itemprop="description">
+        {{ post.type }} at
+        {% if post.venue_url %}<a href="{{ post.venue_url }}">{{ post.venue }}</a>{% else %}{{ post.venue }}{% endif %},
+        {{ post.location }}
+      </p>
+    {% endif %}
     </li>
   </article>
 </div>
