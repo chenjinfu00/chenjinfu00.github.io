@@ -16,7 +16,7 @@ During my Ph.D., I focused on quantum thermodynamics and finite-time optimizatio
 
 ### Quantum nonlocality
 
-I have studied optimization problems across quantum information, quantum computing, quantum thermodynamics, and statistical physics. More recently, I have combined tools from group theory and algebraic topology to analyze and optimize multipartite Bell inequalities, with the goal of finding Bell inequalities that reveal stronger forms of multipartite quantum nonlocality.
+I have studied optimization problems across quantum information, quantum computing, quantum thermodynamics, and statistical physics. More recently, I have combined tools from group theory and algebraic topology to analyze and optimize multipartite Bell inequalities, with the goal of finding Bell inequalities that are robust to noise and experimentally feasible.
 
 ### Quantum many-body systems
 
@@ -25,5 +25,4 @@ I also study relaxation and thermalization in open quantum many-body systems. By
 Before joining Leiden in February 2024, I was a postdoctoral researcher at Peking University in the group of [H. T. Quan](https://scholar.google.com/citations?hl=en&user=PTULG-sAAAAJ), working on mesoscopic quantum and classical systems, fluctuation theorems, and control optimization. I completed my Ph.D. in quantum physics in 2021 at the Beijing Computational Science Research Center (CSRC), under the supervision of [C. P. Sun](http://suncp.gscaep.ac.cn). I received my B.S. in Physics from Peking University in 2016, together with a double degree in Mathematics.
 
 For a complete and up-to-date list of publications, please see my [Google Scholar profile](https://scholar.google.ca/citations?user=2n7U598AAAAJ&hl=en&oi=ao).
-
 
