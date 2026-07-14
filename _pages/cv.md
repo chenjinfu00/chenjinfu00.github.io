@@ -52,7 +52,15 @@ Selected Works
 
 Talks and Presentations
 ======
-<ul>{% for post in site.talks reversed %}
+<ul>{% assign talks = site.talks | where: "presentation_group", "talk" | sort: "date" | reverse %}
+{% for post in talks %}
+  {% include archive-single-talk-cv.html %}
+{% endfor %}</ul>
+
+Posters
+======
+<ul>{% assign posters = site.talks | where: "presentation_group", "poster" | sort: "date" | reverse %}
+{% for post in posters %}
   {% include archive-single-talk-cv.html %}
 {% endfor %}</ul>
 

@@ -11,6 +11,16 @@ author_profile: true
 
 {% endif %}
 
-{% for post in site.talks reversed %}
+## Talks and Presentations
+
+{% assign talks = site.talks | where: "presentation_group", "talk" | sort: "date" | reverse %}
+{% for post in talks %}
+  {% include archive-single-talk.html %}
+{% endfor %}
+
+## Posters
+
+{% assign posters = site.talks | where: "presentation_group", "poster" | sort: "date" | reverse %}
+{% for post in posters %}
   {% include archive-single-talk.html %}
 {% endfor %}
