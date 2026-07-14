@@ -50,15 +50,17 @@ Selected Works
   {% include archive-single-cv.html %}
 {% endfor %}</ul>
 
-Talks and Presentations
+Presentations
 ======
+### Talks
+
 <ul>{% assign talks = site.talks | where: "presentation_group", "talk" | sort: "date" | reverse %}
 {% for post in talks %}
   {% include archive-single-talk-cv.html %}
 {% endfor %}</ul>
 
-Posters
-======
+### Posters
+
 <ul>{% assign posters = site.talks | where: "presentation_group", "poster" | sort: "date" | reverse %}
 {% for post in posters %}
   {% include archive-single-talk-cv.html %}
