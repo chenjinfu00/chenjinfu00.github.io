@@ -1,0 +1,24 @@
+{
+  "reference": "Parent_Hamiltonian_Bell.pptx (colors only)",
+  "source_colors": {
+    "navy": "#001158",
+    "muted_blue": "#8592bc",
+    "white": "#ffffff",
+    "lime": "#9eba2e",
+    "orange": "#f46e32"
+  },
+  "web_colors": {
+    "primary": "#001158",
+    "secondary": "#8592bc",
+    "highlight": "#9eba2e",
+    "accent": "#b54210",
+    "ink": "#151b2b",
+    "muted": "#566078",
+    "line": "#dce1ed",
+    "paper": "#ffffff",
+    "soft": "#f3f5fa",
+    "hero": "#f7f8fc",
+    "mesh": "#001158",
+    "divider": "#f46e32"
+  }
+}
