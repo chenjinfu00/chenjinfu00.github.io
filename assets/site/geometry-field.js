@@ -8,6 +8,7 @@
   const button = document.querySelector('.motion-toggle');
   const main = document.querySelector('main');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const coarsePointer = matchMedia('(pointer: coarse)');
   const zh = document.documentElement.lang.startsWith('zh');
   const ns = 'http://www.w3.org/2000/svg';
   const palette = getComputedStyle(document.documentElement);
@@ -31,11 +32,12 @@
       return [680 + 450 * Math.exp(-(((v - .6) / .30) ** 2)) - 550 * v ** 4,
         500 + (2200 + 10500 * blend) * (v - .72) ** 2];
     }
-    const q = v - .925, end = ribbon(.925), h = .00001;
-    const prev = ribbon(.925 - h), ramp = (1 - Math.exp(-q / .5)) ** 2;
+    const q = v - .925, end = ribbonEnd, h = .00001;
+    const prev = ribbonPrevious, ramp = (1 - Math.exp(-q / .5)) ** 2;
     return [end[0] + (end[0] - prev[0]) / h * .13 * (1 - Math.exp(-q / .13)) + 160 * ramp * Math.sin(q * 1.35),
       end[1] + (end[1] - prev[1]) / h * .12 * (1 - Math.exp(-q / .12)) + 170 * ramp * Math.sin(q * 1.1)];
   }
+  const ribbonEnd = ribbon(.925), ribbonPrevious = ribbon(.925 - .00001);
   let scale = 1, originX = 0, originY = 0, maxV = 4, heroEnd = 900, mainEnd = 5000, revealTop=0, revealEnd=0;
   function project(u, v) {
     const [left, width] = ribbon(v), x = left + u * width;
@@ -69,6 +71,7 @@
   const mesh = svg.querySelector('.field-mesh');
   mesh.setAttribute('mask','url(#field-mask)');
   let meshRange = [-Infinity, -Infinity];
+  const meshRows = new Map();
   function drawMesh(force = false) {
     mesh.setAttribute('transform', `translate(0 ${-scrollY})`);
     if (!force && scrollY >= meshRange[0] + (meshRange[0] === 0 ? 0 : 140) && scrollY + innerHeight < meshRange[1] - 140) return;
@@ -80,8 +83,14 @@
       const u = col / cols, offset = 1 / 6 + smooth(.13, .48, u) / 3;
       return [u, (row + (-1) ** (row + col) * offset) / rows];
     };
-    const seen = new Set();
     for (let row = Math.floor(v0 * rows); row <= Math.ceil(v1 * rows); row++) {
+      const cached = meshRows.get(row);
+      if (cached) {
+        cached.paths.forEach((segments,i)=>paths[i].push(...segments));
+        dots.push(...cached.dots);
+        continue;
+      }
+      const rowPaths = Array.from({length:6},()=>[]), rowDots = [];
       for (let col = -5; col <= 106; col++) {
         const a = point(row, col), neighbors = [point(row, col + 1)];
         if ((row + col) % 2 === 0) neighbors.push(point(row + 1, col));
@@ -89,19 +98,25 @@
           if (Math.hypot(a[0] - b[0], a[1] - b[1]) < 1e-8) continue;
           const pa = project(...a), pb = project(...b);
           if (Math.max(pa[0],pb[0]) < 0 || Math.min(pa[0],pb[0]) > innerWidth || Math.min(pa[1],pb[1]) > mainEnd) continue;
-          const edge = [a,b].map(p=>p.map(n=>n.toFixed(7)).join(',')).sort().join(';');
-          if (seen.has(edge)) continue;
-          seen.add(edge);
           const fade=smooth(-.09,.14,(a[0]+b[0])/2);
           if(fade<.02)continue;
-          paths[Math.min(5,Math.floor(fade*6))].push(path(Array.from({length:5}, (_,n)=>[a[0]+(b[0]-a[0])*n/4,a[1]+(b[1]-a[1])*n/4])));
+          // Each right/down edge has one owner; reuse its already-projected endpoints.
+          const samples=coarsePointer.matches?2:4, points=[pa];
+          for(let n=1;n<samples;n++)points.push(project(a[0]+(b[0]-a[0])*n/samples,a[1]+(b[1]-a[1])*n/samples));
+          points.push(pb);
+          rowPaths[Math.min(5,Math.floor(fade*6))].push(points.map(([x,y],i)=>(i?'L':'M')+x.toFixed(2)+','+y.toFixed(2)).join(' '));
         }
         if (a[0] < .18 && (row + col) % 2 === 0) {
           const [x,y] = project(...a);
-          if (x > 0 && x < innerWidth && y < mainEnd) dots.push(`M${x.toFixed(2)},${y.toFixed(2)}h.1`);
+          if (x > 0 && x < innerWidth && y < mainEnd) rowDots.push(`M${x.toFixed(2)},${y.toFixed(2)}h.1`);
         }
       }
+      meshRows.set(row,{paths:rowPaths,dots:rowDots});
+      rowPaths.forEach((segments,i)=>paths[i].push(...segments));
+      dots.push(...rowDots);
     }
+    // Keep the cache bounded on long archives.
+    for (const row of meshRows.keys()) if (row < Math.floor(v0*rows)-80 || row > Math.ceil(v1*rows)+80) meshRows.delete(row);
     mesh.replaceChildren();
     paths.forEach((segments,i)=>element('path', mesh, {...common,d:segments.join(' '),stroke:'url(#mesh-depth)',opacity:(i+1)/6,'stroke-width':Math.max(.45,scale*.85)}));
     element('path', mesh, {...common,d:dots.join(' '),stroke:'url(#mesh-depth)','stroke-width':Math.max(1,scale*2)});
@@ -132,18 +147,18 @@
     const accent = spin ? null : element('circle',group,{r:2.8,fill:color('--primary'),stroke:'none',class:'particle-dot'});
     particles.push({body,kind,group,line,accent,trailFade,theta:random()*Math.PI*2,neighbors:[],trail:[[u,v]],active:true});
   }
+  let populatedV = .25, populationSpacing = null;
   function populate() {
-    Composite.clear(engine.world,false);
-    quantum.replaceChildren(); classical.replaceChildren(); particles.length = 0;
     // Spins sit on actual mesh vertices; only the classical particles translate.
-    const spacing=Math.max(.11,(maxV-.35)/200);
-    for (let v = .25; v < maxV - .10; v += spacing) {
+    const spacing=populationSpacing ??= Math.max(.11,(maxV-.35)/200);
+    for (let v = populatedV; v < maxV - .10; v += spacing) {
       for(let n=0;n<2;n++) {
         const row=Math.round(v*54),col=5+n*10+Math.floor(random()*7),u=col/66;
         const offset=1/6+smooth(.13,.48,u)/3;
         addParticle('spin',u,(row+(-1)**(row+col)*offset)/54);
       }
       for (let n=0;n<3;n++) addParticle('brownian',.52+random()*.26,v+random()*.09);
+      populatedV = v + spacing;
     }
     const spins=particles.filter(p=>p.kind==='spin');
     spins.forEach(p=>{
@@ -169,7 +184,7 @@
       const u = body.position.x/1000, v = body.position.y/1000;
       const pos = project(u,v), y = pos[1]-scrollY;
       particle.active = y > -220 && y < innerHeight+220 && pos[1] < mainEnd;
-      if(kind!=='spin')Sleeping.set(body,!particle.active);
+      if(kind!=='spin' && body.isSleeping===particle.active)Sleeping.set(body,!particle.active);
       if (!particle.active) continue;
       if(kind==='spin') {
         // Overdamped planar-spin (XY) Langevin dynamics, not a quantum-state solver.
@@ -278,6 +293,7 @@
       }
     }
   }
+  let layoutKey = '';
   function fit() {
     const mainRect=main.getBoundingClientRect(),mainTop=mainRect.top+scrollY;
     mainEnd=mainRect.bottom+scrollY;
@@ -299,11 +315,17 @@
     }
     maxV=((mainEnd-originY)/scale+400)/1420;
     svg.setAttribute('viewBox',`0 0 ${innerWidth} ${innerHeight}`);
+    // Mobile browser chrome changes viewport height without changing the surface.
+    // Keep body identities, velocities and trails across all layout changes.
+    const nextKey=[innerWidth,scale,originX,originY,mainEnd,heroEnd,revealTop,revealEnd].map(n=>n.toFixed(2)).join(':');
+    if(nextKey===layoutKey)return;
+    layoutKey=nextKey;
+    meshRows.clear();
+    meshRange=[-Infinity,-Infinity];
     for(const g of [meshFade,boundaryFade]) {g.setAttribute('y1',heroEnd-100);g.setAttribute('y2',heroEnd+220);}
     reveal.setAttribute('y1',revealTop);reveal.setAttribute('y2',revealEnd);
     for(const el of [mask,maskRect]){el.setAttribute('width',innerWidth);el.setAttribute('height',mainEnd);}
-    if(!particles.length || Math.abs(particles.at(-1).body.position.y/1000-maxV)>.5)populate();
-    drawMesh(true);drawParticles();
+    if(populatedV < maxV-.10)populate();
   }
   function label() {
     const text=paused?(zh?'播放动画':'Play animation'):(zh?'暂停动画':'Pause animation');
@@ -312,26 +334,38 @@
     window.lucide?.createIcons({nodes:[button]});
   }
   function tick(now) {
-    if(previous)accumulator+=Math.min(now-previous,50);
+    raf=0;
+    if(needsFit){needsFit=false;fit();needsMesh=true;}
+    if(!paused && previous)accumulator+=Math.min(now-previous,50);
     previous=now;
-    while(accumulator>=step){updatePhysics();accumulator-=step;}
-    drawParticles();raf=requestAnimationFrame(tick);
+    while(!paused && accumulator>=step){updatePhysics();accumulator-=step;}
+    if(needsMesh){needsMesh=false;drawMesh();}
+    // Touch devices render motion at 30 Hz, but scrolling always updates immediately.
+    if(needsPaint || !coarsePointer.matches || now-lastPaint>=1000/30) {
+      drawParticles();lastPaint=now;needsPaint=false;
+    }
+    if(!paused)requestDraw();
+  }
+  let needsFit=false,needsMesh=true,needsPaint=true,lastPaint=0;
+  function requestDraw() {
+    if(!raf&&!document.hidden)raf=requestAnimationFrame(tick);
   }
   function sync() {
-    cancelAnimationFrame(raf);previous=0;accumulator=0;
-    if(!paused&&!document.hidden)raf=requestAnimationFrame(tick);
+    cancelAnimationFrame(raf);raf=0;previous=0;accumulator=0;
+    needsPaint=true;
+    if(paused&&!document.hidden){drawParticles();needsPaint=false;}
+    if(!paused||needsMesh||needsFit)requestDraw();
     label();
   }
   button.hidden=false;
   button.addEventListener('click',()=>{paused=!paused;pointer=null;sync();});
   reduced.addEventListener('change',()=>{paused=reduced.matches;sync();});
   document.addEventListener('visibilitychange',sync);
-  let scrollFrame=0;
   document.addEventListener('scroll',()=>{
-    if(scrollFrame)return;
-    scrollFrame=requestAnimationFrame(()=>{scrollFrame=0;drawMesh();drawParticles();});
+    needsMesh=true;needsPaint=true;requestDraw();
   },{passive:true});
-  new ResizeObserver(fit).observe(main);
-  window.addEventListener('resize',fit);
+  const scheduleFit=()=>{needsFit=true;needsPaint=true;requestDraw();};
+  new ResizeObserver(scheduleFit).observe(main);
+  window.addEventListener('resize',scheduleFit);
   fit();sync();
 })();
