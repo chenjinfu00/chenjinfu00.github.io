@@ -1,0 +1,52 @@
+name: Jinfu Chen
+chinese_name: 陈劲夫
+role: Postdoctoral researcher
+institution: Leiden University
+institute: Lorentz Institute for Theoretical Physics
+email: jinfuchen@lorentz.leidenuniv.nl
+scholar: https://scholar.google.ca/citations?user=2n7U598AAAAJ&hl=en
+orcid: https://orcid.org/0000-0002-7207-969X
+github: https://github.com/chenjinfu00
+site_url: https://chenjinfu00.github.io
+topics:
+  - id: nonlocality_many_body
+    short: Quantum & many-body
+    title: Quantum nonlocality
+    question: What makes quantum correlations different?
+    text: Symmetry and polyhedral optimization help turn multipartite Bell inequalities into noise-robust, experimentally feasible tests of correlations beyond classical physics.
+    methods: Bell inequalities · Symmetry · Optimization
+  - id: thermalization
+    short: Many-body dynamics
+    title: Many-body thermalization
+    question: How quickly can a quantum system relax?
+    text: By shaping dissipation and optimizing Lindbladian spectral gaps, I develop ways to prepare thermal states faster. Tensor networks make these questions accessible beyond small systems.
+    methods: Open systems · Spectral gaps · Tensor networks
+  - id: finite_time_heat_engines
+    short: Heat engines & control
+    title: Thermodynamic geometry
+    question: How much does it cost to go faster?
+    text: Geometric methods identify low-dissipation control protocols, revealing how finite operating time limits the power and efficiency of quantum and Brownian heat engines.
+    methods: Finite-time control · Geometry · Heat engines
+  - id: stochastic_thermodynamics
+    short: Stochastic thermodynamics
+    title: Thermodynamics and generative AI
+    question: Can thermodynamics improve learning and sampling?
+    text: Building on stochastic and finite-time thermodynamics, this direction explores how low-dissipation protocols and optimal control can improve learning and sampling in generative AI, including diffusion models and Transformers.
+    methods: Stochastic thermodynamics · Finite-time optimization · Generative AI
+timeline:
+  - years: 2024–present
+    title: Postdoctoral researcher
+    place: Leiden University
+    detail: Working with Jordi Tura on quantum nonlocality and open quantum many-body systems.
+  - years: 2021–2024
+    title: Postdoctoral researcher
+    place: Peking University
+    detail: Working with H. T. Quan on stochastic thermodynamics, fluctuation theorems, and optimal control.
+  - years: 2016–2021
+    title: Ph.D. in Quantum Physics
+    place: Beijing Computational Science Research Center
+    detail: Supervised by C. P. Sun. Research on finite-time quantum thermodynamics and heat engines.
+  - years: 2012–2016
+    title: B.S. in Physics & Mathematics
+    place: Peking University
+    detail: Physics degree with a double degree in Mathematics.

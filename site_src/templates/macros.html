@@ -1,0 +1,12 @@
+{% macro paper(work, number) %}
+<article class="paper-row" data-result data-topic="{{ work.topic_group }}" data-search="{{ (work.title ~ ' ' ~ work.citation ~ ' ' ~ work.summary)|lower }}">
+  <div class="paper-index">{{ '%02d' % number }}<span>{{ work.year }}</span></div>
+  <div class="paper-main"><div class="paper-meta"><span class="venue {% if work.journal_highlight %}venue-highlight{% endif %}">{{ work.venue }}</span>{% if work.preprint %}<span class="preprint">PREPRINT</span>{% endif %}</div>
+    <h3><a href="{{ work.url }}">{{ work.title }}</a></h3><p class="paper-authors">{{ work.authors }}</p><p class="paper-summary">{{ work.summary }}</p>
+    <div class="paper-actions"><a href="{{ work.paper_url }}">{{ work.paper_label }} <i data-lucide="arrow-up-right"></i></a><button class="text-button copy-citation" data-citation="{{ work.citation }}" title="Copy citation"><i data-lucide="copy"></i> Cite</button></div>
+  </div><a class="paper-open icon-button" href="{{ work.url }}" aria-label="Details: {{ work.title }}" title="Paper details"><i data-lucide="arrow-up-right"></i></a>
+</article>
+{% endmacro %}
+{% macro event(item) %}
+<article class="event-row" data-result data-topic="{{ item.presentation_group }}" data-search="{{ (item.title ~ ' ' ~ item.venue ~ ' ' ~ item.location ~ ' ' ~ item.year)|lower }}"><div class="event-date">{{ item.event_date }}<span>{{ item.type }}</span></div><div><h3><a href="{{ item.permalink }}/">{{ item.title }}</a></h3><p>{% if item.venue_url %}<a class="event-venue" href="{{ item.venue_url }}">{{ item.venue }} <i data-lucide="arrow-up-right"></i></a>{% else %}{{ item.venue }}{% endif %}</p><span class="event-location"><i data-lucide="map-pin"></i>{{ item.location }}</span></div></article>
+{% endmacro %}
