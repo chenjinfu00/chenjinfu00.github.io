@@ -19,7 +19,9 @@ const assert=(ok,message)=>{if(!ok)throw Error(message)};
       await page.waitForFunction(previous=>[...document.querySelectorAll('[data-kind="spin"][data-theta]')].map(el=>el.dataset.theta).join(',')!==previous,before,{timeout:5000});
       assert(await page.locator('.motion-toggle').isVisible(),'Missing pause control');
       assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Overflow');
-      assert(await page.evaluate(()=>Number(document.querySelector('#mesh-depth').getAttribute('y2'))<document.querySelector('main').getBoundingClientRect().top+scrollY),'Background is not in faint mode');
+      assert(await page.evaluate(()=>document.body.classList.contains('physics-fixed')
+        ? Number(getComputedStyle(document.querySelector('.hero-motion')).opacity)<=.35
+        : Number(document.querySelector('#mesh-depth').getAttribute('y2'))<document.querySelector('main').getBoundingClientRect().top+scrollY),'Background is not in faint mode');
       if(prefix==='/zh'&&['/publications/','/cv/','/publication/boosting-thermalization-many-body-systems/'].includes(route))
         await page.screenshot({path:`local-preview/shared-field-${width}-${route.split('/')[1]}.png`});
     }
