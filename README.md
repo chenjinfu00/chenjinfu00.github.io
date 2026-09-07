@@ -88,12 +88,17 @@ Offscreen elements sleep and hidden tabs pause. The persistent pause button and
 reduced-motion preference provide a stationary view. Matter's MIT license is in
 `assets/site/MATTER-LICENSE`; no external runtime requests are needed.
 
-Mobile scrolling and simulation share one animation-frame scheduler. Surface rows
-are cached within a bounded window, and touch devices use fewer curve samples and
-30 Hz particle painting while scroll updates remain immediate. Viewport changes
-preserve existing bodies, orientations and trails rather than resetting the scene.
+Mobile uses a viewport-anchored surface: scrolling changes only its opacity as
+content sections pass, never the mesh or particle coordinates. The surface height
+stays stable while browser toolbars expand or collapse; width changes refit it.
+Desktop surface rows are cached within a bounded window. Touch devices use fewer
+curve samples and 30 Hz particle painting. Viewport changes preserve existing
+bodies, orientations and trails rather than resetting the scene. The theme opts
+into light rendering, and SVG paints include explicit theme-color fallbacks.
 `scripts/verify_mobile_motion.cjs` compares scroll timing against the committed
 version and checks resize continuity, rotation, touch scrolling and pause behavior.
+`scripts/verify_fixed_mobile_field.cjs` checks fixed geometry, toolbar stability,
+content fading and theme colors under a dark OS preference on both language routes.
 
 `scripts/verify_field.cjs` checks pointer attraction, spin response and fixed lattice
 sites, thermal motion, boundary confinement, responsive rendering, and pause states.

@@ -9,10 +9,15 @@
   const main = document.querySelector('main');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const coarsePointer = matchMedia('(pointer: coarse)');
+  const mobileViewport = matchMedia('(max-width: 820px), (pointer: coarse)');
+  let fixedField = mobileViewport.matches, fieldHeight = innerHeight, fieldWidth = 0;
+  let opacityStops = [];
+  const scrollOffset = () => fixedField ? 0 : scrollY;
   const zh = document.documentElement.lang.startsWith('zh');
   const ns = 'http://www.w3.org/2000/svg';
   const palette = getComputedStyle(document.documentElement);
-  const color = name => palette.getPropertyValue(name).trim();
+  const color = name => palette.getPropertyValue(name).trim() || '#001158';
+  const paint = id => `url(#${id}) ${color('--primary')}`;
   const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
   const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
   const boundary = v => .44 + .04 * Math.sin(Math.PI * Math.min(v, .925));
@@ -52,7 +57,7 @@
   }
   const common = {fill:'none', 'stroke-linecap':'round', 'stroke-linejoin':'round'};
   function path(points, screen = false) {
-    return points.map(p => project(...p)).map(([x,y],i) => (i?'L':'M')+x.toFixed(2)+','+(y-(screen?scrollY:0)).toFixed(2)).join(' ');
+    return points.map(p => project(...p)).map(([x,y],i) => (i?'L':'M')+x.toFixed(2)+','+(y-(screen?scrollOffset():0)).toFixed(2)).join(' ');
   }
   document.body.append(svg, button);
   document.body.classList.add('physics-active');
@@ -73,9 +78,10 @@
   let meshRange = [-Infinity, -Infinity];
   const meshRows = new Map();
   function drawMesh(force = false) {
-    mesh.setAttribute('transform', `translate(0 ${-scrollY})`);
-    if (!force && scrollY >= meshRange[0] + (meshRange[0] === 0 ? 0 : 140) && scrollY + innerHeight < meshRange[1] - 140) return;
-    meshRange = [Math.max(0, scrollY - 500), scrollY + innerHeight + 500];
+    const offset = scrollOffset(), height = fixedField ? fieldHeight : innerHeight;
+    mesh.setAttribute('transform', `translate(0 ${-offset})`);
+    if (!force && offset >= meshRange[0] + (meshRange[0] === 0 ? 0 : 140) && offset + height < meshRange[1] - 140) return;
+    meshRange = [Math.max(0, offset - 500), offset + height + 500];
     const v0 = Math.max(-.08, ((meshRange[0] - originY) / scale + 140) / 1420 - .2);
     const v1 = Math.min(maxV, ((meshRange[1] - originY) / scale + 400) / 1420 + .1);
     const cols = 66, rows = 54, paths = Array.from({length:6},()=>[]), dots = [];
@@ -118,11 +124,11 @@
     // Keep the cache bounded on long archives.
     for (const row of meshRows.keys()) if (row < Math.floor(v0*rows)-80 || row > Math.ceil(v1*rows)+80) meshRows.delete(row);
     mesh.replaceChildren();
-    paths.forEach((segments,i)=>element('path', mesh, {...common,d:segments.join(' '),stroke:'url(#mesh-depth)',opacity:(i+1)/6,'stroke-width':Math.max(.45,scale*.85)}));
-    element('path', mesh, {...common,d:dots.join(' '),stroke:'url(#mesh-depth)','stroke-width':Math.max(1,scale*2)});
+    paths.forEach((segments,i)=>element('path', mesh, {...common,d:segments.join(' '),stroke:paint('mesh-depth'),opacity:(i+1)/6,'stroke-width':Math.max(.45,scale*.85)}));
+    element('path', mesh, {...common,d:dots.join(' '),stroke:paint('mesh-depth'),'stroke-width':Math.max(1,scale*2)});
     const border = [];
     for (let v = v0; v <= v1; v += .004) border.push([boundary(v),v]);
-    element('path', mesh, {...common,d:path(border),stroke:'url(#boundary-depth)','stroke-width':Math.max(1,scale*1.7)});
+    element('path', mesh, {...common,d:path(border),stroke:'url(#boundary-depth) #f46e32','stroke-width':Math.max(1,scale*1.7)});
   }
   const engine = Engine.create({gravity:{x:0,y:0,scale:0},enableSleeping:false});
   const particles = [];
@@ -143,7 +149,7 @@
       element('stop',trailFade,{offset:.45,'stop-color':color('--primary'),'stop-opacity':.18});
       element('stop',trailFade,{offset:1,'stop-color':color('--primary'),'stop-opacity':.65});
     }
-    const line = element('path',group,{fill:spin?color('--primary'):`url(#trail-${body.id})`,stroke:'none',class:spin?'spin-glyph':'particle-trail'});
+    const line = element('path',group,{fill:spin?color('--primary'):paint(`trail-${body.id}`),stroke:'none',class:spin?'spin-glyph':'particle-trail'});
     const accent = spin ? null : element('circle',group,{r:2.8,fill:color('--primary'),stroke:'none',class:'particle-dot'});
     particles.push({body,kind,group,line,accent,trailFade,theta:random()*Math.PI*2,neighbors:[],trail:[[u,v]],active:true});
   }
@@ -177,12 +183,12 @@
   let paused = reduced.matches, raf = 0, previous = 0, accumulator = 0, ticks = 0;
   const step = 1000/60;
   function updatePhysics() {
-    const target = pointer ? inverse(pointer.x,pointer.y+scrollY) : null;
+    const target = pointer ? inverse(pointer.x,pointer.y+scrollOffset()) : null;
     particles.forEach(p=>{if(p.kind==='spin')p.previousTheta=p.theta;});
     for (const particle of particles) {
       const {body,kind} = particle;
       const u = body.position.x/1000, v = body.position.y/1000;
-      const pos = project(u,v), y = pos[1]-scrollY;
+      const pos = project(u,v), y = pos[1]-scrollOffset();
       particle.active = y > -220 && y < innerHeight+220 && pos[1] < mainEnd;
       if(kind!=='spin' && body.isSleeping===particle.active)Sleeping.set(body,!particle.active);
       if (!particle.active) continue;
@@ -258,21 +264,21 @@
       const norm=Math.hypot(b[0]-a[0],b[1]-a[1])||1;
       const radius=2.35*(distances[i]/length)**1.3;
       const nx=-(b[1]-a[1])/norm,ny=(b[0]-a[0])/norm;
-      left.push([points[i][0]+radius*nx,points[i][1]-scrollY+radius*ny]);
-      right.push([points[i][0]-radius*nx,points[i][1]-scrollY-radius*ny]);
+      left.push([points[i][0]+radius*nx,points[i][1]-scrollOffset()+radius*ny]);
+      right.push([points[i][0]-radius*nx,points[i][1]-scrollOffset()-radius*ny]);
     }
     p.line.setAttribute('d',[...left,...right.reverse()].map((xy,i)=>(i?'L':'M')+xy.map(n=>n.toFixed(2)).join(',')).join(' ')+'Z');
     const start=points[0],end=points.at(-1);
     // A spatial fade complements the continuous taper; the end remains beneath the solid dot.
-    p.trailFade.setAttribute('x1',start[0]);p.trailFade.setAttribute('y1',start[1]-scrollY);
+    p.trailFade.setAttribute('x1',start[0]);p.trailFade.setAttribute('y1',start[1]-scrollOffset());
     p.trailFade.setAttribute('x2',end[0]+(Math.hypot(end[0]-start[0],end[1]-start[1])<.01?.01:0));
-    p.trailFade.setAttribute('y2',end[1]-scrollY);
+    p.trailFade.setAttribute('y2',end[1]-scrollOffset());
   }
   function drawParticles() {
     for (const p of particles) {
       const u=p.body.position.x/1000,v=p.body.position.y/1000;
-      const pos=project(u,v), y=pos[1]-scrollY;
-      const visible=y>-100&&y<innerHeight+100&&pos[1]<mainEnd;
+      const pos=project(u,v), y=pos[1]-scrollOffset();
+      const visible=y>-100&&y<(fixedField?fieldHeight:innerHeight)+100&&pos[1]<mainEnd;
       p.group.style.display=visible?'':'none';
       if(!visible)continue;
       const depth=smooth(heroEnd-80,heroEnd+220,pos[1]);
@@ -294,10 +300,33 @@
     }
   }
   let layoutKey = '';
+  function updateOpacity() {
+    if (!fixedField) {svg.style.opacity='';return;}
+    let opacity = hero ? .9 : .3;
+    for (const stop of opacityStops) {
+      opacity += (stop.opacity-opacity)*smooth(stop.top-fieldHeight*.65,stop.top-fieldHeight*.15,scrollY);
+    }
+    svg.style.opacity=opacity.toFixed(3);
+  }
   function fit() {
     const mainRect=main.getBoundingClientRect(),mainTop=mainRect.top+scrollY;
+    fixedField=mobileViewport.matches;
+    document.body.classList.toggle('physics-fixed',fixedField);
+    if(fieldWidth!==innerWidth){fieldWidth=innerWidth;fieldHeight=innerHeight;}
+    opacityStops=[...main.children].filter(el=>el!==hero).map(el=>({
+      top:el.getBoundingClientRect().top+scrollY,
+      opacity:el.classList.contains('works-section')?.22:el.classList.contains('about-section')?.28:.34
+    }));
+    updateOpacity();
     mainEnd=mainRect.bottom+scrollY;
-    if(image) {
+    if(fixedField) {
+      // Use one viewport-sized surface. Browser toolbar motion cannot rescale it.
+      scale=innerWidth/1100;
+      originX=-430*scale;originY=fieldHeight*.18-180*scale;
+      mainEnd=fieldHeight+220;heroEnd=fieldHeight+300;
+      revealTop=0;revealEnd=fieldHeight*.22;
+      svg.style.height=`${fieldHeight}px`;
+    } else if(image) {
       const rect=image.getBoundingClientRect();
       scale=Math.max(rect.width/1536,rect.height/1024);
       const pos=getComputedStyle(image).objectPosition.split(' ').map(parseFloat);
@@ -313,8 +342,9 @@
       heroEnd=mainTop-250;
       revealTop=mainTop-50;revealEnd=mainTop+20;
     }
+    if(!fixedField)svg.style.height='';
     maxV=((mainEnd-originY)/scale+400)/1420;
-    svg.setAttribute('viewBox',`0 0 ${innerWidth} ${innerHeight}`);
+    svg.setAttribute('viewBox',`0 0 ${innerWidth} ${fixedField?fieldHeight:innerHeight}`);
     // Mobile browser chrome changes viewport height without changing the surface.
     // Keep body identities, velocities and trails across all layout changes.
     const nextKey=[innerWidth,scale,originX,originY,mainEnd,heroEnd,revealTop,revealEnd].map(n=>n.toFixed(2)).join(':');
@@ -340,7 +370,7 @@
     previous=now;
     while(!paused && accumulator>=step){updatePhysics();accumulator-=step;}
     if(needsMesh){needsMesh=false;drawMesh();}
-    // Touch devices render motion at 30 Hz, but scrolling always updates immediately.
+    // Touch devices render motion at 30 Hz; scrolling only changes layer opacity.
     if(needsPaint || !coarsePointer.matches || now-lastPaint>=1000/30) {
       drawParticles();lastPaint=now;needsPaint=false;
     }
@@ -362,6 +392,7 @@
   reduced.addEventListener('change',()=>{paused=reduced.matches;sync();});
   document.addEventListener('visibilitychange',sync);
   document.addEventListener('scroll',()=>{
+    if(fixedField){updateOpacity();return;}
     needsMesh=true;needsPaint=true;requestDraw();
   },{passive:true});
   const scheduleFit=()=>{needsFit=true;needsPaint=true;requestDraw();};
