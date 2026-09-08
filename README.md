@@ -37,7 +37,8 @@ This workspace also has the necessary packages in `/opt/anaconda3/bin/python`.
 The generator preserves existing publication and presentation permalinks.
 `site_src/generated-files.json` records generated pages; edit their sources, then rebuild.
 Every build generates English pages at `/` and matching Chinese pages at `/zh/`.
-The language link preserves the current page, search filters, and section anchor.
+The language link swaps matching content in place without reloading the document,
+preserving the current simulation, scroll position, search filters, and section anchor.
 Chinese pages retain the original author lists and formal citations. Add Chinese
 translations for new visible content in `site_src/zh.yml` when adding records.
 
@@ -84,6 +85,30 @@ and a soft pointer attraction, integrated with locally bundled Matter.js 0.20.0
 ([force API](https://brm.io/matter-js/docs/classes/Body.html#method_applyForce),
 [engine API](https://brm.io/matter-js/docs/classes/Engine.html)). Hold the pointer down
 to strengthen the local interaction; touch gestures do not block normal scrolling.
+The quadrilateral mesh starts fading at the Brownian boundary and disappears over
+a narrow outer band, so the visible surface follows the particles' accessible region.
+The shared header's expandable controls adjust relative temperature (0-4), damping (0.2-3),
+pointer-attraction strength (0-3), and particle density (1-2), with 1 as the
+original visual baseline. Increasing density adds both spins and Brownian particles
+only around viewed regions; they grow in from a near-zero scale instead of appearing
+abruptly. Lowering density shrinks and fades supplemental particles before hiding
+and sleeping them. A fifth control adds a quenched random external potential (0-2):
+its local field pins spin orientations and its gradient drives Brownian particles
+toward stable local minima, while thermal noise allows escape. Each new pointer or
+keyboard interaction with this control samples a fresh potential realization; that
+realization stays fixed while its strength is adjusted. The compact
+70%-opaque panel uses icon-only parameter rows; names remain available as native
+tooltips and accessible labels.
+Temperature and damping jointly scale the Brownian kicks as sqrt(T * damping);
+spin mobility and angular diffusion scale as 1 / damping and T / damping.
+Spin alignment uses an exact frozen-field drift step to avoid overshoot at low
+damping. These are dimensionless conceptual controls, not calibrated SI quantities.
+Parameters persist in session storage across language and page navigation; reset
+restores the controls without rebuilding particles or overriding pause. The panel
+closes on Escape, outside clicks or focus leaving it, and is mutually exclusive with
+the mobile navigation. Interacting
+with the panel does not attract particles. `scripts/verify_field_controls.cjs`
+checks forcing, damping, extreme values, pause, persistence, keyboard and touch input.
 Offscreen elements sleep and hidden tabs pause. The persistent pause button and
 reduced-motion preference provide a stationary view. Matter's MIT license is in
 `assets/site/MATTER-LICENSE`; no external runtime requests are needed.

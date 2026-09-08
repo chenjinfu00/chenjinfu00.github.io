@@ -35,6 +35,10 @@
       <a href="/cv/" {% if page == 'about' or page == 'teaching' %}aria-current="page"{% endif %}>About & CV</a>
       <a class="nav-contact" href="mailto:{{ profile.email }}">Contact <i data-lucide="arrow-up-right"></i></a>
     </nav>
+    <div class="field-tools">
+      <button class="field-toggle icon-button" type="button" aria-label="Field controls" title="Field controls" aria-expanded="false" aria-controls="field-controls" hidden><i data-lucide="sliders-horizontal"></i></button>
+      {% include 'field-controls.html' %}
+    </div>
     <a class="language-switch" href="/zh{{ path }}" lang="zh-CN" hreflang="zh-CN" aria-label="Switch to Chinese" title="Switch to Chinese">中文</a>
   </div>
 </header>

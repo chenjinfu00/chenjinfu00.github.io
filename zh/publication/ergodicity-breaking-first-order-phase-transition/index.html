@@ -72,6 +72,76 @@
 
     </nav>
 
+    <div class="field-tools">
+
+      <button class="field-toggle icon-button" type="button" aria-label="背景调控" title="背景调控" aria-expanded="false" aria-controls="field-controls" hidden><i data-lucide="sliders-horizontal"></i></button>
+
+      <aside id="field-controls" class="field-controls" aria-label="背景调控" hidden>
+
+  <div class="field-control-actions">
+
+    <button class="field-play icon-button" type="button" aria-label="暂停动画" title="暂停动画"><i data-lucide="pause"></i></button>
+
+    <button class="field-reset icon-button" type="button" aria-label="重置参数" title="重置参数"><i data-lucide="rotate-ccw"></i></button>
+
+  </div>
+
+
+
+  <div class="field-parameter">
+
+    <label for="field-temperature" aria-label="温度" title="温度"><i data-lucide="thermometer" aria-hidden="true"></i></label>
+
+    <input id="field-temperature" data-parameter="temperature" type="range" min="0" max="4" step="0.1" value="1" aria-label="温度" title="温度">
+
+  </div>
+
+
+
+  <div class="field-parameter">
+
+    <label for="field-damping" aria-label="阻尼" title="阻尼"><i data-lucide="waves" aria-hidden="true"></i></label>
+
+    <input id="field-damping" data-parameter="damping" type="range" min="0.2" max="3" step="0.1" value="1" aria-label="阻尼" title="阻尼">
+
+  </div>
+
+
+
+  <div class="field-parameter">
+
+    <label for="field-attraction" aria-label="吸引势" title="吸引势"><i data-lucide="magnet" aria-hidden="true"></i></label>
+
+    <input id="field-attraction" data-parameter="attraction" type="range" min="0" max="3" step="0.1" value="1" aria-label="吸引势" title="吸引势">
+
+  </div>
+
+
+
+  <div class="field-parameter">
+
+    <label for="field-density" aria-label="粒子数密度" title="粒子数密度"><i data-lucide="circle-dot" aria-hidden="true"></i></label>
+
+    <input id="field-density" data-parameter="density" type="range" min="1" max="2" step="0.1" value="1" aria-label="粒子数密度" title="粒子数密度">
+
+  </div>
+
+
+
+  <div class="field-parameter">
+
+    <label for="field-disorder" aria-label="无序外势" title="无序外势"><i data-lucide="dice-5" aria-hidden="true"></i></label>
+
+    <input id="field-disorder" data-parameter="disorder" type="range" min="0" max="2" step="0.1" value="0" aria-label="无序外势" title="无序外势">
+
+  </div>
+
+
+
+</aside>
+
+    </div>
+
     <a class="language-switch" href="/publication/ergodicity-breaking-first-order-phase-transition/" lang="en" hreflang="en" aria-label="切换到英文版" title="切换到英文版">EN</a>
 
   </div>

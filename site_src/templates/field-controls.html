@@ -1,0 +1,12 @@
+<aside id="field-controls" class="field-controls" aria-label="Field controls" hidden>
+  <div class="field-control-actions">
+    <button class="field-play icon-button" type="button" aria-label="Pause animation" title="Pause animation"><i data-lucide="pause"></i></button>
+    <button class="field-reset icon-button" type="button" aria-label="Reset parameters" title="Reset parameters"><i data-lucide="rotate-ccw"></i></button>
+  </div>
+  {% for key, label, icon, minimum, maximum, default in [('temperature','Temperature','thermometer',0,4,1),('damping','Damping','waves',0.2,3,1),('attraction','Attraction','magnet',0,3,1),('density','Particle density','circle-dot',1,2,1),('disorder','Potential disorder','dice-5',0,2,0)] %}
+  <div class="field-parameter">
+    <label for="field-{{ key }}" aria-label="{{ label }}" title="{{ label }}"><i data-lucide="{{ icon }}" aria-hidden="true"></i></label>
+    <input id="field-{{ key }}" data-parameter="{{ key }}" type="range" min="{{ minimum }}" max="{{ maximum }}" step="0.1" value="{{ default }}" aria-label="{{ label }}" title="{{ label }}">
+  </div>
+  {% endfor %}
+</aside>

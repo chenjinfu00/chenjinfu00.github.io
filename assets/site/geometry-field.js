@@ -13,7 +13,17 @@
   let fixedField = mobileViewport.matches, fieldHeight = innerHeight, fieldWidth = 0;
   let opacityStops = [];
   const scrollOffset = () => fixedField ? 0 : scrollY;
-  const zh = document.documentElement.lang.startsWith('zh');
+  let zh = document.documentElement.lang.startsWith('zh');
+  const controls = document.querySelector('.field-controls');
+  const fieldPlay = controls?.querySelector('.field-play');
+  const parameterRanges = {temperature:[0,4],damping:[.2,3],attraction:[0,3],density:[1,2],disorder:[0,2]};
+  const parameters = {temperature:1,damping:1,attraction:1,density:1,disorder:0};
+  try {
+    const saved=JSON.parse(sessionStorage.getItem('physics-parameters')||'null');
+    for(const [key,[min,max]] of Object.entries(parameterRanges)) {
+      if(Number.isFinite(saved?.[key]))parameters[key]=Math.max(min,Math.min(max,saved[key]));
+    }
+  } catch { /* Storage is optional in private or restricted browsing. */ }
   const ns = 'http://www.w3.org/2000/svg';
   const palette = getComputedStyle(document.documentElement);
   const color = name => palette.getPropertyValue(name).trim() || '#001158';
@@ -21,6 +31,32 @@
   const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
   const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
   const boundary = v => .44 + .04 * Math.sin(Math.PI * Math.min(v, .925));
+  const classicalEdge = .88;
+  const classicalFadeWidth = .07;
+  const disorderWavevectors = [[2.3,.63,.42],[-1.4,1.1,.34],[.8,1.9,.24]];
+  let disorderModes, disorderVersion=0;
+  const disorderRandom = () => {
+    if(!window.crypto?.getRandomValues)return Math.random();
+    const value=new Uint32Array(1);window.crypto.getRandomValues(value);
+    return value[0]/4294967296;
+  };
+  function randomizeDisorder() {
+    disorderModes=disorderWavevectors.map(([ku,kv,weight])=>[
+      ku,kv,2*Math.PI*disorderRandom(),weight*(.82+.36*disorderRandom())
+    ]);
+    svg.dataset.disorderVersion=String(++disorderVersion);
+    svg.dataset.disorderModes=JSON.stringify(disorderModes);
+  }
+  randomizeDisorder();
+  function disorderField(u,v) {
+    let potential=0,x=0,y=0;
+    for(const [ku,kv,phase,weight] of disorderModes) {
+      const angle=2*Math.PI*(ku*u+kv*v)+phase,sine=Math.sin(angle);
+      potential+=weight*Math.cos(angle);
+      x+=weight*ku*sine;y+=weight*kv*sine;
+    }
+    return {potential,x:x/1.55,y:y/1.55};
+  }
   let seed = 1741;
   const random = () => ((seed = (1664525 * seed + 1013904223) >>> 0) / 4294967296);
   const gaussian = () => Math.sqrt(-2 * Math.log(Math.max(random(), 1e-8))) * Math.cos(2 * Math.PI * random());
@@ -68,7 +104,7 @@
     element('stop', g, {offset:1,'stop-color':ink,'stop-opacity':low});
     return g;
   }
-  const meshFade = gradient('mesh-depth', color('--primary'), .48, hero ? .075 : .05);
+  const meshFade = gradient('mesh-depth', color('--primary'), .33, hero ? .065 : .05);
   const boundaryFade = gradient('boundary-depth', '#f46e32', .88, hero ? .10 : .07);
   const reveal = gradient('field-reveal','#ffffff',0,1);
   const mask=element('mask',defs,{id:'field-mask',maskUnits:'userSpaceOnUse',x:0,y:0});
@@ -104,7 +140,8 @@
           if (Math.hypot(a[0] - b[0], a[1] - b[1]) < 1e-8) continue;
           const pa = project(...a), pb = project(...b);
           if (Math.max(pa[0],pb[0]) < 0 || Math.min(pa[0],pb[0]) > innerWidth || Math.min(pa[1],pb[1]) > mainEnd) continue;
-          const fade=smooth(-.09,.14,(a[0]+b[0])/2);
+          const uMid=(a[0]+b[0])/2;
+          const fade=smooth(-.09,.14,uMid)*(1-smooth(classicalEdge,classicalEdge+classicalFadeWidth,uMid));
           if(fade<.02)continue;
           // Each right/down edge has one owner; reuse its already-projected endpoints.
           const samples=coarsePointer.matches?2:4, points=[pa];
@@ -128,19 +165,55 @@
     element('path', mesh, {...common,d:dots.join(' '),stroke:paint('mesh-depth'),'stroke-width':Math.max(1,scale*2)});
     const border = [];
     for (let v = v0; v <= v1; v += .004) border.push([boundary(v),v]);
+    element('path', mesh, {...common,d:path(border),stroke:color('--hero'),opacity:.75,'stroke-width':Math.max(2.8,scale*4),class:'boundary-underlay'});
     element('path', mesh, {...common,d:path(border),stroke:'url(#boundary-depth) #f46e32','stroke-width':Math.max(1,scale*1.7)});
   }
   const engine = Engine.create({gravity:{x:0,y:0,scale:0},enableSleeping:false});
   const particles = [];
   const quantum = svg.querySelector('.quantum-motion'), classical = svg.querySelector('.classical-motion');
-  function addParticle(kind, u, v) {
+  function animateParticleBirth(particle) {
+    if(reduced.matches||paused||!particle.group.animate)return;
+    particle.birthAnimation?.cancel();
+    particle.group.dataset.birth='true';
+    const animation=particle.group.animate([
+      {transform:'scale(.04)',opacity:0},
+      {transform:'scale(.72)',opacity:.72,offset:.68},
+      {transform:'scale(1)',opacity:1}
+    ],{duration:480,easing:'cubic-bezier(.2,.75,.25,1)'});
+    particle.birthAnimation=animation;
+    animation.finished.then(()=>{
+      if(particle.birthAnimation===animation)delete particle.group.dataset.birth;
+    }).catch(()=>{});
+  }
+  function finishParticleRemoval(particle) {
+    if(particle.targetEnabled)return;
+    particle.enabled=false;particle.group.style.display='none';
+    if(particle.kind!=='spin')Sleeping.set(particle.body,true);
+    delete particle.group.dataset.death;
+  }
+  function animateParticleRemoval(particle) {
+    particle.birthAnimation?.cancel();
+    if(reduced.matches||paused||!particle.group.animate){finishParticleRemoval(particle);return;}
+    const opacity=Number(particle.group.getAttribute('opacity'))||1;
+    particle.group.dataset.death='true';
+    const animation=particle.group.animate([
+      {transform:'scale(1)',opacity},
+      {transform:'scale(.55)',opacity:opacity*.45,offset:.62},
+      {transform:'scale(.04)',opacity:0}
+    ],{duration:400,easing:'cubic-bezier(.55,0,.8,.35)'});
+    particle.birthAnimation=animation;
+    animation.finished.then(()=>{
+      if(particle.birthAnimation===animation)finishParticleRemoval(particle);
+    }).catch(()=>{});
+  }
+  function addParticle(kind, u, v, densityLevel=1) {
     const spin = kind === 'spin';
     const body = Bodies.circle(u*1000,v*1000,7, {
-      isStatic:spin, frictionAir:.12, restitution:.35, friction:0, inertia:Infinity,
+      isStatic:spin, frictionAir:.12*parameters.damping, restitution:.35, friction:0, inertia:Infinity,
       collisionFilter:{category:spin ? 1 : 2,mask:spin ? 0 : 2}
     });
     Composite.add(engine.world,body);
-    const group = element('g', spin ? quantum : classical, {'data-kind':kind});
+    const group = element('g', spin ? quantum : classical, {'data-kind':kind,'data-density-level':densityLevel.toFixed(1)});
     let trailFade=null;
     if(!spin) {
       const trailDefs=element('defs',group,{});
@@ -151,9 +224,34 @@
     }
     const line = element('path',group,{fill:spin?color('--primary'):paint(`trail-${body.id}`),stroke:'none',class:spin?'spin-glyph':'particle-trail'});
     const accent = spin ? null : element('circle',group,{r:2.8,fill:color('--primary'),stroke:'none',class:'particle-dot'});
-    particles.push({body,kind,group,line,accent,trailFade,theta:random()*Math.PI*2,neighbors:[],trail:[[u,v]],active:true});
+    const enabled=densityLevel<=parameters.density;
+    const particle={body,kind,group,line,accent,trailFade,densityLevel,enabled,targetEnabled:enabled,theta:random()*Math.PI*2,neighbors:[],trail:[[u,v]],active:true};
+    particles.push(particle);
+    if(!particle.enabled) {
+      group.style.display='none';
+      if(!spin)Sleeping.set(body,true);
+    } else if(densityLevel>1)animateParticleBirth(particle);
+    return particle;
   }
   let populatedV = .25, populationSpacing = null;
+  const supplementalBands = new Set();
+  function rebuildSpinNeighbors() {
+    const spins=particles.filter(p=>p.kind==='spin');
+    spins.forEach(p=>{
+      p.neighbors=spins.filter(q=>q!==p).map(q=>({particle:q,distance:Math.hypot(p.body.position.x-q.body.position.x,p.body.position.y-q.body.position.y)}))
+        .filter(q=>q.distance<210);
+    });
+  }
+  function connectNewSpins(newSpins) {
+    const spins=particles.filter(p=>p.kind==='spin');
+    for(const particle of newSpins)for(const neighbor of spins) {
+      if(neighbor===particle)continue;
+      const distance=Math.hypot(particle.body.position.x-neighbor.body.position.x,particle.body.position.y-neighbor.body.position.y);
+      if(distance>=210)continue;
+      particle.neighbors.push({particle:neighbor,distance});
+      if(!newSpins.includes(neighbor))neighbor.neighbors.push({particle,distance});
+    }
+  }
   function populate() {
     // Spins sit on actual mesh vertices; only the classical particles translate.
     const spacing=populationSpacing ??= Math.max(.11,(maxV-.35)/200);
@@ -166,16 +264,56 @@
       for (let n=0;n<3;n++) addParticle('brownian',.52+random()*.26,v+random()*.09);
       populatedV = v + spacing;
     }
-    const spins=particles.filter(p=>p.kind==='spin');
-    spins.forEach(p=>{
-      p.neighbors=spins.filter(q=>q!==p).map(q=>({particle:q,distance:Math.hypot(p.body.position.x-q.body.position.x,p.body.position.y-q.body.position.y)}))
-        .filter(q=>q.distance<210);
-    });
+    rebuildSpinNeighbors();
+  }
+  function visibleVRange() {
+    const offset=scrollOffset(),height=fixedField?fieldHeight:innerHeight;
+    return [Math.max(.12,((offset-originY)/scale+140)/1420-.2),Math.min(maxV-.05,((offset+height-originY)/scale+400)/1420+.12)];
+  }
+  function ensureDensity() {
+    const spacing=populationSpacing;
+    if(!spacing)return;
+    const newSpins=[];
+    if(parameters.density>1) {
+      const [start,end]=visibleVRange();
+      for(let band=Math.floor(start/spacing);band<=Math.ceil(end/spacing);band++) {
+        if(supplementalBands.has(band))continue;
+        supplementalBands.add(band);
+        const v=(band+.5)*spacing;
+        if(v<.12||v>maxV-.05)continue;
+        for(let slot=0;slot<5;slot++) {
+          const densityLevel=1.2+.2*((slot+band%5+5)%5);
+          if(slot<2) {
+            const col=7+slot*11+((band*7+slot*3)%7+7)%7,u=col/66,row=Math.round(v*54);
+            const offset=1/6+smooth(.13,.48,u)/3;
+            newSpins.push(addParticle('spin',u,(row+(-1)**(row+col)*offset)/54,densityLevel));
+          } else {
+            const hash=((band*37+slot*53)%101+101)%101/101;
+            addParticle('brownian',.53+hash*.32,v+(slot-3)*spacing*.16,densityLevel);
+          }
+        }
+      }
+    }
+    for(const particle of particles) {
+      const enabled=particle.densityLevel<=parameters.density+.001;
+      if(particle.targetEnabled===enabled)continue;
+      particle.targetEnabled=enabled;
+      if(enabled) {
+        particle.birthAnimation?.cancel();delete particle.group.dataset.death;
+        particle.enabled=true;particle.group.style.display='';
+        if(particle.kind!=='spin')Sleeping.set(particle.body,false);
+        animateParticleBirth(particle);
+      } else animateParticleRemoval(particle);
+    }
+    if(newSpins.length)connectNewSpins(newSpins);
   }
   let pointer = null, pressed = false;
-  const setPointer = event => { pointer = {x:event.clientX,y:event.clientY}; };
+  const setPointer = event => {
+    if(event.target.closest?.('.field-tools')){pointer=null;pressed=false;return;}
+    pointer = {x:event.clientX,y:event.clientY};
+  };
   document.addEventListener('pointermove',setPointer,{passive:true});
-  document.addEventListener('pointerdown',event => {setPointer(event);pressed=true;},{passive:true});
+  document.addEventListener('pointerdown',event => {setPointer(event);pressed=!!pointer;},{passive:true});
   document.addEventListener('pointerup',event => {pressed=false;if(event.pointerType==='touch') pointer=null;},{passive:true});
   document.addEventListener('pointercancel',()=>{pointer=null;pressed=false;});
   document.documentElement.addEventListener('pointerleave',()=>{pointer=null;pressed=false;});
@@ -189,36 +327,53 @@
       const {body,kind} = particle;
       const u = body.position.x/1000, v = body.position.y/1000;
       const pos = project(u,v), y = pos[1]-scrollOffset();
-      particle.active = y > -220 && y < innerHeight+220 && pos[1] < mainEnd;
+      particle.active = particle.enabled && y > -220 && y < innerHeight+220 && pos[1] < mainEnd;
       if(kind!=='spin' && body.isSleeping===particle.active)Sleeping.set(body,!particle.active);
       if (!particle.active) continue;
       if(kind==='spin') {
         // Overdamped planar-spin (XY) Langevin dynamics, not a quantum-state solver.
         // d theta = -mu dH/dtheta dt + sqrt(2 D dt) dW; H includes exchange and local field.
-        let torque=0;
+        let fieldX=0,fieldY=0;
         for(const neighbor of particle.neighbors) {
-          const weight=Math.exp(-neighbor.distance*neighbor.distance/(2*130*130));
-          torque+=weight*Math.sin(neighbor.particle.previousTheta-particle.previousTheta);
+          if(!neighbor.particle.enabled)continue;
+          const weight=.7*Math.exp(-neighbor.distance*neighbor.distance/(2*130*130));
+          fieldX+=weight*Math.cos(neighbor.particle.previousTheta);
+          fieldY+=weight*Math.sin(neighbor.particle.previousTheta);
         }
-        torque*=.7;
+        if(parameters.disorder) {
+          const disorder=disorderField(u,v),strength=3.2*parameters.disorder;
+          fieldX+=strength*disorder.x;fieldY+=strength*disorder.y;
+        }
         if(pointer) {
           const distance=Math.hypot(pos[0]-pointer.x,y-pointer.y);
-          const strength=8*Math.exp(-distance*distance/(2*190*190))*(pressed?1.8:1);
+          const strength=8*parameters.attraction*Math.exp(-distance*distance/(2*190*190))*(pressed?1.8:1);
           const direction=Math.atan2(target[1]-v,target[0]-u);
-          torque+=strength*Math.sin(direction-particle.previousTheta);
+          fieldX+=strength*Math.cos(direction);fieldY+=strength*Math.sin(direction);
         }
         const dt=step/1000;
-        particle.theta=(particle.previousTheta+torque*dt+Math.sqrt(2*.035*dt)*gaussian())%(2*Math.PI);
+        const mobility=1/parameters.damping;
+        // Integrate alignment exactly for the frozen local field to avoid overshoot
+        // at low damping and strong attraction, then add the thermal increment.
+        const fieldAngle=Math.atan2(fieldY,fieldX);
+        const delta=Math.atan2(Math.sin(particle.previousTheta-fieldAngle),Math.cos(particle.previousTheta-fieldAngle));
+        const aligned=fieldAngle+2*Math.atan(Math.tan(delta/2)*Math.exp(-Math.hypot(fieldX,fieldY)*mobility*dt));
+        particle.theta=(aligned+Math.sqrt(2*.035*parameters.temperature*mobility*dt)*gaussian())%(2*Math.PI);
         continue;
       }
       // Fixed-step Langevin-style kicks + viscous damping. Units are illustrative.
-      const force = {x:gaussian()*.0009,y:gaussian()*.0009};
+      // Relative fluctuation-dissipation scaling preserves the default visual dynamics.
+      const noise=.0009*Math.sqrt(parameters.temperature*parameters.damping);
+      const force = {x:gaussian()*noise,y:gaussian()*noise};
+      if(parameters.disorder) {
+        const disorder=disorderField(u,v),strength=.00135*parameters.disorder;
+        force.x+=strength*disorder.x;force.y+=strength*disorder.y;
+      }
       if (pointer) {
         const distance = Math.hypot(pos[0]-pointer.x,y-pointer.y);
         const weight = Math.exp(-distance*distance/(2*220*220)) * (pressed ? 2.2 : 1);
         const tu = clamp(target[0],boundary(v)+.04,.87);
-        force.x += clamp((tu-u)*.016*weight,-.0025,.0025);
-        force.y += clamp((target[1]-v)*.013*weight,-.0025,.0025);
+        force.x += parameters.attraction*clamp((tu-u)*.016*weight,-.0025,.0025);
+        force.y += parameters.attraction*clamp((target[1]-v)*.013*weight,-.0025,.0025);
       }
       Body.applyForce(body,body.position,{x:force.x*body.mass,y:force.y*body.mass});
     }
@@ -228,7 +383,7 @@
       if (!p.active || p.kind==='spin') continue;
       const b=p.body;
       let u=b.position.x/1000, v=b.position.y/1000;
-      const min=boundary(v)+.032, max=.88;
+      const min=boundary(v)+.032, max=classicalEdge;
       if (u < min || u > max) {
         u=clamp(u,min,max);Body.setPosition(b,{x:u*1000,y:b.position.y});
         Body.setVelocity(b,{x:-b.velocity.x*.4,y:b.velocity.y});
@@ -278,7 +433,7 @@
     for (const p of particles) {
       const u=p.body.position.x/1000,v=p.body.position.y/1000;
       const pos=project(u,v), y=pos[1]-scrollOffset();
-      const visible=y>-100&&y<(fixedField?fieldHeight:innerHeight)+100&&pos[1]<mainEnd;
+      const visible=p.enabled&&y>-100&&y<(fixedField?fieldHeight:innerHeight)+100&&pos[1]<mainEnd;
       p.group.style.display=visible?'':'none';
       if(!visible)continue;
       const depth=smooth(heroEnd-80,heroEnd+220,pos[1]);
@@ -324,7 +479,8 @@
       scale=innerWidth/1100;
       originX=-430*scale;originY=fieldHeight*.18-180*scale;
       mainEnd=fieldHeight+220;heroEnd=fieldHeight+300;
-      revealTop=0;revealEnd=fieldHeight*.22;
+      revealTop=hero ? fieldHeight*.18 : 0;
+      revealEnd=fieldHeight*(hero ? .65 : .22);
       svg.style.height=`${fieldHeight}px`;
     } else if(image) {
       const rect=image.getBoundingClientRect();
@@ -356,12 +512,15 @@
     reveal.setAttribute('y1',revealTop);reveal.setAttribute('y2',revealEnd);
     for(const el of [mask,maskRect]){el.setAttribute('width',innerWidth);el.setAttribute('height',mainEnd);}
     if(populatedV < maxV-.10)populate();
+    ensureDensity();
   }
   function label() {
     const text=paused?(zh?'播放动画':'Play animation'):(zh?'暂停动画':'Pause animation');
-    button.setAttribute('aria-label',text);button.title=text;
-    button.innerHTML=`<i data-lucide="${paused?'play':'pause'}"></i>`;
-    window.lucide?.createIcons({nodes:[button]});
+    for(const control of [button,fieldPlay].filter(Boolean)) {
+      control.setAttribute('aria-label',text);control.title=text;
+      control.innerHTML=`<i data-lucide="${paused?'play':'pause'}"></i>`;
+      window.lucide?.createIcons({nodes:[control]});
+    }
   }
   function tick(now) {
     raf=0;
@@ -382,17 +541,62 @@
   }
   function sync() {
     cancelAnimationFrame(raf);raf=0;previous=0;accumulator=0;
+    for(const particle of particles) {
+      if(paused&&particle.birthAnimation?.playState==='running')particle.birthAnimation.pause();
+      else if(!paused&&particle.birthAnimation?.playState==='paused')particle.birthAnimation.play();
+    }
     needsPaint=true;
     if(paused&&!document.hidden){drawParticles();needsPaint=false;}
     if(!paused||needsMesh||needsFit)requestDraw();
     label();
   }
   button.hidden=false;
-  button.addEventListener('click',()=>{paused=!paused;pointer=null;sync();});
+  for(const control of [button,fieldPlay].filter(Boolean))control.addEventListener('click',()=>{paused=!paused;pointer=null;sync();});
+  function reflectParameters() {
+    controls?.querySelectorAll('[data-parameter]').forEach(input=>{
+      const value=parameters[input.dataset.parameter];
+      input.value=value;
+      input.style.setProperty('--range-fill',`${100*(value-Number(input.min))/(Number(input.max)-Number(input.min))}%`);
+      input.setAttribute('aria-valuetext',zh?`默认值的 ${value.toFixed(1)} 倍`:`${value.toFixed(1)} times default`);
+    });
+    for(const particle of particles)particle.body.frictionAir=.12*parameters.damping;
+    try{sessionStorage.setItem('physics-parameters',JSON.stringify(parameters));}catch{}
+  }
+  controls?.addEventListener('input',event=>{
+    const key=event.target.dataset.parameter;
+    if(!Object.hasOwn(parameterRanges,key))return;
+    const value=event.target.valueAsNumber;
+    if(!Number.isFinite(value))return;
+    parameters[key]=clamp(value,...parameterRanges[key]);
+    pointer=null;pressed=false;reflectParameters();ensureDensity();
+    needsPaint=true;
+    if(paused)drawParticles();else requestDraw();
+  });
+  const disorderControl=controls?.querySelector('[data-parameter="disorder"]');
+  disorderControl?.addEventListener('pointerdown',()=>{
+    randomizeDisorder();pointer=null;pressed=false;requestDraw();
+  });
+  disorderControl?.addEventListener('keydown',event=>{
+    if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End','PageUp','PageDown'].includes(event.key))return;
+    randomizeDisorder();pointer=null;pressed=false;requestDraw();
+  });
+  controls?.querySelector('.field-reset').addEventListener('click',()=>{
+    Object.assign(parameters,{temperature:1,damping:1,attraction:1,density:1,disorder:0});
+    pointer=null;pressed=false;reflectParameters();ensureDensity();
+    needsPaint=true;
+    if(paused)drawParticles();else requestDraw();
+  });
+  if(controls){reflectParameters();document.querySelector('.field-toggle').hidden=false;}
+  document.addEventListener('site:languagechange',event=>{
+    zh=event.detail.zh;
+    document.querySelector('.field-toggle').hidden=false;
+    label();reflectParameters();
+  });
   reduced.addEventListener('change',()=>{paused=reduced.matches;sync();});
   document.addEventListener('visibilitychange',sync);
   document.addEventListener('scroll',()=>{
     if(fixedField){updateOpacity();return;}
+    ensureDensity();
     needsMesh=true;needsPaint=true;requestDraw();
   },{passive:true});
   const scheduleFit=()=>{needsFit=true;needsPaint=true;requestDraw();};
