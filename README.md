@@ -113,17 +113,25 @@ Offscreen elements sleep and hidden tabs pause. The persistent pause button and
 reduced-motion preference provide a stationary view. Matter's MIT license is in
 `assets/site/MATTER-LICENSE`; no external runtime requests are needed.
 
-Mobile uses a viewport-anchored surface: scrolling changes only its opacity as
-content sections pass, never the mesh or particle coordinates. The surface height
-stays stable while browser toolbars expand or collapse; width changes refit it.
-Desktop surface rows are cached within a bounded window. Touch devices use fewer
-curve samples and 30 Hz particle painting. Viewport changes preserve existing
+Desktop and mobile render one persistent document-space mesh, which scrolls
+natively with the content. Its depth gradients keep it faint below the hero.
+Mobile framing stays stable while browser toolbars expand or collapse; width
+changes refit it. Scrolling never rebuilds the mesh or rewrites particle coordinates;
+only real layout changes refit the surface. Particle density bands are prepared for
+the whole surface when enabled, so scrolling cannot trigger particle creation.
+Birth and removal transitions only run near the viewport; offscreen transitions
+settle immediately instead of leaving hidden SVG animations pending.
+Touch devices use fewer curve samples and 30 Hz particle painting. Frames without
+a physics step do not repaint particles. Viewport changes preserve existing
 bodies, orientations and trails rather than resetting the scene. The theme opts
 into light rendering, and SVG paints include explicit theme-color fallbacks.
 `scripts/verify_mobile_motion.cjs` compares scroll timing against the committed
 version and checks resize continuity, rotation, touch scrolling and pause behavior.
-`scripts/verify_fixed_mobile_field.cjs` checks fixed geometry, toolbar stability,
-content fading and theme colors under a dark OS preference on both language routes.
+`scripts/verify_mobile_field.cjs` checks native scrolling, toolbar continuity,
+depth fading and theme colors under a dark OS preference on both language routes.
+`scripts/verify_scroll_field.cjs` checks native scroll anchoring, unchanged frozen
+geometry, persistent particle identities, and zero mesh mutations during scrolling.
+Its optional `--baseline` flag measures the committed JS/CSS under the same workload.
 
 `scripts/verify_field.cjs` checks pointer attraction, spin response and fixed lattice
 sites, thermal motion, boundary confinement, responsive rendering, and pause states.

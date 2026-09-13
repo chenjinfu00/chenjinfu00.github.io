@@ -6,6 +6,14 @@ const assert=require('node:assert/strict');
   try{
     const context=await browser.newContext({viewport:{width:1440,height:1000}});
     const page=await context.newPage(),errors=[];
+    // Reproducible disorder in this test; the production page still uses crypto randomness.
+    await page.addInitScript(()=>{
+      let seed=1741;
+      crypto.getRandomValues=values=>{
+        for(let i=0;i<values.length;i++)values[i]=(seed=(1664525*seed+1013904223)>>>0);
+        return values;
+      };
+    });
     const open=async(p=page)=>{if(await p.locator('.field-controls').isHidden())await p.locator('.field-toggle').click();};
     page.on('pageerror',e=>errors.push(String(e)));
     const instrumentation=`;(()=>{const create=Matter.Engine.create,force=Matter.Body.applyForce;
@@ -81,7 +89,8 @@ const assert=require('node:assert/strict');
       },0)/arrows.length;
     });
     await page.waitForTimeout(1300);
-    assert(await disorderAlignment()>.45,'Potential disorder does not pin spin orientations');
+    const alignment=await disorderAlignment();
+    assert(alignment>.45,'Potential disorder does not pin spin orientations: '+alignment);
     const potentialAfter=await meanPotential();
     assert(potentialAfter<potentialBefore-.025,`Potential disorder does not localize particles: ${potentialBefore} -> ${potentialAfter}`);
     await set('disorder',0);

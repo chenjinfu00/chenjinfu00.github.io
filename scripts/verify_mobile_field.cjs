@@ -18,17 +18,27 @@ const assert = require('node:assert/strict');
           viewBox:svg.getAttribute('viewBox'),height:svg.getBoundingClientRect().height};
       });
       const before=await snapshot();
-      const opacity=await page.locator('.hero-motion').evaluate(el=>el.style.opacity);
       for (const top of [350,1100,2300]) {
         await page.evaluate(top=>scrollTo({top,behavior:'instant'}),top);
         await page.waitForTimeout(100);
-        assert.deepEqual(await snapshot(),before,`${route}: scrolling changed fixed geometry`);
+        assert.deepEqual(await snapshot(),before,`${route}: scrolling changed document geometry`);
+        assert(Math.abs(await page.locator('.hero-motion').evaluate(el=>el.getBoundingClientRect().top+scrollY))<1,'Mobile background is not scrolling with the page');
       }
-      if(route==='/'||route==='/zh/')assert(Number(await page.locator('.hero-motion').evaluate(el=>el.style.opacity))<Number(opacity),'Content did not fade background');
+      const fade=await page.locator('#mesh-depth').evaluate(el=>[...el.children].map(stop=>Number(stop.getAttribute('stop-opacity'))));
+      assert(fade[1]<fade[0],'Lower page mesh is not faded');
+      await page.evaluate(()=>{
+        window.originalMobileParticles=[...document.querySelectorAll('[data-kind]')];
+        window.originalMobileGeometry=originalMobileParticles.map(el=>el.querySelector('path').getAttribute('d'));
+      });
       for (const height of [740,900,844]) {
         await page.setViewportSize({width:390,height});
         await page.waitForTimeout(100);
-        assert.deepEqual(await snapshot(),before,'Browser toolbar resized or redrew field');
+        const changed=await page.evaluate(()=>originalMobileParticles.flatMap((el,i)=>{
+          const before=originalMobileGeometry[i],after=el.querySelector('path').getAttribute('d');
+          // A taller page may reveal previously unpainted particles at its lower boundary.
+          return el.isConnected&&(before===null||before===after)?[]:[{i,before,after}];
+        }));
+        assert.deepEqual(changed,[],'Browser toolbar rescaled or reset particles: '+JSON.stringify(changed.slice(0,3)));
       }
       const colors=await page.evaluate(()=>({
         scheme:getComputedStyle(document.documentElement).colorScheme,
@@ -41,9 +51,9 @@ const assert = require('node:assert/strict');
       assert(colors.scheme.includes('light'));
       assert(colors.dots.length>0&&colors.dots.every(color=>color==='rgb(0, 17, 88)'));
       assert.equal(colors.mask,'none');assert.equal(colors.overflow,false);
-      await page.screenshot({path:`local-preview/fixed-mobile-${route.replaceAll('/','_')}-dark.png`});
+      await page.screenshot({path:`local-preview/mobile-field-${route.replaceAll('/','_')}-dark.png`});
       assert.deepEqual(errors,[]);
-      console.log('PASS fixed geometry, toolbar stability, theme under dark OS:',route);
+      console.log('PASS native scrolling, stable geometry, toolbar continuity, theme under dark OS:',route);
       await context.close();
     }
   } finally {await browser.close();}

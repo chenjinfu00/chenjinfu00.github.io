@@ -31,7 +31,7 @@ const check = (ok,message) => {if(!ok)throw Error(message)};
       const groups=[...document.querySelectorAll('[data-kind="brownian"]')];
       for(let i=0;i<groups.length;i++){
         const dot=groups[i].querySelector('circle');
-        const x=Number(dot.getAttribute('cx')),y=Number(dot.getAttribute('cy'));
+        const {x,y}=new DOMPoint(Number(dot.getAttribute('cx')),Number(dot.getAttribute('cy'))).matrixTransform(dot.getScreenCTM());
         if(getComputedStyle(groups[i]).display!=='none'&&x>750&&x<1250&&y>200&&y<750)return {index:i,x,y};
       }
     });
@@ -41,7 +41,8 @@ const check = (ok,message) => {if(!ok)throw Error(message)};
     await page.waitForTimeout(1600);
     const final=await page.evaluate(i=>{
       const el=document.querySelectorAll('[data-kind="brownian"]')[i].querySelector('circle');
-      return {x:Number(el.getAttribute('cx')),y:Number(el.getAttribute('cy'))};
+      const {x,y}=new DOMPoint(Number(el.getAttribute('cx')),Number(el.getAttribute('cy'))).matrixTransform(el.getScreenCTM());
+      return {x,y};
     },candidate.index);
     await page.mouse.up();
     const before=Math.hypot(candidate.x-target.x,candidate.y-target.y),after=Math.hypot(final.x-target.x,final.y-target.y);
@@ -56,7 +57,8 @@ const check = (ok,message) => {if(!ok)throw Error(message)};
       const g=groups[index];
       if(!g.querySelector('path').getAttribute('d'))continue;
       const numbers=g.querySelector('path').getAttribute('d').match(/-?[\d.]+/g).map(Number);
-      const x=(numbers[0]+numbers[2]+numbers[4])/3,y=(numbers[1]+numbers[3]+numbers[5])/3;
+      const center=new DOMPoint((numbers[0]+numbers[2]+numbers[4])/3,(numbers[1]+numbers[3]+numbers[5])/3).matrixTransform(g.getScreenCTM());
+      const {x,y}=center;
       if(getComputedStyle(g).display==='none'||x<150||x>700||y<200||y>700)continue;
       const dx=numbers[0]-(numbers[2]+numbers[4])/2,dy=numbers[1]-(numbers[3]+numbers[5])/2,norm=Math.hypot(dx,dy);
       return {index,x,y,targetX:x-dy/norm*75,targetY:y+dx/norm*75,theta:g.dataset.theta,u:g.dataset.u,v:g.dataset.v};

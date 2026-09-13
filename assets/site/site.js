@@ -81,10 +81,8 @@
       if(pairs.some(([current,replacement])=>!current||!replacement||!compatibleTree(current,replacement)))throw new Error('Language pages have different structures');
       pairs.forEach(([current,replacement])=>syncTree(current,replacement));
       const physicsActive=document.body.classList.contains('physics-active');
-      const physicsFixed=document.body.classList.contains('physics-fixed');
       document.body.className=next.body.className;
       if(physicsActive)document.body.classList.add('physics-active');
-      if(physicsFixed)document.body.classList.add('physics-fixed');
       zh=next.documentElement.lang.startsWith('zh');
       document.documentElement.lang=next.documentElement.lang;
       applyLanguageLayout(stableLayout);

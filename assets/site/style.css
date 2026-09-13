@@ -19,7 +19,7 @@
 .physics-active .hero-art{visibility:hidden}.physics-active>.hero-motion{position:fixed;inset:0;width:100%;height:100%;z-index:3;opacity:1;mask-image:none;pointer-events:none}.physics-active>.motion-toggle{position:fixed;bottom:22px;right:24px;z-index:21;background:rgba(247,248,252,.95);box-shadow:0 1px 5px rgba(0,17,88,.08)}.physics-active .site-footer{position:relative;z-index:4}.physics-active>.hero-motion [data-kind]{pointer-events:none}@media(max-width:540px){.physics-active>.motion-toggle{bottom:15px;right:16px}}@media print{.physics-active>.hero-motion,.physics-active>.motion-toggle{display:none}}
 body.physics-active{background:var(--hero)}.physics-active #main{position:relative;z-index:1}.physics-active .hero{background:transparent}.physics-active>.hero-motion{z-index:0}.physics-active #main>.section{background:rgba(255,255,255,.35)}.physics-active #main>.works-section{background:rgba(243,245,250,.45)}.physics-active #main>.about-section{background:rgba(233,237,246,.55)}.physics-active .site-header{background:#fff}
 .physics-active>.hero-motion{-webkit-mask-image:none;mask-image:none;fill:none;color:#001158;isolation:isolate}
-.physics-fixed>.hero-motion{bottom:auto;contain:layout paint;will-change:opacity}
+body.physics-active{position:relative}.physics-active>.hero-motion{position:absolute;inset:0 auto auto 0;contain:layout paint}
 .monogram{display:flex;align-items:center;justify-content:center}.monogram img{width:70px;height:58px;object-fit:contain}
 h1,h2,h3,h4,h5,h6,.hero-statement{font-style:normal}
 :is(h1,h2,h3,h4,h5,h6,.hero-statement) :is(em,i){font-style:normal}

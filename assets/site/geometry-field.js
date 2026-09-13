@@ -10,9 +10,8 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const coarsePointer = matchMedia('(pointer: coarse)');
   const mobileViewport = matchMedia('(max-width: 820px), (pointer: coarse)');
-  let fixedField = mobileViewport.matches, fieldHeight = innerHeight, fieldWidth = 0;
-  let opacityStops = [];
-  const scrollOffset = () => fixedField ? 0 : scrollY;
+  let compactField = mobileViewport.matches, fieldHeight = innerHeight, fieldWidth = 0;
+  const scrollOffset = () => scrollY;
   let zh = document.documentElement.lang.startsWith('zh');
   const controls = document.querySelector('.field-controls');
   const fieldPlay = controls?.querySelector('.field-play');
@@ -92,8 +91,8 @@
     return [(x - left) / width, v];
   }
   const common = {fill:'none', 'stroke-linecap':'round', 'stroke-linejoin':'round'};
-  function path(points, screen = false) {
-    return points.map(p => project(...p)).map(([x,y],i) => (i?'L':'M')+x.toFixed(2)+','+(y-(screen?scrollOffset():0)).toFixed(2)).join(' ');
+  function path(points) {
+    return points.map(p => project(...p)).map(([x,y],i) => (i?'L':'M')+x.toFixed(2)+','+y.toFixed(2)).join(' ');
   }
   document.body.append(svg, button);
   document.body.classList.add('physics-active');
@@ -111,27 +110,22 @@
   const maskRect=element('rect',mask,{x:0,y:0,fill:'url(#field-reveal)'});
   const mesh = svg.querySelector('.field-mesh');
   mesh.setAttribute('mask','url(#field-mask)');
-  let meshRange = [-Infinity, -Infinity];
-  const meshRows = new Map();
-  function drawMesh(force = false) {
-    const offset = scrollOffset(), height = fixedField ? fieldHeight : innerHeight;
-    mesh.setAttribute('transform', `translate(0 ${-offset})`);
-    if (!force && offset >= meshRange[0] + (meshRange[0] === 0 ? 0 : 140) && offset + height < meshRange[1] - 140) return;
-    meshRange = [Math.max(0, offset - 500), offset + height + 500];
-    const v0 = Math.max(-.08, ((meshRange[0] - originY) / scale + 140) / 1420 - .2);
-    const v1 = Math.min(maxV, ((meshRange[1] - originY) / scale + 400) / 1420 + .1);
+  const meshPaths = Array.from({length:6},(_,i)=>element('path',mesh,{
+    ...common,stroke:paint('mesh-depth'),opacity:(i+1)/6
+  }));
+  const meshDots = element('path',mesh,{...common,stroke:paint('mesh-depth')});
+  const borderUnderlay = element('path',mesh,{...common,stroke:color('--hero'),opacity:.75,class:'boundary-underlay'});
+  const borderPath = element('path',mesh,{...common,stroke:'url(#boundary-depth) #f46e32'});
+  function drawMesh() {
+    // A document-space surface scrolls natively with the content, without JS translation.
+    const v0 = Math.max(-.08, (-originY / scale + 140) / 1420 - .2);
+    const v1 = maxV;
     const cols = 66, rows = 54, paths = Array.from({length:6},()=>[]), dots = [];
     const point = (row, col) => {
       const u = col / cols, offset = 1 / 6 + smooth(.13, .48, u) / 3;
       return [u, (row + (-1) ** (row + col) * offset) / rows];
     };
     for (let row = Math.floor(v0 * rows); row <= Math.ceil(v1 * rows); row++) {
-      const cached = meshRows.get(row);
-      if (cached) {
-        cached.paths.forEach((segments,i)=>paths[i].push(...segments));
-        dots.push(...cached.dots);
-        continue;
-      }
       const rowPaths = Array.from({length:6},()=>[]), rowDots = [];
       for (let col = -5; col <= 106; col++) {
         const a = point(row, col), neighbors = [point(row, col + 1)];
@@ -154,25 +148,33 @@
           if (x > 0 && x < innerWidth && y < mainEnd) rowDots.push(`M${x.toFixed(2)},${y.toFixed(2)}h.1`);
         }
       }
-      meshRows.set(row,{paths:rowPaths,dots:rowDots});
       rowPaths.forEach((segments,i)=>paths[i].push(...segments));
       dots.push(...rowDots);
     }
-    // Keep the cache bounded on long archives.
-    for (const row of meshRows.keys()) if (row < Math.floor(v0*rows)-80 || row > Math.ceil(v1*rows)+80) meshRows.delete(row);
-    mesh.replaceChildren();
-    paths.forEach((segments,i)=>element('path', mesh, {...common,d:segments.join(' '),stroke:paint('mesh-depth'),opacity:(i+1)/6,'stroke-width':Math.max(.45,scale*.85)}));
-    element('path', mesh, {...common,d:dots.join(' '),stroke:paint('mesh-depth'),'stroke-width':Math.max(1,scale*2)});
+    paths.forEach((segments,i)=>{
+      meshPaths[i].setAttribute('d',segments.join(' '));
+      meshPaths[i].setAttribute('stroke-width',Math.max(.45,scale*.85));
+    });
+    meshDots.setAttribute('d',dots.join(' '));
+    meshDots.setAttribute('stroke-width',Math.max(1,scale*2));
     const border = [];
     for (let v = v0; v <= v1; v += .004) border.push([boundary(v),v]);
-    element('path', mesh, {...common,d:path(border),stroke:color('--hero'),opacity:.75,'stroke-width':Math.max(2.8,scale*4),class:'boundary-underlay'});
-    element('path', mesh, {...common,d:path(border),stroke:'url(#boundary-depth) #f46e32','stroke-width':Math.max(1,scale*1.7)});
+    const borderData=path(border);
+    borderUnderlay.setAttribute('d',borderData);
+    borderUnderlay.setAttribute('stroke-width',Math.max(2.8,scale*4));
+    borderPath.setAttribute('d',borderData);
+    borderPath.setAttribute('stroke-width',Math.max(1,scale*1.7));
   }
   const engine = Engine.create({gravity:{x:0,y:0,scale:0},enableSleeping:false});
   const particles = [];
   const quantum = svg.querySelector('.quantum-motion'), classical = svg.querySelector('.classical-motion');
+  function particleInView(particle) {
+    const [,y]=project(particle.body.position.x/1000,particle.body.position.y/1000);
+    const offset=scrollOffset();
+    return y>offset-220&&y<offset+innerHeight+220&&y<mainEnd;
+  }
   function animateParticleBirth(particle) {
-    if(reduced.matches||paused||!particle.group.animate)return;
+    if(reduced.matches||paused||!particle.group.animate||!particleInView(particle))return;
     particle.birthAnimation?.cancel();
     particle.group.dataset.birth='true';
     const animation=particle.group.animate([
@@ -193,7 +195,8 @@
   }
   function animateParticleRemoval(particle) {
     particle.birthAnimation?.cancel();
-    if(reduced.matches||paused||!particle.group.animate){finishParticleRemoval(particle);return;}
+    delete particle.group.dataset.birth;
+    if(reduced.matches||paused||!particle.group.animate||!particleInView(particle)){finishParticleRemoval(particle);return;}
     const opacity=Number(particle.group.getAttribute('opacity'))||1;
     particle.group.dataset.death='true';
     const animation=particle.group.animate([
@@ -212,7 +215,7 @@
       isStatic:spin, frictionAir:.12*parameters.damping, restitution:.35, friction:0, inertia:Infinity,
       collisionFilter:{category:spin ? 1 : 2,mask:spin ? 0 : 2}
     });
-    Composite.add(engine.world,body);
+    if(!spin)Composite.add(engine.world,body);
     const group = element('g', spin ? quantum : classical, {'data-kind':kind,'data-density-level':densityLevel.toFixed(1)});
     let trailFade=null;
     if(!spin) {
@@ -225,7 +228,7 @@
     const line = element('path',group,{fill:spin?color('--primary'):paint(`trail-${body.id}`),stroke:'none',class:spin?'spin-glyph':'particle-trail'});
     const accent = spin ? null : element('circle',group,{r:2.8,fill:color('--primary'),stroke:'none',class:'particle-dot'});
     const enabled=densityLevel<=parameters.density;
-    const particle={body,kind,group,line,accent,trailFade,densityLevel,enabled,targetEnabled:enabled,theta:random()*Math.PI*2,neighbors:[],trail:[[u,v]],active:true};
+    const particle={body,kind,group,line,accent,trailFade,densityLevel,enabled,targetEnabled:enabled,theta:random()*Math.PI*2,neighbors:[],trail:[[u,v]],trailRevision:0,active:true};
     particles.push(particle);
     if(!particle.enabled) {
       group.style.display='none';
@@ -266,16 +269,12 @@
     }
     rebuildSpinNeighbors();
   }
-  function visibleVRange() {
-    const offset=scrollOffset(),height=fixedField?fieldHeight:innerHeight;
-    return [Math.max(.12,((offset-originY)/scale+140)/1420-.2),Math.min(maxV-.05,((offset+height-originY)/scale+400)/1420+.12)];
-  }
   function ensureDensity() {
     const spacing=populationSpacing;
     if(!spacing)return;
     const newSpins=[];
     if(parameters.density>1) {
-      const [start,end]=visibleVRange();
+      const start=.12,end=maxV-.05;
       for(let band=Math.floor(start/spacing);band<=Math.ceil(end/spacing);band++) {
         if(supplementalBands.has(band))continue;
         supplementalBands.add(band);
@@ -320,14 +319,23 @@
   window.addEventListener('blur',()=>{pointer=null;pressed=false;});
   let paused = reduced.matches, raf = 0, previous = 0, accumulator = 0, ticks = 0;
   const step = 1000/60;
+  function particlePosition(particle) {
+    if(particle.kind!=='spin')return project(particle.body.position.x/1000,particle.body.position.y/1000);
+    if(particle.projectedLayout!==layoutKey) {
+      particle.projectedPosition=project(particle.body.position.x/1000,particle.body.position.y/1000);
+      particle.projectedLayout=layoutKey;
+    }
+    return particle.projectedPosition;
+  }
   function updatePhysics() {
-    const target = pointer ? inverse(pointer.x,pointer.y+scrollOffset()) : null;
+    const offset=scrollOffset(),height=innerHeight;
+    const target = pointer ? inverse(pointer.x,pointer.y+offset) : null;
     particles.forEach(p=>{if(p.kind==='spin')p.previousTheta=p.theta;});
     for (const particle of particles) {
       const {body,kind} = particle;
       const u = body.position.x/1000, v = body.position.y/1000;
-      const pos = project(u,v), y = pos[1]-scrollOffset();
-      particle.active = particle.enabled && y > -220 && y < innerHeight+220 && pos[1] < mainEnd;
+      const pos = particlePosition(particle), y = pos[1]-offset;
+      particle.active = particle.enabled && y > -220 && y < height+220 && pos[1] < mainEnd;
       if(kind!=='spin' && body.isSleeping===particle.active)Sleeping.set(body,!particle.active);
       if (!particle.active) continue;
       if(kind==='spin') {
@@ -393,21 +401,27 @@
         Body.setVelocity(b,{x:b.velocity.x,y:-b.velocity.y*.4});
       }
       if (b.speed>2.3) Body.setVelocity(b,{x:b.velocity.x*2.3/b.speed,y:b.velocity.y*2.3/b.speed});
-      if (ticks%3===0) {p.trail.push([u,v]);if(p.trail.length>26)p.trail.shift();}
+      if (ticks%3===0) {p.trail.push([u,v]);if(p.trail.length>26)p.trail.shift();p.trailRevision++;}
     }
   }
   function drawTrail(p,u,v) {
     // Corner cutting smooths the recorded path without overshooting its surface coordinates.
-    const history=[...p.trail,[u,v]],smoothPoints=[history[0]];
-    for(let i=0;i<history.length-1;i++) {
-      const a=history[i],b=history[i+1];
-      smoothPoints.push([.75*a[0]+.25*b[0],.75*a[1]+.25*b[1]],
-        [.25*a[0]+.75*b[0],.25*a[1]+.75*b[1]]);
+    // The recorded trail changes at 20 Hz; only its moving tip needs a fresh projection.
+    if(p.projectedTrailRevision!==p.trailRevision||p.projectedTrailLayout!==layoutKey) {
+      p.projectedTrail=[project(...p.trail[0])];
+      for(let i=0;i<p.trail.length-1;i++) {
+        const a=p.trail[i],b=p.trail[i+1];
+        p.projectedTrail.push(project(.75*a[0]+.25*b[0],.75*a[1]+.25*b[1]),
+          project(.25*a[0]+.75*b[0],.25*a[1]+.75*b[1]));
+      }
+      p.projectedTrailRevision=p.trailRevision;p.projectedTrailLayout=layoutKey;
     }
-    smoothPoints.push([u,v]);
+    const tail=p.trail.at(-1);
+    const smoothPoints=[...p.projectedTrail,project(.75*tail[0]+.25*u,.75*tail[1]+.25*v),
+      project(.25*tail[0]+.75*u,.25*tail[1]+.75*v),project(u,v)];
     const points=[];
-    for(const uv of smoothPoints) {
-      const xy=project(...uv),previous=points.at(-1);
+    for(const xy of smoothPoints) {
+      const previous=points.at(-1);
       if(!previous||Math.hypot(xy[0]-previous[0],xy[1]-previous[1])>.03)points.push(xy);
     }
     if(points.length<2){p.line.setAttribute('d','');return;}
@@ -419,23 +433,32 @@
       const norm=Math.hypot(b[0]-a[0],b[1]-a[1])||1;
       const radius=2.35*(distances[i]/length)**1.3;
       const nx=-(b[1]-a[1])/norm,ny=(b[0]-a[0])/norm;
-      left.push([points[i][0]+radius*nx,points[i][1]-scrollOffset()+radius*ny]);
-      right.push([points[i][0]-radius*nx,points[i][1]-scrollOffset()-radius*ny]);
+      left.push([points[i][0]+radius*nx,points[i][1]+radius*ny]);
+      right.push([points[i][0]-radius*nx,points[i][1]-radius*ny]);
     }
     p.line.setAttribute('d',[...left,...right.reverse()].map((xy,i)=>(i?'L':'M')+xy.map(n=>n.toFixed(2)).join(',')).join(' ')+'Z');
     const start=points[0],end=points.at(-1);
     // A spatial fade complements the continuous taper; the end remains beneath the solid dot.
-    p.trailFade.setAttribute('x1',start[0]);p.trailFade.setAttribute('y1',start[1]-scrollOffset());
+    p.trailFade.setAttribute('x1',start[0]);p.trailFade.setAttribute('y1',start[1]);
     p.trailFade.setAttribute('x2',end[0]+(Math.hypot(end[0]-start[0],end[1]-start[1])<.01?.01:0));
-    p.trailFade.setAttribute('y2',end[1]-scrollOffset());
+    p.trailFade.setAttribute('y2',end[1]);
   }
   function drawParticles() {
+    const offset=scrollOffset(),height=innerHeight;
     for (const p of particles) {
       const u=p.body.position.x/1000,v=p.body.position.y/1000;
-      const pos=project(u,v), y=pos[1]-scrollOffset();
-      const visible=p.enabled&&y>-100&&y<(fixedField?fieldHeight:innerHeight)+100&&pos[1]<mainEnd;
-      p.group.style.display=visible?'':'none';
-      if(!visible)continue;
+      const pos=particlePosition(p), y=pos[1]-offset;
+      const visible=p.enabled&&(paused||(y>-220&&y<height+220))&&pos[1]<mainEnd;
+      const display=visible?'':'none';
+      if(p.group.style.display!==display)p.group.style.display=display;
+      if(!visible) {
+        // Hidden SVG animations may not finish until shown again; settle them offscreen.
+        if(p.group.dataset.birth||p.group.dataset.death) {
+          p.birthAnimation?.cancel();delete p.group.dataset.birth;
+          if(!p.targetEnabled)finishParticleRemoval(p);
+        }
+        continue;
+      }
       const depth=smooth(heroEnd-80,heroEnd+220,pos[1]);
       const near=pointer ? Math.exp(-((Math.hypot(pos[0]-pointer.x,y-pointer.y)/160)**2)) : 0;
       p.group.setAttribute('opacity',((.85*(1-depth)+depth*(.16+.18*near))*smooth(revealTop,revealEnd,pos[1])*(hero?1:.75)).toFixed(3));
@@ -445,43 +468,28 @@
         const norm=Math.hypot(tip[0]-pos[0],tip[1]-pos[1]);
         const dx=(tip[0]-pos[0])/norm,dy=(tip[1]-pos[1])/norm;
         const length=clamp(28*scale,13,27),head=length*2/3,tail=-length/3,halfWidth=length*.07;
-        const pt=(along,side=0)=>`${(pos[0]+along*dx-side*dy).toFixed(2)},${(y+along*dy+side*dx).toFixed(2)}`;
+        const pt=(along,side=0)=>`${(pos[0]+along*dx-side*dy).toFixed(2)},${(pos[1]+along*dy+side*dx).toFixed(2)}`;
         p.line.setAttribute('d',`M${pt(head)}L${pt(tail,halfWidth)}L${pt(tail,-halfWidth)}Z`);
         p.group.dataset.theta=p.theta.toFixed(6);
       } else {
         drawTrail(p,u,v);
-        p.accent.setAttribute('cx',pos[0]);p.accent.setAttribute('cy',y);
+        p.accent.setAttribute('cx',pos[0]);p.accent.setAttribute('cy',pos[1]);
       }
     }
   }
   let layoutKey = '';
-  function updateOpacity() {
-    if (!fixedField) {svg.style.opacity='';return;}
-    let opacity = hero ? .9 : .3;
-    for (const stop of opacityStops) {
-      opacity += (stop.opacity-opacity)*smooth(stop.top-fieldHeight*.65,stop.top-fieldHeight*.15,scrollY);
-    }
-    svg.style.opacity=opacity.toFixed(3);
-  }
   function fit() {
     const mainRect=main.getBoundingClientRect(),mainTop=mainRect.top+scrollY;
-    fixedField=mobileViewport.matches;
-    document.body.classList.toggle('physics-fixed',fixedField);
+    compactField=mobileViewport.matches;
     if(fieldWidth!==innerWidth){fieldWidth=innerWidth;fieldHeight=innerHeight;}
-    opacityStops=[...main.children].filter(el=>el!==hero).map(el=>({
-      top:el.getBoundingClientRect().top+scrollY,
-      opacity:el.classList.contains('works-section')?.22:el.classList.contains('about-section')?.28:.34
-    }));
-    updateOpacity();
     mainEnd=mainRect.bottom+scrollY;
-    if(fixedField) {
-      // Use one viewport-sized surface. Browser toolbar motion cannot rescale it.
+    if(compactField) {
+      // Preserve mobile framing as browser toolbars move, but extend the surface down the page.
       scale=innerWidth/1100;
       originX=-430*scale;originY=fieldHeight*.18-180*scale;
-      mainEnd=fieldHeight+220;heroEnd=fieldHeight+300;
-      revealTop=hero ? fieldHeight*.18 : 0;
-      revealEnd=fieldHeight*(hero ? .65 : .22);
-      svg.style.height=`${fieldHeight}px`;
+      heroEnd=hero?hero.getBoundingClientRect().bottom+scrollY:mainTop-250;
+      revealTop=hero?fieldHeight*.18:mainTop-50;
+      revealEnd=hero?fieldHeight*.65:mainTop+20;
     } else if(image) {
       const rect=image.getBoundingClientRect();
       scale=Math.max(rect.width/1536,rect.height/1024);
@@ -498,21 +506,21 @@
       heroEnd=mainTop-250;
       revealTop=mainTop-50;revealEnd=mainTop+20;
     }
-    if(!fixedField)svg.style.height='';
     maxV=((mainEnd-originY)/scale+400)/1420;
-    svg.setAttribute('viewBox',`0 0 ${innerWidth} ${fixedField?fieldHeight:innerHeight}`);
     // Mobile browser chrome changes viewport height without changing the surface.
     // Keep body identities, velocities and trails across all layout changes.
-    const nextKey=[innerWidth,scale,originX,originY,mainEnd,heroEnd,revealTop,revealEnd].map(n=>n.toFixed(2)).join(':');
-    if(nextKey===layoutKey)return;
+    const nextKey=[Number(compactField),innerWidth,scale,originX,originY,mainEnd,heroEnd,revealTop,revealEnd].map(n=>n.toFixed(2)).join(':');
+    if(nextKey===layoutKey)return false;
     layoutKey=nextKey;
-    meshRows.clear();
-    meshRange=[-Infinity,-Infinity];
+    const surfaceHeight=Math.ceil(mainEnd);
+    svg.style.height=`${surfaceHeight}px`;
+    svg.setAttribute('viewBox',`0 0 ${innerWidth} ${surfaceHeight}`);
     for(const g of [meshFade,boundaryFade]) {g.setAttribute('y1',heroEnd-100);g.setAttribute('y2',heroEnd+220);}
     reveal.setAttribute('y1',revealTop);reveal.setAttribute('y2',revealEnd);
     for(const el of [mask,maskRect]){el.setAttribute('width',innerWidth);el.setAttribute('height',mainEnd);}
     if(populatedV < maxV-.10)populate();
     ensureDensity();
+    return true;
   }
   function label() {
     const text=paused?(zh?'播放动画':'Play animation'):(zh?'暂停动画':'Pause animation');
@@ -524,13 +532,14 @@
   }
   function tick(now) {
     raf=0;
-    if(needsFit){needsFit=false;fit();needsMesh=true;}
+    if(needsFit){needsFit=false;if(fit()){needsMesh=true;needsPaint=true;}}
     if(!paused && previous)accumulator+=Math.min(now-previous,50);
     previous=now;
-    while(!paused && accumulator>=step){updatePhysics();accumulator-=step;}
+    let advanced=false;
+    while(!paused && accumulator>=step){updatePhysics();accumulator-=step;advanced=true;}
     if(needsMesh){needsMesh=false;drawMesh();}
-    // Touch devices render motion at 30 Hz; scrolling only changes layer opacity.
-    if(needsPaint || !coarsePointer.matches || now-lastPaint>=1000/30) {
+    // Touch devices render motion at 30 Hz; scrolling is handled by the browser.
+    if(needsPaint || (advanced&&(!coarsePointer.matches||now-lastPaint>=1000/30))) {
       drawParticles();lastPaint=now;needsPaint=false;
     }
     if(!paused)requestDraw();
@@ -594,13 +603,11 @@
   });
   reduced.addEventListener('change',()=>{paused=reduced.matches;sync();});
   document.addEventListener('visibilitychange',sync);
-  document.addEventListener('scroll',()=>{
-    if(fixedField){updateOpacity();return;}
-    ensureDensity();
-    needsMesh=true;needsPaint=true;requestDraw();
-  },{passive:true});
-  const scheduleFit=()=>{needsFit=true;needsPaint=true;requestDraw();};
+  const scheduleFit=()=>{needsFit=true;requestDraw();};
   new ResizeObserver(scheduleFit).observe(main);
-  window.addEventListener('resize',scheduleFit);
+  window.addEventListener('resize',()=>{
+    if(compactField&&mobileViewport.matches&&fieldWidth===innerWidth)return;
+    scheduleFit();
+  });
   fit();sync();
 })();
