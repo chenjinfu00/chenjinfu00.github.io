@@ -30,9 +30,9 @@ Positions and education: 研究经历与教育背景
 moved out of reach: 暂时找不到了
 Thermodynamics and generative AI: 热力学与生成式人工智能
 Can thermodynamics improve learning and sampling?: 热力学如何帮助优化学习与采样？
-Building on stochastic and finite-time thermodynamics, this direction explores how low-dissipation protocols and optimal control can improve learning and sampling in generative AI, including diffusion models and Transformers.: 将随机热力学与有限时间热力学的方法和优化工具应用于生成式人工智能，探索以低耗散方案和最优控制改进学习与采样，面向扩散模型与变换器模型。
+Building on stochastic and finite-time thermodynamics, this direction explores how low-dissipation protocols and optimal control can improve learning and sampling in generative AI, including diffusion models and Transformers.: 将随机热力学与有限时间热力学的方法和优化工具应用于生成式人工智能，探索以低耗散方案和最优控制改进学习与采样，面向扩散模型与 Transformer 模型。
 Stochastic thermodynamics · Finite-time optimization · Generative AI: 随机热力学 · 有限时间优化 · 生成式人工智能
-A further research direction is to apply methods and optimization tools from stochastic and finite-time thermodynamics to generative AI, with the aim of improving learning and sampling in diffusion models and Transformers.: 另一个研究方向是将随机热力学与有限时间热力学的方法和优化工具应用于生成式人工智能，探索如何改进扩散模型与变换器模型中的学习和采样过程。
+A further research direction is to apply methods and optimization tools from stochastic and finite-time thermodynamics to generative AI, with the aim of improving learning and sampling in diffusion models and Transformers.: 另一个研究方向是将随机热力学与有限时间热力学的方法和优化工具应用于生成式人工智能，探索如何改进扩散模型与 Transformer 模型中的学习和采样过程。
 to new connections.: 开始新的交流。
 Lorentz Institute for Theoretical Physics: 洛伦兹理论物理研究所
 Leiden University: 莱顿大学
@@ -57,7 +57,7 @@ Symmetry and polyhedral optimization help turn multipartite Bell inequalities in
 Bell inequalities · Symmetry · Optimization: 贝尔不等式 · 对称性 · 优化
 Many-body thermalization: 多体系统热化
 How quickly can a quantum system relax?: 量子系统能多快达到平衡？
-By shaping dissipation and optimizing Lindbladian spectral gaps, I develop ways to prepare thermal states faster. Tensor networks make these questions accessible beyond small systems.: 通过设计耗散过程、优化 林德布拉德生成元 谱隙，寻找更快制备多体热态的途径，并借助张量网络研究规模更大的量子系统。
+By shaping dissipation and optimizing Lindbladian spectral gaps, I develop ways to prepare thermal states faster. Tensor networks make these questions accessible beyond small systems.: 通过设计耗散过程、优化 Lindblad 生成元的谱隙，寻找更快制备多体热态的途径，并借助张量网络研究规模更大的量子系统。
 Open systems · Spectral gaps · Tensor networks: 开放系统 · 谱隙 · 张量网络
 Thermodynamic geometry: 热力学几何
 How much does it cost to go faster?: 更快的操作，需要多大代价？
@@ -65,7 +65,7 @@ Geometric methods identify low-dissipation control protocols, revealing how fini
 Finite-time control · Geometry · Heat engines: 有限时间控制 · 几何 · 热机
 Fluctuations & learning: 涨落与学习
 What can fluctuations tell us?: 随机涨落中藏着什么规律？
-I study the statistics of heat and work in small systems, and am exploring how stochastic thermodynamics can help analyze learning and sampling, with applications in diffusion models and Transformers.: 研究微小系统中热与功的统计规律，并探索以随机热力学分析学习和采样过程，应用于扩散模型与 变换器模型。
+I study the statistics of heat and work in small systems, and am exploring how stochastic thermodynamics can help analyze learning and sampling, with applications in diffusion models and Transformers.: 研究微小系统中热与功的统计规律，并探索以随机热力学分析学习和采样过程，应用于扩散模型与 Transformer 模型。
 Fluctuation relations · Stochastic processes · Generative AI: 涨落关系 · 随机过程 · 生成式人工智能
 Related works: 相关成果
 02 / SELECTED WORKS: 02 / 代表成果
@@ -126,7 +126,7 @@ No matching presentations: 未找到匹配报告
 Try another event, topic, or year.: 试试其他会议、主题或年份。
 Event website: 会议官网
 Talk: 报告
-Contributed talk: 投稿报告
+Contributed talk: 会议报告
 Seminar: 研讨报告
 Poster: 海报
 Lecture: 讲座
@@ -139,7 +139,7 @@ I study how quantum systems behave, how to control them, and where their advanta
 At Leiden University, I work with: 在莱顿大学，我与
 on quantum nonlocality and open many-body dynamics. My research uses symmetry and optimization to develop multipartite Bell tests, and spectral-gap optimization to accelerate thermalization.: 合作研究量子非局域性与开放多体动力学，利用对称性和优化方法构建多体贝尔检验，并通过谱隙优化加速热化。
 'My background in finite-time thermodynamics brings a complementary perspective: understanding the energetic cost of control. Thermodynamic geometry can optimize driving protocols, while spectral methods can optimize dissipation. Together, these approaches help explore the performance of quantum many-body heat engines.': 有限时间热力学提供了另一个视角：理解控制所需的能量代价。热力学几何用于优化驱动方案，谱方法用于优化耗散过程；结合两者，可以探索提升量子多体热机性能的途径。
-I am also exploring connections between stochastic thermodynamics and generative AI, with applications in diffusion models and Transformers.: 我也在探索随机热力学与生成式人工智能 的联系，应用于扩散模型与 变换器模型中的学习和采样过程。
+I am also exploring connections between stochastic thermodynamics and generative AI, with applications in diffusion models and Transformers.: 我也在探索随机热力学与生成式人工智能的联系，应用于扩散模型与 Transformer 模型中的学习和采样过程。
 Print CV: 打印简历
 Postdoctoral researcher: 博士后研究员
 ACADEMIC PATH: 学术经历
@@ -200,7 +200,7 @@ Spectral gap optimization for enhanced adiabatic state preparation: 通过谱隙
 Geodesic lower bound of the energy consumption to achieve membrane separation within finite time: 有限时间膜分离能耗的测地线下界
 Optimal control theory for maximum power of Brownian heat engines: 布朗热机最大功率的最优控制理论
 Boosting the performance of quantum Otto heat engines: 提升量子奥托热机的性能
-Achieve Higher Efficiency at Maximum Power with Finite-time Quantum Otto Cycle: 利用有限时间量子奥托循环提高最大功率效率
+Achieve Higher Efficiency at Maximum Power with Finite-time Quantum Otto Cycle: 提高有限时间量子奥托循环在最大功率下的效率
 Extrapolating the thermodynamic length with finite-time measurements: 通过有限时间测量外推热力学长度
 Optimizing Brownian heat engine with shortcut strategy: 利用捷径策略优化布朗热机
 Speeding up quantum adiabatic processes with a dynamical quantum geometric tensor: 利用动力学量子几何张量加速量子绝热过程
@@ -214,7 +214,7 @@ Efficiency statistics of a quantum Otto cycle: 量子奥托循环的效率统计
 Bose-Fermi duality in a quantum Otto heat engine with trapped repulsive bosons: 囚禁排斥玻色子量子奥托热机中的玻色—费米对偶
 Bose-Fermi duality in quantum Otto heat engine with trapped repulsive Bosons: 囚禁排斥玻色子量子奥托热机中的玻色—费米对偶
 'Monitored quantum transport: full counting statistics of a quantum Hall interferometer': 受监测的量子输运：量子霍尔干涉仪的全计数统计
-Thermodynamically Consistent Lindbladians for Quantum Stochastic Thermodynamics: 量子随机热力学中热力学一致的 林德布拉德生成元
+Thermodynamically Consistent Lindbladians for Quantum Stochastic Thermodynamics: 量子随机热力学中热力学一致的 Lindblad 生成元
 'Finite-time thermodynamic optimization: thermodynamic geometry': 有限时间热力学优化：热力学几何
 An introduction to large deviation theory: 大偏差理论简介
 'Quantum Otto heat engine on piston model: the effect of interaction and finite time': 活塞模型中的量子奥托热机：相互作用与有限时间的影响
