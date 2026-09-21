@@ -2,6 +2,8 @@
 
 本地 OTOC 和算符增长探索工具。2026-09-21 已修复数值与展示问题；完整证据见 [核验报告](AUDIT_2026-09-21.md)。原始 JSON/PNG 保留，旧说明另存为 [历史记录](README_legacy_2026-09-20.md)，其中的旧 Lanczos 增长率结论已撤回。
 
+**在线演示：** [https://aigimon.com/operatorscrambling/](https://aigimon.com/operatorscrambling/)
+
 ## 打开网页
 
 直接用浏览器打开 `index.html` 或 `operator_spreading_lab.html`，不需要安装前端依赖或启动服务器。Google Fonts 不可用时退回系统字体。两个页面可通过顶部链接切换。仓库根目录的 `index.html` 会转到主页面，便于启用 GitHub Pages 后直接访问站点根地址。
