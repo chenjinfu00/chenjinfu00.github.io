@@ -20,9 +20,9 @@
   --t5:#e87ba4; --t6:#008300; --t7:#4a3aa7; --t8:#e34948;
   --grid:#dfe5e7;
   --shadow:0 1px 2px rgba(20,32,38,.06), 0 6px 18px -12px rgba(20,32,38,.22);
-  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
-  --disp:"Archivo","IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono","SFMono-Regular","SF Mono",Menlo,Consolas,monospace;
+  --sans:"IBM Plex Sans","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --disp:"Archivo","PingFang SC","Hiragino Sans GB","Microsoft YaHei","IBM Plex Sans",system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -53,34 +53,35 @@
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-.result-context{margin:14px 0 0;padding:12px 15px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);font-size:12px;line-height:1.7}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+.result-context{margin:14px 0 0;padding:12px 15px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);font-size:13px;line-height:1.7}
 .result-context strong{color:var(--accent-ink)}
 .download-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;margin:0}
 .wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:20px 48px}
 
-h1{font-family:var(--disp);font-size:clamp(22px,3.4vw,30px);font-weight:700;letter-spacing:-.02em;margin:0;text-wrap:balance}
-h2{font-family:var(--disp);font-size:15px;font-weight:600;letter-spacing:.01em;margin:0}
-.eyebrow{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 4px}
-.lede{color:var(--ink-2);margin:8px 0 0;max-width:62ch}
+h1{font-family:var(--disp);font-size:clamp(26px,3.4vw,34px);font-weight:700;letter-spacing:-.025em;line-height:1.15;margin:0;text-wrap:balance}
+h2{font-family:var(--disp);font-size:17px;font-weight:600;letter-spacing:.005em;line-height:1.3;margin:0}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin:0 0 6px}
+.lede{color:var(--ink-2);font-size:15.5px;line-height:1.65;margin:9px 0 0;max-width:66ch}
 
 header.top{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:20px}
 .runbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 
-button,a.ghost{font-family:var(--sans);font-size:13px;font-weight:500;border-radius:7px;border:1px solid var(--line);
+button,a.ghost{font-family:var(--sans);font-size:14px;font-weight:500;border-radius:7px;border:1px solid var(--line);
   background:var(--surface);color:var(--ink);padding:7px 12px;cursor:pointer}
 button:hover,a.ghost:hover{border-color:var(--ink-3)}
 button:focus-visible,a.ghost:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-button.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;padding:9px 20px}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;padding:7px 14px}
 :root[data-theme="dark"] button.primary,
 :root:not([data-theme="light"]) button.primary{color:#07161c}
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]) button.primary{color:#fff}}
 button.primary:hover{background:var(--accent-ink);border-color:var(--accent-ink)}
 button:disabled{opacity:.5;cursor:progress}
-button.ghost,a.ghost{padding:5px 9px;font-size:12px;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+button.ghost,a.ghost{padding:6px 10px;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
 button.icon{padding:4px 8px;font-family:var(--mono);line-height:1}
 
-.status{font-family:var(--mono);font-size:12px;color:var(--ink-2);min-height:18px}
+.status{font-family:var(--mono);font-size:13px;color:var(--ink-2);min-height:18px}
 .status.busy{color:var(--accent-ink)}
 .status.err{color:var(--bad)}
 
@@ -96,9 +97,9 @@ button.icon{padding:4px 8px;font-family:var(--mono);line-height:1}
 .ctlgrid{display:grid;grid-template-columns:minmax(260px,330px) 1fr;gap:18px 22px;align-items:start}
 @media (max-width:980px){.ctlgrid{grid-template-columns:1fr}}
 .ctlcol{display:flex;flex-direction:column;gap:10px;min-width:0}
-.ctlcol .sub{font-family:var(--disp);font-size:11px;font-weight:600;letter-spacing:.08em;
+.ctlcol .sub{font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:.08em;
   text-transform:uppercase;color:var(--ink-3);margin:4px 0 -3px}
-.ctlcol .hint{font-size:11.5px;margin:2px 0 0}
+.ctlcol .hint{font-size:12.5px;margin:2px 0 0}
 .thead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
 .thead label{margin:0}
 .ctl .formula{margin-top:16px}
@@ -109,18 +110,24 @@ button.icon{padding:4px 8px;font-family:var(--mono);line-height:1}
 .stack{display:flex;flex-direction:column;gap:14px}
 
 .field{display:flex;flex-direction:column;gap:5px}
-label{font-size:11.5px;font-weight:500;color:var(--ink-2);letter-spacing:.02em}
-input,select{font-family:var(--mono);font-size:13px;background:var(--surface-2);color:var(--ink);
+label{font-size:12.5px;font-weight:500;color:var(--ink-2);letter-spacing:.02em}
+input,select{font-family:var(--mono);font-size:14px;background:var(--surface-2);color:var(--ink);
   border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:100%;min-width:0}
 input:focus,select:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:var(--accent)}
 .row{display:flex;gap:8px;flex-wrap:wrap}
 .row > *{flex:1 1 0;min-width:64px}
+/* A plain flex .row re-stretches each wrapped line to fill the full width on its own,
+   so a 6-field row that wraps 4+2 ends up with the last 2 boxes visibly wider than the
+   4 above them. A fixed-column grid shares the same column tracks across every row, so
+   wrapped fields line up under the fields above them instead. */
+.row.gridrow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media (max-width:560px){.row.gridrow{grid-template-columns:repeat(2,1fr)}}
 
-table.terms{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12.5px}
-table.terms th{font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+table.terms{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13.5px}
+table.terms th{font-family:var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
   color:var(--ink-3);text-align:left;padding:0 4px 5px;font-variant-numeric:normal}
 table.terms td{padding:2px 2px}
-table.terms input,table.terms select{padding:4px 6px;font-size:12.5px}
+table.terms input,table.terms select{padding:4px 6px;font-size:13.5px}
 .tbl-scroll{overflow-x:auto}
 
 .formula{background:var(--surface-2);border:1px solid var(--line-soft);border-radius:8px;
@@ -128,53 +135,66 @@ table.terms input,table.terms select{padding:4px 6px;font-size:12.5px}
   display:flex;flex-wrap:wrap;align-items:baseline;column-gap:7px;row-gap:1px}
 .formula .flab{color:var(--ink);margin-right:1px}
 .formula .fterm{white-space:nowrap}
-.formula .fempty{font-size:13px;color:var(--ink-3)}
+.formula .fempty{font-size:14px;color:var(--ink-3)}
 
 .readouts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft);
   border:1px solid var(--line);border-radius:10px;overflow:hidden}
 @media (max-width:420px){.readouts{grid-template-columns:repeat(2,1fr)}}
 .ro{background:var(--surface);padding:11px 12px;display:flex;flex-direction:column;justify-content:center}
-.ro .k{font-size:10.5px;color:var(--ink-3);letter-spacing:.04em;line-height:1.25}
-.ro .v{font-family:var(--mono);font-size:19px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em;margin-top:2px}
-.ro .u{font-family:var(--mono);font-size:11px;color:var(--ink-3);font-weight:400}
+.ro .k{font-size:11.5px;color:var(--ink-3);letter-spacing:.04em;line-height:1.25}
+.ro .v{font-family:var(--mono);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em;margin-top:2px}
+.ro .u{font-family:var(--mono);font-size:12px;color:var(--ink-3);font-weight:400}
 
 figure{margin:0}
-figcaption{font-size:12px;color:var(--ink-2);margin-top:8px;max-width:70ch}
+figcaption{font-size:13px;color:var(--ink-2);margin-top:8px}
 svg.chart{display:block;width:100%;height:auto;overflow:visible}
-.chart text{font-family:var(--mono);font-size:10px;fill:var(--ink-3)}
-.chart text.axtitle{font-family:var(--sans);font-size:11px;fill:var(--ink-2)}
-.chart text.dlabel{font-size:10.5px;font-weight:600}
+.chart text{font-family:var(--mono);font-size:11px;fill:var(--ink-3)}
+.chart text.axtitle{font-family:var(--sans);font-size:12px;fill:var(--ink-2)}
+.chart text.dlabel{font-size:11.5px;font-weight:600}
 .chart .gridline{stroke:var(--grid);stroke-width:1}
 .chart .axis{stroke:var(--line);stroke-width:1}
 
-.legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;font-size:12px;color:var(--ink-2)}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;font-size:13px;color:var(--ink-2)}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .swatch{width:14px;height:3px;border-radius:2px;display:inline-block}
 
 .lat{display:block;width:100%;max-width:480px;height:auto;max-height:340px;margin:0 auto;overflow:visible}
-/* lattice now has a full-width row to itself: let it use more of that room */
-.latpanel .lat{max-width:640px;max-height:450px}
+/* Keep the diagram and legend in stable columns on wide screens. */
+.latpanel .stack{display:grid;grid-template-columns:minmax(320px,1fr) minmax(250px,330px);
+  align-items:center;gap:clamp(28px,5vw,72px);max-width:980px;margin:0 auto}
+.latpanel .lat{width:100%;max-width:600px;max-height:460px;margin:0;justify-self:center}
 .lat circle.site{cursor:pointer}
 .lat text{font-family:var(--mono);font-size:7px;fill:var(--ink-3)}
 .latleg{display:flex;flex-wrap:wrap;justify-content:center;gap:3px 13px;margin-top:4px;
-  font-size:11.5px;color:var(--ink-2);line-height:1.4}
-.latleg span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
-.latleg i{width:15px;height:3px;border-radius:2px;flex:0 0 auto}
+  font-size:12.5px;color:var(--ink-2);line-height:1.4}
+.latlegend{width:100%;padding:18px 20px;background:var(--surface-2);border:1px solid var(--line-soft);
+  border-radius:12px;box-shadow:inset 3px 0 0 var(--accent)}
+.latlegend-title{font-family:var(--disp);font-size:13px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 13px}
+.latpanel .latleg{flex-direction:column;flex-wrap:nowrap;justify-content:center;align-items:flex-start;
+  margin:0;gap:13px;font-size:15px;line-height:1.5}
+.latleg span{display:inline-flex;align-items:center;gap:10px;white-space:nowrap}
+.latleg i{width:28px;height:5px;border-radius:3px;flex:0 0 auto}
 /* CSS border-style:dashed on a 15px-wide swatch only fits about one dash, which
    reads as solid; a tight repeating-gradient (matching the 2.4/2.6 dash pattern
    the wrapped bonds use in the lattice itself) actually looks dashed at this size */
-.latleg i.wrapkey{height:2px;background-image:repeating-linear-gradient(to right,
+.latleg i.wrapkey{height:3px;background-image:repeating-linear-gradient(to right,
     var(--ink-3) 0,var(--ink-3) 3px,transparent 3px,transparent 6px)}
 .latleg .wrapnote{color:var(--ink-3)}
+@media (max-width:760px){
+  .latpanel .stack{grid-template-columns:1fr;gap:18px}
+  .latpanel .lat{max-width:520px}
+  .latlegend{max-width:520px;justify-self:center}
+}
 
-.note{font-size:12.5px;color:var(--ink-2);background:var(--accent-wash);border:1px solid var(--line-soft);
+.note{font-size:13.5px;color:var(--ink-2);background:var(--accent-wash);border:1px solid var(--line-soft);
   border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:10px 12px}
 .note.warn{background:transparent;border-left-color:var(--warn)}
 .note strong{color:var(--ink)}
 
 .panelhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
 .panelhead h2{margin:0}
-.panelhead select{width:auto;font-size:11.5px;padding:4px 7px}
+.panelhead select{width:auto;font-size:12.5px;padding:4px 7px}
 /* results that no longer match the controls are visibly held back */
 body.stale .readouts,body.stale figure,body.stale .legend{opacity:.35;transition:opacity .12s}
 button.primary.needs{animation:pulse 1.6s ease-in-out infinite}
@@ -184,14 +204,14 @@ button.primary.needs{animation:pulse 1.6s ease-in-out infinite}
 .prog i{display:block;height:100%;width:0;background:var(--accent);transition:width .12s linear}
 
 details.meth{margin-top:24px;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:12px 16px}
-details.meth summary{cursor:pointer;font-family:var(--disp);font-weight:600;font-size:14px}
+details.meth summary{cursor:pointer;font-family:var(--disp);font-weight:600;font-size:15px}
 details.meth[open] summary{margin-bottom:10px}
 details.meth p{color:var(--ink-2);max-width:72ch}
-details.meth code,.mono{font-family:var(--mono);font-size:12.5px}
-pre.export{font-family:var(--mono);font-size:11.5px;background:var(--surface-2);border:1px solid var(--line-soft);
+details.meth code,.mono{font-family:var(--mono);font-size:13.5px}
+pre.export{font-family:var(--mono);font-size:12.5px;background:var(--surface-2);border:1px solid var(--line-soft);
   border-radius:8px;padding:10px;overflow-x:auto;max-height:230px;color:var(--ink-2);margin:8px 0 0}
-table.io{width:100%;border-collapse:collapse;font-size:12.5px;color:var(--ink-2);margin:2px 0 4px}
-table.io th{text-align:left;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);
+table.io{width:100%;border-collapse:collapse;font-size:13.5px;color:var(--ink-2);margin:2px 0 4px}
+table.io th{text-align:left;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);
   font-weight:600;padding:0 12px 5px 0;border-bottom:1px solid var(--line)}
 table.io td{padding:6px 12px 6px 0;vertical-align:top;border-bottom:1px solid var(--line-soft)}
 table.io td.n{color:var(--ink);white-space:nowrap;width:1%;font-weight:500}
@@ -207,13 +227,13 @@ math{font-family:"Latin Modern Math","STIX Two Math","Cambria Math",math,var(--s
 math mi,math mn,math mo{color:inherit}
 .tex,.nb{white-space:nowrap}
 .eq{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;column-gap:22px;row-gap:4px;
-  margin:12px 0;font-size:15.5px;color:var(--ink)}
+  margin:12px 0;font-size:16.5px;color:var(--ink)}
 .eqn{display:flex;gap:12px;align-items:baseline;margin:10px 0}
 .eqn .eqbody{flex:1 1 auto;min-width:0;display:flex;flex-wrap:wrap;align-items:baseline;
-  column-gap:16px;row-gap:3px;font-size:15px;color:var(--ink)}
-.eqn .eqtag{flex:0 0 auto;font-family:var(--mono);font-size:10px;letter-spacing:.06em;
+  column-gap:16px;row-gap:3px;font-size:16px;color:var(--ink)}
+.eqn .eqtag{flex:0 0 auto;font-family:var(--mono);font-size:11px;letter-spacing:.06em;
   text-transform:uppercase;color:var(--ink-3);padding-top:3px}
-.eqnote{margin:-2px 0 0;font-size:12.5px;color:var(--ink-2)}
+.eqnote{margin:-2px 0 0;font-size:13.5px;color:var(--ink-2)}
 label .tex,th .tex{font-size:1.02em}
 .ro .u math{font-size:1em}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -272,7 +292,7 @@ label .tex,th .tex{font-size:1.02em}
           </div>
 
           <p class="sub" data-i18n="probeTimeSub">Probe and time window</p>
-          <div class="row">
+          <div class="row gridrow">
             <div class="field"><label for="srcop" data-i18n="srcLabel">Source <span class="tex">W</span></label>
               <select id="srcop"><option>X</option><option>Y</option><option selected>Z</option></select></div>
             <div class="field"><label for="srcx" data-i18n="srcXLabel">Source x</label>
@@ -332,7 +352,10 @@ label .tex,th .tex{font-size:1.02em}
     <h2 data-i18n="latticePanel">Lattice</h2>
     <div class="stack">
       <svg class="lat" id="lat" viewBox="0 0 200 140" role="img" aria-label="Lattice with the interaction bonds of each term"></svg>
-      <div class="latleg" id="latleg"></div>
+      <aside class="latlegend" aria-label="Interaction legend">
+        <p class="latlegend-title" data-i18n="latLegendTitle">Interaction legend</p>
+        <div class="latleg" id="latleg"></div>
+      </aside>
     </div>
   </section>
 
@@ -347,7 +370,7 @@ label .tex,th .tex{font-size:1.02em}
     <div class="eq" style="margin:2px 0 12px;justify-content:flex-start" data-i18n="coneDef">
       <span class="tex disp">C_r(t)=2^{-N}\,\mathrm{Tr}\!\left[W(t),V_r\right]^{\dagger}\!\left[W(t),V_r\right]=4\sum_{\{S,V_r\}=0}a_S(t)^2</span>
     </div>
-    <p class="dim" style="margin:-6px 0 12px;font-size:11.5px" data-i18n="coneDefNote">The squared commutator lies in [0,4] for normalized Pauli operators. C=0 means commutation; C=2 is a common scrambling reference, not sufficient evidence of chaos or a guaranteed plateau.</p>
+    <p class="dim" style="margin:-6px 0 12px;font-size:12.5px" data-i18n="coneDefNote">The squared commutator lies in [0,4] for normalized Pauli operators. C=0 means commutation; C=2 is a common scrambling reference, not sufficient evidence of chaos or a guaranteed plateau.</p>
     <figure>
       <svg class="chart" id="cone" viewBox="0 0 640 300" role="img" aria-label="OTOC versus time, one curve per numbered site by default"></svg>
       <div class="legend" id="conelegend"></div>
@@ -360,7 +383,7 @@ label .tex,th .tex{font-size:1.02em}
     <div class="eq" style="margin:2px 0 12px;justify-content:flex-start" data-i18n="memDef">
       <span class="tex disp">A_W(t)=2^{-N}\,\mathrm{Tr}\!\left[W\,W(t)\right]=a_W(t)</span>
     </div>
-    <p class="dim" style="margin:-6px 0 12px;font-size:11.5px" data-i18n="memDefNote">Local autocorrelation starts at 1. Finite systems can oscillate or retain memory through several conserved quantities; convergence to zero or to the energy contribution alone is not guaranteed.</p>
+    <p class="dim" style="margin:-6px 0 12px;font-size:12.5px" data-i18n="memDefNote">Local autocorrelation starts at 1. Finite systems can oscillate or retain memory through several conserved quantities; convergence to zero or to the energy contribution alone is not guaranteed.</p>
     <figure>
       <svg class="chart" id="mem" viewBox="0 0 640 260" role="img" aria-label="Local autocorrelation versus time"></svg>
       <div class="legend">
@@ -374,7 +397,7 @@ label .tex,th .tex{font-size:1.02em}
   <details class="meth">
     <summary data-i18n="detailsSummary1">What you can set, and what comes out</summary>
 
-    <p class="sub" style="font-family:var(--disp);font-size:11px;font-weight:600;letter-spacing:.08em;
+    <p class="sub" style="font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:.08em;
       text-transform:uppercase;color:var(--ink-3);margin:2px 0 6px" data-i18n="inputsHeader">Inputs</p>
     <table class="io">
       <thead><tr><th data-i18n="thControl">Control</th><th data-i18n="thWhatItSets">What it sets</th><th data-i18n="thRange">Range</th></tr></thead>
@@ -420,7 +443,7 @@ label .tex,th .tex{font-size:1.02em}
       </tbody>
     </table>
 
-    <p class="sub" style="font-family:var(--disp);font-size:11px;font-weight:600;letter-spacing:.08em;
+    <p class="sub" style="font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:.08em;
       text-transform:uppercase;color:var(--ink-3);margin:16px 0 6px" data-i18n="outputsHeader">Outputs</p>
     <table class="io">
       <thead><tr><th data-i18n="thQuantity">Quantity</th><th data-i18n="thMeaning">Meaning</th><th data-i18n="thWhere">Where</th></tr></thead>
@@ -487,9 +510,9 @@ label .tex,th .tex{font-size:1.02em}
     <hr class="sep">
     <p data-i18n="limits">Operator mode is limited to 9 sites; random-state mode to 16, with costs depending strongly on terms and time range. Stop cancels an active calculation. Front speed is an exploratory C=0.5 arrival fit requiring at least two shells with positive fitted slope; examine threshold, time-grid, sampling and size dependence.</p>
     <hr class="sep">
-    <h2 style="font-size:13px;margin-bottom:6px" data-i18n="biggerMachineH2">Take it to a bigger machine</h2>
+    <h2 style="font-size:14px;margin-bottom:6px" data-i18n="biggerMachineH2">Take it to a bigger machine</h2>
     <p data-i18n="biggerMachineP">The Python scripts under otoc16/ implement state-vector and operator-space methods. Use the exported Hamiltonian coefficients and site convention when comparing results. The accompanying audit records which historical results require recomputation.</p>
-    <p class="dim" style="margin:8px 0 4px;font-size:12.5px" data-i18n="biggerMachineNoteLead">The methods below answer different questions and have different error sources:</p>
+    <p class="dim" style="margin:8px 0 4px;font-size:13.5px" data-i18n="biggerMachineNoteLead">The methods below answer different questions and have different error sources:</p>
     <ul class="tight" data-i18n="biggerMachineList"><li><strong>State-vector typicality:</strong> numerical quantum evolution with a sampled trace. Representative-site data must not be presented as full-shell averages.</li><li><strong>Classical tangent / DTWA:</strong> a semiclassical approximation. Small-torus versus large-lattice comparisons do not establish a rigorous bound or a transferable multiplicative correction.</li><li><strong>Operator-space Lanczos:</strong> finite-order coefficients on an unbounded lattice. A finite sequence does not establish the asymptotic slope or a certified Lyapunov bound. See the growth explorer and audit.</li></ul>
     <div class="row" style="margin-top:8px">
       <button class="ghost" id="copycfg" data-i18n="copyCfgBtn">Copy configuration</button>
@@ -702,7 +725,7 @@ en: {
   oneBodyLabel:'One-body &nbsp;<span class="dim tex">h^{\\alpha}\\sum_i S^{\\alpha}_i</span>',
   addTermBtn:"+ term", opHeader:"op", coeffHeader:"coefficient",
   twoBodyLabel:'Two-body &nbsp;<span class="dim tex">J^{\\alpha\\beta}\\sum_i S^{\\alpha}_i S^{\\beta}_{i+\\delta}</span>',
-  latticePanel:"Lattice", readoutPanel:"Readout",
+  latticePanel:"Lattice", latLegendTitle:"Interaction legend", readoutPanel:"Readout",
   lightConePanel:"Light cone", opt_site:"every site (numbered)", opt_shell:"shell average (by distance)",
   coneDef:'<span class="tex disp">C_r(t)=2^{-N}\\,\\mathrm{Tr}\\!\\left[W(t),V_r\\right]^{\\dagger}\\!\\left[W(t),V_r\\right]=4\\sum_{\\{S,V_r\\}=0}a_S(t)^2</span>',
   coneDefNote:"The squared commutator lies in [0,4] for normalized Pauli operators. C=0 means commutation; C=2 is a common scrambling reference, not sufficient evidence of chaos or a guaranteed plateau.",
@@ -818,7 +841,7 @@ zh: {
   oneBodyLabel:'单体项 &nbsp;<span class="dim tex">h^{\\alpha}\\sum_i S^{\\alpha}_i</span>',
   addTermBtn:"+ 添加一项", opHeader:"算符", coeffHeader:"系数",
   twoBodyLabel:'两体项 &nbsp;<span class="dim tex">J^{\\alpha\\beta}\\sum_i S^{\\alpha}_i S^{\\beta}_{i+\\delta}</span>',
-  latticePanel:"格点图", readoutPanel:"数值读出",
+  latticePanel:"格点图", latLegendTitle:"相互作用图例", readoutPanel:"数值读出",
   lightConePanel:"Light cone (光锥)", opt_site:"每个格点 (按编号)", opt_shell:"按距离壳层平均",
   coneDef:'<span class="tex disp">C_r(t)=2^{-N}\\,\\mathrm{Tr}\\!\\left[W(t),V_r\\right]^{\\dagger}\\!\\left[W(t),V_r\\right]=4\\sum_{\\{S,V_r\\}=0}a_S(t)^2</span>',
   coneDefNote:"归一化 Pauli 算符的平方对易子范围为 [0,4]。C=0 表示对易；C=2 是常用打乱参考值，不能单独证明混沌，也不是保证达到的平台。",
