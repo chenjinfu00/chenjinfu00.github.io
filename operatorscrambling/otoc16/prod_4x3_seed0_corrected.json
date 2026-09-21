@@ -1,0 +1,51 @@
+{
+  "Lx": 4,
+  "Ly": 3,
+  "seed": 0,
+  "times": [
+    0.0,
+    0.6666666666666666
+  ],
+  "N": 12,
+  "J": 1.0,
+  "hx": 1.05,
+  "hz": 0.5,
+  "pbc": true,
+  "src": 0,
+  "method": "Haar-state typicality, squared commutator norm",
+  "n_samples": 1,
+  "aggregation": "full Manhattan shell average",
+  "shells": {
+    "1": [
+      1,
+      3,
+      4,
+      8
+    ],
+    "2": [
+      2,
+      5,
+      7,
+      9,
+      11
+    ],
+    "3": [
+      6,
+      10
+    ]
+  },
+  "results": {
+    "1": [
+      0.0,
+      0.299565016974854
+    ],
+    "2": [
+      0.0,
+      0.005986262149360934
+    ],
+    "3": [
+      0.0,
+      3.909282796039397e-05
+    ]
+  }
+}
