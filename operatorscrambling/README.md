@@ -2,7 +2,7 @@
 
 本地 OTOC 和算符增长探索工具。2026-09-21 已修复数值与展示问题；完整证据见 [核验报告](AUDIT_2026-09-21.md)。原始 JSON/PNG 保留，旧说明另存为 [历史记录](README_legacy_2026-09-20.md)，其中的旧 Lanczos 增长率结论已撤回。
 
-**在线演示：** [https://aigimon.com/operatorscrambling/](https://aigimon.com/operatorscrambling/)
+**在线演示：** [https://chenjinfu00.github.io/operatorscrambling/](https://chenjinfu00.github.io/operatorscrambling/)
 
 ## 打开网页
 
