@@ -275,6 +275,10 @@ label .tex,th .tex{font-size:1.02em}
           <div class="row">
             <div class="field"><label for="srcop" data-i18n="srcLabel">Source <span class="tex">W</span></label>
               <select id="srcop"><option>X</option><option>Y</option><option selected>Z</option></select></div>
+            <div class="field"><label for="srcx" data-i18n="srcXLabel">Source x</label>
+              <input id="srcx" type="number" min="1" max="3" step="1" value="2"></div>
+            <div class="field"><label for="srcy" data-i18n="srcYLabel">Source y</label>
+              <input id="srcy" type="number" min="1" max="2" step="1" value="2"></div>
             <div class="field"><label for="probeop" data-i18n="probeLabel">Probe <span class="tex">V</span></label>
               <select id="probeop"><option>X</option><option>Y</option><option selected>Z</option></select></div>
             <div class="field"><label for="tmax" data-i18n="tmaxLabel"><span class="tex">t</span> max</label><input id="tmax" type="number" min="1" max="200" step="1" value="15"></div>
@@ -284,7 +288,7 @@ label .tex,th .tex{font-size:1.02em}
             <div class="field"><label for="svseed" data-i18n="svSeedLabel">Typicality seed</label>
               <input id="svseed" type="number" min="0" max="4294967295" step="1" value="1"></div>
           </div>
-          <p class="dim hint" data-i18n="hint1">Operators are Pauli matrices (eigenvalues ±1), not spin matrices σ/2; ℏ=1. Click a lattice site to choose the source. The plot legend identifies the evaluated sites.</p>
+          <p class="dim hint" data-i18n="hint1">Operators are Pauli matrices (eigenvalues ±1), not spin matrices σ/2; ℏ=1. Set the one-based source x/y coordinates here or click a lattice site; both controls stay synchronized. The plot legend identifies the evaluated sites.</p>
           <p class="dim hint" id="svhint" data-i18n="svHint" hidden>One random state and one representative per distance. These are not full-shell averages. Change the seed to assess sample variation; a single sample provides no error bar. Start with 6–12 output times.</p>
         </div>
 
@@ -396,7 +400,7 @@ label .tex,th .tex{font-size:1.02em}
             one offset — that is how XXZ and Heisenberg are built, and the lattice draws them as parallel strands.</td>
           <td class="w">integer <span class="tex">\delta</span>, real <span class="tex">J</span></td></tr>
         <tr><td class="n" data-i18n="in5n">Source site</td><td data-i18n="in5d">Every lattice site is numbered 1&ndash;<span class="tex">N</span>
-          right inside its circle; click one to make it the source (the source's circle fills in and gets a
+          right inside its circle; click one or enter its one-based x/y coordinates to make it the source (the source's circle fills in and gets a
           white number). Under open boundaries the corner and the centre give different shell structures,
           which is itself a useful check. Switch the light-cone view below to &ldquo;every site&rdquo; to see
           each numbered site's own OTOC curve rather than the shell average.</td>
@@ -692,9 +696,9 @@ en: {
   svHint:"One random state and one representative per distance. These are not full-shell averages. Change the seed to assess sample variation; a single sample provides no error bar. Start with 6–12 output times.",
   latticeSub:"Lattice", boundaryLabel:"Boundary", opt_obc:"open", opt_pbc:"periodic",
   probeTimeSub:"Probe and time window",
-  srcLabel:'Source <span class="tex">W</span>', probeLabel:'Probe <span class="tex">V</span>',
+  srcLabel:'Source <span class="tex">W</span>', srcXLabel:"Source x", srcYLabel:"Source y", probeLabel:'Probe <span class="tex">V</span>',
   tmaxLabel:'<span class="tex">t</span> max', ntLabel:"time points",
-  hint1:"Operators are Pauli matrices (eigenvalues ±1), not spin matrices σ/2; ℏ=1. Click a lattice site to choose the source. The plot legend identifies the evaluated sites.",
+  hint1:"Operators are Pauli matrices (eigenvalues ±1), not spin matrices σ/2; ℏ=1. Set the one-based source x/y coordinates here or click a lattice site; both controls stay synchronized. The plot legend identifies the evaluated sites.",
   oneBodyLabel:'One-body &nbsp;<span class="dim tex">h^{\\alpha}\\sum_i S^{\\alpha}_i</span>',
   addTermBtn:"+ term", opHeader:"op", coeffHeader:"coefficient",
   twoBodyLabel:'Two-body &nbsp;<span class="dim tex">J^{\\alpha\\beta}\\sum_i S^{\\alpha}_i S^{\\beta}_{i+\\delta}</span>',
@@ -728,7 +732,7 @@ en: {
     one offset — that is how XXZ and Heisenberg are built, and the lattice draws them as parallel strands.`,
   in5n:"Source site",
   in5d:`Every lattice site is numbered 1&ndash;<span class="tex">N</span>
-    right inside its circle; click one to make it the source (the source's circle fills in and gets a
+    right inside its circle; click one or enter its one-based x/y coordinates to make it the source (the source's circle fills in and gets a
     white number). Under open boundaries the corner and the centre give different shell structures,
     which is itself a useful check. Switch the light-cone view below to &ldquo;every site&rdquo; to see
     each numbered site's own OTOC curve rather than the shell average.`,
@@ -808,9 +812,9 @@ zh: {
   svHint:"每次使用一个随机态，每个距离选一个代表点，并非整个壳层的平均。换种子可检查采样波动；单样本无法给出误差条。建议先用 6–12 个时间点。",
   latticeSub:"格点", boundaryLabel:"边界条件", opt_obc:"开边界", opt_pbc:"周期边界",
   probeTimeSub:"探测算符与时间窗口",
-  srcLabel:'源算符 <span class="tex">W</span>', probeLabel:'探测算符 <span class="tex">V</span>',
+  srcLabel:'源算符 <span class="tex">W</span>', srcXLabel:"源点 x", srcYLabel:"源点 y", probeLabel:'探测算符 <span class="tex">V</span>',
   tmaxLabel:'<span class="tex">t</span> 上限', ntLabel:"时间点数",
-  hint1:"算符采用 Pauli 矩阵（本征值 ±1），不是 σ/2；取 ℏ=1。点击格点选择源点，曲线图例标明实际计算的格点。",
+  hint1:"算符采用 Pauli 矩阵（本征值 ±1），不是 σ/2；取 ℏ=1。可输入从 1 开始的源点 x/y 坐标，或直接点击格点；两处会保持同步。曲线图例标明实际计算的格点。",
   oneBodyLabel:'单体项 &nbsp;<span class="dim tex">h^{\\alpha}\\sum_i S^{\\alpha}_i</span>',
   addTermBtn:"+ 添加一项", opHeader:"算符", coeffHeader:"系数",
   twoBodyLabel:'两体项 &nbsp;<span class="dim tex">J^{\\alpha\\beta}\\sum_i S^{\\alpha}_i S^{\\beta}_{i+\\delta}</span>',
@@ -840,7 +844,7 @@ zh: {
     彼此独立，所以 <span class="tex">X_iZ_j</span> 和 <span class="tex">Z_iZ_j</span> 一样容易设置。多行可以共用
     同一个偏移量——XXZ 模型和海森堡模型正是这样搭出来的，格点图里会把它们画成并排的几条线。`,
   in5n:"源点",
-  in5d:`格点上每个点都编了号，从 1 到 <span class="tex">N</span>，直接标在圆圈里面；点击其中一个即可把它设为源点
+  in5d:`格点上每个点都编了号，从 1 到 <span class="tex">N</span>，直接标在圆圈里面；点击其中一个或输入从 1 开始的 x/y 坐标即可把它设为源点
     （源点的圆圈会填色，编号变成白色）。在开边界条件下，角上的点和中心的点会给出不同的壳层结构，这本身就是一个很好的检验。
     把下面 light cone 视图切到&ldquo;每个格点&rdquo;，就能看到每个编号点各自的 OTOC 曲线，而不只是按距离平均的曲线。`,
   in5r:"任意格点",
@@ -1496,6 +1500,13 @@ function syncPresetLabel(){
 let state={lx:3,ly:2,bc:"obc",oneBody:[],twoBody:[],src:0,srcOp:"Z",probeOp:"Z",tmax:15,nt:150,engine:"pauli",svSeed:1};
 let last=null, running=false, stopRequested=false;
 let dirty=false, lastSecs=0, lastN=0, autoTimer=null;
+function syncSourceControls(){
+  state.src=Math.max(0,Math.min(state.lx*state.ly-1,Math.trunc(state.src)||0));
+  const x=state.src%state.lx+1, y=Math.floor(state.src/state.lx)+1;
+  const sx=$("srcx"), sy=$("srcy");
+  sx.min="1"; sx.max=String(state.lx); sx.value=String(x);
+  sy.min="1"; sy.max=String(state.ly); sy.value=String(y);
+}
 function markDirty(){
   dirty=true;
   document.body.classList.add("stale");
@@ -1633,7 +1644,7 @@ function drawLattice(){
       fill:isSrc?cssvar("--accent"):cssvar("--surface"),
       stroke:isSrc?cssvar("--accent"):cssvar("--ink-3"),"stroke-width":1.6});
     c.appendChild(el("title",{},isSrc?`site ${i+1} — source`:`site ${i+1}`));
-    c.addEventListener("click",()=>{ if(running) return; state.src=i; drawLattice(); refresh(); });
+    c.addEventListener("click",()=>{ if(running) return; state.src=i; syncSourceControls(); drawLattice(); refresh(); });
     svg.appendChild(c);
     // every site carries its own 1..N index, drawn inside the circle itself.
     // The filled (source) circle needs a white number to stay readable against
@@ -1676,13 +1687,16 @@ function readInputs(){
   state.lx=Math.max(1,Math.min(maxL,parseInt($("lx").value)||1));
   state.ly=Math.max(1,Math.min(maxL,parseInt($("ly").value)||1));
   $("lx").value=state.lx; $("ly").value=state.ly;
+  const sourceX=Math.max(1,Math.min(state.lx,parseInt($("srcx").value)||1));
+  const sourceY=Math.max(1,Math.min(state.ly,parseInt($("srcy").value)||1));
+  state.src=(sourceX-1)+state.lx*(sourceY-1);
+  syncSourceControls();
   state.bc=$("bc").value; state.srcOp=$("srcop").value; state.probeOp=$("probeop").value;
   state.tmax=Math.max(0.001,Math.min(200,parseFloat($("tmax").value)||15));
   state.nt=Math.max(2,Math.min(600,parseInt($("nt").value)||150));
   state.svSeed=(Number.parseInt($("svseed").value)||0)>>>0;
   $("nt").min="2"; $("nt").value=state.nt;
   $("tmax").value=state.tmax; $("svseed").value=state.svSeed;
-  if(state.src>=state.lx*state.ly) state.src=0;
   const sv=state.engine==="statevec";
   $("svrow").hidden=!sv; $("svhint").hidden=!sv;
   // View controls describe the completed result, even while inputs are edited.
@@ -1961,6 +1975,7 @@ function applyPreset(key){
   state.twoBody=p.two.map(([dx,dy,opA,opB,coeff])=>({dx,dy,opA,opB,coeff}));
   state.src=Math.floor(p.lx/2)+p.lx*Math.floor(p.ly/2);
   $("lx").value=p.lx; $("ly").value=p.ly; $("bc").value=p.bc; $("tmax").value=p.tmax;
+  syncSourceControls();
   renderTerms(); drawLattice(); refresh();
 }
 
@@ -1987,7 +2002,7 @@ $("preset").addEventListener("change",e=>{
 $("add1").addEventListener("click",()=>{ state.oneBody.push({op:"X",coeff:-1}); renderTerms(); refresh(); });
 $("add2").addEventListener("click",()=>{ state.twoBody.push({dx:1,dy:0,opA:"Z",opB:"Z",coeff:-1}); renderTerms(); drawLattice(); refresh(); });
 for(const id of ["lx","ly","bc"]) $(id).addEventListener("change",()=>{ refresh(); drawLattice(); });
-for(const id of ["srcop","probeop","tmax","svseed"]) $(id).addEventListener("change",()=>{ refresh(); drawLattice(); });
+for(const id of ["srcop","srcx","srcy","probeop","tmax","svseed"]) $(id).addEventListener("change",()=>{ refresh(); drawLattice(); });
 // nt's own edit is the one input autoClampStatevecNt() (inside refresh())
 // deliberately leaves alone -- a deliberate "yes, run it long" should be
 // respected, with the honest time estimate in sizeNote() as the only pushback.
