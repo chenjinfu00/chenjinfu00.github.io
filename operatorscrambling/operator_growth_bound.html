@@ -1,0 +1,1464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Operator Growth Diagnostics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --bg:#f2f4f4; --surface:#fbfcfc; --surface-2:#eceff0; --line:#d5dbdd; --line-soft:#e3e8e9;
+  --ink:#151b1e; --ink-2:#465055; --ink-3:#6d7a80;
+  --accent:#0f7fa8; --accent-ink:#0b6386; --accent-wash:#e2f0f5;
+  --warm:#c2562b;
+  --bad:#a8291f; --warn:#8a6100; --good:#1f6b4a;
+  /* light->dark, one hue: near the source is light, far is dark (validated ordinal ramp) */
+  --s0:#6dbde2; --s1:#569fc1; --s2:#4082a0; --s3:#2a6681; --s4:#144c63; --s5:#003347;
+  /* interaction terms: a categorical set, validated for CVD on both surfaces */
+  --t1:#2a78d6; --t2:#eb6834; --t3:#1baf7a; --t4:#eda100;
+  --t5:#e87ba4; --t6:#008300; --t7:#4a3aa7; --t8:#e34948;
+  --grid:#dfe5e7;
+  --shadow:0 1px 2px rgba(20,32,38,.06), 0 6px 18px -12px rgba(20,32,38,.22);
+  --mono:"IBM Plex Mono","SFMono-Regular","SF Mono",Menlo,Consolas,monospace;
+  --sans:"IBM Plex Sans","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --disp:"Archivo","PingFang SC","Hiragino Sans GB","Microsoft YaHei","IBM Plex Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1417; --surface:#151b1f; --surface-2:#1c2429; --line:#2b353b; --line-soft:#222b31;
+    --ink:#e7eef1; --ink-2:#a7b4ba; --ink-3:#7d8a90;
+    --accent:#43b7d6; --accent-ink:#69cae4; --accent-wash:#12313d;
+    --warm:#e08a5a;
+    --bad:#e2776c; --warn:#d6a643; --good:#5fc094;
+    --s0:#8dd8ee; --s1:#77bbcf; --s2:#629fb1; --s3:#4d8494; --s4:#396a78; --s5:#26515e;
+    --t1:#3987e5; --t2:#d95926; --t3:#199e70; --t4:#c98500;
+    --t5:#d55181; --t6:#008300; --t7:#9085e9; --t8:#e66767;
+    --grid:#263137;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1417; --surface:#151b1f; --surface-2:#1c2429; --line:#2b353b; --line-soft:#222b31;
+  --ink:#e7eef1; --ink-2:#a7b4ba; --ink-3:#7d8a90;
+  --accent:#43b7d6; --accent-ink:#69cae4; --accent-wash:#12313d;
+  --warm:#e08a5a;
+  --bad:#e2776c; --warn:#d6a643; --good:#5fc094;
+  --s0:#8dd8ee; --s1:#77bbcf; --s2:#629fb1; --s3:#4d8494; --s4:#396a78; --s5:#26515e;
+  --t1:#3987e5; --t2:#d95926; --t3:#199e70; --t4:#c98500;
+  --t5:#d55181; --t6:#008300; --t7:#9085e9; --t8:#e66767;
+  --grid:#263137;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -14px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:20px 48px}
+
+h1{font-family:var(--disp);font-size:clamp(26px,3.4vw,34px);font-weight:700;letter-spacing:-.025em;line-height:1.15;margin:0;text-wrap:balance}
+h2{font-family:var(--disp);font-size:17px;font-weight:600;letter-spacing:.005em;line-height:1.3;margin:0}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin:0 0 6px}
+.lede{color:var(--ink-2);font-size:15.5px;line-height:1.65;margin:9px 0 0;max-width:66ch}
+
+header.top{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:20px}
+.runbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+
+button,a.ghost{font-family:var(--sans);font-size:14px;font-weight:500;border-radius:7px;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink);padding:7px 12px;cursor:pointer}
+button:hover,a.ghost:hover{border-color:var(--ink-3)}
+button:focus-visible,a.ghost:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;padding:7px 14px}
+:root[data-theme="dark"] button.primary,
+:root:not([data-theme="light"]) button.primary{color:#07161c}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) button.primary{color:#fff}}
+button.primary:hover{background:var(--accent-ink);border-color:var(--accent-ink)}
+button.primary.stopping{background:var(--bad);border-color:var(--bad);color:#fff}
+button:disabled{opacity:.5;cursor:progress}
+button.ghost,a.ghost{padding:6px 10px;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+button.icon{padding:4px 8px;font-family:var(--mono);line-height:1}
+
+.status{font-family:var(--mono);font-size:13px;color:var(--ink-2);min-height:18px}
+.status.busy{color:var(--accent-ink)}
+.status.err{color:var(--bad)}
+
+.toprow{display:grid;grid-template-columns:3fr 2fr;gap:16px;align-items:stretch;margin-top:16px}
+.toprow .panel,.toprow .panel + .panel{margin-top:0}
+.toprow .panel{display:flex;flex-direction:column}
+.toprow .panel > .stack{flex:1;justify-content:center;gap:10px}
+.toprow .panel > .readouts{flex:1;grid-auto-rows:1fr}
+.toprow .panel > .status{margin-top:10px}
+@media (max-width:980px){.toprow{grid-template-columns:1fr}}
+.panel.wide{margin-top:16px}
+.ctlgrid{display:grid;grid-template-columns:minmax(260px,330px) 1fr;gap:18px 22px;align-items:start}
+@media (max-width:980px){.ctlgrid{grid-template-columns:1fr}}
+.ctlcol{display:flex;flex-direction:column;gap:10px;min-width:0}
+.ctlcol .sub{font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);margin:4px 0 -3px}
+.ctlcol .hint{font-size:12.5px;margin:2px 0 0}
+.thead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
+.thead label{margin:0}
+.ctl .formula{margin-top:16px}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+.panel + .panel{margin-top:16px}
+.panel > h2{margin-bottom:12px}
+.stack{display:flex;flex-direction:column;gap:14px}
+
+.field{display:flex;flex-direction:column;gap:5px}
+label{font-size:12.5px;font-weight:500;color:var(--ink-2);letter-spacing:.02em}
+input,select{font-family:var(--mono);font-size:14px;background:var(--surface-2);color:var(--ink);
+  border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:100%;min-width:0}
+input:focus,select:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:var(--accent)}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row > *{flex:1 1 0;min-width:64px}
+
+table.terms{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13.5px}
+table.terms th{font-family:var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-3);text-align:left;padding:0 4px 5px;font-variant-numeric:normal}
+table.terms td{padding:2px 2px}
+table.terms input,table.terms select{padding:4px 6px;font-size:13.5px}
+.tbl-scroll{overflow-x:auto}
+
+.formula{background:var(--surface-2);border:1px solid var(--line-soft);border-radius:8px;
+  padding:10px 12px;color:var(--ink-2);font-size:15px;
+  display:flex;flex-wrap:wrap;align-items:baseline;column-gap:7px;row-gap:1px}
+.formula .flab{color:var(--ink);margin-right:1px}
+.formula .fterm{white-space:nowrap}
+.formula .fempty{font-size:14px;color:var(--ink-3)}
+
+.readouts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft);
+  border:1px solid var(--line);border-radius:10px;overflow:hidden}
+@media (max-width:420px){.readouts{grid-template-columns:repeat(2,1fr)}}
+.ro{background:var(--surface);padding:11px 12px;display:flex;flex-direction:column;justify-content:center}
+.ro .k{font-size:11.5px;color:var(--ink-3);letter-spacing:.04em;line-height:1.25}
+.ro .v{font-family:var(--mono);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em;margin-top:2px}
+.ro .u{font-family:var(--mono);font-size:12px;color:var(--ink-3);font-weight:400}
+
+figure{margin:0}
+figure + .chartsub{margin-top:20px}
+.chartsub{font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 8px}
+figcaption{font-size:13px;color:var(--ink-2);margin-top:8px;max-width:74ch}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:var(--mono);font-size:11px;fill:var(--ink-3)}
+.chart text.axtitle{font-family:var(--sans);font-size:12px;fill:var(--ink-2)}
+.chart text.dlabel{font-size:11.5px;font-weight:600}
+.chart .gridline{stroke:var(--grid);stroke-width:1}
+.chart .axis{stroke:var(--line);stroke-width:1}
+
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;font-size:13px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.swatch{width:14px;height:3px;border-radius:2px;display:inline-block}
+
+.note{font-size:13.5px;color:var(--ink-2);background:var(--accent-wash);border:1px solid var(--line-soft);
+  border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:10px 12px}
+.note.warn{background:transparent;border-left-color:var(--warn)}
+.note strong{color:var(--ink)}
+
+.panelhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.panelhead h2{margin:0}
+body.stale .readouts,body.stale figure,body.stale .legend{opacity:.35;transition:opacity .12s}
+button.primary.needs{animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--accent-wash)}50%{box-shadow:0 0 0 5px var(--accent-wash)}}
+@media (prefers-reduced-motion:reduce){button.primary.needs{animation:none;box-shadow:0 0 0 4px var(--accent-wash)}}
+.prog{height:3px;background:var(--surface-2);border-radius:2px;overflow:hidden;margin-top:6px}
+.prog i{display:block;height:100%;width:0;background:var(--accent);transition:width .12s linear}
+
+details.meth{margin-top:24px;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:12px 16px}
+details.meth summary{cursor:pointer;font-family:var(--disp);font-weight:600;font-size:15px}
+details.meth[open] summary{margin-bottom:10px}
+details.meth p{color:var(--ink-2);max-width:72ch}
+details.meth code,.mono{font-family:var(--mono);font-size:13.5px}
+table.io{width:100%;border-collapse:collapse;font-size:13.5px;color:var(--ink-2);margin:2px 0 4px}
+table.io th{text-align:left;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);
+  font-weight:600;padding:0 12px 5px 0;border-bottom:1px solid var(--line)}
+table.io td{padding:6px 12px 6px 0;vertical-align:top;border-bottom:1px solid var(--line-soft)}
+table.io td.n{color:var(--ink);white-space:nowrap;width:1%;font-weight:500}
+table.io td.w{white-space:nowrap;color:var(--ink-3)}
+@media (max-width:620px){table.io td.w{white-space:normal}}
+ul.tight{margin:6px 0 0;padding-left:18px;color:var(--ink-2)}
+ul.tight li{margin:3px 0}
+.dim{color:var(--ink-3)}
+hr.sep{border:0;border-top:1px solid var(--line-soft);margin:14px 0}
+/* ---- math ---- */
+math{font-family:"Latin Modern Math","STIX Two Math","Cambria Math",math,var(--sans);
+  font-style:normal;color:inherit;line-height:normal;font-size:1.08em}
+math mi,math mn,math mo{color:inherit}
+.tex,.nb{white-space:nowrap}
+.eq{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;column-gap:22px;row-gap:4px;
+  margin:12px 0;font-size:16.5px;color:var(--ink)}
+.eqn{display:flex;gap:12px;align-items:baseline;margin:10px 0}
+.eqn .eqbody{flex:1 1 auto;min-width:0;display:flex;flex-wrap:wrap;align-items:baseline;
+  column-gap:16px;row-gap:3px;font-size:16px;color:var(--ink)}
+.eqn .eqtag{flex:0 0 auto;font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-3);padding-top:3px}
+.eqnote{margin:-2px 0 0;font-size:13.5px;color:var(--ink-2)}
+label .tex,th .tex{font-size:1.02em}
+.ro .u math{font-size:1em}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <p class="eyebrow" data-i18n="eyebrow">Finite-order Krylov/Lanczos diagnostics &middot; no lattice size to choose</p>
+      <h1 data-i18n="title">Operator Growth Diagnostics</h1>
+      <p class="lede" data-i18n="lede">The same Heisenberg-picture Pauli algebra as the Operator Spreading Lab,
+        run on an unbounded integer lattice to inspect finite-order Krylov/Lanczos coefficients without
+        periodic wraparound. Finite-order differences are diagnostics, not certified Lyapunov bounds.</p>
+    </div>
+    <div class="runbar">
+      <button class="ghost" id="lang" aria-label="Switch language / 切换语言">中文</button>
+      <a class="ghost" id="backlink" href="operator_spreading_lab.html" data-i18n="backLink">&larr; Operator Spreading Lab</a>
+      <button class="ghost" id="theme" aria-label="Toggle theme" data-i18n="themeBtn">◐ theme</button>
+      <button class="ghost" id="exportBtn" data-i18n="exportBtn">Download JSON</button>
+      <button class="primary" id="run" data-i18n="runBtn">Run</button>
+    </div>
+  </header>
+
+  <div class="toprow">
+    <section class="panel ctl">
+      <h2 data-i18n="setupModel">Set up the model</h2>
+      <div class="ctlgrid">
+
+        <div class="ctlcol">
+          <div class="field">
+            <label for="preset" data-i18n="presetLabel">Preset</label>
+            <select id="preset">
+              <option value="mfi" selected data-i18n="opt_mfi">2D mixed-field Ising (validated model)</option>
+              <option value="tfim" data-i18n="opt_tfim">2D transverse-field Ising</option>
+              <option value="mfi1d" data-i18n="opt_mfi1d">1D mixed-field chain</option>
+              <option value="tfim1d" data-i18n="opt_tfim1d">1D TFIM, gapped</option>
+              <option value="tfim1d_crit" data-i18n="opt_tfim1d_crit">1D TFIM, critical</option>
+              <option value="xxz" data-i18n="opt_xxz">XXZ + next-nearest ZZ (U(1))</option>
+              <option value="heis" data-i18n="opt_heis">Heisenberg</option>
+              <option value="custom" data-i18n="opt_custom">General spin model (your own terms)</option>
+            </select>
+          </div>
+          <p class="dim hint" data-i18n="hintRegimeDemo">Compare presets only with the same seed, fixed window
+            and step count. Early coefficients and stored-string counts are finite-order diagnostics; they do not
+            by themselves classify a model as chaotic or integrable.</p>
+
+          <div class="field">
+            <label for="seedtype" data-i18n="seedTypeLabel">Seed operator type</label>
+            <select id="seedtype">
+              <option value="site" selected data-i18n="opt_seedSite">Single site <span class="tex">W_{(0,0)}</span></option>
+              <option value="density" data-i18n="opt_seedDensity">Local energy density <span class="tex">\sum_i h_i</span> (q=0)</option>
+            </select>
+          </div>
+
+          <div class="field" id="windowfield" hidden>
+            <label for="windowK" data-i18n="windowLabel">Energy-window half-width K (boundary-sensitive)</label>
+            <input id="windowK" type="number" min="1" max="12" step="1" value="8">
+          </div>
+
+          <div class="field" id="srcopfield">
+            <label for="srcop" data-i18n="srcLabel">Seed operator <span class="tex">W</span> at the origin</label>
+            <select id="srcop"><option>X</option><option>Y</option><option selected>Z</option></select>
+          </div>
+
+          <div class="field">
+            <label for="steps" data-i18n="stepsLabel">Lanczos steps</label>
+            <input id="steps" type="number" min="1" max="15" step="1" value="8">
+          </div>
+
+          <p class="dim hint" id="densityhint" data-i18n="hintDensity" hidden>This is the Hamiltonian summed
+            only inside a finite window. Its boundary participates from the first commutator, so it is not a
+            nontrivial exactly conserved <span class="tex">q=0</span> mode. Keep K fixed when comparing runs;
+            two-dimensional windows become expensive quickly.</p>
+
+          <p class="dim hint" data-i18n="hint1">The seed sits at the origin of an infinite integer lattice
+            &mdash; there is no boundary and no size to choose. Every offset below (<span class="tex">\delta x</span>,
+            <span class="tex">\delta y</span>) is relative, so the same terms describe a chain
+            (all <span class="tex">\delta y=0</span>) or a 2D lattice equally well.</p>
+          <p class="dim hint" data-i18n="hint2">Cost grows roughly &times;3 per step (each step's reachable
+            operator count is what the readout below calls <em>reachable strings</em>): steps 1&ndash;9 are
+            instant, 10&ndash;12 take seconds, 13&ndash;15 can take tens of seconds to a minute or more.
+            The chart updates after every step, so you can watch it grow and stop at any time.</p>
+        </div>
+
+        <div class="ctlcol">
+          <div class="thead">
+            <label data-i18n="oneBodyLabel">One-body &nbsp;<span class="dim tex">h^{\alpha}\sum_i S^{\alpha}_i</span></label>
+            <button class="icon ghost" id="add1" data-i18n="addTermBtn">+ term</button>
+          </div>
+          <div class="tbl-scroll"><table class="terms"><thead><tr>
+            <th style="width:64px" data-i18n="opHeader">op</th><th data-i18n="coeffHeader">coefficient</th><th style="width:34px"></th>
+          </tr></thead><tbody id="tb1"></tbody></table></div>
+
+          <div class="thead" style="margin-top:14px">
+            <label data-i18n="twoBodyLabel">Two-body &nbsp;<span class="dim tex">J^{\alpha\beta}\sum_i S^{\alpha}_i S^{\beta}_{i+\delta}</span></label>
+            <button class="icon ghost" id="add2" data-i18n="addTermBtn">+ term</button>
+          </div>
+          <div class="tbl-scroll"><table class="terms"><thead><tr>
+            <th style="width:44px"><span class="tex">\delta x</span></th>
+            <th style="width:44px"><span class="tex">\delta y</span></th>
+            <th style="width:52px"><span class="tex">S^{\alpha}_i</span></th>
+            <th style="width:52px"><span class="tex">S^{\beta}_j</span></th>
+            <th data-i18n="coeffHeader">coefficient</th><th style="width:34px"></th>
+          </tr></thead><tbody id="tb2"></tbody></table></div>
+        </div>
+      </div>
+
+      <div class="formula" id="formula"></div>
+    </section>
+
+    <section class="panel">
+      <h2 data-i18n="readoutPanel">Readout</h2>
+      <div class="readouts" id="readouts"></div>
+      <div class="prog" id="prog" hidden><i></i></div>
+      <p class="status" id="status"></p>
+      <p class="dim" id="provenance" style="font-size:11px;margin:8px 0 0"></p>
+      <div id="sizewarn"></div>
+    </section>
+  </div>
+
+  <section class="panel wide">
+    <div class="panelhead">
+      <h2 data-i18n="growthPanel">Lanczos coefficient growth</h2>
+    </div>
+    <div class="eq" style="margin:2px 0 12px;justify-content:flex-start" data-i18n="growthDef">
+      <span class="tex disp">|A_{n+1})=L|O_n)+b_n|O_{n-1}),\quad b_{n+1}=\lVert A_{n+1}\rVert,\quad |O_{n+1})=|A_{n+1})/b_{n+1}</span>
+    </div>
+    <p class="dim" style="margin:-6px 0 12px;font-size:11.5px" data-i18n="growthDefNote">
+      <span class="tex">L=i[H,\cdot\,]</span> is the same real, antisymmetric generator as the Operator Spreading
+      Lab's <span class="tex">M</span>, so the diagonal Lanczos term is exactly zero and only the off-diagonal
+      <span class="tex">b_n</span> survive. Three views of the same run follow: <span class="tex">b_n</span>
+      itself, adjacent finite-order differences, and the number of stored Pauli strings on a logarithmic scale.
+      These views help diagnose a finite computation, but do not by themselves establish an asymptotic slope,
+      a Lyapunov bound, or a chaos/integrability classification.</p>
+
+    <div class="chartsub" data-i18n="chartSubBn">Lanczos coefficient <span class="tex">b_n</span></div>
+    <figure>
+      <svg class="chart" id="chart" viewBox="0 0 640 320" role="img" aria-label="Lanczos coefficient b_n versus step number"></svg>
+      <div class="legend" id="chartlegend"></div>
+      <figcaption id="chartcap"></figcaption>
+    </figure>
+
+    <div class="chartsub" data-i18n="chartSubSlope">Local slope <span class="tex">\alpha_n=b_n-b_{n-1}</span></div>
+    <figure>
+      <svg class="chart" id="chartSlope" viewBox="0 0 640 320" role="img" aria-label="Local slope of the Lanczos coefficients versus step number"></svg>
+      <div class="legend" id="chartlegendSlope"></div>
+      <figcaption id="chartcapSlope"></figcaption>
+    </figure>
+
+    <div class="chartsub" data-i18n="chartSubDim">Reachable operator count (log scale)</div>
+    <figure>
+      <svg class="chart" id="chartDim" viewBox="0 0 640 320" role="img" aria-label="Reachable operator count on a log scale versus step number"></svg>
+      <div class="legend" id="chartlegendDim"></div>
+      <figcaption id="chartcapDim"></figcaption>
+    </figure>
+  </section>
+
+  <details class="meth">
+    <summary data-i18n="detailsSummary1">How this is different from the finite-lattice engines</summary>
+    <p data-i18n="how1">The Operator Spreading Lab's two engines both need a lattice size: the exact
+      operator-space engine because its sector is built from a fixed-length Pauli string, the state-vector
+      engine because its Hilbert space is <span class="tex">2^N</span>-dimensional. Both therefore either sit on
+      a periodic torus (with a real wraparound artifact &mdash; see that page's own findings on small periodic
+      lattices inflating the apparent butterfly velocity) or an open patch with boundary effects.</p>
+    <p data-i18n="how2">This page represents a Pauli string as a set of <span class="tex">(x,y,\text{letter})</span>
+      triples on <span class="tex">\mathbb{Z}^2</span> instead of a bit-string of fixed length. There is
+      consequently no lattice size to choose, no periodic wraparound, and no finite-<span class="tex">N</span>
+      cutoff other than how many Lanczos steps are computed. Arithmetic is double precision with explicit
+      numerical breakdown and resource checks; it is not an exact symbolic calculation.</p>
+    <p data-i18n="how3">Starting from the seed <span class="tex">O_0=W_{(0,0)}</span>, the three-term recursion
+      above builds an orthonormal Krylov basis. <strong>Built-in correctness check:</strong> when the only term
+      anticommuting with a <span class="tex">Z</span> seed is a single-site <span class="tex">X</span> field of
+      strength <span class="tex">h_x</span>, <span class="tex">b_1=2h_x</span> exactly &mdash; the default preset
+      is exactly the model this was checked against before publishing, and the readout below will show
+      <span class="tex">b_1=2.100</span> the first time you run it.</p>
+    <p class="note warn" data-i18n="noteWarn1"><strong>Interpret finite-order data conservatively.</strong>
+      Adjacent differences of a short <span class="tex">b_n</span> sequence are not proven monotone bounds on
+      the asymptotic coefficient. This page therefore reports diagnostics only and does not display a numerical
+      Lyapunov bound.</p>
+  </details>
+
+  <details class="meth">
+    <summary data-i18n="detailsSummary2">Where this fits</summary>
+    <p data-i18n="where1">This is one of three routes past the Operator Spreading Lab's 9-site operator-space ceiling
+      documented there: larger periodic lattices (state-vector typicality, built into that page
+      as its second engine, up to 16 sites), DTWA (a classical approximation, Python-only, which that page's own
+      testing found measurably inflates butterfly velocity on small periodic lattices), and this
+      lattice-size-independent coefficient diagnostic. Unlike the other two, this route answers a different
+      question &mdash; finite-order Krylov growth, not a light-cone <span class="tex">C_r(t)</span> or a butterfly velocity &mdash;
+      which is why it lives on its own page rather than as a third tab on the same one.</p>
+    <p data-i18n="where2">The same validated Python script behind this page's numbers
+      (<span class="mono">otoc16/krylov_infinite.py</span>) is part of the delivered
+      <span class="mono">operatorspreading</span> package, together with the DTWA script and the state-vector
+      production scripts. The repaired page and Python implementation agree through the validated first eight
+      coefficients; historical outputs with the old recurrence are retained but not treated as an oracle.</p>
+  </details>
+</div>
+
+<script>
+
+/* ------------------------------------------------- a small TeX -> MathML
+   Enough of LaTeX to typeset the formulas on this page, with no external
+   library: sub/superscripts, fractions, roots, accents, greek, big operators,
+   \left \right, text runs and spacing. Output is native MathML. Copied
+   verbatim from the Operator Spreading Lab so both pages render identically. */
+const TEXSYM={alpha:"α",beta:"β",gamma:"γ",Gamma:"Γ",delta:"δ",Delta:"Δ",
+ epsilon:"ε",varepsilon:"ε",zeta:"ζ",eta:"η",theta:"θ",Theta:"Θ",
+ kappa:"κ",lambda:"λ",Lambda:"Λ",mu:"μ",nu:"ν",xi:"ξ",pi:"π",
+ rho:"ρ",sigma:"σ",tau:"τ",phi:"φ",varphi:"φ",chi:"χ",psi:"ψ",
+ omega:"ω",Omega:"Ω",hbar:"ℏ",ell:"ℓ",infty:"∞",partial:"∂"};
+const TEXOP={sum:"∑",prod:"∏",int:"∫",times:"×",cdot:"⋅",cdots:"⋯",
+ ldots:"…",approx:"≈",neq:"≠",leq:"≤",le:"≤",geq:"≥",ge:"≥",
+ to:"→",mapsto:"↦",in:"∈",pm:"±",mp:"∓",propto:"∝",sim:"∼",
+ simeq:"≃",equiv:"≡",perp:"⊥",dagger:"†",circ:"∘",otimes:"⊗",
+ langle:"⟨",rangle:"⟩",lVert:"‖",rVert:"‖",nabla:"∇",ll:"≪",
+ gg:"≫","{":"{","}":"}","|":"|",Sigma:"Σ"};
+const TEXBIG={sum:1,prod:1,int:1};
+const TEXNAME={Tr:"Tr",tr:"tr",exp:"exp",log:"log",ln:"ln",max:"max",min:"min",Re:"Re",Im:"Im",
+ det:"det",sgn:"sgn"};
+const TEXACC={dot:"˙",ddot:"¨",hat:"^",bar:"¯",tilde:"~",vec:"→"};
+const TEXSPACE={",":"0.17em",";":"0.28em",":":"0.22em","!":"-0.17em"," ":"0.25em",
+ quad:"1em",qquad:"2em"};
+const TEXBB={R:"ℝ",C:"ℂ",N:"ℕ",Z:"ℤ",Q:"ℚ"};
+const texEsc=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+function texToMathML(src,mode){
+  const disp = mode==="disp" || mode===true;
+  const tk=[]; let i=0;
+  const RAW={text:1,mathrm:1,mathbf:1,mathsf:1,operatorname:1,mathbb:1};
+  while(i<src.length){
+    const c=src[i];
+    if(c==="\\"){
+      const m=/^\\([A-Za-z]+|[\s\S])/.exec(src.slice(i));
+      const name=m[1]; i+=m[0].length;
+      if(RAW[name]){
+        while(src[i]===" ") i++;
+        if(src[i]==="{"){ let d=1,j=i+1,t="";
+          while(j<src.length){ const ch=src[j];
+            if(ch==="{") d++; else if(ch==="}"){ d--; if(!d) break; }
+            t+=ch; j++; }
+          i=j+1; tk.push({t:"txt",v:t,k:name}); continue; }
+      }
+      tk.push({t:"cmd",v:name}); continue;
+    }
+    if(/\s/.test(c)){ i++; continue; }
+    if(c==="{"||c==="}"||c==="_"||c==="^"){ tk.push({t:c}); i++; continue; }
+    if(/[0-9]/.test(c)){ const m=/^[0-9]+(?:\.[0-9]+)?/.exec(src.slice(i));
+      tk.push({t:"num",v:m[0]}); i+=m[0].length; continue; }
+    if(/[A-Za-z]/.test(c)){ tk.push({t:"id",v:c}); i++; continue; }
+    tk.push({t:"op",v:c}); i++;
+  }
+
+  let p=0, big=false;
+  const wrap=a=>a.length===1?a[0]:"<mrow>"+a.join("")+"</mrow>";
+
+  function atom(){
+    const t=tk[p]; big=false;
+    if(!t) return "";
+    if(t.t==="{"){ p++; const inner=seq("}"); if(tk[p]&&tk[p].t==="}") p++;
+      big=false; return wrap(inner); }
+    if(t.t==="num"){ p++; return "<mn>"+t.v+"</mn>"; }
+    if(t.t==="id"){ p++; return "<mi>"+t.v+"</mi>"; }
+    if(t.t==="txt"){ p++;
+      if(t.k==="text") return "<mtext>"+texEsc(t.v)+"</mtext>";
+      if(t.k==="mathbb") return '<mi mathvariant="normal">'+texEsc(TEXBB[t.v]||t.v)+"</mi>";
+      if(t.k==="mathbf") return '<mi mathvariant="bold">'+texEsc(t.v)+"</mi>";
+      return '<mi mathvariant="normal">'+texEsc(t.v)+"</mi>"; }
+    if(t.t==="op"){ p++; let v=t.v; if(v==="-") v="−";
+      if("()[]|".indexOf(v)>=0) return '<mo stretchy="false">'+texEsc(v)+"</mo>";
+      return "<mo>"+texEsc(v)+"</mo>"; }
+    p++; const c=t.v;
+    if(c==="frac"||c==="tfrac"||c==="dfrac"){ const a=atom(), b=atom();
+      return "<mfrac>"+a+b+"</mfrac>"; }
+    if(c==="sqrt") return "<msqrt>"+atom()+"</msqrt>";
+    if(TEXACC[c]) return '<mover accent="true">'+atom()+"<mo>"+TEXACC[c]+"</mo></mover>";
+    if(c==="left"){
+      const d=tk[p]; p++;
+      const open=(!d||d.v==="."||d.v===undefined)?"":'<mo stretchy="true">'+texEsc(d.v)+"</mo>";
+      const inner=[];
+      while(p<tk.length&&!(tk[p].t==="cmd"&&tk[p].v==="right")) inner.push(scripted());
+      let close="";
+      if(tk[p]&&tk[p].t==="cmd"&&tk[p].v==="right"){ p++;
+        const e=tk[p]; p++;
+        if(e&&e.v!=="."&&e.v!==undefined) close='<mo stretchy="true">'+texEsc(e.v)+"</mo>"; }
+      big=false;
+      return "<mrow>"+open+inner.join("")+close+"</mrow>"; }
+    if(c==="right"){ p++; return ""; }
+    if(c in TEXSPACE) return '<mspace width="'+TEXSPACE[c]+'"/>';
+    if(TEXNAME[c]) return '<mi mathvariant="normal">'+TEXNAME[c]+"</mi>";
+    if(TEXBIG[c]){ big=true;
+      return '<mo largeop="true" movablelimits="false">'+TEXOP[c]+"</mo>"; }
+    if(TEXOP[c]){ const v=TEXOP[c];
+      if("{}|".indexOf(v)>=0) return '<mo stretchy="false" lspace="0" rspace="0">'+texEsc(v)+"</mo>";
+      return "<mo>"+texEsc(v)+"</mo>"; }
+    if(TEXSYM[c]) return "<mi>"+TEXSYM[c]+"</mi>";
+    return "<mi>"+texEsc(c)+"</mi>";
+  }
+  function scripted(){
+    const base=atom(), isBig=big;
+    let sub=null, sup=null;
+    while(tk[p]&&(tk[p].t==="_"||tk[p].t==="^")){
+      const k=tk[p].t; p++; const a=atom();
+      if(k==="_") sub=a; else sup=a;
+    }
+    const u=isBig&&disp;
+    if(sub!==null&&sup!==null)
+      return (u?"<munderover>":"<msubsup>")+base+sub+sup+(u?"</munderover>":"</msubsup>");
+    if(sub!==null) return (u?"<munder>":"<msub>")+base+sub+(u?"</munder>":"</msub>");
+    if(sup!==null) return (u?"<mover>":"<msup>")+base+sup+(u?"</mover>":"</msup>");
+    return base;
+  }
+  function seq(stop){ const out=[];
+    while(p<tk.length){ if(stop&&tk[p].t===stop) break; out.push(scripted()); }
+    return out; }
+
+  const body=wrap(seq(null));
+  return '<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">'+
+    (disp?'<mstyle displaystyle="true">'+body+"</mstyle>":body)+"</math>";
+}
+function tex(src,mode){ return texToMathML(src,mode); }
+function renderMath(root){
+  for(const n of (root||document).querySelectorAll(".tex")){
+    if(n.dataset.mathDone) continue;
+    n.innerHTML=texToMathML(n.textContent.trim(),n.classList.contains("disp")?"disp":"");
+    n.dataset.mathDone="1";
+  }
+  nowrapPunct(root);
+}
+function nowrapPunct(root){
+  for(const m of (root||document).querySelectorAll("math")){
+    const host=m.closest(".tex")||m;
+    const par=host.parentNode;
+    if(!par||(par.classList&&par.classList.contains("nb"))) continue;
+    const nx=host.nextSibling;
+    if(!nx||nx.nodeType!==3) continue;
+    const hit=/^[.,;:!?)\]]+/.exec(nx.nodeValue);
+    if(!hit) continue;
+    nx.nodeValue=nx.nodeValue.slice(hit[0].length);
+    const w=document.createElement("span"); w.className="nb";
+    par.insertBefore(w,host);
+    w.appendChild(host);
+    w.appendChild(document.createTextNode(hit[0]));
+  }
+}
+function svgText(node,str){
+  const parts=[]; let i=0;
+  while(i<str.length){
+    let j=str.indexOf("_",i);
+    if(j<0){ parts.push([str.slice(i),0]); break; }
+    if(j>i) parts.push([str.slice(i,j),0]);
+    let k=j+1, sub;
+    if(str[k]==="{"){ const e=str.indexOf("}",k); sub=str.slice(k+1,e); k=e+1; }
+    else { sub=str[k]||""; k++; }
+    parts.push([sub,1]); i=k;
+  }
+  let cur=0;
+  for(const [txt,lvl] of parts){
+    if(txt==="") continue;
+    const a={};
+    if(lvl!==cur){ a.dy=String((lvl-cur)*3); cur=lvl; }
+    if(lvl) a["font-size"]="8.5";
+    node.appendChild(el("tspan",a,txt));
+  }
+  return node;
+}
+
+/* ------------------------------------------------------------- EN / ZH i18n */
+const I18N = {
+en:{
+  eyebrow:"Finite-order Krylov/Lanczos diagnostics &middot; no lattice size to choose",
+  title:"Operator Growth Diagnostics",
+  lede:`The same Heisenberg-picture Pauli algebra as the Operator Spreading Lab, run on an unbounded integer
+    lattice to inspect finite-order Krylov/Lanczos coefficients without periodic wraparound. Finite-order
+    differences are diagnostics, not certified Lyapunov bounds.`,
+  backLink:"&larr; Operator Spreading Lab",
+  themeBtn:"◐ theme", exportBtn:"Download JSON", runBtn:"Run", stopBtn:"Stop",
+  setupModel:"Set up the model", presetLabel:"Preset",
+  opt_mfi:"2D mixed-field Ising (validated model)", opt_tfim:"2D transverse-field Ising",
+  opt_mfi1d:"1D mixed-field chain", opt_tfim1d:"1D TFIM, gapped",
+  opt_tfim1d_crit:"1D TFIM, critical",
+  opt_xxz:"XXZ + next-nearest ZZ (U(1))", opt_heis:"Heisenberg",
+  opt_custom:"General spin model (your own terms)",
+  hintRegimeDemo:`Compare presets only with the same seed, fixed window and step count. Early coefficients and
+    stored-string counts are finite-order diagnostics; they do not by themselves classify a model as chaotic
+    or integrable.`,
+  seedTypeLabel:"Seed operator type",
+  opt_seedSite:'Single site <span class="tex">W_{(0,0)}</span>',
+  opt_seedDensity:'Local energy density <span class="tex">\\sum_i h_i</span> (q=0)',
+  hintDensity:`This is the Hamiltonian summed only inside a finite window. Its boundary participates from the
+    first commutator, so it is not a nontrivial exactly conserved <span class="tex">q=0</span> mode. Keep the
+    half-width K fixed when comparing runs; two-dimensional windows become expensive quickly.`,
+  srcLabel:'Seed operator <span class="tex">W</span> at the origin',
+  stepsLabel:"Lanczos steps",
+  windowLabel:"Energy-window half-width K (boundary-sensitive)",
+  hint1:`The seed sits at the origin of an infinite integer lattice
+    &mdash; there is no boundary and no size to choose. Every offset below (<span class="tex">\\delta x</span>,
+    <span class="tex">\\delta y</span>) is relative, so the same terms describe a chain
+    (all <span class="tex">\\delta y=0</span>) or a 2D lattice equally well.`,
+  hint2:`Cost grows roughly &times;3 per step (each step's reachable
+    operator count is what the readout below calls <em>reachable strings</em>): steps 1&ndash;9 are
+    instant, 10&ndash;12 take seconds, 13&ndash;15 can take tens of seconds to a minute or more.
+    The chart updates after every step, so you can watch it grow and stop at any time.`,
+  oneBodyLabel:'One-body &nbsp;<span class="dim tex">h^{\\alpha}\\sum_i S^{\\alpha}_i</span>',
+  addTermBtn:"+ term", opHeader:"op", coeffHeader:"coefficient",
+  twoBodyLabel:'Two-body &nbsp;<span class="dim tex">J^{\\alpha\\beta}\\sum_i S^{\\alpha}_i S^{\\beta}_{i+\\delta}</span>',
+  readoutPanel:"Readout",
+  growthPanel:"Lanczos coefficient growth",
+  growthDef:'<span class="tex disp">|A_{n+1})=L|O_n)+b_n|O_{n-1}),\\quad b_{n+1}=\\lVert A_{n+1}\\rVert,\\quad |O_{n+1})=|A_{n+1})/b_{n+1}</span>',
+  growthDefNote:`<span class="tex">L=i[H,\\cdot\\,]</span> is the same real, antisymmetric generator as the Operator Spreading
+    Lab's <span class="tex">M</span>, so the diagonal Lanczos term is exactly zero and only the off-diagonal
+    <span class="tex">b_n</span> survive. The plots show finite-order coefficients, adjacent differences and
+    stored Pauli-string counts. They do not by themselves establish an asymptotic slope, Lyapunov bound, or
+    chaos/integrability classification.`,
+  chartSubBn:'Lanczos coefficient <span class="tex">b_n</span>',
+  chartSubSlope:'Local slope <span class="tex">\\alpha_n=b_n-b_{n-1}</span>',
+  chartSubDim:"Reachable operator count (log scale)",
+  detailsSummary1:"How this is different from the finite-lattice engines",
+  how1:`The Operator Spreading Lab's two engines both need a lattice size: the exact
+    operator-space engine because its sector is built from a fixed-length Pauli string, the state-vector
+    engine because its Hilbert space is <span class="tex">2^N</span>-dimensional. Both therefore either sit on
+    a periodic torus (with a real wraparound artifact &mdash; see that page's own findings on small periodic
+    lattices inflating the apparent butterfly velocity) or an open patch with boundary effects.`,
+  how2:`This page represents a Pauli string as a set of <span class="tex">(x,y,\\text{letter})</span>
+    triples on <span class="tex">\\mathbb{Z}^2</span> instead of a bit-string of fixed length. There is
+    consequently no lattice size to choose, no periodic wraparound, and no finite-<span class="tex">N</span>
+    cutoff other than the computed depth. Arithmetic is double precision with numerical-breakdown and resource
+    checks; it is not an exact symbolic calculation.`,
+  how3:`Starting from the seed <span class="tex">O_0=W_{(0,0)}</span>, the three-term recursion
+    above builds an orthonormal Krylov basis. <strong>Built-in correctness check:</strong> when the only term
+    anticommuting with a <span class="tex">Z</span> seed is a single-site <span class="tex">X</span> field of
+    strength <span class="tex">h_x</span>, <span class="tex">b_1=2h_x</span> exactly &mdash; the default preset
+    is exactly the model this was checked against before publishing, and the readout below will show
+    <span class="tex">b_1=2.100</span> the first time you run it.`,
+  noteWarn1:`<strong>Interpret finite-order data conservatively.</strong> Adjacent differences of a short
+    <span class="tex">b_n</span> sequence are not proven monotone bounds on the asymptotic coefficient. This
+    page reports diagnostics only and does not display a numerical Lyapunov bound.`,
+  detailsSummary2:"Where this fits",
+  where1:`This is one of three routes past the Operator Spreading Lab's 9-site operator-space ceiling
+    documented there: larger periodic lattices (state-vector typicality, built into that page
+    as its second engine, up to 16 sites), DTWA (a classical approximation, Python-only, which that page's own
+    testing found measurably inflates butterfly velocity on small periodic lattices), and this
+    lattice-size-independent coefficient diagnostic. Unlike the other two, this route answers a different
+    question &mdash; finite-order Krylov growth, not a light-cone <span class="tex">C_r(t)</span> or a butterfly velocity &mdash;
+    which is why it lives on its own page rather than as a third tab on the same one.`,
+  where2:`The same validated Python script behind this page's numbers
+    (<span class="mono">otoc16/krylov_infinite.py</span>) is part of the delivered
+    <span class="mono">operatorspreading</span> package, together with the DTWA script and the state-vector
+    production scripts. The repaired page and Python implementation agree through the validated first eight
+    coefficients; historical outputs from the old recurrence are retained but not used as an oracle.`,
+  ro_n:"Steps computed", ro_bn:"Latest", ro_dim:"Reachable strings",
+  ro_dimratio:"2-step dim ratio",
+  ro_alpha:"Adjacent difference", ro_time:"Last step time",
+  dimratio_note:`The two-step ratio (<span class="tex">\\dim_n/\\dim_{n-2}</span>) avoids mixing even and
+    odd branches. It remains a finite-order, seed- and threshold-dependent diagnostic rather than a standalone
+    classification test.`,
+},
+zh:{
+  eyebrow:"有限阶 Krylov/Lanczos 诊断 &middot; 不需要选格点大小",
+  title:"算符增长诊断",
+  lede:`使用与 Operator Spreading Lab 相同的 Heisenberg 绘景 Pauli 代数，在无界整数格点上检查有限阶
+    Krylov/Lanczos 系数，不产生周期环绕。有限阶差分只是诊断量，不是经证明的李雅普诺夫界。`,
+  backLink:"&larr; 回到 Operator Spreading Lab",
+  themeBtn:"◐ 主题", exportBtn:"下载 JSON", runBtn:"运行", stopBtn:"停止",
+  setupModel:"设置模型", presetLabel:"预设",
+  opt_mfi:"二维混合场伊辛模型(已验证的模型)", opt_tfim:"二维横场伊辛模型",
+  opt_mfi1d:"一维混合场链", opt_tfim1d:"一维横场伊辛，离临界点",
+  opt_tfim1d_crit:"一维横场伊辛，量子临界点",
+  opt_xxz:"XXZ + 次近邻 ZZ (U(1))", opt_heis:"海森堡模型",
+  opt_custom:"通用自旋模型(自定义项)",
+  hintRegimeDemo:`比较预设时应使用相同种子、固定窗口和相同步数。早期系数与存储字符串数只是有限阶诊断，
+    不能单独将模型判为混沌或可积。`,
+  seedTypeLabel:"种子算符类型",
+  opt_seedSite:'单点算符 <span class="tex">W_{(0,0)}</span>',
+  opt_seedDensity:'局域能量密度 <span class="tex">\\sum_i h_i</span>(q=0)',
+  hintDensity:`这里只把哈密顿量在有限窗口内求和，边界从第一次对易起就参与，因此它不是非平凡的严格
+    <span class="tex">q=0</span> 守恒模。比较不同运行时应固定半宽 K；二维窗口的计算量增长很快。`,
+  srcLabel:'原点处的种子算符 <span class="tex">W</span>',
+  stepsLabel:"Lanczos 步数",
+  windowLabel:"能量窗口半宽 K（边界敏感）",
+  hint1:`种子放在无穷大整数格点的原点——没有边界,也不需要选大小。下面每一个偏移量
+    (<span class="tex">\\delta x</span>, <span class="tex">\\delta y</span>) 都是相对的,所以同一组项既能描述
+    一条链(全部 <span class="tex">\\delta y=0</span>),也能描述二维格子。`,
+  hint2:`耗时大致每步 &times;3 增长(下面读数里的"可达字符串数"就是每一步的算符数目):第 1&ndash;9 步几乎瞬间完成,
+    第 10&ndash;12 步要几秒,第 13&ndash;15 步可能要几十秒到一分钟以上。图表会在每一步之后更新,
+    所以你可以边看边决定什么时候停下来。`,
+  oneBodyLabel:'单体项 &nbsp;<span class="dim tex">h^{\\alpha}\\sum_i S^{\\alpha}_i</span>',
+  addTermBtn:"+ 添加一项", opHeader:"算符", coeffHeader:"系数",
+  twoBodyLabel:'两体项 &nbsp;<span class="dim tex">J^{\\alpha\\beta}\\sum_i S^{\\alpha}_i S^{\\beta}_{i+\\delta}</span>',
+  readoutPanel:"数值读出",
+  growthPanel:"Lanczos 系数增长",
+  growthDef:'<span class="tex disp">|A_{n+1})=L|O_n)+b_n|O_{n-1}),\\quad b_{n+1}=\\lVert A_{n+1}\\rVert,\\quad |O_{n+1})=|A_{n+1})/b_{n+1}</span>',
+  growthDefNote:`<span class="tex">L=i[H,\\cdot\\,]</span> 跟 Operator Spreading Lab 里的生成元
+    <span class="tex">M</span> 一样,是一个实的反对称算符,所以 Lanczos 递推的对角项严格为零,只剩下非对角的
+    <span class="tex">b_n</span>。图中给出有限阶系数、相邻差分与存储的 Pauli 字符串数；它们本身不能证明
+    渐近斜率、李雅普诺夫界，也不能单独判定混沌或可积。`,
+  chartSubBn:'Lanczos 系数 <span class="tex">b_n</span>',
+  chartSubSlope:'局部斜率 <span class="tex">\\alpha_n=b_n-b_{n-1}</span>',
+  chartSubDim:"可达算符数(对数坐标)",
+  detailsSummary1:"这跟有限格点的两个引擎有什么不同",
+  how1:`Operator Spreading Lab 的两个引擎都需要选格点大小:精确算符空间引擎是因为它的扇区由固定长度的
+    Pauli 字符串构成,状态矢量引擎是因为它的希尔伯特空间维度是 <span class="tex">2^N</span>。两者要么落在周期环面上
+    (有真实的环绕伪影——那个页面自己的测试已经发现小周期格子会人为抬高表观蝴蝶速度),要么落在有边界效应的开放小块上。`,
+  how2:`这个页面把 Pauli 字符串表示成 <span class="tex">\\mathbb{Z}^2</span> 上的一组
+    <span class="tex">(x,y,\\text{算符})</span> 三元组,而不是固定长度的比特串。因此完全不需要选格点大小,
+    没有周期性环绕，截断来自计算深度。程序使用双精度，并检查数值闭合与资源上限；它不是符号精确计算。`,
+  how3:`从种子 <span class="tex">O_0=W_{(0,0)}</span> 出发,上面的三项递推构造出一组正交的 Krylov 基。
+    <strong>内置正确性检验:</strong>当唯一与 <span class="tex">Z</span> 种子反对易的项是强度为
+    <span class="tex">h_x</span> 的单点 <span class="tex">X</span> 场时,精确有
+    <span class="tex">b_1=2h_x</span>——默认预设正是发布前用来校验这一点的那个模型,第一次运行时下面的读数会显示
+    <span class="tex">b_1=2.100</span>。`,
+  noteWarn1:`<strong>谨慎解释有限阶数据。</strong>短序列的相邻 <span class="tex">b_n</span> 差分并不是
+    已证明的渐近系数单调界。因此本页只给诊断量，不显示数值李雅普诺夫界。`,
+  detailsSummary2:"这个页面处在什么位置",
+  where1:`这是越过 Operator Spreading Lab 9 格点算符空间上限的三条路线之一：更大的周期格子
+    (状态矢量 + Krylov typicality,已经做成那个页面的第二个引擎,最多 16 个格点)、DTWA(经典近似,只有 Python 版本,
+    那个页面自己的测试发现它会在小周期格子上明显抬高表观蝴蝶速度),以及这个不依赖格点大小的系数诊断。
+    跟另外两条路线不同,这条路线回答的是有限阶 Krylov 增长,而不是光锥 <span class="tex">C_r(t)</span>
+    或蝴蝶速度——这就是为什么它独立成一个页面,而不是同一个页面上的第三个标签。`,
+  where2:`支撑这个页面数值的同一个已验证 Python 脚本(<span class="mono">otoc16/krylov_infinite.py</span>)
+    就在交付的 <span class="mono">operatorspreading</span> 包里,跟 DTWA 脚本、状态矢量的生产脚本放在一起。
+    修正后的网页与 Python 在已核验的前八阶系数上一致；旧递推产生的历史输出只保留作记录，不作为正确性基准。`,
+  ro_n:"已算步数", ro_bn:"最新值", ro_dim:"可达字符串数",
+  ro_dimratio:"两步维度增长比",
+  ro_alpha:"相邻差分", ro_time:"上一步耗时",
+  dimratio_note:`隔两步的比值(<span class="tex">\\dim_n/\\dim_{n-2}</span>)避免混合奇偶支路。
+    它仍依赖有限阶、种子和数值阈值，不能单独作为分类检验。`,
+},
+};
+let curLang="en";
+function applyLang(){
+  const dict=I18N[curLang];
+  for(const el of document.querySelectorAll("[data-i18n]")){
+    const key=el.dataset.i18n; if(dict[key]==null) continue;
+    el.innerHTML=dict[key];
+    el.dataset.mathDone="";
+  }
+  document.documentElement.lang = curLang==="zh" ? "zh" : "en";
+  const lb=$("lang"); if(lb) lb.textContent = curLang==="en" ? "中文" : "EN";
+  renderMath(document);
+}
+
+"use strict";
+const NUMERICS=Object.freeze({
+  maxStrings:200000,
+  maxKeyChars:12000000,
+  maxVisits:5000000,
+  maxRows:64,
+  maxOffset:64,
+  yieldMs:16,
+  breakdownFactor:128*Number.EPSILON
+});
+class GrowthError extends Error{
+  constructor(code,message){super(message);this.name="GrowthError";this.code=code;}
+}
+/* --------------------------------------------------------------- Pauli
+   Same convention as the Operator Spreading Lab: 0=I,1=X,2=Y,3=Z,
+   PROD[a][b]=[k,c] meaning a*b = i^k * c. */
+const OPS = ["I","X","Y","Z"];
+const PROD = (() => {
+  const P = Array.from({length:4},()=>Array.from({length:4},()=>[0,0]));
+  for(let a=0;a<4;a++){ P[0][a]=[0,a]; P[a][0]=[0,a]; P[a][a]=[0,0]; }
+  const t=[[1,2,1,3],[2,1,3,3],[2,3,1,1],[3,2,3,1],[3,1,1,2],[1,3,3,2]];
+  for(const [a,b,k,c] of t) P[a][b]=[k,c];
+  return P;
+})();
+
+/* ---------------------------------------------------- infinite-lattice
+   Krylov/Lanczos engine. Validated (see project note) to reproduce
+   otoc16/krylov_infinite.py's own published b_n / reachable-dimension
+   sequence exactly for its hardcoded model, generalized here to accept
+   the same arbitrary one-body/two-body term lists as the finite-lattice
+   page. A Pauli string is a canonical ";"-joined key of "x,y:letter"
+   tokens; a vector is a Map<key,coefficient>. */
+function siteKey(x,y){ return x+','+y; }
+function canonKeyFromMap(m){
+  const arr=[]; for(const [sk,l] of m) arr.push(sk+':'+l);
+  arr.sort();
+  return arr.join(';');
+}
+function decodeKey(key){
+  if(!key) return [];
+  return key.split(';').map(tok=>{ const i=tok.lastIndexOf(':'); const xy=tok.slice(0,i), l=Number(tok.slice(i+1));
+    const j=xy.indexOf(','); return [Number(xy.slice(0,j)), Number(xy.slice(j+1)), l]; });
+}
+function entriesToMap(entries){ const m=new Map(); for(const [x,y,l] of entries) m.set(siteKey(x,y),l); return m; }
+
+/* Candidate Hamiltonian terms touching any of `supportSites`. Deduped by
+   (spec row, anchor site) -- NOT by the term's own content -- because the
+   same physical term (row ti anchored at a given site) can be discovered
+   from more than one support site once the support has grown past one
+   site (a bond between two already-occupied neighbours is seen from both
+   ends), and that must count once, not twice. Two different rows that
+   happen to embed identically are intentionally left as separate
+   candidates; they correctly sum downstream in applyL's own accumulation
+   into the resulting Pauli string's coefficient -- exactly like
+   buildTerms() merges by resulting string on the finite-lattice page. */
+function candidateTerms(supportSites, oneBody, twoBody){
+  const out=[];
+  const seenOne=new Set(), seenTwo=new Set();
+  for(const [x,y] of supportSites){
+    for(let ti=0;ti<oneBody.length;ti++){ const t=oneBody[ti]; const l=OPS.indexOf(t.op); if(l<1||!t.coeff) continue;
+      const k=ti+':'+x+','+y; if(seenOne.has(k)) continue; seenOne.add(k);
+      out.push([[[x,y,l]], t.coeff]); }
+    for(let ti=0;ti<twoBody.length;ti++){ const t=twoBody[ti]; const a=OPS.indexOf(t.opA), b=OPS.indexOf(t.opB);
+      if(a<1||b<1||!t.coeff) continue; if(t.dx===0&&t.dy===0) continue;
+      // this site can be the row's "i" anchor, or sit one step past the
+      // anchor (the anchor is then behind it) -- both keyed by anchor coord
+      for(const [ax,ay] of [[x,y],[x-t.dx,y-t.dy]]){
+        const k=ti+':'+ax+','+ay; if(seenTwo.has(k)) continue; seenTwo.add(k);
+        out.push([[[ax,ay,a],[ax+t.dx,ay+t.dy,b]], t.coeff]);
+      }
+    }
+  }
+  return out;
+}
+function anticommutesArr(pEntries,sMap){
+  let cl=0;
+  for(const [x,y,l] of pEntries){ const sl=sMap.get(x+','+y)||0; if(l&&sl&&l!==sl) cl^=1; }
+  return cl===1;
+}
+function mulArr(pEntries,sMap,sEntries){
+  let k=0; const out=new Map();
+  const touched=new Set();
+  for(const [x,y,l] of pEntries){
+    const sk=x+','+y; touched.add(sk);
+    const sa=sMap.get(sk)||0;
+    const [kk,cc]=PROD[l][sa]; k+=kk;
+    if(cc) out.set(sk,cc);
+  }
+  for(const [x,y,l] of sEntries){ const sk=x+','+y; if(touched.has(sk)) continue; out.set(sk,l); }
+  return [k&3,out];
+}
+/* async so a single (potentially very large) step still yields to the
+   browser periodically -- otherwise the highest steps here would freeze
+   the tab for tens of seconds in one uninterrupted block, exactly the
+   failure mode found and fixed on the finite-lattice page's state-vector
+   engine. Returns null if `shouldStop()` becomes true mid-step. */
+async function applyLAsync(vec, oneBody, twoBody, onProgress, shouldStop){
+  if(shouldStop&&shouldStop()) return null;
+  if(vec.size>NUMERICS.maxStrings) throw new GrowthError("resource",`input has ${vec.size.toLocaleString()} strings; limit is ${NUMERICS.maxStrings.toLocaleString()}`);
+  const outCoeff=new Map();
+  let i=0, visits=0, keyChars=0, lastYield=performance.now(); const total=vec.size||1;
+  for(const [sKey,aS] of vec){
+    i++;
+    if(!Number.isFinite(aS)) throw new GrowthError("numeric","non-finite vector coefficient");
+    if(aS!==0){
+      const sEntries=decodeKey(sKey);
+      const sMap=entriesToMap(sEntries);
+      const supportSites=sEntries.map(e=>[e[0],e[1]]);
+      for(const [pEntries,coeffH] of candidateTerms(supportSites,oneBody,twoBody)){
+        if(++visits>NUMERICS.maxVisits) throw new GrowthError("resource","candidate-visit limit reached");
+        if(!anticommutesArr(pEntries,sMap)) continue;
+        const [k,rMap]=mulArr(pEntries,sMap,sEntries);
+        const power=(k+1)&3;
+        if(power&1) throw new Error("internal: i[P,S] is not Hermitian");
+        const amp=power===0?2:-2;
+        const rKey=canonKeyFromMap(rMap);
+        const before=outCoeff.get(rKey);
+        if(before===undefined){
+          keyChars+=rKey.length;
+          if(outCoeff.size>=NUMERICS.maxStrings||keyChars>NUMERICS.maxKeyChars)
+            throw new GrowthError("resource","sparse-vector storage limit reached");
+        }
+        const next=(before||0)+coeffH*amp*aS;
+        if(!Number.isFinite(next)) throw new GrowthError("numeric","non-finite commutator coefficient");
+        outCoeff.set(rKey,next);
+      }
+    }
+    if(performance.now()-lastYield>=NUMERICS.yieldMs){
+      onProgress&&onProgress(i/total);
+      await new Promise(r=>setTimeout(r,0));
+      if(shouldStop&&shouldStop()) return null;
+      lastYield=performance.now();
+    }
+  }
+  const out=new Map();
+  for(const [k,c] of outCoeff) if(c!==0) out.set(k,c);
+  return out;
+}
+function vnorm(vec){
+  let scale=0,ssq=1;
+  for(const c of vec.values()){
+    const a=Math.abs(c); if(!Number.isFinite(a)) return a;
+    if(!a) continue;
+    if(scale<a){ssq=1+ssq*(scale/a)**2;scale=a;}else ssq+=(a/scale)**2;
+  }
+  return scale?scale*Math.sqrt(ssq):0;
+}
+function vdot(a,b){
+  let s=0;
+  const [small,large]=a.size<=b.size?[a,b]:[b,a];
+  for(const [k,v] of small)s+=v*(large.get(k)||0);
+  return s;
+}
+function vscale(vec,c){ const out=new Map(); for(const [k,v] of vec) out.set(k,v*c); return out; }
+function vaxpy(a,x,y){ const out=new Map(y); for(const [k,v] of x){ const nc=(out.get(k)||0)+a*v;
+  if(nc!==0) out.set(k,nc); else out.delete(k); } return out; }
+function normalizeVector(vec,norm=vnorm(vec)){
+  if(!(norm>0)||!Number.isFinite(norm)) throw new GrowthError("input","seed has zero or non-finite norm");
+  return vscale(vec,1/norm);
+}
+function prepareModel(config){
+  const steps=config.steps;
+  if(!Number.isInteger(steps)||steps<1||steps>15) throw new GrowthError("input","steps must be an integer from 1 to 15");
+  if(config.seedType==="density"&&(!Number.isInteger(config.windowK)||config.windowK<1||config.windowK>12))
+    throw new GrowthError("input","energy-window half-width K must be an integer from 1 to 12");
+  const one=(config.oneBody||[]).map(t=>({op:t.op,coeff:t.coeff}));
+  const two=(config.twoBody||[]).map(t=>({dx:t.dx,dy:t.dy,opA:t.opA,opB:t.opB,coeff:t.coeff}));
+  if(one.length+two.length>NUMERICS.maxRows) throw new GrowthError("input","too many Hamiltonian rows");
+  for(const t of one){
+    if(!OPS.includes(t.op)||t.op==="I"||!Number.isFinite(t.coeff)) throw new GrowthError("input","invalid one-body row");
+  }
+  for(const t of two){
+    if(!OPS.includes(t.opA)||t.opA==="I"||!OPS.includes(t.opB)||t.opB==="I"||
+       !Number.isFinite(t.coeff)||!Number.isInteger(t.dx)||!Number.isInteger(t.dy)||
+       Math.abs(t.dx)>NUMERICS.maxOffset||Math.abs(t.dy)>NUMERICS.maxOffset||
+       (t.coeff!==0&&t.dx===0&&t.dy===0)) throw new GrowthError("input","invalid two-body row");
+  }
+  const nonzero=[...one,...two].filter(t=>t.coeff!==0);
+  const scale=nonzero.reduce((m,t)=>Math.max(m,Math.abs(t.coeff)),0)||1;
+  const oneBody=one.filter(t=>t.coeff!==0).map(t=>Object.freeze({...t,coeff:t.coeff/scale}));
+  const twoBody=two.filter(t=>t.coeff!==0).map(t=>Object.freeze({...t,coeff:t.coeff/scale}));
+  const inputs=Object.freeze({
+    oneBody:Object.freeze(one.map(t=>Object.freeze({...t}))),
+    twoBody:Object.freeze(two.map(t=>Object.freeze({...t}))),
+    srcOp:config.srcOp,steps,seedType:config.seedType,
+    windowK:config.seedType==="density"?config.windowK:null
+  });
+  return Object.freeze({oneBody:Object.freeze(oneBody),twoBody:Object.freeze(twoBody),scale,inputs});
+}
+function validateConfig(config){return prepareModel(config).inputs;}
+async function lanczosStep(q,prev,beta,model,onProgress,shouldStop){
+  const Lq=await applyLAsync(q,model.oneBody,model.twoBody,onProgress,shouldStop);
+  if(Lq===null)return {stopped:true};
+  const lnorm=vnorm(Lq);
+  if(!Number.isFinite(lnorm))throw new GrowthError("numeric","non-finite commutator norm");
+  let residual=prev?vaxpy(beta,prev,Lq):new Map(Lq);
+  let localCorrection=0;
+  for(let pass=0;pass<2;pass++){
+    const cq=vdot(q,residual);localCorrection=Math.max(localCorrection,Math.abs(cq));
+    if(cq)residual=vaxpy(-cq,q,residual);
+    if(prev){const cp=vdot(prev,residual);localCorrection=Math.max(localCorrection,Math.abs(cp));
+      if(cp)residual=vaxpy(-cp,prev,residual);}
+  }
+  const rawNorm=vnorm(residual);
+  const threshold=NUMERICS.breakdownFactor*(lnorm+Math.abs(beta));
+  if(!Number.isFinite(rawNorm))throw new GrowthError("numeric","non-finite Lanczos residual");
+  if(rawNorm<=threshold)return {b:0,q:new Map(),closed:true,rawNorm,threshold,localCorrection};
+  return {b:rawNorm,q:normalizeVector(residual,rawNorm),closed:false,rawNorm,threshold,localCorrection};
+}
+
+/* ------------------------------------------------------------- charting
+   (verbatim from the Operator Spreading Lab -- generic SVG line-chart
+   helpers, no Krylov-specific logic here) */
+const SHELL=["--s0","--s1","--s2","--s3","--s4","--s5"];
+const TERMC=["--t1","--t2","--t3","--t4","--t5","--t6","--t7","--t8"];
+const termColor=k=> cssvar(k<TERMC.length?TERMC[k]:"--ink-3");
+const cssvar=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const SVGNS="http://www.w3.org/2000/svg";
+function el(tag,attrs,text){ const e=document.createElementNS(SVGNS,tag);
+  for(const k in attrs) e.setAttribute(k,attrs[k]); if(text!=null) e.textContent=text; return e; }
+function niceTicks(lo,hi,count){
+  if(!Number.isFinite(lo)||!Number.isFinite(hi)||hi<lo)return [];
+  if(hi===lo)return [lo];
+  const span=hi-lo,raw=span/Math.max(1,count),mag=10**Math.floor(Math.log10(raw));
+  const mult=[1,2,2.5,5,10].find(s=>s*mag>=raw)||10;
+  const step=mult*mag,start=Math.ceil(lo/step)*step,out=[];
+  for(let i=0;i<100;i++){
+    const v=start+i*step;
+    if(v>hi+Math.abs(step)*1e-9)break;
+    out.push(v);
+  }
+  if(out.length<2){out.length=0;out.push(lo,hi);}
+  return out;
+}
+function chartBox(svg,ratio){
+  const w=Math.round(svg.clientWidth||640);
+  const W=Math.max(360,w);
+  return {W,H:Math.round(Math.min(400,Math.max(240,W*ratio)))};
+}
+function drawLines(svg,series,opts){
+  svg.textContent="";
+  const W=opts.W, H=opts.H, m={l:46,r:opts.right??54,t:12,b:34};
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  const xs=opts.xmax, ylo=opts.ymin, yhi=opts.ymax;
+  const X=v=>m.l+(v/xs)*(W-m.l-m.r);
+  const Y=v=>H-m.b-((v-ylo)/(yhi-ylo))*(H-m.t-m.b);
+  for(const ty of niceTicks(ylo,yhi,4)){
+    svg.appendChild(el("line",{x1:m.l,x2:W-m.r,y1:Y(ty),y2:Y(ty),class:"gridline"}));
+    svg.appendChild(el("text",{x:m.l-7,y:Y(ty)+3.5,"text-anchor":"end"},opts.yfmt?opts.yfmt(ty):String(ty)));
+  }
+  for(const tx of niceTicks(0,xs,5)){
+    svg.appendChild(el("text",{x:X(tx),y:H-m.b+15,"text-anchor":"middle"},String(tx)));
+  }
+  svg.appendChild(el("line",{x1:m.l,x2:W-m.r,y1:Y(Math.max(ylo,Math.min(yhi,0))),y2:Y(Math.max(ylo,Math.min(yhi,0))),class:"axis"}));
+  if(opts.ref!=null && opts.ref<=yhi && opts.ref>=ylo){
+    svg.appendChild(el("line",{x1:m.l,x2:W-m.r,y1:Y(opts.ref),y2:Y(opts.ref),
+      stroke:cssvar("--ink-3"),"stroke-width":1,"stroke-dasharray":"2 4"}));
+    if(opts.refLabel) svg.appendChild(svgText(el("text",{x:m.l+6,y:Y(opts.ref)-5,
+      stroke:cssvar("--surface"),"stroke-width":3,"paint-order":"stroke","stroke-linejoin":"round"}),
+      opts.refLabel));
+  }
+  const tags=[];
+  for(const s of series){
+    let d="";
+    for(let k=0;k<s.x.length;k++){ const px=X(s.x[k]), py=Y(Math.max(ylo,Math.min(yhi,s.y[k])));
+      d+=(k?"L":"M")+px.toFixed(1)+" "+py.toFixed(1); }
+    svg.appendChild(el("path",{d,fill:"none",stroke:s.color,
+      "stroke-width":s.thin?1.3:2,"stroke-dasharray":s.thin?"3 3":"",
+      opacity:s.thin?.75:1,"stroke-linejoin":"round","stroke-linecap":"round"}));
+    if(s.label){
+      const last=s.y[s.y.length-1];
+      tags.push({y:Y(Math.max(ylo,Math.min(yhi,last))),color:s.color,text:s.label});
+    }
+  }
+  tags.sort((a,b)=>a.y-b.y);
+  const gap=12;
+  for(let i=1;i<tags.length;i++) if(tags[i].y-tags[i-1].y<gap) tags[i].y=tags[i-1].y+gap;
+  const overflow=tags.length?tags[tags.length-1].y-(H-m.b):0;
+  if(overflow>0) for(const t of tags) t.y-=overflow;
+  for(const t of tags)
+    svg.appendChild(svgText(el("text",{x:W-m.r+5,y:t.y+3.5,class:"dlabel",fill:t.color}),t.text));
+  svg.appendChild(svgText(el("text",{x:(m.l+W-m.r)/2,y:H-4,"text-anchor":"middle",class:"axtitle"}),opts.xtitle));
+  svg.appendChild(svgText(el("text",{x:12,y:H/2,"text-anchor":"middle",class:"axtitle",
+    transform:`rotate(-90 12 ${H/2})`}),opts.ytitle));
+}
+
+/* --------------------------------------------------------------- the app */
+const PRESETS={
+  mfi:{one:[["X",-1.05],["Z",-0.5]],two:[[1,0,"Z","Z",-1],[0,1,"Z","Z",-1]]},
+  tfim:{one:[["X",-1.05]],two:[[1,0,"Z","Z",-1],[0,1,"Z","Z",-1]]},
+  mfi1d:{one:[["X",-1.05],["Z",-0.5]],two:[[1,0,"Z","Z",-1]]},
+  tfim1d:{one:[["X",-1.05]],two:[[1,0,"Z","Z",-1]]},
+  tfim1d_crit:{one:[["X",-1.0]],two:[[1,0,"Z","Z",-1]]},
+  xxz:{one:[],two:[[1,0,"X","X",1],[1,0,"Y","Y",1],[1,0,"Z","Z",1],
+        [0,1,"X","X",1],[0,1,"Y","Y",1],[0,1,"Z","Z",1],[1,1,"Z","Z",0.4]]},
+  heis:{one:[],two:[[1,0,"X","X",1],[1,0,"Y","Y",1],[1,0,"Z","Z",1],
+        [0,1,"X","X",1],[0,1,"Y","Y",1],[0,1,"Z","Z",1]]},
+};
+const $=id=>document.getElementById(id);
+function termSignature(one,two){
+  const a=one.filter(t=>t.coeff).map(t=>`1|${t.op}|${t.coeff}`).sort();
+  const b=two.filter(t=>t.coeff&&!(t.dx===0&&t.dy===0))
+             .map(t=>`2|${t.dx},${t.dy}|${t.opA}${t.opB}|${t.coeff}`).sort();
+  return a.concat(b).join(";");
+}
+function syncPresetLabel(){
+  const now=termSignature(state.oneBody,state.twoBody);
+  for(const key in PRESETS){
+    const p=PRESETS[key];
+    const sig=termSignature(p.one.map(([op,coeff])=>({op,coeff})),
+                            p.two.map(([dx,dy,opA,opB,coeff])=>({dx,dy,opA,opB,coeff})));
+    if(sig===now){ $("preset").value=key; return; }
+  }
+  $("preset").value="custom";
+}
+let state={oneBody:[],twoBody:[],srcOp:"Z",steps:8,seedType:"site",windowK:8};
+let running=false, stopRequested=false;
+let bs=[], dims=[], stepMs=[];
+let runRecord=null,dirty=false;
+
+function opSelect(val,onChange){
+  const s=document.createElement("select");
+  for(const o of ["X","Y","Z"]){ const op=document.createElement("option"); op.value=o; op.textContent=o;
+    if(o===val) op.selected=true; s.appendChild(op); }
+  s.addEventListener("change",()=>onChange(s.value)); return s;
+}
+function numInput(val,onChange,step){
+  const i=document.createElement("input"); i.type="number"; i.value=val; i.step=step??"0.05";
+  i.addEventListener("change",()=>onChange(i.value.trim()===""?NaN:Number(i.value))); return i;
+}
+function delBtn(onClick){
+  const b=document.createElement("button"); b.className="icon ghost"; b.textContent="×";
+  b.setAttribute("aria-label","Remove term"); b.addEventListener("click",onClick); return b;
+}
+function renderTerms(){
+  const t1=$("tb1"); t1.textContent="";
+  state.oneBody.forEach((t,k)=>{
+    const tr=document.createElement("tr");
+    const c1=document.createElement("td"); c1.appendChild(opSelect(t.op,v=>{t.op=v;refresh();})); tr.appendChild(c1);
+    const c2=document.createElement("td"); c2.appendChild(numInput(t.coeff,v=>{t.coeff=v;refresh();})); tr.appendChild(c2);
+    const c3=document.createElement("td"); c3.appendChild(delBtn(()=>{state.oneBody.splice(k,1);renderTerms();refresh();})); tr.appendChild(c3);
+    t1.appendChild(tr);
+  });
+  const t2=$("tb2"); t2.textContent="";
+  state.twoBody.forEach((t,k)=>{
+    const tr=document.createElement("tr");
+    for(const key of ["dx","dy"]){ const c=document.createElement("td");
+      c.appendChild(numInput(t[key],v=>{t[key]=Math.round(v);refresh();},"1")); tr.appendChild(c); }
+    for(const key of ["opA","opB"]){ const c=document.createElement("td");
+      c.appendChild(opSelect(t[key],v=>{t[key]=v;refresh();})); tr.appendChild(c); }
+    const c5=document.createElement("td"); c5.appendChild(numInput(t.coeff,v=>{t.coeff=v;refresh();})); tr.appendChild(c5);
+    const c6=document.createElement("td"); c6.appendChild(delBtn(()=>{state.twoBody.splice(k,1);renderTerms();refresh();})); tr.appendChild(c6);
+    t2.appendChild(tr);
+  });
+}
+function texCoeff(c){
+  const mag=Math.abs(c);
+  return (c<0?"-":"+")+(mag===1?"":mag.toString()+"\\,");
+}
+function renderFormula(){
+  const terms=[];
+  for(const t of state.twoBody){ if(!t.coeff) continue;
+    terms.push(`${texCoeff(t.coeff)}\\sum_i ${t.opA}_i\\,${t.opB}_{i+(${t.dx},${t.dy})}`); }
+  for(const t of state.oneBody){ if(!t.coeff) continue;
+    terms.push(`${texCoeff(t.coeff)}\\sum_i ${t.op}_i`); }
+  const box=$("formula"); box.textContent="";
+  const lab=document.createElement("span");
+  lab.className="flab"; lab.innerHTML=tex("H=");
+  box.appendChild(lab);
+  if(!terms.length){
+    const e=document.createElement("span"); e.className="fempty";
+    e.textContent=curLang==="zh"?"(暂无非零项)":"(no terms yet)";
+    box.appendChild(e); return;
+  }
+  terms.forEach((tx,k)=>{
+    const d=document.createElement("span"); d.className="fterm";
+    d.innerHTML=tex(k===0?tx.replace(/^\+/,""):tx,"disp");
+    box.appendChild(d);
+  });
+  renderMath(box);
+}
+function readInputs(){
+  if($("srcop").value) state.srcOp=$("srcop").value;
+  if($("seedtype").value) state.seedType=$("seedtype").value;
+  if($("steps").value!==undefined&&$("steps").value!=="") state.steps=Number($("steps").value);
+  if($("windowK").value!==undefined&&$("windowK").value!=="") state.windowK=Number($("windowK").value);
+  $("srcopfield").hidden = state.seedType==="density";
+  $("windowfield").hidden = state.seedType!=="density";
+  $("densityhint").hidden = state.seedType!=="density";
+}
+/* Is the current Hamiltonian genuinely 1D (every two-body term has dy=0)?
+   Used to decide whether the density-seed window needs a 2D box (expensive:
+   site count ~ width^2) or just a 1D line (cheap: site count ~ width). */
+function isHamiltonian1D(twoBody){
+  return twoBody.every(t=>!t.coeff || t.dy===0);
+}
+/* Finite-window total-energy seed: Sum_i h_i over a fixed window. The
+   Hamiltonian's own one-body and two-body terms summed over every site in a
+   finite window around the origin (q=0 case of the finite-q operator O_q in
+   PCAS arXiv:1812.08657 eq.102, Appendix C -- the actual seed their Fig.4
+   uses, not a single Pauli string). The window is a truncation of a
+   infinite-lattice generator acts across the window boundary from the first
+   commutator, so K is a comparison parameter rather than an exactness radius. */
+function buildDensitySeed(oneBody, twoBody, K, oneD){
+  const m=new Map();
+  const addTo=(entries,coeff)=>{ const key=canonKeyFromMap(entriesToMap(entries)),next=(m.get(key)||0)+coeff;
+    if(next===0)m.delete(key);else m.set(key,next); };
+  if(oneD){
+    for(let x=-K;x<=K;x++){
+      for(const t of oneBody){ if(!t.coeff) continue; const l=OPS.indexOf(t.op); if(l<1) continue;
+        addTo([[x,0,l]], t.coeff); }
+      for(const t of twoBody){ if(!t.coeff) continue; const a=OPS.indexOf(t.opA), b=OPS.indexOf(t.opB); if(a<1||b<1) continue;
+        const x2=x+t.dx; if(x2>K||x2<-K) continue; // keep the bond fully inside the window
+        addTo([[x,0,a],[x2,0,b]], t.coeff); }
+    }
+  } else {
+    for(let x=-K;x<=K;x++) for(let y=-K;y<=K;y++){
+      for(const t of oneBody){ if(!t.coeff) continue; const l=OPS.indexOf(t.op); if(l<1) continue;
+        addTo([[x,y,l]], t.coeff); }
+      for(const t of twoBody){ if(!t.coeff) continue; const a=OPS.indexOf(t.opA), b=OPS.indexOf(t.opB); if(a<1||b<1) continue;
+        const x2=x+t.dx, y2=y+t.dy; if(x2>K||x2<-K||y2>K||y2<-K) continue;
+        addTo([[x,y,a],[x2,y2,b]], t.coeff); }
+    }
+  }
+  return m;
+}
+function sizeNote(){
+  const box=$("sizewarn"), n=state.steps;
+  if(n>=13){
+    box.innerHTML = curLang==="zh"
+      ? `<div class="note warn"><strong>已经设到 ${n} 步——这个区间会很慢。</strong>可达算符数每步大致 &times;3 增长,
+         第 13 步附近已经有 200 万级别的字符串。这一步本身可能要几十秒到一分钟以上;图表会在每一步结束后更新,
+         运行按钮在计算中会变成"停止",可以随时中断,已经算出的步骤不会丢。</div>`
+      : `<div class="note warn"><strong>${n} steps is deep into slow territory.</strong> The reachable-operator
+         count grows roughly &times;3 per step, and by step 13 it is already in the low millions. That single
+         step alone can take tens of seconds to a minute or more. The chart updates after every completed step,
+         and the Run button turns into Stop while it's working, so you can interrupt at any time without losing
+         the steps already computed.</div>`;
+  } else if(n>=11){
+    box.innerHTML = curLang==="zh"
+      ? `<div class="note warn"><strong>${n} 步应该要几秒到十几秒。</strong>可达算符数每步大致 &times;3 增长——
+         没问题,只是提前说一声,不是卡住了。</div>`
+      : `<div class="note warn"><strong>${n} steps should take a few to several seconds.</strong> The
+         reachable-operator count grows roughly &times;3 per step &mdash; expected, not stuck.</div>`;
+  } else {
+    box.textContent="";
+  }
+}
+function refreshQuiet(){ readInputs(); renderFormula(); syncPresetLabel(); sizeNote(); }
+// Without this, switching the preset (or editing a term) leaves the OLD
+// run's chart and readouts sitting on screen with nothing to say they no
+// longer match the model shown above -- exactly what made "1D vs 2D give
+// the same result" look like a bug: the second preset's numbers were never
+// actually computed, the first preset's numbers were just still there.
+function markDirty(){
+  dirty=true;
+  if(!bs.length) return;              // nothing computed yet -- nothing to go stale
+  document.body.classList.add("stale");
+  $("run").classList.add("needs");
+  if(running) return;                 // don't stomp the "computing step n..." status
+  const st=$("status"), zh=curLang==="zh";
+  st.className="status";
+  st.textContent = zh
+    ? "设置已修改 —— 按「运行」重新计算。下面的曲线还是上一个模型的结果。"
+    : "Settings changed — press Run to recompute. The chart below is still the previous model's.";
+}
+function clearDirty(){
+  dirty=false;
+  document.body.classList.remove("stale");
+  $("run").classList.remove("needs");
+}
+function refresh(){ refreshQuiet(); markDirty(); }
+
+function snapshotInputs(){
+  return {
+    oneBody:(state.oneBody||[]).map(t=>({...t})),
+    twoBody:(state.twoBody||[]).map(t=>({...t})),
+    srcOp:state.srcOp||"Z",steps:state.steps,seedType:state.seedType||"site",
+    windowK:state.seedType==="density"?(state.windowK??8):null
+  };
+}
+function inputSignature(input){return JSON.stringify(input);}
+function exportSnapshot(){return runRecord;}
+function downloadSnapshot(){
+  if(!runRecord)return;
+  const blob=new Blob([JSON.stringify(runRecord,null,2)+"\n"],{type:"application/json"});
+  const url=URL.createObjectURL(blob),a=document.createElement("a");
+  a.href=url;a.download=`operator_growth_${runRecord.inputs.seedType}_n${runRecord.bn.length}.json`;
+  document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+}
+function renderProvenance(){
+  const box=$("provenance");if(!box||!runRecord){if(box)box.textContent="";return;}
+  const i=runRecord.inputs;
+  const one=i.oneBody.map(t=>`${t.coeff}·${t.op}`).join(", ")||"—";
+  const two=i.twoBody.map(t=>`${t.coeff}·${t.opA}${t.opB}@(${t.dx},${t.dy})`).join(", ")||"—";
+  box.textContent=(curLang==="zh"?"本次计算：":"Run inputs: ")+
+    `${i.seedType}, steps=${i.steps}${i.seedType==="density"?", K="+i.windowK:""}; one-body [${one}]; two-body [${two}]`;
+}
+
+function fmtInt(n){ return n.toLocaleString(); }
+function setReadouts(){
+  const n=bs.length;
+  const cells = curLang==="zh" ? [
+    [I18N.zh.ro_n, "", n?String(n):"—"],
+    [I18N.zh.ro_bn, tex("b_n"), n?bs[n-1].toFixed(4):"—"],
+    [I18N.zh.ro_dim, "", n?fmtInt(dims[n]):"—"],
+    [I18N.zh.ro_dimratio, "", n>=2&&dims[n-2]>0?(dims[n]/dims[n-2]).toFixed(2)+"×":"—"],
+    [I18N.zh.ro_alpha, tex("b_n-b_{n-1}"), n>=2?(bs[n-1]-bs[n-2]).toFixed(4):"—"],
+    [I18N.zh.ro_time, "", n?(stepMs[n-1]<1000?stepMs[n-1].toFixed(0)+" ms":(stepMs[n-1]/1000).toFixed(1)+" s"):"—"],
+  ] : [
+    [I18N.en.ro_n, "", n?String(n):"—"],
+    [I18N.en.ro_bn, tex("b_n"), n?bs[n-1].toFixed(4):"—"],
+    [I18N.en.ro_dim, "", n?fmtInt(dims[n]):"—"],
+    [I18N.en.ro_dimratio, "", n>=2&&dims[n-2]>0?(dims[n]/dims[n-2]).toFixed(2)+"×":"—"],
+    [I18N.en.ro_alpha, tex("b_n-b_{n-1}"), n>=2?(bs[n-1]-bs[n-2]).toFixed(4):"—"],
+    [I18N.en.ro_time, "", n?(stepMs[n-1]<1000?stepMs[n-1].toFixed(0)+" ms":(stepMs[n-1]/1000).toFixed(1)+" s"):"—"],
+  ];
+  const box=$("readouts"); box.textContent="";
+  for(const [k,u,v] of cells){
+    const d=document.createElement("div"); d.className="ro";
+    const kk=document.createElement("div"); kk.className="k"; kk.textContent=k; d.appendChild(kk);
+    const vv=document.createElement("div"); vv.className="v"; vv.textContent=v;
+    if(u){ const uu=document.createElement("span"); uu.className="u"; uu.innerHTML=" "+u; vv.appendChild(uu); }
+    d.appendChild(vv);
+    box.appendChild(d);
+  }
+  if(n>=4 && state.seedType==="density"){
+    const note2=document.createElement("div"); note2.className="dim tex-note";
+    note2.style.gridColumn="1/-1"; note2.style.padding="2px 12px 10px"; note2.style.fontSize="11px";
+    note2.innerHTML = I18N[curLang].dimratio_note;
+    box.appendChild(note2);
+    renderMath(note2);
+  }
+}
+function plotChart(){
+  const svg=$("chart"), svgSlope=$("chartSlope"), svgDim=$("chartDim");
+  if(!bs.length){
+    for(const s of [svg,svgSlope,svgDim]) s.textContent="";
+    for(const id of ["chartlegend","chartlegendSlope","chartlegendDim"]) $(id).innerHTML="";
+    for(const id of ["chartcap","chartcapSlope","chartcapDim"]) $(id).textContent="";
+    return;
+  }
+  const zh=curLang==="zh";
+  // Step 0 is the seed itself, before any Lanczos application: b_0≡0 and
+  // slope_1=b_1-b_0=b_1 by the same convention already used below (i===0
+  // branch), so prepending an explicit (0,0) point is not a new assumption,
+  // just drawing the boundary condition the math already uses. dims[0] is
+  // already the seed's own reachable-string count, so the dimension chart
+  // gets a real (not fabricated) step-0 point for free.
+  const xs=[...Array(bs.length+1)].map((_,i)=>i);
+  const bs0=[0,...bs];
+  const slopes=bs.map((b,i)=>i===0?b:b-bs[i-1]);
+  const slopes0=[0,...slopes];
+  const xmax=Math.max(bs.length,1);
+
+  // --- chart 1: b_n itself ---
+  {
+    const {W,H}=chartBox(svg,0.4);
+    const ymax=Math.max(...bs0)*1.15||1;
+    drawLines(svg,[{x:xs,y:bs0,color:cssvar("--accent"),label:"b_n"}],
+      {W,H,xmax,ymin:0,ymax,xtitle:zh?"步数 n":"step n",
+       ytitle:"b_n", yfmt:v=>v.toFixed(0)});
+    renderMath($("chartlegend").parentElement);
+    $("chartlegend").innerHTML = zh
+      ? `<span><i class="swatch" style="background:${cssvar('--accent')}"></i> Lanczos 系数 b_n</span>`
+      : `<span><i class="swatch" style="background:${cssvar('--accent')}"></i> Lanczos coefficient b_n</span>`;
+    $("chartcap").textContent = zh
+      ? `已计算 ${bs.length} 步；最新 b_n = ${bs[bs.length-1].toFixed(3)}。`
+      : `${bs.length} step${bs.length===1?"":"s"} computed; latest b_n = ${bs[bs.length-1].toFixed(3)}.`;
+  }
+
+  // --- chart 2: local slope alpha_n = b_n - b_{n-1} ---
+  {
+    const {W,H}=chartBox(svgSlope,0.4);
+    const slopeLo=Math.min(0,...slopes0), slopeHi=Math.max(...slopes0);
+    const pad=(slopeHi-slopeLo)*0.15||1;
+    drawLines(svgSlope,[{x:xs,y:slopes0,color:cssvar("--warm"),label:zh?"斜率":"slope"}],
+      {W,H,xmax,ymin:slopeLo-pad,ymax:slopeHi+pad,xtitle:zh?"步数 n":"step n",
+       ytitle:"α_n", yfmt:v=>v.toFixed(1)});
+    renderMath($("chartlegendSlope").parentElement);
+    $("chartlegendSlope").innerHTML = zh
+      ? `<span><i class="swatch" style="background:${cssvar('--warm')}"></i> 局部斜率 &alpha;_n = b_n&minus;b_{n-1}</span>`
+      : `<span><i class="swatch" style="background:${cssvar('--warm')}"></i> local slope &alpha;_n = b_n&minus;b_{n-1}</span>`;
+    $("chartcapSlope").textContent = zh
+      ? "这是有限阶相邻系数差，仅用于观察趋势；它不是渐近斜率或李雅普诺夫界。"
+      : "These are finite-order adjacent differences for trend inspection, not an asymptotic slope or a Lyapunov bound.";
+  }
+
+  // --- chart 3: reachable operator count, log scale (the paper's own Fig. 2/6/9-style diagnostic) ---
+  {
+    const {W,H}=chartBox(svgDim,0.4);
+    const logDims=dims.map(d=>Math.log10(Math.max(d,1))); // dims[0] is the seed itself, at step 0
+    const ymax=Math.max(...logDims)*1.08||1;
+    drawLines(svgDim,[{x:xs,y:logDims,color:cssvar("--t3"),label:zh?"可达算符数":"reachable count"}],
+      {W,H,xmax,ymin:0,ymax,xtitle:zh?"步数 n":"step n",
+       ytitle:zh?"可达算符数":"reachable count",
+       yfmt:v=>fmtInt(Math.round(10**v))});
+    renderMath($("chartlegendDim").parentElement);
+    $("chartlegendDim").innerHTML = zh
+      ? `<span><i class="swatch" style="background:${cssvar('--t3')}"></i> 可达 Pauli 串数(对数坐标)</span>`
+      : `<span><i class="swatch" style="background:${cssvar('--t3')}"></i> reachable Pauli-string count (log scale)</span>`;
+    const n=dims.length-1;
+    // Two steps apart avoids mixing even/odd branches. This remains a
+    // finite-order storage diagnostic; see dimratio_note.
+    const ratio=n>=2 && dims[n-2]>0 ? (dims[n]/dims[n-2]) : null;
+    $("chartcapDim").textContent = zh
+      ? `当前存储字符串数 ${fmtInt(dims[dims.length-1])}${ratio!=null?`；隔两步比值 ${ratio.toFixed(2)}×`:''}。该计数依赖有限阶、阈值和种子，不能单独判定混沌或可积。`
+      : `Stored strings: ${fmtInt(dims[dims.length-1])}${ratio!=null?`; two-step ratio ${ratio.toFixed(2)}×`:''}. This finite-order, seed-dependent count is not by itself a chaos/integrability test.`;
+  }
+}
+
+async function run(){
+  if(running){ stopRequested=true; return; }
+  const st=$("status"),pr=$("prog"),runBtn=$("run");
+  let model,inputs;
+  try{inputs=snapshotInputs();model=prepareModel(inputs);}
+  catch(error){st.className="status err";st.textContent=error.message;return;}
+  clearDirty();running=true;stopRequested=false;
+  runBtn.textContent=I18N[curLang].stopBtn;runBtn.classList.add("stopping");
+  st.className="status busy";pr.hidden=false;pr.firstElementChild.style.width="0%";
+  bs=[];dims=[];stepMs=[];setReadouts();plotChart();
+  const startedAt=new Date().toISOString(),t0all=performance.now();
+  let status="completed",message="",q,prev=null,beta=0,rawNorms=[],thresholds=[],corrections=[];
+  try{
+    if(model.inputs.seedType==="density"){
+      const seedMap=buildDensitySeed(model.oneBody,model.twoBody,model.inputs.windowK,isHamiltonian1D(model.twoBody));
+      q=normalizeVector(seedMap);
+    }else{
+      const letter=OPS.indexOf(model.inputs.srcOp);
+      if(letter<1)throw new GrowthError("input","invalid site seed");
+      q=new Map([[canonKeyFromMap(entriesToMap([[0,0,letter]])),1]]);
+    }
+    dims=[q.size];
+    for(let n=1;n<=model.inputs.steps;n++){
+      if(stopRequested){status="stopped";break;}
+      const t0=performance.now();
+      st.textContent=(curLang==="zh"?`正在计算第 ${n}/${model.inputs.steps} 步`:`Computing step ${n}/${model.inputs.steps}`);
+      const result=await lanczosStep(q,prev,beta,model,f=>{
+        pr.firstElementChild.style.width=(((n-1+f)/model.inputs.steps)*100).toFixed(1)+"%";
+      },()=>stopRequested);
+      if(stopRequested||result.stopped){status="stopped";break;}
+      const physicalB=result.b*model.scale;
+      bs.push(physicalB);rawNorms.push(result.rawNorm*model.scale);
+      thresholds.push(result.threshold*model.scale);corrections.push(result.localCorrection);
+      stepMs.push(performance.now()-t0);
+      if(result.closed){dims.push(0);status="closed";setReadouts();plotChart();break;}
+      prev=q;q=result.q;beta=result.b;dims.push(q.size);
+      pr.firstElementChild.style.width=((n/model.inputs.steps)*100).toFixed(1)+"%";
+      setReadouts();plotChart();
+      await new Promise(r=>setTimeout(r,0));
+    }
+  }catch(error){
+    status=error instanceof GrowthError?error.code:"error";
+    if(status!=="resource")status="error";
+    message=error.message||String(error);
+  }finally{
+    const totalSeconds=(performance.now()-t0all)/1000;
+    const changed=inputSignature(snapshotInputs())!==inputSignature(model.inputs);
+    runRecord={
+      schemaVersion:1,status,message,startedAt,completedAt:new Date().toISOString(),
+      totalSeconds,inputs:model.inputs,scale:model.scale,bn:[...bs],
+      storedTerms:[...dims],stepMilliseconds:[...stepMs],rawResidualNorms:rawNorms,
+      breakdownThresholds:thresholds,localCorrections:corrections,
+      settingsChangedSinceStart:changed
+    };
+    pr.hidden=true;running=false;runBtn.textContent=I18N[curLang].runBtn;runBtn.classList.remove("stopping");
+    st.className=status==="error"||status==="resource"?"status err":"status";
+    renderRunSummary();renderProvenance();
+  }
+}
+function renderRunSummary(){
+  if(!runRecord) return;
+  const st=$("status"), zh=curLang==="zh";
+  const labels=zh
+    ?{completed:"完成",closed:"数值闭合",stopped:"已停止",resource:"达到资源上限",error:"错误"}
+    :{completed:"completed",closed:"numerically closed",stopped:"stopped",resource:"resource limit",error:"error"};
+  st.textContent=`${labels[runRecord.status]||runRecord.status} · ${runRecord.bn.length} ${zh?"步":"steps"} · ${runRecord.totalSeconds.toFixed(2)} s`+
+    (runRecord.message?` · ${runRecord.message}`:"")+
+    (runRecord.settingsChangedSinceStart?(zh?" · 设置已修改；图表仍属于本次快照":" · settings changed; charts still belong to this snapshot"):"");
+}
+
+function applyPreset(key){
+  const p=PRESETS[key]; if(!p) return;
+  state.oneBody=p.one.map(([op,coeff])=>({op,coeff}));
+  state.twoBody=p.two.map(([dx,dy,opA,opB,coeff])=>({dx,dy,opA,opB,coeff}));
+  renderTerms(); refresh();
+}
+
+/* theme toggle */
+$("theme").addEventListener("click",()=>{
+  const root=document.documentElement;
+  const dark=root.getAttribute("data-theme")==="dark" ||
+    (!root.hasAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+  root.setAttribute("data-theme",dark?"light":"dark");
+  plotChart();
+});
+$("lang").addEventListener("click",()=>{
+  curLang = curLang==="en" ? "zh" : "en";
+  applyLang();
+  renderFormula(); sizeNote(); setReadouts(); plotChart(); renderRunSummary(); renderProvenance();
+  if(!running) $("run").textContent=I18N[curLang].runBtn;
+});
+$("preset").addEventListener("change",e=>{
+  if(e.target.value==="custom") return;
+  applyPreset(e.target.value);
+});
+$("add1").addEventListener("click",()=>{ state.oneBody.push({op:"X",coeff:-1}); renderTerms(); refresh(); });
+$("add2").addEventListener("click",()=>{ state.twoBody.push({dx:1,dy:0,opA:"Z",opB:"Z",coeff:-1}); renderTerms(); refresh(); });
+for(const id of ["srcop","steps","seedtype","windowK"]) $(id).addEventListener("change",()=>{ refresh(); });
+$("run").addEventListener("click",run);
+$("exportBtn").addEventListener("click",downloadSnapshot);
+let resizeTimer=null;
+addEventListener("resize",()=>{ clearTimeout(resizeTimer);
+  resizeTimer=setTimeout(()=>{ plotChart(); },150); });
+
+/* ------------------------------------------------------------------ init */
+applyPreset("mfi");
+applyLang();
+setReadouts();
+</script>
+</body>
+</html>
