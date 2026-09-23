@@ -10,7 +10,7 @@ This is a self-contained, template-free personal website served as static files.
 - `scripts/build_site.py` and `scripts/localize_site.py`: the small static-site generator
 - generated HTML routes for the English and Chinese website
 - `.nojekyll`, `robots.txt`, and `sitemap.xml`: deployment files
-- `meetingroom/`: a standalone browser-based meeting setup prototype
+- `meetingroom/`: a browser-based peer-to-peer meeting room with room passwords and administrator controls
 
 ## What is deliberately excluded
 

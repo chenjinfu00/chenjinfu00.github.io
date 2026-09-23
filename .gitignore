@@ -5,3 +5,4 @@ local-preview/
 output/
 tmp/
 *.pdf
+/meetingroom-control/
