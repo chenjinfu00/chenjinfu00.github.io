@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en" data-dimension="1d">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1D Operator Spreading Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="operator_spreading_shared.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <p class="eyebrow" data-i18n="eyebrow">Quantum operator dynamics · computed locally</p>
+      <h1 data-i18n="title">Operator Spreading Lab</h1>
+      <p class="lede" data-i18n="lede">Explore Pauli-spin Hamiltonians on rectangular lattices. Choose full-trace operator evolution or a random-state trace estimate; each result states its method and measured sites.</p>
+    </div>
+    <div class="runbar">
+      <button class="ghost" id="lang" aria-label="Switch language / 切换语言">中文</button>
+      <a class="ghost" id="dimensionLink" href="operator_spreading_2d.html">2D &rarr;</a>
+      <a class="ghost" href="operator_growth_bound.html" data-i18n="growthLink">Operator growth explorer &rarr;</a>
+      <button class="ghost" id="theme" aria-label="Toggle theme" data-i18n="themeBtn">◐ theme</button>
+      <button class="primary" id="run" data-i18n="runBtn">Run</button>
+      <button id="stop" hidden data-i18n="stopBtn">Stop</button>
+    </div>
+  </header>
+  <div class="result-context" id="resultcontext" aria-live="polite"></div>
+
+  <div class="toprow">
+    <section class="panel ctl">
+      <h2 data-i18n="setupModel">Set up the model</h2>
+      <div class="ctlgrid">
+
+        <div class="ctlcol">
+          <div class="field">
+            <label for="preset" data-i18n="presetLabel">Preset</label>
+            <select id="preset">
+              <option value="mfi2d" data-i18n="opt_mfi2d">2D mixed-field Ising (h_x near h_c)</option>
+              <option value="tfim2d" data-i18n="opt_tfim2d">2D transverse-field Ising</option>
+              <option value="mfi1d" data-i18n="opt_mfi1d">1D mixed-field chain</option>
+              <option value="tfim1d" data-i18n="opt_tfim1d">1D TFIM (integrable)</option>
+              <option value="xxz1d" data-i18n="opt_xxz1d">1D XXZ + next-nearest ZZ (U(1))</option>
+              <option value="heis1d" data-i18n="opt_heis1d">1D Heisenberg</option>
+              <option value="xxz2d" data-i18n="opt_xxz2d">2D XXZ + diagonal ZZ (U(1))</option>
+              <option value="heis2d" data-i18n="opt_heis2d">2D Heisenberg</option>
+              <option value="custom" data-i18n="opt_custom">General spin model (your own terms)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="engine" data-i18n="engineLabel">Engine</label>
+            <select id="engine">
+              <option value="pauli" selected data-i18n="opt_engine_pauli">Exact operator-space (&le;9 sites, every distance in one run)</option>
+              <option value="statevec" data-i18n="opt_engine_statevec">State-vector trace estimate (≤16 sites, one representative per distance)</option>
+            </select>
+          </div>
+
+          <p class="sub" data-i18n="latticeSub">Lattice</p>
+          <div class="row">
+            <div class="field"><label for="lx"><span class="tex">L_x</span></label><input id="lx" type="number" min="1" max="16" value="3"></div>
+            <div class="field only-2d"><label for="ly"><span class="tex">L_y</span></label><input id="ly" type="number" min="1" max="16" value="2"></div>
+            <div class="field"><label for="bc" data-i18n="boundaryLabel">Boundary</label>
+              <select id="bc"><option value="obc" data-i18n="opt_obc">open</option><option value="pbc" data-i18n="opt_pbc">periodic</option></select></div>
+          </div>
+
+          <p class="sub" data-i18n="probeTimeSub">Probe and time window</p>
+          <div class="row gridrow">
+            <div class="field"><label for="srcop" data-i18n="srcLabel">Source <span class="tex">W</span></label>
+              <select id="srcop"><option>X</option><option>Y</option><option selected>Z</option></select></div>
+            <div class="field"><label for="srcx" data-i18n="srcXLabel">Source x</label>
+              <input id="srcx" type="number" min="1" max="3" step="1" value="2"></div>
+            <div class="field only-2d"><label for="srcy" data-i18n="srcYLabel">Source y</label>
+              <input id="srcy" type="number" min="1" max="2" step="1" value="2"></div>
+            <div class="field"><label for="probeop" data-i18n="probeLabel">Probe <span class="tex">V</span></label>
+              <select id="probeop"><option>X</option><option>Y</option><option selected>Z</option></select></div>
+            <div class="field"><label for="tmax" data-i18n="tmaxLabel"><span class="tex">t</span> max</label><input id="tmax" type="number" min="1" max="200" step="1" value="15"></div>
+            <div class="field"><label for="nt" data-i18n="ntLabel">time points</label><input id="nt" type="number" min="2" max="600" step="1" value="150"></div>
+          </div>
+          <div class="row" id="svrow" hidden>
+            <div class="field"><label for="svseed" data-i18n="svSeedLabel">Typicality seed</label>
+              <input id="svseed" type="number" min="0" max="4294967295" step="1" value="1"></div>
+          </div>
+          <p class="dim hint" data-i18n="hint1">Operators are Pauli matrices (eigenvalues ±1), not spin matrices σ/2; ℏ=1. Set the one-based source x/y coordinates here or click a lattice site; both controls stay synchronized. The plot legend identifies the evaluated sites.</p>
+          <p class="dim hint" id="svhint" data-i18n="svHint" hidden>One random state and one representative per distance. These are not full-shell averages. Change the seed to assess sample variation; a single sample provides no error bar. Start with 6–12 output times.</p>
+
+          <p class="sub" data-i18n="disorderSub">On-site disorder</p>
+          <div class="disorder-controls">
+            <div class="field"><label for="disorderMode" data-i18n="disorderModeLabel">Distribution</label>
+              <select id="disorderMode"><option value="none" data-i18n="opt_disorder_none">off</option><option value="uniform" data-i18n="opt_disorder_uniform">uniform</option><option value="gaussian" data-i18n="opt_disorder_gaussian">Gaussian</option><option value="binary" data-i18n="opt_disorder_binary">binary ±Δ</option></select></div>
+            <div class="field"><label for="disorderOp" data-i18n="disorderOpLabel">axis</label>
+              <select id="disorderOp"><option>X</option><option>Y</option><option selected>Z</option></select></div>
+            <div class="field"><label for="disorderStrength" data-i18n="disorderStrengthLabel">scale Δ / σ</label>
+              <input id="disorderStrength" type="number" min="0" max="100" step="0.05" value="0.5"></div>
+            <div class="field"><label for="disorderSeed" data-i18n="disorderSeedLabel">disorder seed</label>
+              <input id="disorderSeed" type="number" min="0" max="4294967295" step="1" value="1"></div>
+          </div>
+          <div class="disorder-actions"><button class="ghost" id="generateDisorder" data-i18n="generateDisorderBtn">Generate new realization</button></div>
+          <p class="dim hint" data-i18n="disorderHint">Choose a distribution and scale. The seed fixes the complete site-by-site realization; Generate advances to a new reproducible seed.</p>
+          <div class="disorder-preview" id="disorderPreview" aria-live="polite"></div>
+          <p class="disorder-summary" id="disorderSummary"></p>
+        </div>
+
+        <div class="ctlcol">
+          <div class="thead">
+            <label data-i18n="oneBodyLabel">One-body &nbsp;<span class="dim tex">h^{\alpha}\sum_i S^{\alpha}_i</span></label>
+            <button class="icon ghost" id="add1" data-i18n="addTermBtn">+ term</button>
+          </div>
+          <div class="tbl-scroll"><table class="terms"><thead><tr>
+            <th style="width:64px" data-i18n="opHeader">op</th><th data-i18n="coeffHeader">coefficient</th><th style="width:34px"></th>
+          </tr></thead><tbody id="tb1"></tbody></table></div>
+
+          <div class="thead" style="margin-top:14px">
+            <label data-i18n="twoBodyLabel">Two-body &nbsp;<span class="dim tex">J^{\alpha\beta}\sum_i S^{\alpha}_i S^{\beta}_{i+\delta}</span></label>
+            <button class="icon ghost" id="add2" data-i18n="addTermBtn">+ term</button>
+          </div>
+          <div class="tbl-scroll"><table class="terms"><thead><tr>
+            <th style="width:44px"><span class="tex">\delta x</span></th>
+            <th class="only-2d" style="width:44px"><span class="tex">\delta y</span></th>
+            <th style="width:52px"><span class="tex">S^{\alpha}_i</span></th>
+            <th style="width:52px"><span class="tex">S^{\beta}_j</span></th>
+            <th data-i18n="coeffHeader">coefficient</th><th style="width:34px"></th>
+          </tr></thead><tbody id="tb2"></tbody></table></div>
+        </div>
+      </div>
+
+      <div class="formula" id="formula"></div>
+    </section>
+
+    <section class="panel">
+      <h2 data-i18n="readoutPanel">Readout</h2>
+      <div class="readouts" id="readouts"></div>
+      <div class="prog" id="prog" hidden><i></i></div>
+      <p class="status" id="status"></p>
+      <div id="sizewarn"></div>
+      <div id="runnote"></div>
+    </section>
+  </div>
+
+  <section class="panel wide latpanel">
+    <h2 data-i18n="latticePanel">Lattice</h2>
+    <div class="stack">
+      <svg class="lat" id="lat" viewBox="0 0 200 140" role="img" aria-label="Lattice with the interaction bonds of each term"></svg>
+      <aside class="latlegend" aria-label="Interaction legend">
+        <p class="latlegend-title" data-i18n="latLegendTitle">Interaction legend</p>
+        <div class="latleg" id="latleg"></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="panel wide">
+    <div class="panelhead">
+      <h2 data-i18n="lightConePanel">Light cone</h2>
+      <select id="conemode" aria-label="How to group the probe sites">
+        <option value="site" selected data-i18n="opt_site">every site (numbered)</option>
+        <option value="shell" data-i18n="opt_shell">shell average (by distance)</option>
+      </select>
+    </div>
+    <div class="eq" style="margin:2px 0 12px;justify-content:flex-start" data-i18n="coneDef">
+      <span class="tex disp">C_r(t)=2^{-N}\,\mathrm{Tr}\!\left[W(t),V_r\right]^{\dagger}\!\left[W(t),V_r\right]=4\sum_{\{S,V_r\}=0}a_S(t)^2</span>
+    </div>
+    <p class="dim" style="margin:-6px 0 12px;font-size:12.5px" data-i18n="coneDefNote">The squared commutator lies in [0,4] for normalized Pauli operators. C=0 means commutation; C=2 is a common scrambling reference, not sufficient evidence of chaos or a guaranteed plateau.</p>
+    <figure>
+      <svg class="chart" id="cone" viewBox="0 0 640 300" role="img" aria-label="OTOC versus time, one curve per numbered site by default"></svg>
+      <div class="legend" id="conelegend"></div>
+      <figcaption id="conecap"></figcaption>
+    </figure>
+  </section>
+
+  <section class="panel wide">
+    <h2 data-i18n="localMemoryPanel">Local memory</h2>
+    <div class="eq" style="margin:2px 0 12px;justify-content:flex-start" data-i18n="memDef">
+      <span class="tex disp">A_W(t)=2^{-N}\,\mathrm{Tr}\!\left[W\,W(t)\right]=a_W(t)</span>
+    </div>
+    <p class="dim" style="margin:-6px 0 12px;font-size:12.5px" data-i18n="memDefNote">Local autocorrelation starts at 1. Finite systems can oscillate or retain memory through several conserved quantities; convergence to zero or to the energy contribution alone is not guaranteed.</p>
+    <figure>
+      <svg class="chart" id="mem" viewBox="0 0 640 260" role="img" aria-label="Local autocorrelation versus time"></svg>
+      <div class="legend">
+        <span><i class="swatch" style="background:var(--accent)"></i> <span class="tex">A_W(t)</span> <span data-i18n="rawWord">raw</span></span>
+        <span><i class="swatch" style="background:var(--warm)"></i> <span data-i18n="projWord">energy contribution removed</span></span>
+      </div>
+      <figcaption id="memcap"></figcaption>
+    </figure>
+  </section>
+
+  <details class="meth">
+    <summary data-i18n="detailsSummary1">What you can set, and what comes out</summary>
+
+    <p class="sub" style="font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:.08em;
+      text-transform:uppercase;color:var(--ink-3);margin:2px 0 6px" data-i18n="inputsHeader">Inputs</p>
+    <table class="io">
+      <thead><tr><th data-i18n="thControl">Control</th><th data-i18n="thWhatItSets">What it sets</th><th data-i18n="thRange">Range</th></tr></thead>
+      <tbody>
+        <tr><td class="n" data-i18n="in1n">Preset</td>
+          <td data-i18n="in1d">Loads a complete model in one click. It is only a starting point: the moment you change a
+            coefficient, an operator or an offset, the label switches to <em>General spin model</em>, so it can
+            never claim &ldquo;Ising&rdquo; for something you have since edited. Edit the terms back and the
+            original name returns.</td><td class="w" data-i18n="in1r">6 built-ins + custom</td></tr>
+        <tr><td class="n" data-i18n="in2n"><span class="tex">L_x</span>, <span class="tex">L_y</span>, boundary</td>
+          <td data-i18n="in2d">Rectangular lattice with open or periodic boundaries. Equal-Pauli bonds are undirected and deduplicated; mixed-Pauli interactions retain orientation.</td>
+          <td class="w">Pauli: N ≤ 9 · state vector: N ≤ 16</td></tr>
+        <tr><td class="n" data-i18n="in3n">One-body terms</td>
+          <td data-i18n="in3d"><span class="tex">h^{\alpha}\sum_i S^{\alpha}_i</span> — a uniform field, one row per Pauli
+            direction. Several rows may use the same direction; they add.</td>
+          <td class="w"><span class="tex">\alpha\in\{X,Y,Z\}</span>, real <span class="tex">h</span></td></tr>
+        <tr><td class="n" data-i18n="in4n">Two-body terms</td>
+          <td data-i18n="in4d"><span class="tex">J^{\alpha\beta}\sum_i S^{\alpha}_i S^{\beta}_{i+\delta}</span> — a coupling at
+            <em>any</em> lattice offset, so nearest, next-nearest <span class="tex">(1,1)</span>, third-neighbour
+            <span class="tex">(2,0)</span> and anisotropic couplings are all just rows.
+            <span class="tex">\alpha</span> and <span class="tex">\beta</span> are independent, so
+            <span class="tex">X_iZ_j</span> is as easy as <span class="tex">Z_iZ_j</span>. Several rows may share
+            one offset — that is how XXZ and Heisenberg are built, and the lattice draws them as parallel strands.</td>
+          <td class="w">integer <span class="tex">\delta</span>, real <span class="tex">J</span></td></tr>
+        <tr><td class="n" data-i18n="in5n">Source site</td><td data-i18n="in5d">Every lattice site is numbered 1&ndash;<span class="tex">N</span>
+          right inside its circle; click one or enter its one-based x/y coordinates to make it the source (the source's circle fills in and gets a
+          white number). Under open boundaries the corner and the centre give different shell structures,
+          which is itself a useful check. Switch the light-cone view below to &ldquo;every site&rdquo; to see
+          each numbered site's own OTOC curve rather than the shell average.</td>
+          <td class="w" data-i18n="in5r">any site</td></tr>
+        <tr><td class="n" data-i18n="in6n">Source <span class="tex">W</span></td>
+          <td data-i18n="in6d">The operator that spreads. It sits on the source site and defines both the light cone and the local
+            memory curve.</td><td class="w"><span class="tex">X</span>, <span class="tex">Y</span>, <span class="tex">Z</span></td></tr>
+        <tr><td class="n" data-i18n="in7n">Probe <span class="tex">V</span></td>
+          <td data-i18n="in7d">The operator the commutator is taken against, placed on <em>every</em> site in turn. It is chosen
+            independently of <span class="tex">W</span>: <span class="tex">W=Z</span> with
+            <span class="tex">V=X</span> is a different and perfectly valid measurement, and then
+            <span class="tex">C_0(0)=4</span> because the two anticommute on the shared site.</td>
+          <td class="w"><span class="tex">X</span>, <span class="tex">Y</span>, <span class="tex">Z</span></td></tr>
+        <tr><td class="n" data-i18n="in8n"><span class="tex">t</span> max, time points</td>
+          <td data-i18n="in8d">Output times are sampled from numerical evolution with internally controlled substeps. Arrival-time interpolation and late-window statistics can still depend strongly on grid spacing.</td>
+          <td class="w" data-i18n="in8r">up to 600 points</td></tr>
+        <tr><td class="n" data-i18n="in9n">On-site disorder</td>
+          <td data-i18n="in9d">Adds an independent seeded random field to each site. The realized site coefficients, not only the seed, are stored in JSON exports.</td>
+          <td class="w" data-i18n="in9r">uniform · Gaussian · binary</td></tr>
+      </tbody>
+    </table>
+
+    <p class="sub" style="font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:.08em;
+      text-transform:uppercase;color:var(--ink-3);margin:16px 0 6px" data-i18n="outputsHeader">Outputs</p>
+    <table class="io">
+      <thead><tr><th data-i18n="thQuantity">Quantity</th><th data-i18n="thMeaning">Meaning</th><th data-i18n="thWhere">Where</th></tr></thead>
+      <tbody>
+        <tr><td class="n"><span class="tex">C_r(t)</span></td>
+          <td data-i18n="out1d">Full-shell mean in operator mode; one representative site per distance in random-state mode. These spatial samplings are explicitly distinguished.</td><td class="w" data-i18n="whereChartCsv">chart · CSV</td></tr>
+        <tr><td class="n"><span class="tex">v_B</span></td>
+          <td data-i18n="out2d">Exploratory C=0.5 arrival fit on at least two distances. This finite-size estimate is not a certified butterfly velocity in the thermodynamic limit.</td><td class="w" data-i18n="whereReadout">readout</td></tr>
+        <tr><td class="n"><span class="tex">t_r</span></td>
+          <td data-i18n="out3d">The arrival time of each shell, <span class="tex">C_r(t_r)=0.5</span> — the raw numbers behind the
+            fit, so you can see whether the fit is honest.</td><td class="w" data-i18n="whereJson">JSON</td></tr>
+        <tr><td class="n"><span class="tex">\sigma[C_r]</span></td>
+          <td data-i18n="out4d">Standard deviation in the outermost-distance data after its measured C=0.5 arrival plus 2 time units. If the window has fewer than two points, it is undefined. It is not a standalone chaos/integrability test.</td><td class="w" data-i18n="whereReadoutJson">readout · JSON</td></tr>
+        <tr><td class="n"><span class="tex">\langle C_r\rangle</span></td>
+          <td data-i18n="out5d">Mean of the same post-arrival window; undefined if no such window is sampled.</td>
+          <td class="w" data-i18n="whereJson">JSON</td></tr>
+        <tr><td class="n"><span class="tex">A_W(t)</span></td>
+          <td data-i18n="out6d">Source autocorrelation, and the curve after subtracting its projection onto conserved H. Other conserved contributions may remain.</td><td class="w" data-i18n="whereChartCsv">chart · CSV</td></tr>
+        <tr><td class="n"><span class="tex">P_H</span></td>
+          <td data-i18n="out7d">Projection onto H computed from its Pauli coefficients. This is not generally the entire late-time plateau.</td>
+          <td class="w" data-i18n="whereReadout">readout</td></tr>
+        <tr><td class="n"><span class="tex">\lambda_W</span></td>
+          <td data-i18n="out8d">Escape rate, the exact short-time curvature of <span class="tex">A_W</span>.</td>
+          <td class="w" data-i18n="whereReadout">readout</td></tr>
+        <tr><td class="n" data-i18n="out9n">Sector size</td>
+          <td data-i18n="out9d">Reachable Pauli-sector size or Hilbert-space dimension, sparse-generator nonzeros, and elapsed time, depending on the selected engine.</td><td class="w" data-i18n="whereReadoutStatus">readout · status</td></tr>
+        <tr><td class="n" data-i18n="out10n">Norm drift</td>
+          <td data-i18n="out10d">Maximum observed norm drift of operator coefficients or propagated states. Small drift is necessary but not sufficient for accuracy and does not measure sampling error.</td><td class="w" data-i18n="whereStatus">status</td></tr>
+        <tr><td class="n" data-i18n="out11n">Shells</td>
+          <td data-i18n="out11d">Geometric membership of each distance shell. In representative mode only one listed site is measured, regardless of shell size.</td><td class="w" data-i18n="whereJson">JSON</td></tr>
+      </tbody>
+    </table>
+
+    <p class="note warn" style="margin-top:14px" data-i18n="noteWarn1"><strong>What this page does not give you.</strong> Everything here
+      is at infinite temperature (a normalised trace, no thermal weighting) and everything is an
+      <em>operator</em> diagnostic. There is no entanglement entropy, no level statistics or spectral form factor,
+      no charge or energy correlator <span class="tex">G(r,t)</span>, and no finite-temperature OTOC. Those need
+      the state-vector side, which is what the Python package is for.</p>
+  </details>
+
+  <details class="meth">
+    <summary data-i18n="detailsSummary2">How it computes this, and where it stops</summary>
+    <p data-i18n="how1">Expand a Hermitian operator in the Hermitian Pauli basis:</p>
+    <div class="eq"><span class="tex disp">O(t)=\sum_S a_S(t)\,S</span><span class="tex disp">a_S(t)=2^{-N}\,\mathrm{Tr}\!\left[S\,O(t)\right]\in\mathbb{R}</span></div>
+    <p data-i18n="how2">Unitary conjugation preserves the Hilbert&ndash;Schmidt norm and keeps every coefficient real, so the
+      Heisenberg equation is a norm-preserving linear flow on the coefficient vector,</p>
+    <div class="eq"><span class="tex disp">\dot a = M a</span><span class="tex disp">M^{\mathsf{T}}=-M</span><span class="tex disp">e^{Mt}\in\mathrm{SO}(4^N)</span></div>
+    <p data-i18n="how3">Operator mode builds the reachable Pauli sector and evolves its sparse generator with a scaled Taylor series. State-vector mode uses the same Hamiltonian and Taylor propagation to estimate the trace with one random state. Norm drift checks integration, not sampling error.</p>
+    <p data-i18n="how4">These identities define the observables. Operator mode evaluates the full trace; state-vector mode estimates it. The front-speed diagnostic is a fit.</p>
+
+    <div class="eqn"><div class="eqbody"><span class="tex disp">C_r(t)=2^{-N}\,\mathrm{Tr}\!\left[W(t),V_r\right]^{\dagger}\!\left[W(t),V_r\right]</span><span class="tex disp">=\;4\sum_{\{S,V_r\}=0}a_S(t)^2</span></div><div class="eqtag" data-i18n="tagOtoc">OTOC</div></div>
+    <p class="eqnote" data-i18n="eqnote1">A linear functional of the operator-space probabilities <span class="tex">a_S(t)^2</span>
+      alone: the sum runs over the Pauli strings that anticommute with the probe, and it saturates at
+      <span class="tex">C_r=2</span> once half the weight sits there.</p>
+
+    <div class="eqn"><div class="eqbody"><span class="tex disp">A_W(t)=2^{-N}\,\mathrm{Tr}\!\left[W\,W(t)\right]=a_W(t)</span></div><div class="eqtag" data-i18n="tagMemory">memory</div></div>
+    <p class="eqnote" data-i18n="eqnote2">The local autocorrelation <em>is</em> the surviving amplitude on the source string &mdash;
+      no separate calculation.</p>
+
+    <div class="eqn"><div class="eqbody"><span class="tex disp">P_H=\frac{c_W^2}{\sum_{\alpha}c_{\alpha}^2}</span><span class="tex disp">H=\sum_{\alpha}c_{\alpha}S_{\alpha}</span></div><div class="eqtag" data-i18n="tagPlateau">energy projection</div></div>
+    <p class="eqnote" data-i18n="eqnote3">P_H is the nondecaying contribution from the projection of W onto H. Other conserved operators and degeneracies can contribute; subtracting P_H does not project out all conserved memory.</p>
+    <p data-i18n="how5">The escape rate in the readout is the exact short-time curvature of that same memory curve:</p>
+    <div class="eq"><span class="tex disp">\lambda_W=2^{-N}\,\mathrm{Tr}\!\left[H,W\right]^{\dagger}\!\left[H,W\right]</span><span class="tex disp">A_W(t)=1-\tfrac{1}{2}\lambda_W t^2+O(t^4)</span></div>
+    <hr class="sep">
+    <p data-i18n="limits">Operator mode is limited to 9 sites; random-state mode to 16, with costs depending strongly on terms and time range. Stop cancels an active calculation. Front speed is an exploratory C=0.5 arrival fit requiring at least two shells with positive fitted slope; examine threshold, time-grid, sampling and size dependence.</p>
+    <hr class="sep">
+    <h2 style="font-size:14px;margin-bottom:6px" data-i18n="biggerMachineH2">Take it to a bigger machine</h2>
+    <p data-i18n="biggerMachineP">The Python scripts under otoc16/ implement state-vector and operator-space methods. Use the exported Hamiltonian coefficients and site convention when comparing results. The accompanying audit records which historical results require recomputation.</p>
+    <p class="dim" style="margin:8px 0 4px;font-size:13.5px" data-i18n="biggerMachineNoteLead">The methods below answer different questions and have different error sources:</p>
+    <ul class="tight" data-i18n="biggerMachineList"><li><strong>State-vector typicality:</strong> numerical quantum evolution with a sampled trace. Representative-site data must not be presented as full-shell averages.</li><li><strong>Classical tangent / DTWA:</strong> a semiclassical approximation. Small-torus versus large-lattice comparisons do not establish a rigorous bound or a transferable multiplicative correction.</li><li><strong>Operator-space Lanczos:</strong> finite-order coefficients on an unbounded lattice. A finite sequence does not establish the asymptotic slope or a certified Lyapunov bound. See the growth explorer and audit.</li></ul>
+    <div class="row" style="margin-top:8px">
+      <button class="ghost" id="copycfg" data-i18n="copyCfgBtn">Copy configuration</button>
+      <button class="ghost" id="copycsv" data-i18n="copyCsvBtn">Copy curves as CSV</button>
+      <button class="ghost" id="downloadcfg" data-i18n="downloadCfgBtn">Download run JSON</button>
+      <button class="ghost" id="downloadcsv" data-i18n="downloadCsvBtn">Download CSV</button>
+    </div>
+    <pre class="export" id="export"></pre>
+  </details>
+</div>
+<script src="operator_spreading_shared.js"></script>
+</body>
+</html>
