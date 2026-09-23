@@ -1,7 +1,6 @@
-# Personal homepage — clean draft
+# Personal website
 
-This is a self-contained, template-free copy of the current personal website.
-It is intentionally kept under `local/`, so it is not part of the current GitHub Pages deployment.
+This is a self-contained, template-free personal website served as static files.
 
 ## What is included
 
@@ -10,7 +9,8 @@ It is intentionally kept under `local/`, so it is not part of the current GitHub
 - `assets/site/`: the site's original design, scripts, portrait, artwork, icons, and third-party licenses
 - `scripts/build_site.py` and `scripts/localize_site.py`: the small static-site generator
 - generated HTML routes for the English and Chinese website
-- `CNAME`, `.nojekyll`, `robots.txt`, and `sitemap.xml`: deployment files
+- `.nojekyll`, `robots.txt`, and `sitemap.xml`: deployment files
+- `meetingroom/`: a standalone browser-based meeting setup prototype
 
 ## What is deliberately excluded
 
@@ -34,3 +34,5 @@ python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
 Open `http://127.0.0.1:8765/`.
+
+The meeting prototype is available at `http://127.0.0.1:8765/meetingroom/`.

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2ff">
+  <meta name="description" content="简洁、安全的浏览器会议室入会准备页。">
+  <title>Meetingroom · 入会准备</title>
+  <link rel="icon" href="/meetingroom/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/meetingroom/styles.css">
+  <script defer src="/meetingroom/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/meetingroom/" aria-label="Meetingroom 首页">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span></span>
+      <span>meetingroom</span>
+    </a>
+    <span class="secure-note"><span aria-hidden="true">●</span> 设备检查</span>
+  </header>
+
+  <main>
+    <section class="join-layout" id="setup-view" aria-labelledby="setup-title">
+      <div class="preview-column">
+        <div class="preview-frame" id="preview-frame">
+          <video id="camera-preview" autoplay muted playsinline aria-label="摄像头预览"></video>
+          <div class="preview-empty" id="preview-empty">
+            <div class="avatar" id="preview-avatar" aria-hidden="true">你</div>
+            <p>开启摄像头后，预览会显示在这里</p>
+          </div>
+          <div class="preview-shade" aria-hidden="true"></div>
+          <div class="preview-label"><span id="preview-name">你的预览</span><span class="preview-pill">仅本机</span></div>
+          <div class="preview-controls" aria-label="音视频快捷控制">
+            <button class="round-control is-off" id="preview-mic" type="button" aria-label="开启麦克风" aria-pressed="false" title="开启麦克风">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-5a3.5 3.5 0 1 0-7 0v5A3.5 3.5 0 0 0 12 15Zm-7-4a7 7 0 0 0 14 0M12 18v3m-3 0h6"/></svg>
+            </button>
+            <button class="round-control is-off" id="preview-camera" type="button" aria-label="开启摄像头" aria-pressed="false" title="开启摄像头">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8.5v7H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h9.5Zm0 2.1 5-2.6v8l-5-2.6"/></svg>
+            </button>
+          </div>
+        </div>
+        <p class="privacy-copy">音视频只在浏览器内用于预览和测试；当前版本不会上传或录制。</p>
+      </div>
+
+      <div class="setup-card">
+        <p class="eyebrow">加入会议</p>
+        <h1 id="setup-title">先确认你看起来、听起来都很好。</h1>
+        <p class="intro">输入显示名称，然后选择是否开启摄像头和麦克风。</p>
+
+        <form id="join-form" novalidate>
+          <div class="field-group">
+            <label for="display-name">显示名称</label>
+            <div class="name-field">
+              <input id="display-name" name="displayName" type="text" autocomplete="name" maxlength="40" placeholder="例如：陈劲夫" aria-describedby="name-help name-error">
+              <span class="name-count" id="name-count" aria-hidden="true">0/40</span>
+            </div>
+            <p class="field-help" id="name-help">会议中的其他人会看到这个名称。</p>
+            <p class="field-error" id="name-error" role="alert" hidden>请输入显示名称。</p>
+          </div>
+
+          <div class="device-actions" aria-label="音视频设置">
+            <button class="device-toggle" id="mic-toggle" type="button" aria-pressed="false">
+              <span class="device-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-5a3.5 3.5 0 1 0-7 0v5A3.5 3.5 0 0 0 12 15Zm-7-4a7 7 0 0 0 14 0M12 18v3m-3 0h6"/></svg>
+              </span>
+              <span><strong>麦克风</strong><small id="mic-toggle-label">关闭</small></span>
+              <span class="switch" aria-hidden="true"><span></span></span>
+            </button>
+            <button class="device-toggle" id="camera-toggle" type="button" aria-pressed="false">
+              <span class="device-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8.5v7H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h9.5Zm0 2.1 5-2.6v8l-5-2.6"/></svg>
+              </span>
+              <span><strong>摄像头</strong><small id="camera-toggle-label">关闭</small></span>
+              <span class="switch" aria-hidden="true"><span></span></span>
+            </button>
+          </div>
+
+          <div class="device-selects" id="device-selects" hidden>
+            <div class="select-field" id="mic-select-wrap" hidden>
+              <label for="microphone-select">麦克风设备</label>
+              <select id="microphone-select"></select>
+            </div>
+            <div class="select-field" id="camera-select-wrap" hidden>
+              <label for="camera-select">摄像头设备</label>
+              <select id="camera-select"></select>
+            </div>
+          </div>
+
+          <div class="mic-test" id="mic-test">
+            <div class="mic-test-copy">
+              <strong>测试麦克风</strong>
+              <span id="mic-test-status">开启麦克风后，可以做一次声音测试。</span>
+            </div>
+            <div class="level-meter" id="level-meter" role="meter" aria-label="麦克风音量" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <button class="secondary-button" id="test-mic" type="button">开始测试</button>
+          </div>
+
+          <button class="join-button" type="submit">进入会议室 <span aria-hidden="true">→</span></button>
+          <p class="status-message" id="status-message" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="room-view" id="room-view" aria-labelledby="room-title" hidden>
+      <div class="room-heading">
+        <div>
+          <p class="eyebrow">会议室</p>
+          <h1 id="room-title">欢迎，<span id="room-name"></span></h1>
+        </div>
+        <span class="room-state"><span aria-hidden="true">●</span> 设备已就绪</span>
+      </div>
+      <div class="room-stage">
+        <div class="self-tile">
+          <video id="room-video" autoplay muted playsinline aria-label="你的摄像头画面"></video>
+          <div class="room-avatar" id="room-avatar" aria-hidden="true">你</div>
+          <span class="self-name" id="self-name"></span>
+        </div>
+        <div class="empty-room">
+          <span class="empty-room-icon" aria-hidden="true">＋</span>
+          <h2>会议空间准备好了</h2>
+          <p>这是基础版本。多人连接和邀请功能将在下一阶段接入。</p>
+        </div>
+      </div>
+      <div class="room-toolbar" aria-label="会议控制">
+        <button class="round-control" id="room-mic" type="button" aria-label="切换麦克风" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-5a3.5 3.5 0 1 0-7 0v5A3.5 3.5 0 0 0 12 15Zm-7-4a7 7 0 0 0 14 0M12 18v3m-3 0h6"/></svg>
+        </button>
+        <button class="round-control" id="room-camera" type="button" aria-label="切换摄像头" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8.5v7H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h9.5Zm0 2.1 5-2.6v8l-5-2.6"/></svg>
+        </button>
+        <button class="leave-button" id="leave-room" type="button">离开</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
