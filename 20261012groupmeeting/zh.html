@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A 30-minute research presentation on Bell facets, pivoting, quantum resource transitions, and semidefinite certification.">
+  <meta name="theme-color" content="#172b3a">
+  <title>Bell facet 与量子资源</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="content.js"></script>
+  <script defer src="asset-map.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <main id="viewport" aria-label="Presentation"><div id="stage"></div></main>
+  <div id="blank" hidden></div>
+  <nav id="toolbar" aria-label="Presentation controls">
+    <button id="prev" title="Previous slide (←)">←</button>
+    <button id="next" title="Next slide (→)">→</button>
+    <span id="position" aria-live="polite"></span>
+    <span class="divider"></span>
+    <button id="language" title="Switch language">中文</button>
+    <button id="overviewButton" title="Slide overview (O)">Overview</button>
+    <button id="notesButton" title="Speaker notes (N)">Notes</button>
+    <button id="fullButton" title="Full screen (F)">Full screen</button>
+    <button id="helpButton" title="Keyboard shortcuts (?)">?</button>
+  </nav>
+  <aside id="notes" hidden aria-label="Speaker notes">
+    <div class="notes-toolbar"><button id="closeNotes">×</button><span id="noteTiming"></span><button id="timerButton">Start timer</button><span id="timer">00:00</span></div>
+    <h2 id="noteTitle"></h2><div id="noteBody"></div>
+    <a id="allNotes" target="_blank" rel="noopener">Read all speaker notes ↗</a>
+  </aside>
+  <dialog id="overview"><header><h2 id="overviewTitle">Slides</h2><button id="closeOverview" aria-label="Close">×</button></header><div id="slideList"></div></dialog>
+  <dialog id="help"><header><h2 id="helpTitle">Presentation controls</h2><button id="closeHelp" aria-label="Close">×</button></header><div id="helpBody"></div></dialog>
+  <div id="printDeck"></div>
+  <noscript>This presentation requires JavaScript. All scripts and assets are included locally.</noscript>
+</body>
+</html>
