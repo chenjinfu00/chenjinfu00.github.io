@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns2="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink" width="840pt" height="470pt" viewBox="0 0 840 470" version="1.1">
+ <metadata>
+  <rdf:RDF>
+   <ns2:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+    <dc:date>2026-10-11</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <ns2:Agent>
+      <dc:title>Matplotlib v3.10.6, https://matplotlib.org/</dc:title>
+     </ns2:Agent>
+    </dc:creator>
+   </ns2:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 470  L 840 470  L 840 0  L 0 0  z " style="fill: #ffffff" />
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 113.4 380.7  L 819 380.7  L 819 75.2  L 113.4 75.2  z " style="fill: #ffffff" />
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mea65e8b88a" d="M 0 0  L 0 3.5  " style="stroke: #182838; stroke-width: 0.8" />
+      </defs>
+      <g>
+       <use xlink:href="#mea65e8b88a" x="252.381818" y="380.7" style="fill: #182838; stroke: #182838; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: middle; fill: #182838" x="252.381818" y="402.896875" transform="rotate(-0 252.381818 402.896875)">R5</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mea65e8b88a" x="466.2" y="380.7" style="fill: #182838; stroke: #182838; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: middle; fill: #182838" x="466.2" y="402.896875" transform="rotate(-0 466.2 402.896875)">N0</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mea65e8b88a" x="680.018182" y="380.7" style="fill: #182838; stroke: #182838; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: middle; fill: #182838" x="680.018182" y="402.896875" transform="rotate(-0 680.018182 402.896875)">N1</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4">
+      <path d="M 113.4 380.7  L 819 380.7  " clip-path="url(#p5d2ad0f885)" style="fill: none; stroke: #8795a1; stroke-opacity: 0.2; stroke-width: 0.9; stroke-linecap: square" />
+     </g>
+     <g id="line2d_5">
+      <defs>
+       <path id="ma35e4f6065" d="M 0 0  L -3.5 0  " style="stroke: #182838; stroke-width: 0.8" />
+      </defs>
+      <g>
+       <use xlink:href="#ma35e4f6065" x="113.4" y="380.7" style="fill: #182838; stroke: #182838; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: end; fill: #182838" x="106.4" y="388.298437" transform="rotate(-0 106.4 388.298437)">0.0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <path d="M 113.4 298.132432  L 819 298.132432  " clip-path="url(#p5d2ad0f885)" style="fill: none; stroke: #8795a1; stroke-opacity: 0.2; stroke-width: 0.9; stroke-linecap: square" />
+     </g>
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#ma35e4f6065" x="113.4" y="298.132432" style="fill: #182838; stroke: #182838; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: end; fill: #182838" x="106.4" y="305.73087" transform="rotate(-0 106.4 305.73087)">0.5</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_8">
+      <path d="M 113.4 215.564865  L 819 215.564865  " clip-path="url(#p5d2ad0f885)" style="fill: none; stroke: #8795a1; stroke-opacity: 0.2; stroke-width: 0.9; stroke-linecap: square" />
+     </g>
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#ma35e4f6065" x="113.4" y="215.564865" style="fill: #182838; stroke: #182838; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: end; fill: #182838" x="106.4" y="223.163302" transform="rotate(-0 106.4 223.163302)">1.0</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_10">
+      <path d="M 113.4 132.997297  L 819 132.997297  " clip-path="url(#p5d2ad0f885)" style="fill: none; stroke: #8795a1; stroke-opacity: 0.2; stroke-width: 0.9; stroke-linecap: square" />
+     </g>
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#ma35e4f6065" x="113.4" y="132.997297" style="fill: #182838; stroke: #182838; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: end; fill: #182838" x="106.4" y="140.595735" transform="rotate(-0 106.4 140.595735)">1.5</text>
+     </g>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 23px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: middle; fill: #182838" x="65.810469" y="227.95" transform="rotate(-90 65.810469 227.95)">中点支撑值</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 182.890909 380.7  L 249.174545 380.7  L 249.174545 121.201931  L 182.890909 121.201931  z " clip-path="url(#p5d2ad0f885)" style="fill: #0072b2" />
+   </g>
+   <g id="patch_4">
+    <path d="M 396.709091 380.7  L 462.992727 380.7  L 462.992727 147.163652  L 396.709091 147.163652  z " clip-path="url(#p5d2ad0f885)" style="fill: #0072b2" />
+   </g>
+   <g id="patch_5">
+    <path d="M 610.527273 380.7  L 676.810909 380.7  L 676.810909 215.564865  L 610.527273 215.564865  z " clip-path="url(#p5d2ad0f885)" style="fill: #0072b2" />
+   </g>
+   <g id="patch_6">
+    <path d="M 255.589091 380.7  L 321.872727 380.7  L 321.872727 156.646437  L 255.589091 156.646437  z " clip-path="url(#p5d2ad0f885)" style="fill: #d55e00" />
+   </g>
+   <g id="patch_7">
+    <path d="M 469.407273 380.7  L 535.690909 380.7  L 535.690909 156.646437  L 469.407273 156.646437  z " clip-path="url(#p5d2ad0f885)" style="fill: #d55e00" />
+   </g>
+   <g id="patch_8">
+    <path d="M 683.225455 380.7  L 749.509091 380.7  L 749.509091 215.564865  L 683.225455 215.564865  z " clip-path="url(#p5d2ad0f885)" style="fill: #d55e00" />
+   </g>
+   <g id="line2d_12">
+    <path d="M 113.4 215.564865  L 819 215.564865  " clip-path="url(#p5d2ad0f885)" style="fill: none; stroke-dasharray: 1.4,2.31; stroke-dashoffset: 0; stroke: #8795a1; stroke-width: 1.4" />
+   </g>
+   <g id="patch_9">
+    <path d="M 113.4 380.7  L 113.4 75.2  " style="fill: none; stroke: #8795a1; stroke-linejoin: miter; stroke-linecap: square" />
+   </g>
+   <g id="patch_10">
+    <path d="M 113.4 380.7  L 819 380.7  " style="fill: none; stroke: #8795a1; stroke-linejoin: miter; stroke-linecap: square" />
+   </g>
+   <g id="text_9">
+    <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: middle; fill: #182838" x="216.032727" y="112.945174" transform="rotate(-0 216.032727 112.945174)">1.571</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: middle; fill: #182838" x="429.850909" y="138.906896" transform="rotate(-0 429.850909 138.906896)">1.414</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: middle; fill: #182838" x="643.669091" y="207.308108" transform="rotate(-0 643.669091 207.308108)">1.000</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: middle; fill: #182838" x="288.730909" y="148.38968" transform="rotate(-0 288.730909 148.38968)">1.357</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: middle; fill: #182838" x="502.549091" y="148.38968" transform="rotate(-0 502.549091 148.38968)">1.357</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: middle; fill: #182838" x="716.367273" y="207.308108" transform="rotate(-0 716.367273 207.308108)">1.000</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_11">
+     <path d="M 239.485938 32.021875  L 279.485938 32.021875  L 279.485938 18.021875  L 239.485938 18.021875  z " style="fill: #0072b2" />
+    </g>
+    <g id="text_15">
+     <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: start; fill: #182838" x="295.485938" y="32.021875" transform="rotate(-0 295.485938 32.021875)">量子 Q</text>
+    </g>
+    <g id="patch_12">
+     <path d="M 450.932813 32.021875  L 490.932813 32.021875  L 490.932813 18.021875  L 450.932813 18.021875  z " style="fill: #d55e00" />
+    </g>
+    <g id="text_16">
+     <text style="font-size: 20px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; text-anchor: start; fill: #182838" x="506.932813" y="32.021875" transform="rotate(-0 506.932813 32.021875)">实际二分可分支撑</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p5d2ad0f885">
+   <rect x="113.4" y="75.2" width="705.6" height="305.5" />
+  </clipPath>
+ </defs>
+</svg>

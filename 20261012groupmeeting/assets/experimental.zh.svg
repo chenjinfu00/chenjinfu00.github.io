@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">对称关联见证的六量子比特白噪声容忍度</title>
+<desc id="desc">对于相同的六量子比特 Dicke 目标态及每方两组测量设置，最佳二体 PI 不等式的理论整体白噪声容忍度约为4.8%，选定二体及四体关联见证约为30.1%。这里展示见证的理论性质，而非实验中观测到的噪声比例。</desc>
+<rect width="1200" height="700" fill="white"/>
+<g font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#202b36">
+<g font-size="28"><rect x="295" y="30" width="25" height="25" fill="#0072B2"/><text x="333" y="53">二体关联</text><rect x="665" y="30" width="25" height="25" fill="#D55E00"/><text x="703" y="53">二体及四体关联</text></g>
+<g stroke="#e4e8ed" stroke-width="2"><path fill="none" d="M170 575H1110M170 457.857H1110M170 340.714H1110M170 223.571H1110M170 165H1110"/></g>
+<g stroke="#202b36" stroke-width="3"><path fill="none" d="M170 130V575H1110"/><path fill="none" d="M158 575H170M158 457.857H170M158 340.714H170M158 223.571H170M158 165H170"/></g>
+<g font-size="27" text-anchor="end"><text x="146" y="584">0%</text><text x="146" y="467">10%</text><text x="146" y="350">20%</text><text x="146" y="233">30%</text><text x="146" y="174">35%</text></g>
+<text x="46" y="350" transform="rotate(-90 46 350)" font-size="31" text-anchor="middle">容许的白噪声比例</text>
+<rect x="335" y="518.771" width="235" height="56.229" fill="#0072B2"/>
+<rect x="735" y="222.486" width="235" height="352.514" fill="#D55E00"/>
+<g font-size="38" font-weight="700" text-anchor="middle"><text x="452.5" y="497">≈4.8%</text><text x="852.5" y="200">≈30.1%</text></g>
+<g font-size="29" text-anchor="middle"><text x="452.5" y="619">二体参考见证</text><text x="852.5" y="619">选定见证</text></g>
+<text x="640" y="677" font-size="25" text-anchor="middle">相同六比特 Dicke 目标态 · 每方两组设置 · 整体白噪声</text>
+</g></svg>

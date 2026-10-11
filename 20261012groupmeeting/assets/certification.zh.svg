@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="700" viewBox="0 0 1100 700" role="img" aria-labelledby="title desc">
+<title id="title">Proposed certification chain for a Bell target</title><desc id="desc">An attained quantum score supplies a lower bound on the quantum support, and an SDP certificate supplies an upper bound. Genuine multipartite entanglement instead follows when the attained score exceeds a separately certified actual biseparable support bound. Apply only the symmetry of the chosen target and constraints.</desc>
+<rect width="1100" height="700" fill="white"/>
+<g font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#172b3a" text-anchor="middle">
+<text x="550" y="67" font-size="30">从 facet 搜索中选择目标 H</text>
+<text x="550" y="113" font-size="25" fill="#657481">利用 H 与约束实际保留的对称性</text>
+<text x="550" y="256" font-size="67">q<tspan baseline-shift="sub" font-size="33">attained</tspan> ≤ Q ≤ q<tspan baseline-shift="sub" font-size="33">SDP</tspan></text>
+<g font-size="27"><text x="220" y="320" fill="#0072b2">态与测量</text><text x="854" y="320" fill="#d55e00">经认证的量子上界</text></g>
+<path d="M125 386H975" stroke="#d8e0e6" stroke-width="2"/>
+<text x="550" y="465" font-size="45" fill="#009e73">q<tspan baseline-shift="sub" font-size="28">attained</tspan> &gt; h<tspan baseline-shift="sub" font-size="28">BS</tspan><tspan baseline-shift="super" font-size="25">cert</tspan></text>
+<text x="550" y="530" font-size="29">资源间隙需要对每一种二分割分别给出严格界</text>
+<text x="550" y="615" font-size="26" fill="#657481">拟开展的结合方向 · 当前 SDP 扫描结果为数值估计</text>
+</g></svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="680" viewBox="0 0 1100 680" role="img" aria-labelledby="title desc">
+<title id="title">中点的加权 W 态</title><desc id="desc">精确纯态为 sqrt(2/7)|100&gt; 加 sqrt(2/7)|010&gt; 加 sqrt(3/7)|001&gt;。柱高表示振幅平方2/7、2/7、3/7。这是相干叠加态，而非经典混合态。</desc>
+<rect width="1100" height="680" fill="white"/>
+<g font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#202b36">
+<g stroke="#e4e8ed" stroke-width="2"><path fill="none" d="M135 510H1040M135 437H1040M135 364H1040M135 291H1040M135 218H1040M135 145H1040"/></g>
+<g stroke="#202b36" stroke-width="3"><path fill="none" d="M135 105V510H1040"/><path fill="none" d="M123 510H135M123 437H135M123 364H135M123 291H135M123 218H135M123 145H135"/></g>
+<g font-size="27" text-anchor="end"><text x="113" y="519">0.0</text><text x="113" y="446">0.1</text><text x="113" y="373">0.2</text><text x="113" y="300">0.3</text><text x="113" y="227">0.4</text><text x="113" y="154">0.5</text></g>
+<text x="41" y="310" transform="rotate(-90 41 310)" font-size="30" text-anchor="middle">振幅平方</text>
+<rect x="238" y="301.429" width="165" height="208.571" fill="#0072B2"/><rect x="505" y="301.429" width="165" height="208.571" fill="#0072B2"/><rect x="772" y="197.143" width="165" height="312.857" fill="#D55E00"/>
+<g text-anchor="middle" font-size="35" font-weight="700"><text x="320.5" y="278">2/7</text><text x="587.5" y="278">2/7</text><text x="854.5" y="174">3/7</text></g>
+<g text-anchor="middle" font-size="35"><text x="320.5" y="559">|100⟩</text><text x="587.5" y="559">|010⟩</text><text x="854.5" y="559">|001⟩</text></g>
+<text x="570" y="618" font-size="30" text-anchor="middle">|W*⟩ = √(2/7)|100⟩ + √(2/7)|010⟩ + √(3/7)|001⟩</text>
+<text x="570" y="663" font-size="25" text-anchor="middle">相干纯态叠加 · 柱高表示概率</text>
+</g></svg>

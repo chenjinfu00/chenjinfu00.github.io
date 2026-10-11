@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">Six-qubit white-noise tolerance using symmetric correlators</title>
+<desc id="desc">The theoretical tolerated global white-noise fraction is approximately 4.8 percent for the best two-body PI inequality with two settings per party, and 30.1 percent for the selected two- and four-body witness for the same six-qubit Dicke target. These are witness properties, not observed experimental noise fractions.</desc>
+<rect width="1200" height="700" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#202b36">
+<g font-size="28"><rect x="295" y="30" width="25" height="25" fill="#0072B2"/><text x="333" y="53">2-body correlators</text><rect x="665" y="30" width="25" height="25" fill="#D55E00"/><text x="703" y="53">2- and 4-body correlators</text></g>
+<g stroke="#e4e8ed" stroke-width="2"><path fill="none" d="M170 575H1110M170 457.857H1110M170 340.714H1110M170 223.571H1110M170 165H1110"/></g>
+<g stroke="#202b36" stroke-width="3"><path fill="none" d="M170 130V575H1110"/><path fill="none" d="M158 575H170M158 457.857H170M158 340.714H170M158 223.571H170M158 165H170"/></g>
+<g font-size="27" text-anchor="end"><text x="146" y="584">0%</text><text x="146" y="467">10%</text><text x="146" y="350">20%</text><text x="146" y="233">30%</text><text x="146" y="174">35%</text></g>
+<text x="46" y="350" transform="rotate(-90 46 350)" font-size="31" text-anchor="middle">Tolerated white-noise fraction</text>
+<rect x="335" y="518.771" width="235" height="56.229" fill="#0072B2"/>
+<rect x="735" y="222.486" width="235" height="352.514" fill="#D55E00"/>
+<g font-size="38" font-weight="700" text-anchor="middle"><text x="452.5" y="497">≈4.8%</text><text x="852.5" y="200">≈30.1%</text></g>
+<g font-size="29" text-anchor="middle"><text x="452.5" y="619">Two-body reference</text><text x="852.5" y="619">Selected witness</text></g>
+<text x="640" y="677" font-size="25" text-anchor="middle">Same 6-qubit Dicke target · Two settings per party · Global white noise</text>
+</g></svg>
