@@ -11,11 +11,31 @@
   const $ = id => document.getElementById(id);
   const L = value => typeof value === 'string' ? value : value?.[lang] ?? value?.en ?? '';
   const escape = text => String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  // Preserve inequality signs and alignment ampersands before HTML parsing.
+  const mathSafeHTML = value => String(value).replace(/\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/g, formula => escape(formula));
   const tr = (en, zh) => lang === 'zh' ? zh : en;
   const minute = seconds => `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2,'0')}`;
   const startAt = i => deck.slides.slice(0, i).reduce((sum, s) => sum + (s.duration || 0), 0);
   const mainCount = deck.slides.filter(s => !s.backup).length;
   const total = deck.slides.reduce((sum,s) => sum + (s.duration || 0), 0);
+  let mathQueue = Promise.resolve();
+  function clearMath(node) {
+    if (window.MathJax?.typesetClear) window.MathJax.typesetClear([node]);
+  }
+  function typeset(nodes) {
+    const targets = nodes.filter(Boolean);
+    targets.forEach(node => {node.classList.add('tex-pending'); node.dataset.mathReady = 'false';});
+    mathQueue = mathQueue.catch(() => {}).then(async () => {
+      await window.MathJax.startup.promise;
+      const connected = targets.filter(node => node.isConnected);
+      if (connected.length) await window.MathJax.typesetPromise(connected);
+      connected.forEach(node => {node.dataset.mathReady = 'true'; node.classList.remove('tex-pending');});
+    }).catch(error => {
+      targets.forEach(node => {node.classList.remove('tex-pending'); node.dataset.mathError = String(error.message || error);});
+      console.error('Equation rendering failed:', error);
+    });
+    return mathQueue;
+  }
   function citation(s) {
     return (s.sources || []).map(source => {
       const label = escape(L(source.label));
@@ -24,13 +44,13 @@
   }
   function slideHTML(s, i) {
     const hasAsset = !!s.asset;
-    const wide = ['landscape.png','landscape.svg','expansion.png'].includes(s.asset);
+    const wide = ['expansion.png','expansion.svg','illustration_round1.png'].includes(s.asset);
     const classes = ['slide',s.layout || 'split',hasAsset?'has-asset':'',wide?'wide':'',s.backup?'backup':''].filter(Boolean).join(' ');
-    const bullets = (L(s.bullets) || []).map(text => `<li>${text}</li>`).join('');
-    const formula = s.formula ? `<div class="formula">${L(s.formula)}</div>` : '';
+    const bullets = (L(s.bullets) || []).map(text => `<li>${mathSafeHTML(text)}</li>`).join('');
+    const formula = s.formula ? `<div class="formula">${mathSafeHTML(L(s.formula))}</div>` : '';
     const asset = lang === 'zh' && (window.TALK_ZH_ASSETS || []).includes(s.asset) ? s.asset.replace('.svg','.zh.svg') : s.asset;
     const body = `${hasAsset ? `<figure class="figure"><img src="assets/${escape(asset)}" alt="${escape(L(s.assetAlt) || L(s.title))}" loading="eager"></figure>` : ''}<div class="explanation">${formula}${bullets ? `<ul>${bullets}</ul>` : ''}</div>`;
-    return `<article class="${classes}" data-slide="${i+1}" style="--progress:${Math.min(i+1,mainCount)/mainCount*100}%"><div class="chapter">${escape(L(s.section) || '')}${s.backup ? ` · ${tr('BACKUP','备份页')}` : ''}</div><h1>${L(s.title)}</h1>${s.subtitle ? `<p class="subtitle">${L(s.subtitle)}</p>` : ''}<div class="body">${body}</div><footer class="foot"><div class="citations">${citation(s)}</div><div class="number">${s.backup ? tr('Backup','备份') : `${String(i+1).padStart(2,'0')} / ${mainCount}`}</div></footer></article>`;
+    return `<article class="${classes}" data-slide="${i+1}" style="--progress:${Math.min(i+1,mainCount)/mainCount*100}%"><div class="chapter">${escape(L(s.section) || '')}${s.backup ? ` · ${tr('BACKUP','备份页')}` : ''}</div><h1>${mathSafeHTML(L(s.title))}</h1>${s.subtitle ? `<p class="subtitle">${mathSafeHTML(L(s.subtitle))}</p>` : ''}<div class="body">${body}</div><footer class="foot"><div class="citations">${citation(s)}</div><div class="number">${s.backup ? tr('Backup','备份') : `${String(i+1).padStart(2,'0')} / ${mainCount}`}</div></footer></article>`;
   }
   function fit() {
     const width = innerWidth - (notesVisible && innerWidth > 700 ? 400 : 0);
@@ -42,6 +62,7 @@
   function render() {
     document.documentElement.lang = lang === 'zh' ? 'zh' : 'en';
     document.title = `${L(deck.title)} · ${index + 1}`;
+    clearMath($('stage')); clearMath($('notes'));
     $('stage').innerHTML = slideHTML(deck.slides[index], index);
     const s = deck.slides[index];
     $('position').textContent = s.backup ? `${index + 1} / ${deck.slides.length}` : `${index+1} / ${mainCount}`;
@@ -50,12 +71,13 @@
     $('overviewButton').textContent = tr('Overview','目录');
     $('notesButton').textContent = tr('Notes','讲稿');
     $('fullButton').textContent = tr('Full screen','全屏');
-    $('noteTitle').textContent = L(s.title).replace(/<[^>]*>/g,'');
+    $('noteTitle').innerHTML = mathSafeHTML(L(s.title));
     $('noteBody').textContent = L(s.notes);
     $('noteTiming').textContent = s.backup ? tr('Backup','备份') : `${minute(startAt(index))}–${minute(startAt(index)+(s.duration||0))}`;
     $('allNotes').textContent = tr('Read all speaker notes ↗','阅读完整讲稿 ↗');
     $('allNotes').href = `index.html?lang=${lang}&notes=all`;
     $('timerButton').textContent = timerStart ? tr('Pause','暂停') : tr('Start timer','开始计时');
+    typeset([$('stage'), $('notes')]);
     fit();
   }
   function go(i) {
@@ -64,9 +86,11 @@
   }
   function toggleNotes() {notesVisible = !notesVisible; $('notes').hidden = !notesVisible; fit();}
   function overview() {
+    clearMath($('slideList'));
     $('overviewTitle').textContent = `${tr('Talk outline','演讲目录')} · ${minute(total)}`;
-    $('slideList').innerHTML = deck.slides.map((s,i) => `<button class="${i===index?'current':''}" data-index="${i}"><span class="slide-index">${s.backup ? tr('BACKUP','备份') : `${String(i+1).padStart(2,'0')} · ${minute(startAt(i))}`}</span>${L(s.title)}</button>`).join('');
+    $('slideList').innerHTML = deck.slides.map((s,i) => `<button class="${i===index?'current':''}" data-index="${i}"><span class="slide-index">${s.backup ? tr('BACKUP','备份') : `${String(i+1).padStart(2,'0')} · ${minute(startAt(i))}`}</span>${mathSafeHTML(L(s.title))}</button>`).join('');
     $('overview').showModal();
+    typeset([$('slideList')]);
   }
   function help() {
     $('helpTitle').textContent = tr('Presentation controls','演示操作');
@@ -76,12 +100,19 @@
     $('help').showModal();
   }
   async function fullscreen() {try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{help();}}
-  function printSlides() {$('printDeck').innerHTML=deck.slides.map(slideHTML).join('');window.print();}
+  async function printSlides() {
+    clearMath($('printDeck'));
+    $('printDeck').innerHTML=deck.slides.map(slideHTML).join('');
+    await typeset([$('printDeck')]);
+    await document.fonts.ready;
+    window.print();
+  }
   function notesDocument() {
     document.body.classList.add('notes-document'); document.documentElement.lang=lang;
     document.title = `${L(deck.title)} · ${tr('Speaker notes','讲稿')}`;
     $('printDeck').innerHTML = `<header class="document-head"><h1>${L(deck.title)}</h1><p>${tr(`Jin-Fu Chen · ${Math.round(total/60)}-minute group meeting · ${mainCount} main slides plus technical backup`,`Jin-Fu Chen · ${Math.round(total/60)} 分钟组会 · ${mainCount} 页主讲与技术备份页`)}</p><a href="index.html?lang=${lang}">${tr('Open presentation','打开幻灯片')}</a><a href="index.html?lang=${lang==='en'?'zh':'en'}&notes=all">${tr('中文讲稿','English notes')}</a><a href="#" id="printNotes">${tr('Print / PDF','打印／PDF')}</a></header>` + deck.slides.map((s,i)=>`<section class="note-section"><span class="time">${s.backup?tr('BACKUP','备份'):`${String(i+1).padStart(2,'0')} · ${minute(startAt(i))}–${minute(startAt(i)+(s.duration||0))}`}</span><h2>${L(s.title)}</h2><p>${escape(L(s.notes))}</p><div class="source-list">${citation(s)}</div></section>`).join('');
-    $('printNotes').addEventListener('click',e=>{e.preventDefault();window.print();});
+    $('printNotes').addEventListener('click',async e=>{e.preventDefault();await mathQueue;await document.fonts.ready;window.print();});
+    typeset([$('printDeck')]);
   }
   $('prev').onclick = () => go(index-1); $('next').onclick = () => go(index+1);
   $('language').onclick = () => {lang = lang==='en'?'zh':'en';const nextParams = new URLSearchParams(location.search);nextParams.set('lang',lang);history.replaceState(null,'',`${location.pathname}?${nextParams}#${index+1}`);render();};
