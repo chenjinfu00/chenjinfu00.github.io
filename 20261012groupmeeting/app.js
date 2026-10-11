@@ -44,13 +44,14 @@
   }
   function slideHTML(s, i) {
     const hasAsset = !!s.asset;
-    const wide = ['expansion.png','expansion.svg','illustration_round1.png'].includes(s.asset);
+    const wide = s.layout === 'wide' || ['expansion.png','expansion.svg','illustration_round1.png'].includes(s.asset);
     const classes = ['slide',s.layout || 'split',hasAsset?'has-asset':'',wide?'wide':'',s.backup?'backup':''].filter(Boolean).join(' ');
     const bullets = (L(s.bullets) || []).map(text => `<li>${mathSafeHTML(text)}</li>`).join('');
     const formula = s.formula ? `<div class="formula">${mathSafeHTML(L(s.formula))}</div>` : '';
     const asset = lang === 'zh' && (window.TALK_ZH_ASSETS || []).includes(s.asset) ? s.asset.replace('.svg','.zh.svg') : s.asset;
-    const body = `${hasAsset ? `<figure class="figure"><img src="assets/${escape(asset)}" alt="${escape(L(s.assetAlt) || L(s.title))}" loading="eager"></figure>` : ''}<div class="explanation">${formula}${bullets ? `<ul>${bullets}</ul>` : ''}</div>`;
-    return `<article class="${classes}" data-slide="${i+1}" data-slide-id="${escape(s.id)}" style="--progress:${Math.min(i+1,mainCount)/mainCount*100}%"><div class="chapter">${escape(L(s.section) || '')}${s.backup ? ` · ${tr('BACKUP','备份页')}` : ''}</div><h1>${mathSafeHTML(L(s.title))}</h1>${s.subtitle ? `<p class="subtitle">${mathSafeHTML(L(s.subtitle))}</p>` : ''}<div class="body">${body}</div><footer class="foot"><div class="citations">${citation(s)}</div><div class="number">${s.backup ? tr('Backup','备份') : `${String(i+1).padStart(2,'0')} / ${mainCount}`}</div></footer></article>`;
+    const table = s.table ? `<table><thead><tr>${L(s.table.headers).map(x=>`<th>${mathSafeHTML(x)}</th>`).join('')}</tr></thead><tbody>${L(s.table.rows).map(row=>`<tr>${row.map(x=>`<td>${mathSafeHTML(x)}</td>`).join('')}</tr>`).join('')}</tbody></table>` : '';
+    const body = `${hasAsset ? `<figure class="figure"><img src="assets/${escape(asset)}" alt="${escape(L(s.assetAlt) || L(s.title))}" loading="eager"></figure>` : ''}<div class="explanation">${formula}${table}${bullets ? `<ul>${bullets}</ul>` : ''}</div>`;
+    return `<article class="${classes}" data-slide="${i+1}" data-slide-id="${escape(s.id)}" data-phase="${escape(s.phase || 'original')}" style="--progress:${Math.min(i+1,mainCount)/mainCount*100}%"><div class="chapter">${escape(L(s.section) || '')}${s.backup ? ` · ${tr('BACKUP','备份页')}` : ''}</div><h1>${mathSafeHTML(L(s.title))}</h1>${s.subtitle ? `<p class="subtitle">${mathSafeHTML(L(s.subtitle))}</p>` : ''}<div class="body">${body}</div><footer class="foot"><div class="citations">${citation(s)}</div><div class="number">${s.backup ? tr('Backup','备份') : `${String(i+1).padStart(2,'0')} / ${mainCount}`}</div></footer></article>`;
   }
   function fit() {
     const width = innerWidth - (notesVisible && innerWidth > 700 ? 400 : 0);

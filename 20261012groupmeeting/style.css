@@ -41,7 +41,7 @@ mjx-container[jax="SVG"]>svg{overflow:visible}
 .foot .citations{max-width:1290px}.foot a{color:inherit;text-decoration:none;border-bottom:1px solid #d8e0e6}.foot .number{white-space:nowrap;font-size:18px}
 .foot .citation-separator{margin:0 10px;color:#abb7c0}
 .slide::after{position:absolute;bottom:0;left:0;height:5px;width:var(--progress);background:var(--blue);content:''}
-.slide.wide .body{display:block;top:208px;bottom:100px}.slide.wide:has(.subtitle) .body{top:250px}.slide.wide .figure{width:100%;height:425px}.slide.wide .explanation{margin-top:10px}
+.slide.wide .body{display:block;top:208px;bottom:100px}.slide.wide:has(.subtitle) .body{top:250px}.slide.wide .figure{width:100%;height:385px}.slide.wide .explanation{margin-top:10px}
 .slide.wide ul{display:flex;gap:35px;padding:0;list-style:none;font-size:26px}.slide.wide li{flex:1;margin:0;padding:0}
 .slide.wide .formula{font-size:31px;margin:0 0 20px}
 .slide.statement .body,.slide.roadmap .body,.slide.split:not(.has-asset) .body{align-items:flex-start;flex-direction:column;gap:15px;padding:35px 36px 0}
@@ -57,6 +57,17 @@ mjx-container[jax="SVG"]>svg{overflow:visible}
 .slide.title .body{top:510px;left:110px;right:110px;bottom:150px;display:block}.slide.title ul{list-style:none;padding:0;font-size:28px;line-height:1.65;color:#d3dee5}.slide.title li{padding:0;margin:0}
 .slide.title strong{color:#fff}.slide.title .formula{color:#7ec8e3;font-size:36px}.slide.title .foot{color:#93aab9;left:110px;right:110px;bottom:46px}.slide.title::after{background:#7ec8e3}
 .slide table{width:100%;border-collapse:collapse;font-size:27px;line-height:1.4}.slide th,.slide td{padding:15px 18px;border-bottom:1px solid var(--line);text-align:left}.slide th{color:var(--blue);font-weight:500}
+.slide table{margin-bottom:26px}.slide:has(table) ul{font-size:29px;line-height:1.35}.slide:has(table) li{margin-bottom:18px}
+.slide[data-phase="discussion"] .chapter{color:var(--orange)}
+.slide[data-slide-id="pivot-duality"] .figure{height:420px}
+.slide[data-slide-id="four-resource-gap"] .figure{height:325px}
+.slide[data-slide-id="four-resource-gap"] .formula{font-size:29px;margin-bottom:20px}
+.slide[data-slide-id="ascent-results"] table{font-size:26px}
+.slide[data-slide-id="ascent-results"] th,.slide[data-slide-id="ascent-results"] td{padding:12px 13px}
+.slide[data-slide-id="ascent-results"] ul{font-size:30px;line-height:1.35}
+.slide[data-slide-id="ascent-results"] li{margin-bottom:18px}
+.slide[data-slide-id="recursive-child"] .formula{font-size:29px}
+.slide[data-slide-id="backup-four-sos"] .formula{font-size:35px}
 .slide .small{font-size:.82em;color:var(--muted)}.slide .positive{color:var(--green)}.slide .open{color:var(--orange)}
 html[lang=zh] .slide h1{font-weight:600;letter-spacing:.015em}html[lang=zh] .slide.title h1{font-size:75px}html[lang=zh] .slide ul{line-height:1.52}
 #toolbar{position:fixed;bottom:0;left:0;right:0;height:48px;display:flex;align-items:center;justify-content:center;gap:12px;background:#182630;color:#cdd9df;font-size:13px;z-index:20}

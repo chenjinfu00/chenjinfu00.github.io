@@ -1,12 +1,12 @@
-/* Bilingual 30-minute talk. Scientific claims retain their source provenance. */
+/* Original v0 pivot story first; exploratory follow-up is a separate discussion. */
 window.DECK = {
   "title": {
-    "en": "From Bell Facets to Quantum Resources",
-    "zh": "从 Bell facets 到量子资源"
+    "en": "Recursive Facet Expansion of Bell Polytopes",
+    "zh": "Bell 多面体的递归面展开"
   },
   "subtitle": {
-    "en": "Choosing a test, proving its resource requirement, and scaling its certificates",
-    "zh": "选择检验、证明资源需求，再把认证推广到多体系统"
+    "en": "The original pivot story, followed by research ideas under assessment",
+    "zh": "先讲原来的 pivot 主线，再讨论待评估的新方向"
   },
   "languages": [
     "en",
@@ -14,55 +14,56 @@ window.DECK = {
   ],
   "defaultLanguage": "en",
   "totalDuration": 1800,
-  "date": "2026-10-11",
+  "date": "2026-10-12",
+  "revisionDate": "2026-10-11",
   "slides": [
     {
       "id": "opening",
-      "section": {
-        "en": "The problem",
-        "zh": "研究问题"
-      },
       "title": {
-        "en": "From Bell Facets to Quantum Resources",
-        "zh": "从 Bell facets 到量子资源"
+        "en": "Recursive Facet Expansion of Bell Polytopes",
+        "zh": "Bell 多面体的递归面展开"
+      },
+      "section": {
+        "en": "Pivoting and nonlocality",
+        "zh": "Pivot 与非局域性"
       },
       "duration": 30,
       "layout": "title",
       "bullets": {
         "en": [
-          "Each endpoint has a biseparable maximizer.",
-          "A weighted pair can select a tripartite state and private outputs."
+          "Jin-Fu Chen",
+          "Group meeting, 12 October 2026"
         ],
         "zh": [
-          "每个端点都能由双可分态达到最大值。",
-          "加权组合却可以确定三方态，并认证输出的私密性。"
+          "Jin-Fu Chen",
+          "2026年10月12日组会"
         ]
       },
       "notes": {
-        "en": "Each endpoint of our Bell pair has a biseparable maximizer. Yet one weighted score, evaluated with shared measurements, can identify a tripartite state and private outputs. The story is how to choose such a test, prove its resource requirement, and quantify what survives experimental error. Our earlier three papers supply the starting design tools.",
-        "zh": "这对 Bell 检验的每个端点都能由双可分态达到最大值。但共用测量的加权得分可以确定三方态，并认证私密输出。今天的主线是如何选择这样的检验、证明它的资源需求，再量化实验误差下还保留什么。此前三篇工作提供这条路线的设计起点。"
+        "en": "The main part of this talk follows the supplied v0 manuscript: recursive facet expansion, the complete three-party benchmark, and four-party violation landscapes. Only after that story is complete will I discuss the recent resource ideas. Those ideas have local certificates, but their precise novelty and broader scope still need assessment.",
+        "zh": "今天先沿用你提供的 v0 原稿顺序：递归 facet 展开、完整三体验证、四体违反 landscape。把这条线讲完整后，再讨论近期的资源 ideas。后面的具体例子已有局部证书，但准确新颖性和一般适用范围仍待评估。"
       },
       "sources": [],
-      "subtitle": {
-        "en": "What a pair of shared-measurement Bell scores can certify",
-        "zh": "两个共用测量的 Bell 得分，能够认证什么？"
-      },
       "backup": false,
+      "phase": "original",
       "story": {
         "question": {
-          "en": "What is the central result?",
-          "zh": "今天的核心结果是什么？"
+          "en": "",
+          "zh": ""
         },
         "takeaway": {
-          "en": "Combining compatible scores can demand a resource neither endpoint alone certifies.",
-          "zh": "共用测量的得分组合，可以要求单个端点无法认证的资源。"
+          "en": "",
+          "zh": ""
         },
         "transition": {
-          "en": "This starts from the same design question as our previous three papers.",
-          "zh": "这个问题延续了前三篇文章中的 Bell 检验设计问题。"
+          "en": "Our earlier Bell-design work supplies the motivation and a starting facet.",
+          "zh": "此前 Bell 设计工作提供动机和一个起始 facet。"
         }
       },
-      "formula": null
+      "subtitle": {
+        "en": "Enumeration and quantum-violation landscapes",
+        "zh": "枚举与量子违反 landscape"
+      }
     },
     {
       "id": "lineage",
@@ -71,10 +72,10 @@ window.DECK = {
         "zh": "此前工作 · 0–5 分钟"
       },
       "title": {
-        "en": "Three papers progressively constrain Bell-test design",
-        "zh": "前三篇文章逐步明确 Bell 检验的设计约束"
+        "en": "Earlier Bell-test design work",
+        "zh": "此前的 Bell 检验设计工作"
       },
-      "duration": 60,
+      "duration": 70,
       "layout": "roadmap",
       "bullets": {
         "en": [
@@ -89,8 +90,8 @@ window.DECK = {
         ]
       },
       "notes": {
-        "en": "These are three stages of one design problem, rather than three unrelated applications. First, optimize coefficients and ask why the result becomes tight. Second, exploit collective structure so that a many-body quantum claim can be certified. Third, choose correlators that can actually be measured with useful noise tolerance. The first title is the supplied revised manuscript title; its linked public arXiv version still carries the older title. Today we add a further constraint: specify the model that the observed score must exclude. I will spend five minutes on these starting points and most of the talk on the pivoting result.",
-        "zh": "这三篇工作分别补上同一个设计问题的一部分：第一篇优化系数，并解释结果为什么会变紧；第二篇利用集体结构，使多体量子界能够得到认证；第三篇选择实验能测量、且有实用噪声容忍度的关联项。第一篇这里采用作者提供的更新稿标题，链接的公开 arXiv 版本仍使用旧标题。今天进一步加入一个约束：明确得分要排除哪一类量子资源模型。背景控制在五分钟左右，把主要时间留给 pivoting。"
+        "en": "These three papers provide context, rather than three additional topics for this talk. The revised first paper explains how coefficient optimization reaches a facet. The PI paper controls structured many-body bounds. The experiment selects few-body symmetric correlators that can be measured. The pivot project asks a different geometric question: once one facet is known, how are other facets connected to it? The first title is from the author-supplied updated manuscript.",
+        "zh": "这三篇文章是背景，不在今天分别展开。第一篇更新稿解释系数优化如何到达 facet；PI 文章控制有结构的多体界；实验文章选择实际可测的少体对称关联项。Pivot 接着问一个几何问题：已知一个 facet 后，其他 facets 如何与它连接？第一篇采用作者提供的更新标题。"
       },
       "sources": [
         {
@@ -107,8 +108,8 @@ window.DECK = {
         }
       ],
       "subtitle": {
-        "en": "Find a tight objective → control many-body bounds → make the observables measurable",
-        "zh": "找到紧见证 → 控制多体界 → 选出实验可测的关联项"
+        "en": "A tight objective, a certified bound, and accessible correlators",
+        "zh": "紧目标、可认证的界与可测关联项"
       },
       "backup": false,
       "story": {
@@ -125,7 +126,8 @@ window.DECK = {
           "zh": "先解释第一步：系数优化为什么会到达 facet。"
         }
       },
-      "formula": null
+      "formula": null,
+      "phase": "background"
     },
     {
       "id": "ratio-design",
@@ -134,26 +136,24 @@ window.DECK = {
         "zh": "此前工作 · 找到目标"
       },
       "title": {
-        "en": "Optimization supplies a tight starting witness",
-        "zh": "优化给出一个紧见证作为起点"
+        "en": "A tight witness gives a starting facet",
+        "zh": "紧见证提供一个起始 facet"
       },
-      "duration": 80,
+      "duration": 60,
       "layout": "chart",
       "bullets": {
         "en": [
-          "A nondegenerate ratio maximum is a facet.",
-          "A flat maximum can be tightened without lowering the ratio.",
-          "This supplies a witness; its resource requirement is still a separate question."
+          "Coefficient optimization and tightening can reach a facet.",
+          "The next task is to explore the neighboring boundary."
         ],
         "zh": [
-          "非退化的比值极大点对应 facet。",
-          "平坦极大点可以在不降低比值的条件下收紧。",
-          "这给出一个见证；它要求什么量子资源仍需单独判断。"
+          "系数优化与收紧可以到达 facet。",
+          "下一步是探索它周围的边界。"
         ]
       },
       "notes": {
-        "en": "Normalize the uniform score to zero and the local minimum to minus one, after removing equivalent coefficient directions. The exact optimized ratio is a convex support function on the polar local polytope. A nondegenerate local maximum must be at a polar vertex, hence at a facet witness. If the maximum is flat inside a face, the active-preserving directions allow tightening to an extreme point without decreasing the ratio. The supplied illustration tracks added active local vertices. Restricted coefficients give facets of the projected polytope; a numerical see-saw value is only an attained value unless separately certified. The convex principle and fixed-behavior facet extraction have precedents, including Schwarz et al. The revised local-flatness formulation is the precise statement of this paper. Once we have a tight witness, the next difficulty is its many-body quantum bound.",
-        "zh": "把均匀行为的得分规范为零、局域最小值规范为负一，并去掉等价系数方向。精确优化后的比值是极局域多面体上的凸支撑函数。非退化局部极大点必须落在极点上，对应 facet；如果极大点在一个面内平坦，就能沿保持活跃顶点的方向收紧到极点，且比值不下降。图中展示新增活跃局域顶点的过程。限制系数时，facet 属于投影多面体；数值 see-saw 得分仍需要另行认证量子上界。凸几何原则和固定行为的 facet 提取已有 Schwarz 等的先例。更新稿明确的是局部平坦性与极面收紧的精确表述。有了紧见证，下一步是控制它的多体量子界。"
+        "en": "The supplied illustration shows coefficient tightening by adding active local vertices. In the revised theorem, a nondegenerate ratio maximum lies at a facet, and a flat maximum admits a tightening path without loss of the ratio, under the stated normalization and coefficient quotient. I use this only to motivate a seed. Pivoting will preserve a shared ridge while moving to another facet, and it does not optimize the quantum value by itself.",
+        "zh": "作者提供的图展示增加活跃局域顶点、收紧系数的过程。更新定理在规定的规范化和系数商空间中表明：非退化比值极大点位于 facet；平坦极大点可以沿不降低比值的路径收紧。这里只用它解释 seed 的来源。接下来的 pivot 保留共同 ridge，移动到另一个 facet，本身不负责优化量子值。"
       },
       "sources": [
         {
@@ -165,10 +165,10 @@ window.DECK = {
           "url": "https://arxiv.org/abs/1511.05253"
         }
       ],
-      "formula": "\\[I(P_{\\mathrm{uni}})=0,\\qquad\\beta_C=-1,\\qquad\\Delta=\\beta_{\\mathrm{var}}/\\beta_C\\]",
+      "formula": null,
       "subtitle": {
-        "en": "Earlier paper: the geometry of a local maximum in coefficient space",
-        "zh": "第一篇：系数空间中局部最大值的几何"
+        "en": "The revised optimization paper supplies the starting point",
+        "zh": "更新后的优化文章提供起点"
       },
       "asset": "illustration_round1.png",
       "assetAlt": {
@@ -186,471 +186,1632 @@ window.DECK = {
           "zh": "系数优化与收紧给出紧 Bell 目标。"
         },
         "transition": {
-          "en": "The next question is whether the quantum bound remains manageable at many parties.",
-          "zh": "下一步要让多体量子界仍然可控。"
+          "en": "Once a facet is found, the pivot project asks how its neighboring boundary can be explored.",
+          "zh": "找到一个 facet 之后，pivot 课题接着问怎样探索它周围的边界。"
         }
-      }
+      },
+      "phase": "background"
     },
     {
-      "id": "pi-design",
-      "section": {
-        "en": "Earlier work · certify the bound",
-        "zh": "此前工作 · 认证界"
-      },
+      "id": "pivot-question",
       "title": {
-        "en": "Collective structure makes the many-body bound tractable",
-        "zh": "集体结构让多体界变得可处理"
+        "en": "The boundary has a graph structure",
+        "zh": "Bell 边界具有图结构"
       },
-      "duration": 60,
-      "layout": "split",
-      "bullets": {
-        "en": [
-          "Rank-one two-body coefficients simplify classical optimization.",
-          "Specified paired families have certified leading large-\\(N\\) values.",
-          "Their asymptotic ratios improve: \\(\\frac54\\to\\frac97\\to\\cdots\\to\\coth(1)\\)."
-        ],
-        "zh": [
-          "秩一二体系数简化了经典优化。",
-          "特定配对家族的主要大 \\(N\\) 阶量子值得到认证。",
-          "渐近比值依次改善：\\(\\frac54\\to\\frac97\\to\\cdots\\to\\coth(1)\\)。"
-        ]
-      },
-      "notes": {
-        "en": "The PI follow-up asks how to retain useful witnesses when the number of particles grows. Collective one- and two-body observables, together with rank-one two-body coefficients, reduce the classical problem and expose a tractable quantum construction. Within the studied paired families, more settings improve the asymptotic ratio toward coth one. Moment or sum-of-squares certificates match the leading large-particle-number value for those families. This does not optimize over all PI inequalities or certify every finite-size variational value. The methodological lesson is that a candidate and an upper certificate must be developed together. The experiment then adds another constraint: which correlations can we measure?",
-        "zh": "PI 后续工作研究粒子数增大后如何保留有用的见证。集体一体、二体关联加上秩一二体系数，简化经典优化并给出可处理的量子构造。在研究的配对家族中，增加设置让渐近比值趋近 coth one，矩或平方和证书匹配这些家族的主要大粒子数阶量子值。这没有优化所有 PI 不等式，也没有认证每个有限尺寸变分值。这里留下的方法是：候选目标与上界证书要一起设计。实验又进一步要求关联项本身能够被测量。"
-      },
-      "sources": [
-        {
-          "label": "Optimizing and Certifying Multipartite Permutationally Invariant Bell Inequalities",
-          "url": "https://arxiv.org/abs/2607.08462"
-        }
-      ],
-      "formula": "\\[I=\\sum_k\\alpha_k\\langle S_k\\rangle+\\frac12\\sum_{kl}\\gamma_k\\gamma_l\\langle S_{kl}\\rangle\\]",
-      "subtitle": {
-        "en": "PIBell: one- and two-body witnesses with structured coefficients",
-        "zh": "PIBell：具有结构系数的一体、二体见证"
-      },
-      "backup": false,
-      "story": {
-        "question": {
-          "en": "How do we control many-body quantum claims?",
-          "zh": "怎样控制多体量子结论？"
-        },
-        "takeaway": {
-          "en": "Use collective structure and match constructions with upper certificates.",
-          "zh": "利用集体结构，让构造与上界证书匹配。"
-        },
-        "transition": {
-          "en": "A certified objective must also fit the observables available in an experiment.",
-          "zh": "得到认证的目标还要适合实验可测的观测量。"
-        }
-      }
-    },
-    {
-      "id": "fewbody-experiment",
       "section": {
-        "en": "Earlier work · measure the witness",
-        "zh": "此前工作 · 测量见证"
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
       },
-      "title": {
-        "en": "Different correlations improve noise tolerance",
-        "zh": "不同关联项改善噪声容忍度"
-      },
-      "duration": 70,
-      "layout": "chart",
-      "bullets": {
-        "en": [
-          "Six-qubit theoretical noise tolerance: \\(4.8\\%\\to30.1\\%\\).",
-          "Postselected six/eight-photon violations: \\(32\\sigma\\;/\\;8.9\\sigma\\).",
-          "Design lesson: optimize the test for a specified source and task."
-        ],
-        "zh": [
-          "六比特理论噪声容忍度：\\(4.8\\%\\to30.1\\%\\)。",
-          "后选择六／八光子违背：\\(32\\sigma\\;/\\;8.9\\sigma\\)。",
-          "设计启示：围绕指定源和任务选择检验。"
-        ]
-      },
-      "notes": {
-        "en": "For the same six-qubit Dicke target and two settings, adding selected symmetric four-body terms to two-body terms increases theoretical white-state-noise tolerance from 4.8 percent to 30.1 percent. The observed postselected six- and eight-photon violations are 32 and 8.9 standard deviations. Noise tolerance and observed significance are different quantities. Few-body correlators are still obtained from many-photon coincidence records, with fair sampling; this is not a loophole-free implementation of today’s pivot witness. Its role in the story is the design lesson: changing the objective can change what the same source lets us certify. We now return to three parties, where the geometry can be completely classified, and change the excluded model from local correlations to quantum biseparability.",
-        "zh": "对同一个六比特 Dicke 目标态、两个测量设置，在二体项中加入选定的对称四体项，让理论白态噪声容忍度从 4.8% 提升到 30.1%。后选择六光子、八光子实验的违背分别达到 32 和 8.9 个标准差。理论容忍度与观测显著度是两种不同指标。少体关联仍来自多光子符合记录，并使用公平抽样；这个实验没有实现今天的 pivot 见证。它在故事中的作用是说明：改变目标函数，能改变同一个源可以认证什么。接下来回到能够完整分类的三方基准，把要排除的模型从局域关联改为量子双可分关联。"
-      },
-      "sources": [
-        {
-          "label": "Experimental certification of multipartite Bell correlations using only few-body symmetric correlations",
-          "url": "https://arxiv.org/abs/2609.37442"
-        }
-      ],
-      "asset": "experimental.svg",
-      "subtitle": {
-        "en": "Same target and two settings: adding accessible four-body terms improves noise tolerance",
-        "zh": "相同目标态、两个设置：加入可测四体项改善噪声容忍度"
-      },
-      "backup": false,
-      "story": {
-        "question": {
-          "en": "Why is objective design physically useful?",
-          "zh": "设计目标函数为什么有物理意义？"
-        },
-        "takeaway": {
-          "en": "Different accessible witnesses can detect different noisy-source regimes.",
-          "zh": "不同可测见证能覆盖不同的噪声源区间。"
-        },
-        "transition": {
-          "en": "Today we change the certification task: can the score rule out every biseparable realization?",
-          "zh": "今天改变认证任务：得分能否排除所有双可分实现？"
-        }
-      },
-      "formula": null
-    },
-    {
-      "id": "shared-tests",
-      "section": {
-        "en": "Pivoting · change the resource question",
-        "zh": "Pivoting · 改变资源问题"
-      },
-      "title": {
-        "en": "An endpoint violation need not certify tripartite entanglement",
-        "zh": "单个端点的违背未必认证三方纠缠"
-      },
-      "duration": 90,
+      "duration": 55,
       "layout": "statement",
       "bullets": {
         "en": [
-          "Two lifted-CHSH facets, each with local bound \\(1\\).",
-          "Each endpoint: \\(h_Q=h_{\\mathrm{BS}}=2\\sqrt2-1\\).",
-          "An observed score above \\(h_{\\mathrm{BS}}\\) excludes every quantum-biseparable realization."
+          "Vertices of the local polytope are deterministic strategies.",
+          "Facets are tight Bell inequalities.",
+          "A shared ridge connects two facets."
         ],
         "zh": [
-          "两个 lifted-CHSH facets，局域界均为 \\(1\\)。",
-          "每个端点：\\(h_Q=h_{\\mathrm{BS}}=2\\sqrt2-1\\)。",
-          "观测得分超过 \\(h_{\\mathrm{BS}}\\)，才排除所有量子双可分实现。"
+          "局域多面体的顶点是确定性策略。",
+          "Facets 对应紧 Bell 不等式。",
+          "共同 ridge 连接两个 facets。"
         ]
       },
       "notes": {
-        "en": "Bell nonlocality rules out local hidden-variable correlations. Genuine tripartite entanglement asks more: can any quantum-biseparable state, across any of the three cuts or a mixture of cuts, reproduce the score? A lifted CHSH maximum can use a deterministic third party and an entangled pair, so these endpoints answer the first question but not the second. Form the weighted score shown here. Both components must use one state and one complete measurement tuple at each weight; their measurements cannot be optimized separately. The state and measurements may change when the weight changes. If the unrestricted support exceeds the actual all-cut biseparable support, the joint score becomes a GME witness. This is a different resource benchmark from Svetlichny-type genuine multipartite nonlocality. We now need a systematic way to choose the pair.",
-        "zh": "Bell 非局域性排除局域隐变量关联；真正三方纠缠要求进一步排除任何切分上的量子双可分态，以及不同切分的混合。Lifted CHSH 最大值可以由一个确定性的第三方与一个纠缠对达到，所以这些端点能排除局域模型，却不能排除双可分模型。把两项写成图中的加权得分。每个权重下必须使用同一个态和完整测量组，不能分别优化两个分量；改变权重时可以重新优化实现。如果完整量子支撑高于实际全切分双可分支撑，这个组合就成为 GME 见证。这里的资源模型与 Svetlichny 型真正多方非局域性不同。接下来需要系统地选择配对。"
+        "en": "An inequality list describes which tests are tight. The adjacency graph adds how those tests fit together. The geometric vertices are deterministic behaviors, while graph vertices are facets, so these are two different uses of the word vertex. Our goal is to construct the graph and then attach quantum-violation values to it.",
+        "zh": "不等式列表告诉我们哪些检验是紧的。邻接图进一步告诉我们这些检验如何连接。多面体的顶点是确定性行为，facet graph 的节点却是 facets，要区分这两种节点。我们的目标是先构造图，再把量子违反值放到图上。"
       },
       "sources": [
         {
-          "label": "Current pivot manuscript",
-          "url": ""
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
         }
       ],
-      "formula": "\\[H_p=pf+(1-p)g,\\qquad\\Delta_p=h_Q(H_p)-h_{\\mathrm{BS}}(H_p)\\]",
       "backup": false,
-      "subtitle": {
-        "en": "Three parties, two settings, binary outcomes; maximum-score convention from here onward",
-        "zh": "三方、两个设置、二元结果；以下统一使用最大得分规范"
-      },
+      "phase": "original",
       "story": {
         "question": {
-          "en": "What resource does the new task exclude?",
-          "zh": "新任务要排除什么资源模型？"
+          "en": "",
+          "zh": ""
         },
         "takeaway": {
-          "en": "The relevant margin is quantum minus actual all-cut biseparable support.",
-          "zh": "关键余量是量子支撑减去实际全切分双可分支撑。"
+          "en": "",
+          "zh": ""
         },
         "transition": {
-          "en": "Pivoting supplies a controlled set of candidate pairs.",
-          "zh": "Pivoting 给出一组可以受控比较的候选配对。"
+          "en": "The CHSH projection makes this geometry visible.",
+          "zh": "CHSH 投影可以把这个几何关系画出来。"
+        }
+      },
+      "formula": "\\[\\mathcal L=\\operatorname{conv}(V),\\qquad \\dim F=D-1,\\qquad \\dim R=D-2\\]"
+    },
+    {
+      "id": "pivot-duality",
+      "title": {
+        "en": "Facet adjacency in the primal and polar pictures",
+        "zh": "原始空间与极空间中的 facet 邻接"
+      },
+      "section": {
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
+      },
+      "duration": 80,
+      "layout": "wide",
+      "bullets": {
+        "en": [
+          "A facet in the primal picture becomes a vertex in the polar.",
+          "Crossing a ridge corresponds to following a polar edge."
+        ],
+        "zh": [
+          "原始空间的一个 facet 对应极空间的一个顶点。",
+          "跨过 ridge 对应沿极空间的一条边移动。"
+        ]
+      },
+      "notes": {
+        "en": "The original figure uses a symmetric CHSH projection. The highlighted triangle on the left is a supporting facet. On the right, facets become polar vertices and ridge adjacency becomes an edge. A ridge belongs to exactly two facets. The quantum region helps visualize violation, but the pivot is defined entirely by the classical polytope.",
+        "zh": "原图使用对称 CHSH 投影。左侧高亮三角形是一个支撑 facet。右侧把 facets 变成极空间顶点，把 ridge 邻接变成边。一条 ridge 恰好属于两个 facets。量子区域帮助理解违反，但 pivot 完全由经典多面体定义。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "original",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "The next slide computes this move exactly.",
+          "zh": "下一页给出这一步的精确计算。"
+        }
+      },
+      "subtitle": {
+        "en": "The original CHSH illustration",
+        "zh": "原稿中的 CHSH 示意图"
+      },
+      "asset": "v0-chsh-duality.png",
+      "assetAlt": {
+        "en": "Facet adjacency in the primal and polar pictures",
+        "zh": "原始空间与极空间中的 facet 邻接"
+      }
+    },
+    {
+      "id": "pivot-step",
+      "title": {
+        "en": "One pivot rotates a supporting inequality",
+        "zh": "一步 pivot 旋转支撑不等式"
+      },
+      "section": {
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
+      },
+      "duration": 95,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "The direction vanishes on the chosen ridge.",
+          "The first outside vertex to become tight fixes the step.",
+          "All minimizing vertices, including ties, join the new tight set."
+        ],
+        "zh": [
+          "方向在选定 ridge 上为零。",
+          "第一个变紧的面外顶点决定步长。",
+          "所有达到最小比值的顶点都进入新紧集，包括并列者。"
+        ]
+      },
+      "notes": {
+        "en": "Use the v0 minimizing convention. The slack is \\(I_F(v)-\\beta_C\\geq0\\). The child support \\(J\\) is nonnegative on \\(F\\) and vanishes on its ridge. Extend it so that some outside vertex has \\(J(v)<0\\). Increasing \\(t\\) preserves the ridge and consumes outside slack. The minimum slack-to-direction ratio is the largest valid step. The new tight face has dimension \\(D-1\\). Recenter the uniform behavior before comparing violation ratios.",
+        "zh": "沿用 v0 的最小值约定，松弛量为 \\(I_F(v)-\\beta_C\\geq0\\)。子面支撑 \\(J\\) 在 \\(F\\) 上非负，在 ridge 上为零。延拓它，使至少一个面外顶点满足 \\(J(v)<0\\)。增大 \\(t\\) 保持 ridge，同时消耗面外松弛量。最小松弛比给出最大合法步长。新紧面的维数为 \\(D-1\\)。比较违反比值前，把均匀行为得分重新归零。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "original",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "The real bottleneck is obtaining all ridges of a large facet.",
+          "zh": "真正的瓶颈是找全大 facet 的所有 ridges。"
+        }
+      },
+      "subtitle": {
+        "en": "A classical geometric step; the quantum value is evaluated afterwards",
+        "zh": "经典几何步骤；量子值在之后单独计算"
+      },
+      "formula": "\\[\\begin{aligned}I_{\\mathrm{next}}&=I_F+t_*J\\geq\\beta_C,\\\\t_*&=\\min_{\\substack{v\\notin V_F\\\\J(v)<0}}\\frac{I_F(v)-\\beta_C}{-J(v)}.\\end{aligned}\\]"
+    },
+    {
+      "id": "recursive-child",
+      "title": {
+        "en": "A difficult facet becomes a child polytope",
+        "zh": "把困难 facet 变成子多面体"
+      },
+      "section": {
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
+      },
+      "duration": 90,
+      "layout": "split",
+      "bullets": {
+        "en": [
+          "The tight vertices define a polytope of dimension one lower.",
+          "Its facets are the parent facet’s ridges.",
+          "The same expansion procedure can solve the child boundary."
+        ],
+        "zh": [
+          "紧顶点定义一个低一维的子多面体。",
+          "子多面体的 facets 正是母 facet 的 ridges。",
+          "同一展开过程可以递归求解子边界。"
+        ]
+      },
+      "notes": {
+        "en": "Direct double description can solve a small facet boundary. For a large or degenerate facet it can remain unfinished. Treat \\(V_F\\) as a new vertex set and repeat the facet-expansion problem one dimension lower. A verified child facet supplies a parent ridge and a parent pivot. The recursion tree records completed branches and the open frontier.",
+        "zh": "直接 DD 可以求解较小 facet 的边界，对大或高退化面则可能无法完成。把 \\(V_F\\) 作为新顶点集，在低一维空间重复 facet 展开。已验证子 facet 给出母 ridge 和母层 pivot。递归树记录已完成分支和开放前沿。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "original",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "Symmetry and persistent tasks keep this recursion manageable.",
+          "zh": "接下来用对称性和可恢复任务组织递归。"
+        }
+      },
+      "formula": "\\[P_F=\\operatorname{conv}(V_F),\\qquad \\dim P_F=D-1\\]",
+      "asset": "v0-recursion-tree.png",
+      "assetAlt": {
+        "en": "A difficult facet becomes a child polytope",
+        "zh": "把困难 facet 变成子多面体"
+      }
+    },
+    {
+      "id": "recursive-workflow",
+      "title": {
+        "en": "The expansion preserves solved and unfinished tasks",
+        "zh": "展开过程保留已解与未完成的任务"
+      },
+      "section": {
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
+      },
+      "duration": 70,
+      "layout": "wide",
+      "bullets": {
+        "en": [
+          "Relabeling symmetry identifies equivalent facets.",
+          "Direct DD handles small facets first.",
+          "Unfinished facets enter recursion and keep their verified discoveries."
+        ],
+        "zh": [
+          "重标记对称性识别等价 facets。",
+          "先直接 DD 处理较小 facets。",
+          "未完成的 facets 进入递归，并保留已验证的发现。"
+        ]
+      },
+      "notes": {
+        "en": "Canonicalization keeps one representative per global relabeling orbit. The facet stabilizer gives the child symmetry. The diagram separates pending DD, pending recursion, completed tasks and unresolved tasks at the depth limit \\(\\ell\\). A partial call returns verified discoveries without certifying its full boundary. Persistent tasks allow a later restart.",
+        "zh": "规范化为每个全局重标记轨道保留一个代表；facet 的稳定子给出子问题对称性。图中区分待 DD、待递归、已完成，以及在深度限制 \\(\\ell\\) 下未解的任务。部分调用返回已验证发现，但不认证全边界。任务持久化支持后续重启。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "original",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "This makes the stopping criterion precise.",
+          "zh": "这样才能准确说明何时可以停止。"
+        }
+      },
+      "asset": "v0-recursive-workflow.png",
+      "assetAlt": {
+        "en": "The expansion preserves solved and unfinished tasks",
+        "zh": "展开过程保留已解与未完成的任务"
+      }
+    },
+    {
+      "id": "closure",
+      "title": {
+        "en": "A closed boundary certifies complete enumeration",
+        "zh": "闭合边界认证完整枚举"
+      },
+      "section": {
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
+      },
+      "duration": 65,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "Every stored facet has a complete ridge list.",
+          "Every exact ridge pivot returns a class already in the library.",
+          "Connectedness of the facet graph then closes the whole polytope."
+        ],
+        "zh": [
+          "库内每个 facet 都有完整 ridge 列表。",
+          "每次精确 ridge pivot 都返回库内已有类别。",
+          "Facet graph 的连通性由此保证全多面体闭合。"
+        ]
+      },
+      "notes": {
+        "en": "This is the recursive ridge-closure criterion. Exact support, dimension and boundary checks are required. A stable class count is only a search plateau. Completeness is stronger: no ridge from any known facet leads outside the stored set, and the facet graph is connected. The same argument applies recursively when a closed child supplies the parent boundary. We now test the method on a complete known benchmark.",
+        "zh": "这是递归 ridge 闭合判据，需要精确支撑、维数和边界检查。类别数稳定只说明搜索进入平台。完整性要求更强：已知每个 facet 的所有 ridges 都不通向库外，而 facet graph 是连通的。当完整子问题给出母边界时，同一论证递归成立。现在用一个已有完整答案的小场景验证。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "original",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "The three-party benchmark has a known answer.",
+          "zh": "三体基准场景有已知完整答案。"
         }
       }
     },
     {
-      "id": "pivot-geometry",
-      "section": {
-        "en": "Pivoting · select the pairs",
-        "zh": "Pivoting · 选择配对"
-      },
+      "id": "benchmark-322",
       "title": {
-        "en": "A ridge pivot gives a neighboring tight test",
-        "zh": "跨过一个 ridge，得到相邻的紧检验"
+        "en": "The expansion recovers all 46 three-party classes",
+        "zh": "展开恢复全部46个三体类别"
       },
-      "duration": 90,
-      "layout": "chart",
-      "bullets": {
-        "en": [
-          "A ridge is the shared boundary of two facets.",
-          "Enumerate the boundary, pivot, and validate the other facet.",
-          "Completeness comes from closing every required boundary task."
-        ],
-        "zh": [
-          "一个 ridge 是两个 facets 的共同边界。",
-          "枚举边界，执行 pivot，并验证另一 facet。",
-          "每个必要边界任务闭合，才得到完整性。"
-        ]
-      },
-      "notes": {
-        "en": "Think of a tight Bell witness as one face of the local polytope. A ridge is one dimension lower and is shared by exactly two facets. Crossing it gives a second tight test, so this produces comparable pairs without treating coefficient changes as arbitrary. Recursive face expansion handles hard boundary tasks by descending to lower-dimensional tight-vertex polytopes. A task is complete only when its boundary and all required pivots close. In the three-party binary two-setting scenario, the local polytope has dimension 26 and 64 deterministic vertices; the construction reproduces all 46 known facet classes. Pivoting and the classification are established geometry. The contribution we examine is the resource analysis on the resulting physical pairs. That last adjective matters: class labels suppress relative orientation.",
-        "zh": "把紧 Bell 见证看作局域多面体上的一个面。Ridge 比 facet 低一维，由恰好两个 facets 共享；跨过去就得到第二个紧检验，使系数变化成为有几何控制的配对。递归面展开把困难边界任务降到低维紧顶点多面体；边界与所有必要 pivots 闭合后，任务才算完成。三方、二设置、二元结果的局域多面体维数为 26，有 64 个确定性顶点，构造复现全部 46 个已知 facet 类。Pivoting 与分类本身是已有几何。这里要研究的新内容是得到的物理配对上的资源支撑。物理取向很重要，因为类别标签会隐藏相对取向。"
-      },
-      "sources": [
-        {
-          "label": "Current pivot manuscript",
-          "url": ""
-        }
-      ],
-      "asset": "expansion.svg",
-      "backup": false,
-      "subtitle": {
-        "en": "A systematic geometric comparison in the complete three-party benchmark",
-        "zh": "在完整三方基准中做系统的几何比较"
-      },
-      "story": {
-        "question": {
-          "en": "How are the pairs selected?",
-          "zh": "如何系统选择配对？"
-        },
-        "takeaway": {
-          "en": "Ridge pivots give validated physical neighbors of a tight witness.",
-          "zh": "Ridge pivots 给出经过验证的物理相邻见证。"
-        },
-        "transition": {
-          "en": "We must resolve physical orientations before comparing their resources.",
-          "zh": "比较资源前，必须恢复类别图隐藏的物理取向。"
-        }
-      },
-      "formula": null
-    },
-    {
-      "id": "orientation-census",
       "section": {
-        "en": "Pivoting · resolve orientation",
-        "zh": "Pivoting · 恢复取向"
-      },
-      "title": {
-        "en": "One facet class hides fourteen different pair orientations",
-        "zh": "同一 facet 类中隐藏十四种配对取向"
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
       },
       "duration": 80,
       "layout": "chart",
       "bullets": {
         "en": [
-          "\\(96\\) orientations; \\(95\\) partners in \\(14\\) pair orbits.",
-          "Adjacent: \\(39\\) partners in \\(8\\) ridge orbits.",
-          "All midpoints are classified; all eight ridge orbits are solved for every weight."
+          "64 deterministic vertices in 26 dimensions.",
+          "46 inequivalent classes represent 53,856 facets.",
+          "40 seed classes with at most 34 tight vertices cover all 46 with neighbors."
         ],
         "zh": [
-          "\\(96\\) 种取向；\\(95\\) 个伙伴分为 \\(14\\) 个配对轨道。",
-          "相邻配对：\\(39\\) 个伙伴，\\(8\\) 个 ridge 轨道。",
-          "全部中点完成分类；八个 ridge 轨道完成全权重分析。"
+          "26维空间中的64个确定性顶点。",
+          "46个不等价类别代表53,856个 facets。",
+          "紧顶点数不超过34的40个 seed 类别，加邻居后覆盖全部46类。"
         ]
       },
       "notes": {
-        "en": "Every lifted-CHSH orientation belongs to Sliwa class four and has the same optimized endpoint height. On the class graph, adjacency between two such facets appears only as a self-loop. It cannot distinguish the experiments represented by their different relative settings and outcome labels. Fix one of the 96 physical facets and quotient the other 95 only by its stabilizer. This leaves 14 pair orbits: eight adjacent and six nonadjacent. The local bound stays one because each pair shares tight deterministic strategies. We solve all 14 midpoint comparisons, and the eight ridge orbits over the whole weight interval. This is a controlled census, not a complete all-weight solution of the nonadjacent pairs. Its first positive example has an elementary curve.",
-        "zh": "所有 lifted-CHSH 取向都属于 Sliwa 第四类，且端点优化高度相同。在类别图上，它们之间的邻接只表现为自环，无法区分不同相对设置、结果标记所对应的实验。固定 96 个物理 facets 中的一个，仅用它的稳定子对其余 95 个伙伴取商，得到 14 个配对轨道：八个相邻、六个非相邻。每对都有共同的饱和确定性策略，因此局域界保持为一。我们完成全部 14 个中点比较，以及八个 ridge 轨道的全权重分析；非相邻轨道没有全部完成全权重求解。先看一个具有简单曲线的正间隙例子。"
+        "en": "For the three-party, two-setting, two-outcome scenario, all nonempty correlators give dimension 26. The method reproduces the complete Sliwa classification and its adjacency. The coverage figure expands a collection of seeds ordered by tight-vertex count. It is not a chronological trace from one seed. The solid curve reaches every class before the larger facets are used as seeds.",
+        "zh": "三方、两设置、两输出场景保留全部非空关联项，维数为26。方法恢复完整的 Śliwa 分类及邻接关系。覆盖图依次展开按紧顶点数排序的一组 seeds，并不是从单个 seed 出发的时间轨迹。实线在使用较大 facets 作 seeds 之前就达到全部类别。"
       },
       "sources": [
         {
-          "label": "Current pivot manuscript",
-          "url": ""
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
         }
       ],
-      "asset": "census.svg",
       "backup": false,
-      "subtitle": {
-        "en": "Fix one lifted-CHSH facet; retain the relative labeling of its partner",
-        "zh": "固定一个 lifted-CHSH facet，保留伙伴的相对标记"
-      },
+      "phase": "original",
       "story": {
         "question": {
-          "en": "What is lost by the class quotient?",
-          "zh": "类别取商隐藏了什么？"
+          "en": "",
+          "zh": ""
         },
         "takeaway": {
-          "en": "Equal endpoint classes still allow different shared-measurement resource curves.",
-          "zh": "端点类别相同，共用测量的资源曲线仍可能不同。"
+          "en": "",
+          "zh": ""
         },
         "transition": {
-          "en": "R3 shows the distinction between a large violation and a positive resource margin.",
-          "zh": "R3 首先展示大违背量与正资源余量的区别。"
+          "en": "The library now contains connections as well as inequalities.",
+          "zh": "库现在既包含不等式，也包含它们之间的连接。"
         }
       },
-      "formula": null
-    },
-    {
-      "id": "r3-transition",
-      "section": {
-        "en": "Pivoting · the first resource transition",
-        "zh": "Pivoting · 第一个资源转变"
-      },
-      "title": {
-        "en": "A lower score can require tripartite entanglement",
-        "zh": "更低的得分可以要求真正三方纠缠"
-      },
-      "duration": 100,
-      "layout": "chart",
-      "bullets": {
-        "en": [
-          "Midpoint: \\(h_Q=\\frac32>h_{\\mathrm{BS}}=\\sqrt2\\).",
-          "A strict GME gap exists only in the central interval.",
-          "The endpoint score is larger and biseparably attainable."
-        ],
-        "zh": [
-          "中点：\\(h_Q=\\frac32>h_{\\mathrm{BS}}=\\sqrt2\\)。",
-          "只有中央权重区间具有严格 GME 间隙。",
-          "端点得分更大，却能由双可分态达到。"
-        ]
-      },
-      "notes": {
-        "en": "Read the two curves together. The quantum maximum decreases from the endpoint height to three halves at the midpoint, yet the actual biseparable support drops further to square root two. Thus a smaller Bell score can certify a stronger resource. With \\(t\\) equal to the absolute weight imbalance and \\(k\\) equal to square root two minus one, the exact gap is one half of the squared positive part of \\(k-t\\). It is positive precisely in the interval shown. Both bounds include all finite local dimensions and binary POVMs, rather than a chosen state ansatz. Holz et al. already obtained the same midpoint numbers for a different Bell functional. The present result is this specified full interpolation and its classification within the ridge census. The next question is whether this behavior is typical among the eight ridge orbits.",
-        "zh": "把两条曲线一起读：量子最大值从端点下降到中点的三除以二，但实际双可分支撑下降得更多，到根号二。因此更小的 Bell 得分反而可以认证更强的资源。令 \\(t\\) 为权重不平衡的绝对值、\\(k\\) 为根号二减一，精确间隙是 \\(k-t\\) 的正部平方再除以二，只在图中中央区间为正。两个界覆盖有限局域维数和二元 POVM，并非仅优化某个态的 ansatz。Holz 等在另一个 Bell 泛函上已经给出相同中点数值；这里的结果是指定配对的完整插值，以及它在 ridge 分类中的位置。接下来判断八个 ridge 轨道中还有哪些具有这种资源间隙。"
-      },
-      "sources": [
-        {
-          "label": "Current pivot manuscript · R3 exact theorem",
-          "url": ""
-        },
-        {
-          "label": "Holz et al. · known midpoint precedent",
-          "url": "https://doi.org/10.1103/PhysRevResearch.2.023251"
-        }
-      ],
-      "asset": "r3-curve.svg",
-      "formula": "\\[1-\\frac1{\\sqrt2}<p<\\frac1{\\sqrt2}\\]",
       "subtitle": {
-        "en": "R3: an exact transition along one ridge family",
-        "zh": "R3：一个 ridge 家族上的精确转变"
+        "en": "Complete geometric benchmark",
+        "zh": "完整的几何基准"
       },
-      "backup": false,
-      "story": {
-        "question": {
-          "en": "Can a weaker violation certify a stronger resource?",
-          "zh": "更小的违背能否认证更强的资源？"
-        },
-        "takeaway": {
-          "en": "Yes: compare the score to the excluded-resource bound, not just the local bound.",
-          "zh": "可以：需要比较被排除资源的界，而不仅是局域界。"
-        },
-        "transition": {
-          "en": "The complete ridge census tells us how many families do this.",
-          "zh": "完整 ridge 分类回答哪些家族具有这种性质。"
-        }
+      "asset": "v0-322-coverage.png",
+      "assetAlt": {
+        "en": "The expansion recovers all 46 three-party classes",
+        "zh": "展开恢复全部46个三体类别"
       }
     },
     {
-      "id": "all-ridges",
-      "section": {
-        "en": "Pivoting · complete classification",
-        "zh": "Pivoting · 完整分类"
-      },
+      "id": "benchmark-adjacency",
       "title": {
-        "en": "The complete ridge census separates three behaviors",
-        "zh": "完整 ridge 分类区分三种行为"
+        "en": "The facet graph records which tests share a ridge",
+        "zh": "Facet graph 记录哪些检验共享 ridge"
+      },
+      "section": {
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
+      },
+      "duration": 65,
+      "layout": "chart",
+      "bullets": {
+        "en": [
+          "Each graph node denotes one relabeling class.",
+          "An off-diagonal entry denotes adjacency between two classes.",
+          "A diagonal entry can connect two orientations of the same class."
+        ],
+        "zh": [
+          "每个图节点表示一个重标记类别。",
+          "非对角元表示两个类别之间存在邻接。",
+          "对角元可以表示同一类别的两个不同取向相邻。"
+        ]
+      },
+      "notes": {
+        "en": "The matrix is the complete symmetry-quotient adjacency for the three-party benchmark. It records existence of a ridge adjacency, not how many ridges realize it. A diagonal entry is not a facet being adjacent to itself. It means two distinct facets from the same relabeling orbit share a ridge. This distinction will matter again in the later four-party resource example.",
+        "zh": "矩阵是三体基准的完整对称商图邻接。它记录 ridge 邻接是否存在，而不是实现邻接的 ridge 数量。对角元并非同一个 facet 与自身相邻，而是同一重标记轨道的两个不同 facets 共享 ridge。后面的四体资源例子也需要保留这个区分。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "original",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "We can attach a quantum-violation height to every node.",
+          "zh": "接下来给每个节点标上量子违反高度。"
+        }
+      },
+      "asset": "v0-322-adjacency.png",
+      "assetAlt": {
+        "en": "The facet graph records which tests share a ridge",
+        "zh": "Facet graph 记录哪些检验共享 ridge"
+      }
+    },
+    {
+      "id": "ratio-height",
+      "title": {
+        "en": "Quantum violation supplies a height on the graph",
+        "zh": "量子违反给图上的节点提供高度"
+      },
+      "section": {
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
       },
       "duration": 70,
       "layout": "statement",
       "bullets": {
         "en": [
-          "<strong>R3 · \\(192\\) physical edges</strong><br>Strict gap only in the central interval.",
-          "<strong>R5 · \\(768\\) physical edges</strong><br>Strict gap at every interior weight.",
-          "<strong>Six other orbits · \\(912\\) physical edges</strong><br>Quantum and biseparable supports coincide at every weight."
+          "Restore zero score for the uniform behavior before comparing facets.",
+          "Optimize each facet with its own state and measurements.",
+          "See-saw values give attained ratio lower bounds."
         ],
         "zh": [
-          "<strong>R3 · \\(192\\) 条物理边</strong><br>只在中央区间有严格间隙。",
-          "<strong>R5 · \\(768\\) 条物理边</strong><br>所有内部权重都有严格间隙。",
-          "<strong>其余六轨道 · \\(912\\) 条物理边</strong><br>所有权重上量子与双可分支撑相同。"
+          "比较不同 facets 前，把均匀行为得分重新归零。",
+          "每个 facet 分别优化自己的状态和测量。",
+          "See-saw 得分给出已实现比值的下界。"
         ]
       },
       "notes": {
-        "en": "This is the complete result for adjacent class-four pairs, not a collection of selected successful examples. Of the eight ridge orbits, R3 gives a central transition, R5 gives a positive gap throughout the open interval, and six give no support gap at any weight. The edge counts refer to the physical facet graph: 192, 768, and 912. A zero gap means that a biseparable strategy can attain the optimum; it does not classify every maximizing state. This makes the novel classification precise while showing that adjacency alone is insufficient. The nonadjacent controls test the other direction: is adjacency necessary, or can orientation produce similar effects without a ridge?",
-        "zh": "这不是挑出的几个成功例子，而是相邻第四类配对的完整结果。八个 ridge 轨道中，R3 只在中央转变，R5 在整个开区间有正间隙，其余六个在所有权重上没有支撑间隙。192、768、912 是物理 facet 图上的边数。零间隙表示有双可分策略达到最大值，并不把所有最大态都分类为双可分态。这个分类明确了具体贡献，也说明邻接本身并不充分。非相邻对照进一步检验另一方向：资源间隙是否一定需要 ridge？"
+        "en": "Use the v0 minimizing convention with \\(I(P_{\\mathrm{uni}})=0\\) and \\(\\beta_C<0\\). An attained see-saw value is an upper bound on the quantum minimum. Dividing by the negative classical bound makes \\(\\widehat\\Delta\\) a lower bound on the optimal ratio. Each facet optimizes its own state and measurements. This height does not impose a shared physical strategy.",
+        "zh": "沿用 v0 的最小值约定，\\(I(P_{\\mathrm{uni}})=0\\)，\\(\\beta_C<0\\)。已实现 see-saw 值是量子最小值的上界；除以负经典界后，\\(\\widehat\\Delta\\) 成为最优比值的下界。每个 facet 分别优化自己的状态和测量，这个高度不要求共同物理策略。"
       },
       "sources": [
         {
-          "label": "Current pivot manuscript",
-          "url": ""
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
         }
       ],
       "backup": false,
-      "subtitle": {
-        "en": "Same endpoint class and heights; different resource requirements",
-        "zh": "相同端点类别与高度，不同资源需求"
-      },
+      "phase": "original",
       "story": {
         "question": {
-          "en": "How general is the ridge effect?",
-          "zh": "Ridge 效应在这个分类中有多普遍？"
+          "en": "",
+          "zh": ""
         },
         "takeaway": {
-          "en": "Two of eight adjacent orbit families have a positive gap; adjacency is insufficient.",
-          "zh": "八个相邻轨道中只有两个出现正间隙；邻接并不充分。"
+          "en": "",
+          "zh": ""
         },
         "transition": {
-          "en": "Nonadjacent controls isolate what relative orientation changes.",
-          "zh": "非相邻对照进一步隔离相对取向的作用。"
+          "en": "The four-party projections let us study this structure at scale.",
+          "zh": "四体投影让我们能在大规模上研究这个结构。"
         }
       },
-      "formula": null
+      "formula": "\\[\\widehat\\Delta_F=\\frac{\\widehat\\beta_{Q,F}}{\\beta_{C,F}}\\leq\\Delta_F,\\qquad I_F(P_{\\mathrm{uni}})=0\\]"
     },
     {
-      "id": "orientation-controls",
-      "section": {
-        "en": "Pivoting · orientation controls",
-        "zh": "Pivoting · 取向对照"
-      },
+      "id": "four-projections",
       "title": {
-        "en": "Same biseparable curve, different quantum maxima",
-        "zh": "相同双可分曲线，不同量子最大值"
+        "en": "The four-party libraries retain different correlators",
+        "zh": "两个四体库保留不同的关联项"
       },
-      "duration": 90,
-      "layout": "chart",
+      "section": {
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
+      },
+      "duration": 70,
+      "layout": "statement",
       "bullets": {
         "en": [
-          "R5 and N0 have <strong>the same all-cut biseparable curve</strong>.",
-          "Their midpoint quantum maxima differ: \\(\\frac{11}{7}\\) versus \\(\\sqrt2\\).",
-          "N1 has no midpoint gap, yet every unequal interior weight has a strict gap."
+          "The projections define different local polytopes.",
+          "All figures and counts here use the original v0 snapshot.",
+          "Both four-party enumerations remain partial."
         ],
         "zh": [
-          "R5 与 N0 具有<strong>相同的全切分双可分曲线</strong>。",
-          "中点量子最大值不同：\\(\\frac{11}{7}\\) 与 \\(\\sqrt2\\)。",
-          "N1 中点无间隙，但所有不等权内部点都有严格间隙。"
+          "这两个投影定义不同的局域多面体。",
+          "这里的图和计数统一使用原稿 v0 快照。",
+          "两个四体枚举都仍是部分库。"
         ]
       },
       "notes": {
-        "en": "The cleanest orientation comparison holds the excluded-resource benchmark fixed. R5 and the nonadjacent N0 pair have the same actual all-cut biseparable support for every weight, but their midpoint quantum maxima are eleven sevenths and square root two. Their difference therefore comes from what one shared quantum realization can achieve, rather than a changed biseparable threshold. N1 supplies another control: equal weights cancel the gap, whereas every unequal interior weight has a positive gap. Adjacency is neither necessary nor sufficient for this resource separation. These solved examples do not establish a general orientation predictor. N0 also has two unresolved transition strips, reserved for backup. R5 is the family we now follow in detail because its whole support and equality structure are solved.",
-        "zh": "最清楚的取向对照固定了要排除的资源基准。R5 与非相邻 N0 在每个权重上都有相同的实际全切分双可分支撑，但中点量子最大值分别为十一除以七、根号二。差异因此来自共用测量的量子实现能达到什么，而不是双可分阈值改变。N1 提供另一种对照：等权时无间隙，所有不等权内部点却都有正间隙。因此邻接对资源分离既不必要，也不充分。这些已解例子还不是一般取向预测规律。N0 的两个未解转变区间留在备份页。下面集中讲 R5，因为它的完整支撑与等号结构都已解决。"
+        "en": "The one- and two-body projection contains 8 one-body and 24 two-body coordinates, giving dimension 32 with 256 distinct deterministic vertices. The two- and four-body projection contains 24 two-body and 16 four-body coordinates, giving dimension 40. A global output flip identifies pairs of assignments, leaving 128 vertices. The counts are relabeling classes, not individual physical facets. We use the v0 snapshot consistently rather than mixing it with later database status.",
+        "zh": "一、二体投影保留8个一体和24个二体坐标，维数32，有256个不同确定性顶点。二、四体投影保留24个二体和16个四体坐标，维数40。全局输出翻转识别成对的确定性赋值，故有128个顶点。表中计数是重标记类别数，不是物理 facets 的总数。这里统一沿用 v0 快照，避免与后续数据库状态混用。"
       },
       "sources": [
         {
-          "label": "Current pivot manuscript",
-          "url": ""
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
         }
       ],
-      "asset": "controls.svg",
       "backup": false,
-      "subtitle": {
-        "en": "R5 versus N0 isolates a relative-orientation effect",
-        "zh": "R5 与 N0 的比较隔离相对取向效应"
-      },
+      "phase": "original",
       "story": {
         "question": {
-          "en": "Is the gap caused by adjacency itself?",
-          "zh": "间隙能否归因于邻接本身？"
+          "en": "",
+          "zh": ""
         },
         "takeaway": {
-          "en": "The controlled evidence points to relative quantum compatibility; it supplies no universal predictor.",
-          "zh": "受控比较展示相对量子兼容性差异，尚未给出普遍预测规律。"
+          "en": "",
+          "zh": ""
         },
         "transition": {
-          "en": "R5 lets us trace the complete chain from support to an operational guarantee.",
-          "zh": "R5 允许把支撑、等号结构与操作性保证连成完整论证。"
+          "en": "The coverage curves show how small facets reach a large boundary.",
+          "zh": "覆盖曲线展示小 facets 如何到达大范围边界。"
         }
       },
-      "formula": null
+      "table": {
+        "headers": {
+          "en": [
+            "Projection",
+            "Dimension",
+            "Vertices",
+            "Stored classes"
+          ],
+          "zh": [
+            "投影",
+            "维数",
+            "顶点数",
+            "已存类别数"
+          ]
+        },
+        "rows": {
+          "en": [
+            [
+              "One- and two-body",
+              "32",
+              "256",
+              "2,827,535"
+            ],
+            [
+              "Two- and four-body",
+              "40",
+              "128",
+              "7,573,123"
+            ]
+          ],
+          "zh": [
+            [
+              "一、二体",
+              "32",
+              "256",
+              "2,827,535"
+            ],
+            [
+              "二、四体",
+              "40",
+              "128",
+              "7,573,123"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "four-coverage",
+      "title": {
+        "en": "Small facets reach millions of known classes",
+        "zh": "小 facets 到达数百万个已知类别"
+      },
+      "section": {
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
+      },
+      "duration": 90,
+      "layout": "wide",
+      "bullets": {
+        "en": [
+          "One- and two-body: all stored classes are covered at \\(T=40\\).",
+          "Two- and four-body: all stored classes are covered at \\(T=58\\)."
+        ],
+        "zh": [
+          "一、二体：在 \\(T=40\\) 时覆盖所有已存类别。",
+          "二、四体：在 \\(T=58\\) 时覆盖所有已存类别。"
+        ]
+      },
+      "notes": {
+        "en": "Dashed curves count expanded seeds with at most \\(T\\) tight vertices. Solid curves also count their neighbors. In the even-correlator library, the 1,068,260 classes with 41 tight vertices reach 4,017,307 classes. At \\(T=40\\) and \\(T=58\\), respectively, all stored classes are reached. This is stored-library coverage. The unresolved frontier prevents a completeness claim.",
+        "zh": "虚线计紧顶点数不超过 \\(T\\) 的已展开 seeds，实线再计邻居。偶数阶库中，1,068,260个紧顶点数为41的类别到达4,017,307类。两个投影分别在 \\(T=40\\) 和 \\(T=58\\) 覆盖全部已存类别。这是库内覆盖，未解前沿使我们不能宣称枚举完整。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "original",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "The unfinished frontier also matters when analyzing the graph.",
+          "zh": "分析图时也必须交代尚未完成的前沿。"
+        }
+      },
+      "subtitle": {
+        "en": "Seed-and-neighbor coverage of the discovered library",
+        "zh": "已发现库内的 seed 与邻居覆盖"
+      },
+      "asset": "v0-four-coverage.png",
+      "assetAlt": {
+        "en": "Small facets reach millions of known classes",
+        "zh": "小 facets 到达数百万个已知类别"
+      }
+    },
+    {
+      "id": "four-frontier",
+      "title": {
+        "en": "Verified neighbor patches extend the recorded graph",
+        "zh": "已验证的邻居补丁扩展已记录的图"
+      },
+      "section": {
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
+      },
+      "duration": 65,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "The v0 snapshot has 99 and 80 unclosed root owners.",
+          "Verified child results add their neighbor links to the root graph.",
+          "The resulting graph remains a discovered partial boundary."
+        ],
+        "zh": [
+          "v0 快照分别有99和80个未闭合 root owners。",
+          "已验证子层结果把这些 owners 的邻接边补入 root graph。",
+          "所得图仍对应已发现的部分边界。"
+        ]
+      },
+      "notes": {
+        "en": "The original landscape analysis uses the augmented root-plus-patch graph. In the one- and two-body projection the patch adds 25,727,731 directed links; in the two- and four-body projection it adds 78,085,157. The augmented graph is symmetric, but symmetry does not show that every possible edge or class has been found. The unresolved child-row counts are pending calculations, not a count of missing facets. This matters because an omitted uphill edge can create an artificial stopping point.",
+        "zh": "原稿的 landscape 分析使用 root 加 patch 的增强图。一、二体补丁增加25,727,731条有向边，二、四体增加78,085,157条。增强图具有对称性，但这不证明所有可能的边或类别已经找到。未解子行数表示待完成计算，不能解释成缺失 facets 的数量。这个区别很重要：漏掉一条上升边可能制造假的停止点。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "original",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "We first ask what values surround a high-violation class.",
+          "zh": "先问高违反类别周围通常有哪些得分。"
+        }
+      },
+      "table": {
+        "headers": {
+          "en": [
+            "v0 projection",
+            "Root owners",
+            "Augmented directed links"
+          ],
+          "zh": [
+            "v0 投影",
+            "未闭合 root owners",
+            "增强图有向边数"
+          ]
+        },
+        "rows": {
+          "en": [
+            [
+              "One- and two-body",
+              "99",
+              "202,716,944"
+            ],
+            [
+              "Two- and four-body",
+              "80",
+              "906,699,427"
+            ]
+          ],
+          "zh": [
+            [
+              "一、二体",
+              "99",
+              "202,716,944"
+            ],
+            [
+              "二、四体",
+              "80",
+              "906,699,427"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "four-neighbor",
+      "title": {
+        "en": "Higher recorded ratios have stronger neighborhoods",
+        "zh": "较高的已记录比值通常有更强的邻域"
+      },
+      "section": {
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
+      },
+      "duration": 80,
+      "layout": "wide",
+      "bullets": {
+        "en": [
+          "Each distinct neighboring class contributes once to the mean.",
+          "The full stored-sample rank correlations are \\(0.8689\\) and \\(0.8744\\)."
+        ],
+        "zh": [
+          "邻居均值对每个不同类别只计一次。",
+          "全部已存样本的秩相关为 \\(0.8689\\) 和 \\(0.8744\\)。"
+        ]
+      },
+      "notes": {
+        "en": "The horizontal axis is a class’s attained ratio. The vertical axis is the mean attained ratio of its distinct neighboring classes. Colors show class counts per bin, and the green curve is the binned mean. The positive trend is an empirical description of the recorded graph. This statistic is not edge assortativity. The larger values 0.9192 and 0.9491 refer to the closed-class and closed-neighbor subset, not this full stored sample. A mean trend does not tell us whether local ascent can become trapped.",
+        "zh": "横轴是一个类别已实现的比值，纵轴是它所有不同邻居类别已实现比值的均值。颜色表示分箱中的类别数，绿线是分箱均值。正趋势是对已记录图的经验描述，不能把这种统计量称作 edge assortativity。较大的0.9192与0.9491来自仅含已闭合类别和邻居的子样本，不是全部已存样本。均值趋势还不能回答局部上升会不会卡住。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "original",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "Steepest ascent asks whether an improving path can get stuck.",
+          "zh": "最陡上升直接检查改善路径是否会停住。"
+        }
+      },
+      "subtitle": {
+        "en": "An empirical neighbor-mean trend in the v0 graph",
+        "zh": "v0 图中的经验邻居均值趋势"
+      },
+      "asset": "v0-four-neighbor.png",
+      "assetAlt": {
+        "en": "Higher recorded ratios have stronger neighborhoods",
+        "zh": "较高的已记录比值通常有更强的邻域"
+      }
+    },
+    {
+      "id": "ascent-rule",
+      "title": {
+        "en": "A pivot path follows increasing recorded violation",
+        "zh": "Pivot 路径沿已记录违反值上升"
+      },
+      "section": {
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
+      },
+      "duration": 75,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "At each class, choose the neighbor with largest recorded ratio.",
+          "Move only when the increase exceeds \\(10^{-9}\\).",
+          "A class without an improving neighbor is a stopping class."
+        ],
+        "zh": [
+          "每一步选择已记录比值最大的邻居。",
+          "仅当改善超过 \\(10^{-9}\\) 时移动。",
+          "没有改善邻居的类别称为停止类。"
+        ]
+      },
+      "notes": {
+        "en": "Remove self-loops and include classes with recorded \\(\\widehat\\Delta>1+10^{-9}\\). Choose the neighbor with the largest strictly improving recorded value, using improvement tolerance \\(10^{-9}\\). A stopping class has no such neighbor. This is an analysis of recorded heights, not a theorem that a geometric pivot must increase quantum violation.",
+        "zh": "去掉自环，纳入记录值 \\(\\widehat\\Delta>1+10^{-9}\\) 的类别。选择最大且严格改善的邻居，改善容差为 \\(10^{-9}\\)。没有此类邻居的节点称为停止类。这是对记录高度的分析，不是“几何 pivot 必须提高量子违反”的定理。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "original",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "The three recorded landscapes each have one stopping class.",
+          "zh": "三个记录的 landscapes 都只有一个停止类。"
+        }
+      },
+      "formula": "\\[T(F)\\in\\operatorname*{arg\\,max}_{G\\in\\mathcal N(F)}\\widehat\\Delta_G,\\qquad\\widehat\\Delta_{T(F)}>\\widehat\\Delta_F+10^{-9}\\]"
+    },
+    {
+      "id": "ascent-results",
+      "title": {
+        "en": "Each recorded landscape has one ascent basin",
+        "zh": "每个已记录 landscape 都只有一个上升吸引域"
+      },
+      "section": {
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
+      },
+      "duration": 100,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "One stopping class and one basin in each analyzed data set.",
+          "Four-party results use the discovered root-plus-patch graphs.",
+          "Recorded ratios do not certify the ordering of exact quantum optima."
+        ],
+        "zh": [
+          "每个分析数据集都有一个停止类和一个吸引域。",
+          "四体结果使用已发现的 root 加 patch 图。",
+          "记录比值不能认证精确量子最优值的排序。"
+        ]
+      },
+      "notes": {
+        "en": "All 44 included violating classes in the complete three-party graph reach Mermin in at most two pivots. In the one- and two-body projection, 97.0 percent of included classes reach lifted CHSH in exactly two pivots. In the two- and four-body projection the mean is 3.161 pivots and only one class needs six. The attractor is Mermin–Klyshko, with recorded ratio \\(2\\sqrt2\\). This is a one-basin result on discovered augmented graphs. Unknown facets, missing edges or improved quantum values can change the four-party result.",
+        "zh": "完整三体图上，纳入的44个违反类至多两步到达 Mermin。一、二体投影中，97.0%的纳入类别恰好两步到达提升 CHSH。二、四体投影平均3.161步，只有一个类别需要六步，吸引子为记录比值 \\(2\\sqrt2\\) 的 Mermin–Klyshko。这是已发现增强图上的单吸引域结果。未知 facets、缺失边或更精确的量子值可能改变四体结论。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "original",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "This completes the original pivot story before the discussion.",
+          "zh": "这先完成原来的 pivot 故事，再进入讨论。"
+        }
+      },
+      "subtitle": {
+        "en": "Original v0 result: achieved values on the recorded graph",
+        "zh": "v0 原结果：已记录图上的已实现值"
+      },
+      "table": {
+        "headers": {
+          "en": [
+            "Scenario",
+            "Violating classes",
+            "Mean / max pivots",
+            "Attractor"
+          ],
+          "zh": [
+            "场景",
+            "违反类别数",
+            "平均／最大步数",
+            "吸引子"
+          ]
+        },
+        "rows": {
+          "en": [
+            [
+              "\\((3,2,2)\\)",
+              "44",
+              "1.614 / 2",
+              "Mermin, \\(2\\)"
+            ],
+            [
+              "One- and two-body",
+              "2,809,203",
+              "2.006 / 5",
+              "Lifted CHSH, \\(\\sqrt2\\)"
+            ],
+            [
+              "Two- and four-body",
+              "7,573,121",
+              "3.161 / 6",
+              "Mermin–Klyshko, \\(2\\sqrt2\\)"
+            ]
+          ],
+          "zh": [
+            [
+              "\\((3,2,2)\\)",
+              "44",
+              "1.614 / 2",
+              "Mermin，\\(2\\)"
+            ],
+            [
+              "一、二体",
+              "2,809,203",
+              "2.006 / 5",
+              "提升 CHSH，\\(\\sqrt2\\)"
+            ],
+            [
+              "二、四体",
+              "7,573,121",
+              "3.161 / 6",
+              "Mermin–Klyshko，\\(2\\sqrt2\\)"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "original-conclusion",
+      "title": {
+        "en": "What the original pivot work establishes",
+        "zh": "原来的 pivot 工作建立了什么"
+      },
+      "section": {
+        "en": "Original pivot work",
+        "zh": "原来的 pivot 工作"
+      },
+      "duration": 70,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "Recursive expansion explores the connected facet boundary.",
+          "The three-party benchmark validates the geometric construction.",
+          "The four-party libraries reveal empirical violation landscapes."
+        ],
+        "zh": [
+          "递归展开探索连通的 facet 边界。",
+          "三体基准验证几何构造。",
+          "四体部分库展示经验量子违反 landscapes。"
+        ]
+      },
+      "notes": {
+        "en": "The original contribution is a restartable recursive exploration of the boundary together with its geometric checks and the landscape analysis. Pivoting is an established polytope operation. The observed one-basin structure is a result of the recorded Bell data, not a universal theorem. At this point the original manuscript story is complete. The following slides open a separate discussion about what the same library could say under a shared physical implementation.",
+        "zh": "原工作给出可恢复的递归边界探索、相应几何检查及 landscape 分析。Pivot 是已有的多面体操作；单吸引域是这批记录 Bell 数据的观察，不是普遍定理。到这里，原稿主线已经完整。下面独立讨论：如果要求共同物理实现，同一个库还能告诉我们什么？"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "original",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "Independent endpoint optimization leaves a shared-strategy question open.",
+          "zh": "各端点独立优化之后，还有共同策略问题需要回答。"
+        }
+      }
+    },
+    {
+      "id": "shared-resource-question",
+      "title": {
+        "en": "Shared measurements introduce a resource question",
+        "zh": "共同测量引入新的资源问题"
+      },
+      "section": {
+        "en": "Discussion: ideas under assessment",
+        "zh": "讨论：正在评估的新方向"
+      },
+      "duration": 50,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "The original landscape optimizes each endpoint independently.",
+          "A combined test uses one state and one measurement tuple.",
+          "Can the combination certify genuine four-party entanglement?"
+        ],
+        "zh": [
+          "原 landscape 对每个端点独立优化。",
+          "组合检验使用一个状态和同一组测量。",
+          "这样的组合能否认证真正四体纠缠？"
+        ]
+      },
+      "notes": {
+        "en": "This is a follow-up question, not the definition of pivoting. A neighboring pair is a geometrically valid candidate, but adjacency alone does not determine its entanglement requirement. Three-party examples help us understand shared-measurement compatibility. Here we ask the corresponding question directly in the original four-party library, and focus on one concrete certified family.",
+        "zh": "这是后续问题，不是 pivot 的定义。邻接配对提供几何合法的候选，但邻接本身不决定纠缠资源需求。三体例子帮助理解共同测量的兼容性；这里把问题直接带回原四体库，集中看一个已有证书的具体家族。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Four-party local certificate, 11 Oct 2026",
+            "zh": "四体局部证书，2026年10月11日"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "discussion",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "A reciprocal parity-conditioned pair gives a concrete candidate.",
+          "zh": "互相提供奇偶旗标的配对给出一个具体候选。"
+        }
+      },
+      "formula": "\\[H_\\lambda=(1-\\lambda)f+\\lambda g,\\qquad 0\\leq\\lambda\\leq1\\]"
+    },
+    {
+      "id": "four-resource-pair",
+      "title": {
+        "en": "A concrete pair comes from the four-party library",
+        "zh": "一个具体配对来自原四体库"
+      },
+      "section": {
+        "en": "Discussion: ideas under assessment",
+        "zh": "讨论：正在评估的新方向"
+      },
+      "duration": 80,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "The seed tests act on two complementary pairs, AB and CD.",
+          "Each pair supplies the parity flag for the other test.",
+          "Both endpoint maxima equal \\(2\\sqrt2-1\\), attainable biseparably."
+        ],
+        "zh": [
+          "两个种子检验作用于互补的 AB 与 CD 配对。",
+          "每对给另一对的检验提供奇偶旗标。",
+          "两个端点最大值均为 \\(2\\sqrt2-1\\)，都能由双可分态达到。"
+        ]
+      },
+      "notes": {
+        "en": "Use \\(S_{AB}=A_0(B_0+B_1)+A_1(B_0-B_1)\\) and \\(P_-^{AB}=(I-A_0B_0)/2\\); \\(S_{CD}\\) has the same convention. The flag selects opposite parity. This discussion uses local upper bound one, instead of the landscape’s minimizing convention. Both endpoints belong to class 35 in the 40-dimensional projection. Their facets have dimension 39 and their shared ridge has dimension 38. These are two physical orientations of the same class. They are projection facets, not facets of the full 80-dimensional correlation space. The class is unclosed, but this specified ridge has an independent exact check.",
+        "zh": "约定 \\(S_{AB}=A_0(B_0+B_1)+A_1(B_0-B_1)\\)，\\(P_-^{AB}=(I-A_0B_0)/2\\)，\\(S_{CD}\\) 采用同样约定。旗标选择相反奇偶性。本讨论使用局域上界为1的规范，区别于 landscape 的最小值约定。两个端点都属于40维投影的第35类，facet 维数39，共同 ridge 维数38。它们是同一类别的两个物理取向。这些是投影空间中的 facets，不是完整80维关联空间中的 facets。该类尚未闭合，但指定 ridge 已独立精确核验。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Four-party local certificate, 11 Oct 2026",
+            "zh": "四体局部证书，2026年10月11日"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "discussion",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "The combined score exceeds a bound valid for every biseparable cut.",
+          "zh": "组合分数超过对所有双可分切分都成立的界。"
+        }
+      },
+      "subtitle": {
+        "en": "A verified ridge in the 40-dimensional even-correlator projection",
+        "zh": "40维偶数阶关联投影中的已核验 ridge"
+      },
+      "formula": "\\[\\begin{aligned}f_-&=I+(S_{AB}-2I)P_-^{CD},\\\\g_-&=I+(S_{CD}-2I)P_-^{AB},\\\\P_-^{CD}&=(I-C_0D_0)/2.\\end{aligned}\\]"
+    },
+    {
+      "id": "four-resource-gap",
+      "title": {
+        "en": "The combination certifies genuine four-party entanglement",
+        "zh": "组合检验认证真正四体纠缠"
+      },
+      "section": {
+        "en": "Discussion: ideas under assessment",
+        "zh": "讨论：正在评估的新方向"
+      },
+      "duration": 80,
+      "layout": "wide",
+      "bullets": {
+        "en": [
+          "The green curve is the exact biseparable support.",
+          "The blue line is one fixed physical strategy, a quantum lower bound."
+        ],
+        "zh": [
+          "绿线是精确双可分支撑值。",
+          "蓝线是一个固定物理策略，给出量子下界。"
+        ]
+      },
+      "notes": {
+        "en": "The exact biseparable curve holds for every \\(0\\leq\\lambda\\leq1\\). Its midpoint is \\(\\sqrt2\\). One four-qubit state with rational amplitude ratios and rational measurement directions attains \\(L=9690593/6654225>\\sqrt2\\). The same strategy certifies GME for \\(0.449189<\\lambda<0.550811\\). We have not proved global quantum optimality or found the maximal certifiable interval. This is GME certification, not genuine multipartite nonlocality.",
+        "zh": "这条精确双可分曲线对全部 \\(0\\leq\\lambda\\leq1\\) 成立，中点为 \\(\\sqrt2\\)。一个具有有理振幅比的四量子比特态，配合有理测量方向，达到 \\(L=9690593/6654225>\\sqrt2\\)。同一策略在 \\(0.449189<\\lambda<0.550811\\) 内认证 GME。全局量子最优性及最大的可认证区间尚未解决。这里认证 GME，没有认证真正多体非局域性。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Four-party local certificate, 11 Oct 2026",
+            "zh": "四体局部证书，2026年10月11日"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "discussion",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "The aligned two-pair cut is the essential certification step.",
+          "zh": "认证的关键是排除对齐的双对切分。"
+        }
+      },
+      "subtitle": {
+        "en": "A verified four-party example; quantum optimality remains open",
+        "zh": "一个已核验四体例子；量子最优性仍待解决"
+      },
+      "formula": "\\[B(\\lambda)=1+2(\\sqrt2-1)\\max\\{\\lambda,1-\\lambda\\},\\qquad L\\approx1.456307>\\sqrt2\\]",
+      "asset": "four-party-resource-bridge.png",
+      "assetAlt": {
+        "en": "The combination certifies genuine four-party entanglement",
+        "zh": "组合检验认证真正四体纠缠"
+      }
+    },
+    {
+      "id": "four-all-cuts",
+      "title": {
+        "en": "The certificate covers all seven bipartitions",
+        "zh": "证书覆盖全部七种二分切分"
+      },
+      "section": {
+        "en": "Discussion: ideas under assessment",
+        "zh": "讨论：正在评估的新方向"
+      },
+      "duration": 85,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "Six cuts have direct analytic bounds.",
+          "The aligned cut needs the joint CHSH and flag-probability constraint.",
+          "Rational SDP certificates and an SOS identity validate the bound."
+        ],
+        "zh": [
+          "六个切分具有直接解析界。",
+          "对齐切分需要同时约束 CHSH 得分和旗标概率。",
+          "有理 SDP 证书及平方和恒等式验证这个界。"
+        ]
+      },
+      "notes": {
+        "en": "Quantum biseparability is the convex hull of quantum product models across all seven cuts, so a linear bound for every cut also covers their mixtures. Four singleton cuts reduce to CHSH. Two crossed pair cuts have score at most one. The remaining cut \\(AB|CD\\) permits two Bell pairs. A nine-word NPA matrix constrains each block’s CHSH score jointly with its flag probability. Sixteen residual-corrected rational Gram certificates validate midpoint bounds for all four sign choices. For negative-negative parity, \\(q+(2/3)p_-\\leq5/3\\) has an exact SOS and yields the all-weight BS bound. A CHSH-maximizing Bell pair with a deterministic opposite block attains the larger-weight branch, making the bound exact. The seven cuts use six analytic bounds and one nontrivial SDP structure, not seven separate SDP solves.",
+        "zh": "量子双可分模型是七种切分上量子乘积模型的凸包，因此逐切分的线性上界也覆盖切分混合。四个单方切分化为 CHSH，两个交叉双对切分的分数不超过1。剩余 \\(AB|CD\\) 切分允许两个 Bell 对。9词 NPA 矩阵联合约束每块的 CHSH 分数和旗标概率。16条残差修正有理 Gram 证书验证四种符号的中点界。负、负情况下，\\(q+(2/3)p_-\\leq5/3\\) 有精确平方和证明，导出全权重 BS 上界。CHSH 最优 Bell 对加另一个确定输出块达到较大权重分支，所以这个界是精确界。七个切分使用六个解析界和一个非平凡 SDP 结构，并非分别求解了七个 SDP。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Four-party local certificate, 11 Oct 2026",
+            "zh": "四体局部证书，2026年10月11日"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "discussion",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "Correctness and literature priority are separate questions.",
+          "zh": "正确性与文献优先权是两个分别需要回答的问题。"
+        }
+      },
+      "table": {
+        "headers": {
+          "en": [
+            "Cuts",
+            "Number",
+            "Upper-bound method"
+          ],
+          "zh": [
+            "切分",
+            "数量",
+            "上界方法"
+          ]
+        },
+        "rows": {
+          "en": [
+            [
+              "\\(1|3\\)",
+              "4",
+              "Deterministic singleton and CHSH"
+            ],
+            [
+              "\\(AC|BD,\\ AD|BC\\)",
+              "2",
+              "Conditional product-state CHSH"
+            ],
+            [
+              "\\(AB|CD\\)",
+              "1",
+              "NPA joint support, then exact SOS"
+            ]
+          ],
+          "zh": [
+            [
+              "\\(1|3\\)",
+              "4",
+              "单方确定输出与 CHSH"
+            ],
+            [
+              "\\(AC|BD,\\ AD|BC\\)",
+              "2",
+              "条件乘积态 CHSH"
+            ],
+            [
+              "\\(AB|CD\\)",
+              "1",
+              "NPA 联合支撑，再用精确平方和"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "ideas-status",
+      "title": {
+        "en": "Verified result and provisional novelty assessment",
+        "zh": "已核验结果与暂定新颖性判断"
+      },
+      "section": {
+        "en": "Discussion: ideas under assessment",
+        "zh": "讨论：正在评估的新方向"
+      },
+      "duration": 60,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "Known ingredients include conditional CHSH lifting and GME aggregation.",
+          "Verified here: this projected ridge, all-cut certificates, and sharp BS support.",
+          "No direct match was found in the bounded audit; priority remains provisional."
+        ],
+        "zh": [
+          "条件 CHSH 提升与条件见证组合认证 GME 已有先例。",
+          "本例已核验：指定投影 ridge、全切分证书及精确 BS 支撑。",
+          "有限检索未找到直接匹配；优先权判断仍为暂定。"
+        ]
+      },
+      "notes": {
+        "en": "The broader conditional-Bell mechanism is established in the literature, including Pironio, Curchod and collaborators, and Zhang and collaborators. The weighted-CHSH support tool is also known. The narrowly specified candidate combines same-orbit projected adjacency, reciprocal parity flags and an exact all-cut biseparable curve. The bounded source audit did not find that full combination, but this does not prove that nobody has obtained it. The next assessment must compare actual formulas, geometry and experimental cost. This discussion is not a claim of a new general principle.",
+        "zh": "更广的条件 Bell 机制已有 Pironio、Curchod 等及 Zhang 等的工作；加权 CHSH 支撑工具也已知。本例的窄范围是同轨道投影邻接、互相提供奇偶旗标和全切分精确双可分曲线的结合。有限原始文献审计未找到这个完整组合，但不能据此证明从未有人得到过。接下来要逐公式比较几何结构和实验开销；这里不宣称发现了一个新普遍原理。"
+      },
+      "sources": [
+        {
+          "label": "Pironio 2005",
+          "url": "https://arxiv.org/abs/quant-ph/0503179"
+        },
+        {
+          "label": "Curchod et al.",
+          "url": "https://arxiv.org/abs/1808.10688"
+        },
+        {
+          "label": "Zhang et al.",
+          "url": "https://arxiv.org/abs/2108.12764"
+        },
+        {
+          "label": "Ramanathan et al.",
+          "url": "https://arxiv.org/abs/1607.05714"
+        },
+        {
+          "label": {
+            "en": "Bounded local novelty audit",
+            "zh": "有限本地新颖性审计"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "discussion",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "The next SDP target should follow the resource question.",
+          "zh": "后续 SDP 目标应由明确的资源问题决定。"
+        }
+      }
+    },
+    {
+      "id": "sdp-next",
+      "title": {
+        "en": "The next SDP task follows the four-party library",
+        "zh": "后续 SDP 任务从四体库出发"
+      },
+      "section": {
+        "en": "Discussion: ideas under assessment",
+        "zh": "讨论：正在评估的新方向"
+      },
+      "duration": 65,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "Retain the relative physical orientation of each candidate pair.",
+          "Compare an attained quantum value with valid bounds for every cut.",
+          "Extend to pairs without a simple factorized analytic certificate."
+        ],
+        "zh": [
+          "保存每个候选配对的相对物理取向。",
+          "把可实现量子值与每个切分的有效上界比较。",
+          "扩展到没有简单因子化解析证书的配对。"
+        ]
+      },
+      "notes": {
+        "en": "The original pivot library provides candidates and verified geometric relations. SDP is the subsequent certification tool. For each target we need a physical lower strategy and valid upper bounds for the resource set we exclude. The present example is a reproducible starting point, not a completed general search. PI and SDPBell methods can reduce a future SDP only when the target and its variables retain that symmetry. Quantum optimality, a wider oriented-pair survey, and a fair comparison to existing conditional GME witnesses remain open.",
+        "zh": "原 pivot 库提供候选及经验证的几何关系，SDP 则是后续认证工具。每个目标都需要物理下界策略，以及对待排除资源集合成立的上界。当前例子是可复算的起点，不是已完成的一般搜索。只有目标和变量保留相应对称性时，PI 与 SDPBell 方法才可用于缩减后续 SDP。量子最优性、更广的有取向配对筛选、以及与已有条件 GME 见证的公平比较仍是开放问题。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Four-party local certificate, 11 Oct 2026",
+            "zh": "四体局部证书，2026年10月11日"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "discussion",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "Discussion: which of these research questions should we prioritize?",
+          "zh": "讨论：接下来优先解决哪个研究问题？"
+        }
+      }
+    },
+    {
+      "id": "backup-delta",
+      "title": {
+        "en": "Two normalizations of quantum violation",
+        "zh": "量子违反的两种规范化"
+      },
+      "section": {
+        "en": "Original v0 technical detail",
+        "zh": "原稿 v0 技术细节"
+      },
+      "duration": 0,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "The ratio includes the geometric classical-to-nonsignaling range.",
+          "The fraction measures the attained progress inside that range.",
+          "Numerical near-saturation still needs a rigorous certificate."
+        ],
+        "zh": [
+          "比值包含经典到无信号范围的几何因素。",
+          "分数衡量在这个范围内已达到的进度。",
+          "数值上的近饱和仍需要严格证书。"
+        ]
+      },
+      "notes": {
+        "en": "The identity uses the true quantum value. An attained value gives an attained fraction. In projected coordinates, omitted correlators must remain as auxiliary variables or be eliminated exactly in the nonsignaling optimization. The fraction is undefined if \\(\\beta_N=\\beta_C\\). The five recorded near-saturating even-correlator classes have not received exact saturation certificates.",
+        "zh": "恒等式使用真实量子值，已实现值则给出已实现分数。在投影坐标中，遗漏关联项必须保留为辅助变量或在无信号优化中被精确消元。当 \\(\\beta_N=\\beta_C\\) 时分数未定义。五个记录近饱和的偶数阶类别还没有精确饱和证书。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Supplied pivot manuscript, v0 snapshot",
+            "zh": "作者提供的 pivot 原稿，v0 快照"
+          }
+        }
+      ],
+      "backup": true,
+      "phase": "original",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "",
+          "zh": ""
+        }
+      },
+      "formula": "\\[\\delta=\\frac{\\beta_Q-\\beta_C}{\\beta_N-\\beta_C},\\qquad\\Delta=1+\\delta\\left(\\frac{\\beta_N}{\\beta_C}-1\\right)\\]"
+    },
+    {
+      "id": "backup-full-space",
+      "title": {
+        "en": "Projected adjacency and full-space adjacency differ",
+        "zh": "投影邻接与全空间邻接不同"
+      },
+      "section": {
+        "en": "Discussion: ideas under assessment",
+        "zh": "讨论：正在评估的新方向"
+      },
+      "duration": 0,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "The resource endpoints are facets of the 40-dimensional projection.",
+          "In the full 80-dimensional space their faces have dimension 78.",
+          "Their full-space intersection has dimension 76, so it is not a full-space ridge."
+        ],
+        "zh": [
+          "资源端点是40维投影中的 facets。",
+          "在完整80维空间，它们的面维数为78。",
+          "全空间交集维数为76，因此不是全空间 ridge。"
+        ]
+      },
+      "notes": {
+        "en": "Each endpoint has 96 tight vertices among 128 distinct projected vertices, with augmented rank 40. The negative-negative pair shares 82 projected vertices, with augmented rank 39. The independent check also reconstructs the full-space tight sets. A projection can promote a lower-dimensional full-space face to a facet, so these identities must not be transferred to the full scenario.",
+        "zh": "每个端点在128个不同投影顶点中有96个紧顶点，增广秩为40。负、负配对有82个共同紧顶点，增广秩为39。独立检查也重建了全空间紧集。投影可以把全空间较低维面变成投影 facet，因此不能把这些身份直接转移到完整场景。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Four-party local certificate, 11 Oct 2026",
+            "zh": "四体局部证书，2026年10月11日"
+          }
+        }
+      ],
+      "backup": true,
+      "phase": "discussion",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "",
+          "zh": ""
+        }
+      }
+    },
+    {
+      "id": "backup-four-sos",
+      "title": {
+        "en": "The aligned cut admits an exact support certificate",
+        "zh": "对齐切分具有精确支撑证书"
+      },
+      "section": {
+        "en": "Discussion: ideas under assessment",
+        "zh": "讨论：正在评估的新方向"
+      },
+      "duration": 0,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "Here \\(q=\\langle S\\rangle/2\\) and \\(p_-=(1-\\langle X_0Y_0\\rangle)/2\\).",
+          "The Gram factorization has zero residual.",
+          "The two-party support inequality is an established weighted-CHSH threshold."
+        ],
+        "zh": [
+          "这里 \\(q=\\langle S\\rangle/2\\)，\\(p_-=(1-\\langle X_0Y_0\\rangle)/2\\)。",
+          "Gram 分解的残差为零。",
+          "这条二方支撑式对应已知的加权 CHSH 阈值。"
+        ]
+      },
+      "notes": {
+        "en": "Same-party anticommutator terms cancel between the two squares. With \\(k=\\sqrt2-1\\), the nonnegative part \\(x=\\max(q-1,0)\\) satisfies \\(0\\leq p\\leq1\\), \\(0\\leq x\\leq k\\), and \\(x\\leq(2/3)(1-p)\\). Vertex-pair maximization bounds the aligned-cut bilinear score. A Bell pair and a deterministic block attain the bound. This solves the BS support without determining global quantum support.",
+        "zh": "同一方反对易交叉项在两个平方之间抵消。令 \\(k=\\sqrt2-1\\)，非负部分 \\(x=\\max(q-1,0)\\) 满足 \\(0\\leq p\\leq1\\)、\\(0\\leq x\\leq k\\)、\\(x\\leq(2/3)(1-p)\\)。在顶点对上最大化可约束对齐切分的双线性分数。一个 Bell 对加确定输出块达到上界。这精确求出 BS 支撑，而未确定全局量子支撑。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Four-party local certificate, 11 Oct 2026",
+            "zh": "四体局部证书，2026年10月11日"
+          }
+        }
+      ],
+      "backup": true,
+      "phase": "discussion",
+      "story": {
+        "question": {
+          "en": "",
+          "zh": ""
+        },
+        "takeaway": {
+          "en": "",
+          "zh": ""
+        },
+        "transition": {
+          "en": "",
+          "zh": ""
+        }
+      },
+      "formula": "\\[\\frac53-\\left(q+\\frac23p_-\\right)=\\frac{(2X_0-Y_0-3Y_1)^2}{24}+\\frac{(2X_1-Y_0+Y_1)^2}{8}\\succeq0\\]"
     },
     {
       "id": "r5-family",
       "section": {
-        "en": "R5 · exact support",
-        "zh": "R5 · 精确支撑"
+        "en": "Further ideas: technical backup",
+        "zh": "其他 ideas：技术备份"
       },
       "title": {
         "en": "R5 has a strict resource gap at every interior weight",
         "zh": "R5 在所有内部权重上都有严格资源间隙"
       },
-      "duration": 120,
+      "duration": 0,
       "layout": "chart",
       "bullets": {
         "en": [
@@ -665,8 +1826,8 @@ window.DECK = {
         ]
       },
       "notes": {
-        "en": "Follow R5 for the rest of the pivoting story. One endpoint tests a conditional CHSH pair with Alice as the flag; the other uses Bob as the flag. Charlie participates in both seeds with the same two settings. This arrangement changes which joint quantum realization can satisfy both scores. The theorem gives the unrestricted quantum support as a uniquely selected physical quartic root and the actual all-cut biseparable support as a positive cubic root. Every interior weight has a strict gap; the curves meet only at the endpoints. At the midpoint the values shown are exact. This is the narrow new support result for the specified facet-pair family, not a claim that conditional Bell tests or GME witnesses are new. To use this curve we need to know why it is a theorem rather than an optimization ansatz.",
-        "zh": "接下来的 pivoting 主线集中在 R5。一个端点让 Alice 作为标记方，检验条件 CHSH 对；另一个端点让 Bob 作为标记方。Charlie 参与两项，并使用相同的两个设置。这种排列改变了哪个联合量子实现能够同时满足两个得分。定理把完整量子支撑选为唯一物理四次根，把实际全切分双可分支撑选为正三次根。所有内部权重都有严格间隙，仅在端点相遇，中点数值如图且为精确值。具体贡献是指定 facet 配对的完整支撑族，而非条件 Bell 检验或 GME 见证本身。要使用这条曲线，还必须说明它为什么是定理，而不只是数值 ansatz。"
+        "en": "Follow R5 for the rest of the pivoting story. One endpoint tests a conditional CHSH pair with Alice as the flag; the other uses Bob as the flag. Charlie participates in both seeds with the same two settings. This arrangement changes which joint quantum realization can satisfy both scores. The theorem gives the unrestricted quantum support as a uniquely selected physical quartic root and the actual all-cut biseparable support as a positive cubic root. Every interior weight has a strict gap; the curves meet only at the endpoints. At the midpoint the values shown are exact. This is the narrow new support result for the specified facet-pair family, not a claim that conditional Bell tests or GME witnesses are new. To use this curve we need to know why it is a theorem rather than an optimization ansatz. This three-party family is a separate follow-up. Its priority is not established by the mathematical support certificate.",
+        "zh": "接下来的 pivoting 主线集中在 R5。一个端点让 Alice 作为标记方，检验条件 CHSH 对；另一个端点让 Bob 作为标记方。Charlie 参与两项，并使用相同的两个设置。这种排列改变了哪个联合量子实现能够同时满足两个得分。定理把完整量子支撑选为唯一物理四次根，把实际全切分双可分支撑选为正三次根。所有内部权重都有严格间隙，仅在端点相遇，中点数值如图且为精确值。具体贡献是指定 facet 配对的完整支撑族，而非条件 Bell 检验或 GME 见证本身。要使用这条曲线，还必须说明它为什么是定理，而不只是数值 ansatz。 这个三体家族是独立后续方向；数学支撑证书不能单独建立文献优先权。"
       },
       "sources": [
         {
@@ -675,7 +1836,7 @@ window.DECK = {
         }
       ],
       "asset": "r5-curve.svg",
-      "backup": false,
+      "backup": true,
       "subtitle": {
         "en": "Two differently flagged lifted-CHSH tests share Charlie’s settings",
         "zh": "两个由不同方标记的 lifted-CHSH 检验共用 Charlie 的设置"
@@ -694,82 +1855,20 @@ window.DECK = {
           "zh": "证明既要排除更高得分，也要构造达到所选物理分支的实现。"
         }
       },
-      "formula": null
-    },
-    {
-      "id": "backup-proof",
-      "section": {
-        "en": "R5 · why the theorem holds",
-        "zh": "R5 · 定理为何成立"
-      },
-      "title": {
-        "en": "The flags participate in each other’s CHSH test",
-        "zh": "两个标记方同时参与对方的 CHSH 检验"
-      },
-      "duration": 100,
-      "layout": "split",
-      "backup": false,
-      "bullets": {
-        "en": [
-          "Alice’s \\(A_1=-1\\) branch tests BC; Bob’s \\(B_1=+1\\) branch tests AC.",
-          "Both signed CHSH seeds share Charlie’s settings and use the other flag.",
-          "Global upper bounds match attainers; equality fixes the occupied block."
-        ],
-        "zh": [
-          "Alice 的 \\(A_1=-1\\) 分支检验 BC；Bob 的 \\(B_1=+1\\) 分支检验 AC.",
-          "两个带符号 CHSH 种子共用 Charlie 设置，并使用另一标记方。",
-          "全局上界匹配达到策略；等号固定被占据的块。"
-        ]
-      },
-      "notes": {
-        "en": "The R5 flags select Alice’s \\(A_1=-1\\) branch and Bob’s \\(B_1=+1\\) branch. With \\(P_A^-=(\\mathbb I-A_1)/2\\) and \\(P_B^+=(\\mathbb I+B_1)/2\\), the signed CHSH seeds are\\[\\mathcal C_{BC}=-B_0(C_0+C_1)-B_1(C_0-C_1),\\]\\[\\mathcal C_{AC}=-A_0(C_0+C_1)+A_1(C_0-C_1).\\]Each flag enters the other seed, while Charlie’s settings are shared. For binary POVMs the flags are effects; the projective dilation makes them projectors. The same realization must meet both tests. To prove its optimal score, Jordan reduction covers all finite-dimensional binary-POVM realizations. Exact positivity identities and physical-root isolation exclude higher scores, and explicit strategies attain both support roots. The biseparable proof compares all three cuts. Equality forces the relevant anticommutation, fixes an interior angular double root, and selects the unique positive eigenvector of the top occupied block. Thus the proof identifies every maximal realization, not just one ansatz. At the midpoint, known conditional tilted-CHSH deficits provide a short transparent upper certificate; the all-weight analysis extends beyond that special point.",
-        "zh": "R5 标记选择 Alice 的 \\(A_1=-1\\) 分支和 Bob 的 \\(B_1=+1\\) 分支。令 \\(P_A^-=(\\mathbb I-A_1)/2\\)、\\(P_B^+=(\\mathbb I+B_1)/2\\)，带符号 CHSH 种子是\\[\\mathcal C_{BC}=-B_0(C_0+C_1)-B_1(C_0-C_1),\\]\\[\\mathcal C_{AC}=-A_0(C_0+C_1)+A_1(C_0-C_1).\\]每个标记都进入另一项种子，同时共用 Charlie 的设置。二元 POVM 中标记是效应；投影扩张后才成为投影。两项检验必须由同一实现满足。Jordan 分解覆盖有限维二元 POVM 实现；精确正性恒等式和物理根隔离排除更高得分，显式策略达到两个支撑根；双可分证明比较所有三个切分。等号强制相关反对易关系，固定内部角度双根，并选出最高被占据块的唯一正特征向量。因此证明确定所有最大实现，而非只找到一个 ansatz。中点可由已有条件 tilted-CHSH 亏损给出透明的短上界证书；全权重分析把结果扩展到这个特殊点之外。"
-      },
-      "sources": [
-        {
-          "label": "Current pivot manuscript · appendices",
-          "url": ""
-        },
-        {
-          "label": "Wu et al. 2014",
-          "url": "https://arxiv.org/abs/1407.5769"
-        },
-        {
-          "label": "Bamps & Pironio 2015 · tilted-CHSH bound",
-          "url": "https://arxiv.org/abs/1504.06960"
-        }
-      ],
-      "subtitle": {
-        "en": "Conditional CHSH explains the mechanism; global support and equality complete the proof",
-        "zh": "条件 CHSH 解释机制；全局支撑与等号分析完成证明"
-      },
-      "story": {
-        "question": {
-          "en": "Why are the displayed curves exact?",
-          "zh": "这些曲线为什么是精确结果？"
-        },
-        "takeaway": {
-          "en": "Global upper identities match physical attainers; their equality structure fixes the realization.",
-          "zh": "全局上界恒等式匹配物理达到策略，等号结构固定实现。"
-        },
-        "transition": {
-          "en": "The selected eigenvector becomes the weighted-W self-test target.",
-          "zh": "选出的特征向量成为加权 W 自测试目标。"
-        }
-      },
-      "formula": "\\[\\begin{aligned}f&=\\mathbb I+P_A^-\\bigl(\\mathcal C_{BC}-2\\mathbb I\\bigr),\\\\g_5&=\\mathbb I+P_B^+\\bigl(\\mathcal C_{AC}-2\\mathbb I\\bigr).\\end{aligned}\\]"
+      "formula": null,
+      "phase": "discussion"
     },
     {
       "id": "weighted-w",
       "section": {
-        "en": "R5 · equality identifies the state",
-        "zh": "R5 · 等号确定态"
+        "en": "Further ideas: technical backup",
+        "zh": "其他 ideas：技术备份"
       },
       "title": {
         "en": "The exact maximum identifies a weighted W state",
         "zh": "精确最大值确定一个加权 W 态"
       },
-      "duration": 110,
+      "duration": 0,
       "layout": "chart",
       "bullets": {
         "en": [
@@ -782,8 +1881,8 @@ window.DECK = {
         ]
       },
       "notes": {
-        "en": "At every strictly interior weight, every finite-dimensional binary-POVM realization attaining the scalar maximum extracts the displayed weighted W state and the tested effects on occupied support. The unique positive eigenvector fixes its amplitudes. Local block alignment makes the statement valid also with coherent sectors and an external purification. This is the equality consequence of the exact support proof, not just the identification of one successful strategy. Wu et al. already self-tested the midpoint generalized-W behavior; conditional CHSH and tilted-CHSH self-testing are established tools. The increment here is the all-weight scalar support and equality characterization for this specified geometric pair. Endpoint and unused-support measurements are outside this statement. We can now use the known midpoint target to ask a concrete source-design question.",
-        "zh": "在每个严格内部权重，任何达到标量最大值的有限维二元 POVM 实现，都能提取图中的加权 W 态和被占据支撑上的受测效应。唯一正特征向量固定其振幅；局域块对齐使结论也适用于相干扇区与外部纯化。这是精确支撑证明的等号推论，不只是找到一个成功策略。Wu 等已经自测试过中点的广义 W 行为，条件 CHSH 与 tilted-CHSH 也是已有工具。这里的扩展是指定几何配对在所有权重上的标量支撑和等号刻画。端点与未使用支撑上的测量不在结论之内。现在可以用这个已知中点目标，提出一个具体的源设计比较。"
+        "en": "At every strictly interior weight, every finite-dimensional binary-POVM realization attaining the scalar maximum extracts the displayed weighted W state and the tested effects on occupied support. The unique positive eigenvector fixes its amplitudes. Local block alignment makes the statement valid also with coherent sectors and an external purification. This is the equality consequence of the exact support proof, not just the identification of one successful strategy. Wu et al. already self-tested the midpoint generalized-W behavior; conditional CHSH and tilted-CHSH self-testing are established tools. The increment here is the all-weight scalar support and equality characterization for this specified geometric pair. Endpoint and unused-support measurements are outside this statement. We can now use the known midpoint target to ask a concrete source-design question. The midpoint W behavior has precedent. The weighted-family priority needs a formula-level literature comparison.",
+        "zh": "在每个严格内部权重，任何达到标量最大值的有限维二元 POVM 实现，都能提取图中的加权 W 态和被占据支撑上的受测效应。唯一正特征向量固定其振幅；局域块对齐使结论也适用于相干扇区与外部纯化。这是精确支撑证明的等号推论，不只是找到一个成功策略。Wu 等已经自测试过中点的广义 W 行为，条件 CHSH 与 tilted-CHSH 也是已有工具。这里的扩展是指定几何配对在所有权重上的标量支撑和等号刻画。端点与未使用支撑上的测量不在结论之内。现在可以用这个已知中点目标，提出一个具体的源设计比较。 中点 W 行为已有先例；加权家族的优先权需要逐公式对照文献。"
       },
       "sources": [
         {
@@ -805,7 +1904,7 @@ window.DECK = {
         "en": "One scalar score, at each fixed interior weight; midpoint behavior known from Wu et al.",
         "zh": "每个固定内部权重只用一个标量得分；中点行为已见于 Wu 等"
       },
-      "backup": false,
+      "backup": true,
       "story": {
         "question": {
           "en": "What does equality identify?",
@@ -819,256 +1918,22 @@ window.DECK = {
           "en": "Fix the same noisy source for R5 and Mermin to test its practical value.",
           "zh": "固定同一个噪声源，比较 R5 与 Mermin 的实际价值。"
         }
-      }
-    },
-    {
-      "id": "backup-fixed-source",
-      "section": {
-        "en": "R5 · a fixed-source advantage",
-        "zh": "R5 · 固定源上的优势"
       },
-      "title": {
-        "en": "R5 detects GME on a source that Mermin provably misses",
-        "zh": "R5 在 Mermin 无法检测的源上认证 GME"
-      },
-      "duration": 110,
-      "layout": "split",
-      "backup": false,
-      "bullets": {
-        "en": [
-          "R5 with its midpoint measurements detects GME for \\(v>0.863411\\ldots\\).",
-          "Every binary-POVM Mermin strategy fails for \\(v\\le0.871602\\ldots\\).",
-          "A rigorous advantage interval for this specified source."
-        ],
-        "zh": [
-          "R5 使用中点测量，在 \\(v>0.863411\\ldots\\) 时检测 GME。",
-          "所有二元 POVM 的 Mermin 策略在 \\(v\\le0.871602\\ldots\\) 时都失败。",
-          "这给出指定源上的严格优势区间。"
-        ]
-      },
-      "notes": {
-        "en": "Return to the experiment’s design lesson: compare objectives on one fixed noisy source. Here the source is the known unequal midpoint W state, with amplitudes square root two, square root two, and square root three, normalized by square root seven. Add global white state noise. The R5 midpoint measurements cross the exact biseparable bound at visibility 0.863411 and above. An established Mermin tensor upper bound, together with deterministic-input branches, proves that every binary-POVM Mermin strategy fails to certify GME up to visibility 0.871602. The interval between those thresholds is therefore a rigorous witness advantage on this source. The Mermin threshold is a lower bound on its required detection visibility, not its exact optimum. This is neither an optimum over all GME witnesses nor the state’s separability threshold. The same equality information also lets us ask about private outputs.",
-        "zh": "回到实验工作留下的设计问题：把不同目标放在同一个噪声源上比较。这里选已知的不等振幅中点 W 态，振幅为根号二、根号二、根号三，除以根号七；再加入全局白态噪声。R5 的中点测量在可见度超过 0.863411 时越过精确双可分界。已有 Mermin 张量上界结合确定性输入分支，证明可见度不超过 0.871602 时，所有二元 POVM 的 Mermin 策略都不能认证 GME。所以两阈值之间是这个指定源上的严格见证优势。Mermin 数值是其检测可见度的下界，并非精确最优阈值；也不是所有 GME 见证的最优比较或态的可分阈值。同样的等号信息还能回答输出私密性。"
-      },
-      "sources": [
-        {
-          "label": "Current pivot manuscript",
-          "url": ""
-        }
-      ],
-      "formula": "\\[\\rho_v=v\\lvert W_*\\rangle\\langle W_*\\rvert+(1-v)\\frac{\\mathbb I}{8}\\]",
-      "subtitle": {
-        "en": "Fix the midpoint W source; add identical global white state noise",
-        "zh": "固定中点 W 源，对两种检验加入相同的全局白态噪声"
-      },
-      "story": {
-        "question": {
-          "en": "Does the new witness change a fixed-source detection task?",
-          "zh": "新见证能否改变固定源上的检测任务？"
-        },
-        "takeaway": {
-          "en": "There is a proved noisy-source interval in which R5 certifies GME and Mermin cannot.",
-          "zh": "存在已证明的噪声源区间，R5 认证 GME 而 Mermin 无法做到。"
-        },
-        "transition": {
-          "en": "The self-test also constrains an adversary’s knowledge of fixed outputs.",
-          "zh": "自测试还可以限制对手对固定输出的知识。"
-        }
-      }
-    },
-    {
-      "id": "private-pair",
-      "section": {
-        "en": "R5 · private outputs",
-        "zh": "R5 · 私密输出"
-      },
-      "title": {
-        "en": "The same score certifies more private pair randomness",
-        "zh": "同一得分还认证更多输出对的私密随机性"
-      },
-      "duration": 100,
-      "layout": "chart",
-      "bullets": {
-        "en": [
-          "Endpoint maxima guarantee \\(1\\) pair bit.",
-          "Midpoint: \\(G=\\frac{11}{28}\\), or \\(\\approx1.348\\) bits.",
-          "Interior exact maxima approach \\(2\\) bits near an endpoint."
-        ],
-        "zh": [
-          "端点最大值保证 \\(1\\) 个输出对比特。",
-          "中点：\\(G=\\frac{11}{28}\\)，即约 \\(1.348\\) 比特。",
-          "内部精确最大值在趋近端点时逼近 \\(2\\) 比特。"
-        ]
-      },
-      "notes": {
-        "en": "Genuine entanglement and private randomness are different tasks, but the equality proof connects them here. Keep the generation pair A zero B zero fixed, assume inputs independent of the devices, an external quantum Eve, and no disclosure of Charlie’s output. At an endpoint maximum the tight worst-case pair guessing probability is one half, giving one private bit. At the midpoint it is eleven twenty-eighths, about 1.348 bits. For finite-dimensional tensor-product binary-POVM realizations, the interior equality family gives the displayed amplitude formula, whose entropy approaches two bits near either endpoint. The state changes with the weight; the interior limit is different from the actual one-bit endpoint guarantee. The midpoint behavior and the implication from self-testing to Eve independence are known. The specific comparison is the full-weight fixed-pair guarantee versus the actual endpoints. An exact-score gain is only useful experimentally if it tolerates a nonzero deficit.",
-        "zh": "真正纠缠与私密随机性是不同任务，但等号证明在这里把两者连接起来。固定生成对 A zero B zero，假定输入独立于器件、存在外部量子 Eve，且不公开 Charlie 的输出。端点最大值的最坏输出对猜测概率恰为二分之一，保证一个私密比特；中点为十一除以二十八，约 1.348 比特。有限维张量积二元 POVM 实现中的内部等号家族给出振幅公式，熵在趋近任一端点时逼近两个比特。这里态随权重改变，内部极限不同于实际端点的一个比特保证。中点行为以及自测试导出 Eve 独立性的原则已有先例；具体结果是全权重的固定输出对比较。精确得分的增益要在实验中有用，还必须控制非零亏损。"
-      },
-      "sources": [
-        {
-          "label": "Current pivot manuscript",
-          "url": ""
-        },
-        {
-          "label": "Wu et al. 2014",
-          "url": "https://arxiv.org/abs/1407.5769"
-        },
-        {
-          "label": "Franz–Furrer–Werner 2011 · privacy principle",
-          "url": "https://arxiv.org/abs/1010.1131"
-        }
-      ],
-      "asset": "privacy.svg",
-      "formula": "\\[G_{\\mathrm{fin}}=\\frac{1+2\\alpha_p\\beta_p}{4}\\]",
-      "subtitle": {
-        "en": "Keep the generation pair \\(A_0B_0\\) fixed; external quantum Eve; Charlie undisclosed",
-        "zh": "固定生成输出对 \\(A_0B_0\\)；外部量子 Eve；不公开 Charlie 的输出"
-      },
-      "backup": false,
-      "story": {
-        "question": {
-          "en": "What does the equality result imply for privacy?",
-          "zh": "等号结果如何转化为私密性？"
-        },
-        "takeaway": {
-          "en": "The fixed output pair has a tight exact-score advantage over the endpoints.",
-          "zh": "固定输出对具有相对于端点的紧精确得分优势。"
-        },
-        "transition": {
-          "en": "The approach to two bits forces us to quantify the available score precision.",
-          "zh": "逼近两个比特，迫使我们量化所需得分精度。"
-        }
-      }
-    },
-    {
-      "id": "precision-cost",
-      "section": {
-        "en": "R5 · precision limits the advantage",
-        "zh": "R5 · 精度限制优势"
-      },
-      "title": {
-        "en": "The ideal two-bit limit needs quadratically finer score precision",
-        "zh": "理想两比特极限需要二次方变细的得分精度"
-      },
-      "duration": 110,
-      "layout": "chart",
-      "bullets": {
-        "en": [
-          "Biseparable completions allow Eve to guess with \\(G\\ge\\frac12\\).",
-          "A deficit window \\(0\\le\\epsilon_p<w\\) guaranteeing \\(>1\\) bit needs \\(w\\le\\Delta_p\\).",
-          "Near either endpoint: \\(\\Delta_p\\propto\\min\\{p,1-p\\}^{2}\\)."
-        ],
-        "zh": [
-          "双可分补全允许 Eve 以 \\(G\\ge\\frac12\\) 猜测。",
-          "亏损窗口 \\(0\\le\\epsilon_p<w\\) 要保证 \\(>1\\) 比特，必须满足 \\(w\\le\\Delta_p\\)。",
-          "靠近端点：\\(\\Delta_p\\propto\\min\\{p,1-p\\}^{2}\\)。"
-        ]
-      },
-      "notes": {
-        "en": "Why does the ideal limit become fragile? The actual biseparable attainers can make one queried party deterministic. With the preparation flag known to Eve, mixing with local behaviors fills every nonnegative score up to the biseparable support while keeping pair guessing probability at least one half. A near-maximal deficit window \\(0\\le\\epsilon_p<w\\), with \\(\\epsilon_p=h_Q-\\langle H_p\\rangle\\), that guarantees more than one pair bit therefore cannot reach those completions: its width is at most the quantum–biseparable gap. R5’s gap closes quadratically near either endpoint, so a fixed experimental error cannot follow the ideal two-bit limit all the way. This is a necessary obstruction for this family, score, and output pair, not an optimal privacy threshold or a universal sample-complexity law. We now need sufficient finite-deficit bounds. That is the natural entry point for task-specific SDP certificates.",
-        "zh": "理想极限为什么脆弱？实际双可分达到策略可以让被查询的一方输出确定。Eve 知道制备标记，把它与局域行为混合，能够覆盖从零到双可分支撑的所有非负得分，同时保持输出对猜测概率至少二分之一。因此从最大值起算、保证超过一个比特的亏损窗口 \\(0\\le\\epsilon_p<w\\)，其中 \\(\\epsilon_p=h_Q-\\langle H_p\\rangle\\)，不能包含这些补全，其宽度最多等于量子—双可分间隙。R5 间隙靠近端点时二次闭合，所以固定实验误差无法一路跟随理想两比特极限。这是本家族、得分与输出对上的必要障碍，不是最优私密性阈值或普遍样本复杂度规律。下一步需要非零亏损下的充分界，这自然引出针对具体任务的 SDP 证书。"
-      },
-      "sources": [
-        {
-          "label": "Current pivot manuscript",
-          "url": ""
-        }
-      ],
-      "asset": "precision.svg",
-      "formula": "\\[w\\le\\Delta_p=h_Q-h_{\\mathrm{BS}}\\]",
-      "subtitle": {
-        "en": "A necessary obstruction for this scalar and fixed output pair",
-        "zh": "这个标量得分与固定输出对的必要障碍"
-      },
-      "backup": false,
-      "story": {
-        "question": {
-          "en": "What prevents an immediately robust two-bit protocol?",
-          "zh": "为什么不能直接得到稳健两比特协议？"
-        },
-        "takeaway": {
-          "en": "The guaranteed score margin shrinks quadratically near the ideal endpoint limit.",
-          "zh": "理想端点极限附近，可以保证的得分余量二次缩小。"
-        },
-        "transition": {
-          "en": "SDPs must certify the operational quantity at a finite score deficit.",
-          "zh": "SDP 需要在有限得分亏损下认证真正的操作量。"
-        }
-      }
-    },
-    {
-      "id": "certification-pipeline",
-      "section": {
-        "en": "SDP · certify the task",
-        "zh": "SDP · 认证任务"
-      },
-      "title": {
-        "en": "The certification task determines the SDP objective",
-        "zh": "认证任务决定 SDP 的目标函数"
-      },
-      "duration": 110,
-      "layout": "chart",
-      "bullets": {
-        "en": [
-          "Quantum optimum: match an attained value with an upper certificate.",
-          "GME: certify an upper bound over all biseparable cuts.",
-          "Privacy at a deficit: upper-bound Eve’s guessing probability."
-        ],
-        "zh": [
-          "量子最优值：匹配达到值与上界证书。",
-          "GME：认证所有双可分切分上的上界。",
-          "亏损下的私密性：约束 Eve 的猜测概率。"
-        ]
-      },
-      "notes": {
-        "en": "The earlier PI work already taught us to distinguish a construction from a certificate. Pivoting now tells us which resource quantity needs certification. A quantum optimum uses an explicit attained score and an upper bound from a moment SDP or sum-of-squares dual; matching proves the optimum. A GME claim instead compares the score with a separately validated all-cut biseparable upper bound. A randomness claim maximizes guessing probability subject to the observed-score constraint and needs the argument to survive Eve conditioning. These are different optimization problems even when the Bell scalar is the same. Raw solver output is a numerical estimate; an exact rational dual or validated residual is what supports a certified claim. R5 already gives selected finite-deficit certificates, so this connection is concrete rather than only a future plan.",
-        "zh": "此前 PI 工作已经教会我们区分构造与证书。Pivoting 进一步指出需要认证哪一种资源量。量子最优值需要显式达到得分与矩 SDP 或平方和对偶上界匹配；GME 需要另外验证全切分双可分上界；随机性则在给定观测得分下最大化猜测概率，并证明结论经 Eve 条件化后仍成立。同一个 Bell 标量对应的是不同优化问题。原始求解器输出是数值估计，精确有理对偶或经验证残差才支持认证结论。R5 已经有选定权重的有限亏损证书，所以这一步并非只有未来设想。"
-      },
-      "sources": [
-        {
-          "label": "Current pivot manuscript · rational certificates",
-          "url": ""
-        },
-        {
-          "label": "SDPBell · maintained local draft",
-          "url": ""
-        }
-      ],
-      "asset": "certification.svg",
-      "formula": "\\[q_{\\mathrm{attained}}\\le h_Q\\le q_{\\mathrm{cert}}\\]",
-      "subtitle": {
-        "en": "Geometry chooses a score; each resource claim needs its own validated bound",
-        "zh": "几何选择得分；每种资源结论需要自己的经验证界"
-      },
-      "backup": false,
-      "story": {
-        "question": {
-          "en": "How does SDP follow from the pivot result?",
-          "zh": "SDP 如何自然延续 pivot 结果？"
-        },
-        "takeaway": {
-          "en": "The exact family identifies the correct resource-specific optimization objectives.",
-          "zh": "精确家族明确了各资源任务应优化的目标。"
-        },
-        "transition": {
-          "en": "Selected R5 certificates already turn finite deficits into nonideal guarantees.",
-          "zh": "选定 R5 证书已经把有限亏损转化为非理想保证。"
-        }
-      }
+      "phase": "discussion"
     },
     {
       "id": "backup-robust",
       "section": {
-        "en": "SDP · finite-deficit results",
-        "zh": "SDP · 有限亏损结果"
+        "en": "Further ideas: technical backup",
+        "zh": "其他 ideas：技术备份"
       },
       "title": {
         "en": "Finite deficits already admit sufficient R5 certificates",
         "zh": "有限亏损已有 R5 充分证书"
       },
-      "duration": 90,
+      "duration": 0,
       "layout": "chart",
-      "backup": false,
+      "backup": true,
       "bullets": {
         "en": [
           "Midpoint state fidelity: \\(F\\ge\\max\\{0,1-66\\epsilon\\}\\).",
@@ -1110,19 +1975,20 @@ window.DECK = {
           "en": "Many-body symmetry offers a way to control the certificate size.",
           "zh": "多体对称性提供控制证书规模的方法。"
         }
-      }
+      },
+      "phase": "discussion"
     },
     {
       "id": "hecke-sdp",
       "section": {
-        "en": "SDP · scale with surviving symmetry",
-        "zh": "SDP · 用保留的对称性扩展"
+        "en": "Further ideas: technical backup",
+        "zh": "其他 ideas：技术备份"
       },
       "title": {
         "en": "Many-body symmetry can keep SDP blocks small",
         "zh": "多体对称性可以保持 SDP 块规模较小"
       },
-      "duration": 90,
+      "duration": 0,
       "layout": "chart",
       "bullets": {
         "en": [
@@ -1155,7 +2021,7 @@ window.DECK = {
         "en": "A separate PIBell quantum-bound benchmark tests computational scaling",
         "zh": "一个独立 PIBell 量子界基准检验计算规模扩展"
       },
-      "backup": false,
+      "backup": true,
       "story": {
         "question": {
           "en": "How can certification extend to larger systems?",
@@ -1170,68 +2036,14 @@ window.DECK = {
           "zh": "整个系列现在从目标设计连接到经验证的资源保证。"
         }
       },
-      "formula": null
-    },
-    {
-      "id": "closing",
-      "section": {
-        "en": "The design loop",
-        "zh": "设计循环"
-      },
-      "title": {
-        "en": "Choose the resource task before choosing the Bell test",
-        "zh": "先确定资源任务，再选择 Bell 检验"
-      },
-      "duration": 40,
-      "layout": "statement",
-      "bullets": {
-        "en": [
-          "Earlier work supplies tight, structured, measurable objectives.",
-          "Pivoting resolves exact orientation-dependent resource curves and R5 equality.",
-          "Validated R5 certificates cover finite deficits; PI blocks show a route to scale."
-        ],
-        "zh": [
-          "此前工作给出紧、有结构、可测的目标。",
-          "Pivoting 解析取向相关的资源曲线与 R5 等号结构。",
-          "经验证的 R5 证书覆盖有限亏损；PI 块展示规模扩展路线。"
-        ]
-      },
-      "notes": {
-        "en": "The design loop is now complete. Earlier work supplies tight, structured and measurable objectives. Pivoting resolves the orientation-dependent support and equality family. Fixed-source detection and fixed-pair privacy give concrete payoffs, with a quantified precision cost. SDP addresses finite deficits and scale. The immediate targets are the unresolved N0 strips and stronger robust resource bounds.",
-        "zh": "设计路线现在闭合：此前工作给出紧、有结构、可测的目标；pivoting 分辨取向相关的支撑与等号家族；固定源检测和固定输出对私密性给出具体用途，也量化了精度代价；SDP 继续处理有限亏损与规模。近期目标是未解的 N0 区间，以及更强的稳健资源界。"
-      },
-      "sources": [
-        {
-          "label": "Current pivot manuscript",
-          "url": ""
-        }
-      ],
-      "backup": false,
-      "subtitle": {
-        "en": "A complete chain: objective → orientation → exact support → operational certificate",
-        "zh": "完整链条：目标 → 取向 → 精确支撑 → 操作性证书"
-      },
-      "story": {
-        "question": {
-          "en": "What should the audience remember?",
-          "zh": "听众最后需要记住什么？"
-        },
-        "takeaway": {
-          "en": "Optimize the certificate for the resource task, then validate its margin.",
-          "zh": "围绕资源任务优化证书，再验证其余量。"
-        },
-        "transition": {
-          "en": "Discussion: which orientation information predicts useful witnesses beyond this family?",
-          "zh": "讨论：超出这个家族后，哪些取向信息能够预测有用见证？"
-        }
-      },
-      "formula": null
+      "formula": null,
+      "phase": "discussion"
     },
     {
       "id": "backup-model",
       "section": {
-        "en": "BACKUP · DISCUSSION",
-        "zh": "备用 · 讨论"
+        "en": "Further ideas: technical backup",
+        "zh": "其他 ideas：技术备份"
       },
       "title": {
         "en": "What exactly does the resource gap exclude?",
@@ -1262,170 +2074,14 @@ window.DECK = {
           "url": ""
         }
       ],
-      "formula": "\\[\\Delta_p=h_Q(H_p)-h_{\\mathrm{BS}}(H_p)\\]"
-    },
-    {
-      "id": "score-landscape",
-      "section": {
-        "en": "PIVOT · OPERATIONAL SCORE",
-        "zh": "PIVOT · 操作性分数"
-      },
-      "title": {
-        "en": "One graph, two different notions of a peak",
-        "zh": "同一张图，两种不同的峰"
-      },
-      "duration": 0,
-      "layout": "chart",
-      "bullets": {
-        "en": [
-          "White-noise ratio: <strong>one peak</strong>, Mermin.",
-          "NS-normalized quantum fraction: <strong>two peaks</strong>, Mermin and Sliwa 15.",
-          "Ratio ascent reaches Mermin in at most <strong>two pivots</strong>."
-        ],
-        "zh": [
-          "白噪声比值：<strong>一个峰</strong>，Mermin。",
-          "NS 归一化量子分数：<strong>两个峰</strong>，Mermin 与 Śliwa 15。",
-          "比值上升路径至多经过<strong>两次 pivot</strong>到达 Mermin。"
-        ]
-      },
-      "notes": {
-        "en": "The graph by itself does not rank witnesses. The white-noise ratio asks about the optimized visibility against the uniform behavior. The nonsignaling fraction asks what proportion of the available beyond-local gap quantum mechanics can occupy. On the same complete three-party graph, these scores have different certified peak structures among the forty-four quantum-violating classes. For the ratio, every non-Mermin class among these 44 has an increasing route through at most two ridge pivots, with class four acting as a hub. For the nonsignaling fraction, Sliwa fifteen is another peak. Its plotted value is a physical lower bound that already exceeds validated upper bounds of every relevant neighbor. We do not need, and do not assert, its exact quantum optimum. The first lesson is to choose the operational question before choosing an ascent rule.",
-        "zh": "图本身不会给见证排序。白噪声比值回答针对均匀行为的最优临界可见度；NS 分数回答量子理论能占据多少超出局域界的可用区间。对同一张完整三体图，在 44 个具有量子违反的类别中，两种分数产生不同且经过认证的峰结构。比值情形下，非 Mermin 类别至多经过两次 ridge pivot 即可沿严格上升路径到达 Mermin，第四类起到枢纽作用。NS 分数还出现 Śliwa 15 峰。图中的该类别数值是物理可达到的下界，已经高于所有相关相邻类别的严格上界；不需要也没有断言其精确量子最优值。第一个启发是先选操作性问题，再选图上的上升规则。"
-      },
-      "sources": [
-        {
-          "label": "Current pivot manuscript",
-          "url": ""
-        }
-      ],
-      "asset": "landscape.svg",
-      "formula": "\\[\\begin{aligned}\\Delta&=h_{\\mathrm Q},\\\\[6pt]\\delta&=\\frac{h_{\\mathrm Q}-1}{h_{\\mathrm{NS}}-1}.\\end{aligned}\\]",
-      "subtitle": {
-        "en": "44 violating classes · positivity and GYNI excluded · S15 uses certified bounds",
-        "zh": "44 个量子违反类别 · 排除 positivity 与 GYNI · S15 使用认证界"
-      },
-      "backup": true
-    },
-    {
-      "id": "flat-to-pivot",
-      "section": {
-        "en": "THE BRIDGE",
-        "zh": "转折"
-      },
-      "title": {
-        "en": "A facet is a starting point, not the whole design",
-        "zh": "找到 facet 是起点，设计问题仍未结束"
-      },
-      "duration": 0,
-      "layout": "chart",
-      "bullets": {
-        "en": [
-          "Two facets can share an optimizer and a flat ratio segment.",
-          "Endpoint violation alone does not identify a quantum resource.",
-          "Pivot question: compare shared-measurement quantum and biseparable support."
-        ],
-        "zh": [
-          "两个 facet 可以共享最优行为，使组合比值平坦。",
-          "端点违反量本身不能辨别所需量子资源。",
-          "Pivot 问题：共用测量时，比较量子与双可分支撑。"
-        ]
-      },
-      "notes": {
-        "en": "The original supplement already illustrates two facets sharing an optimizing quantum behavior, so their combinations can have a constant ratio. The revised theorem explains how a flat maximum can still be tightened. But the ratio only compares quantum correlations with local ones. It does not answer whether genuinely multipartite entanglement, a particular state, or private randomness is necessary. We therefore move to a controlled tripartite benchmark and compare two scores evaluated on one state and shared measurements. Facet pivoting selects and relates the witnesses; resource-restricted support tells us what their combination certifies. The plateau in this figure is earlier context, not the new R5 result.",
-        "zh": "原始补充材料已展示两个 facet 共享最优量子行为，因此组合比值可以保持不变；修订定理解释了平坦极大点为何仍能继续收紧。但比值只比较量子关联与局域关联，不能回答是否必须使用真实多体纠缠、特定态或私有随机性。于是我们转向可控的三体基准，让两个分数来自同一个态和同一组测量。Facet pivoting 选择并联系见证，资源受限支撑则决定组合能够认证什么。这里的平台图属于此前背景，不是新的 R5 结果。"
-      },
-      "sources": [
-        {
-          "label": "First paper · Supplement Fig. S1(b)",
-          "url": "https://arxiv.org/html/2511.07523v2"
-        }
-      ],
-      "asset": "plateau.png",
-      "backup": true
-    },
-    {
-      "id": "n0-known-open",
-      "section": {
-        "en": "PIVOT · NEW CONTINUOUS N0 BOUNDS",
-        "zh": "PIVOT · 新的 N0 连续区间界"
-      },
-      "title": {
-        "en": "N0: the transition is now confined to two narrow intervals",
-        "zh": "N0：转变已被限制到两个窄区间"
-      },
-      "duration": 0,
-      "layout": "chart",
-      "bullets": {
-        "en": [
-          "Proved zero gap: \\([0,0.34]\\cup[0.66,1]\\).",
-          "Proved positive gap: \\(1-p_*<p<p_*\\), \\(p_*\\approx0.6437323\\).",
-          "The intervening intervals remain <strong>open</strong>."
-        ],
-        "zh": [
-          "已证明零间隙：\\([0,0.34]\\cup[0.66,1]\\)。",
-          "已证明正间隙：\\(1-p_*<p<p_*\\)，\\(p_*\\approx0.6437323\\)。",
-          "两段中间区间仍是<strong>开放问题</strong>。"
-        ]
-      },
-      "notes": {
-        "en": "This is the latest continuous N0 refinement. The central positive-gap interval comes from a transverse perturbation of the attaining biseparable strategy. Its algebraically isolated threshold is about point six four three seven three two three, but that proof is sufficient rather than a full phase diagram. A different physical-angle argument now proves exact equality of quantum and actual biseparable support from zero through point three four and from point six six through one, including those outer boundary weights. The unknown transition is therefore confined to two narrow intervals. Hatched regions mean unresolved, not numerical zero. The threshold \\(p_*\\) itself is not assigned equality or strict separation. Independently certified individual weights within these regions do not fill the intervals. N0 remains a valuable open control rather than an overclaimed exact full curve.",
-        "zh": "这是最新的 N0 连续区间精炼。中心正间隙区间来自对达到双可分界的策略做横向扰动，其隔离出的代数阈值约为 0.6437323，但该证明只是充分区间，不是完整相图。另一条物理角度论证现在证明：从 0 到 0.34，以及从 0.66 到 1，量子支撑与实际双可分支撑精确相等，而且包含这些外侧边界。未知转变因此限制在两个很窄的区间。斜线区域表示尚未解决，不是数值零。\\(p_*\\) 本身也没有被赋予相等或严格分离的结论。区间中独立认证的个别权重不能填满整段。N0 是一个有价值的开放对照，而不是被夸大为已求解全曲线的对象。"
-      },
-      "sources": [
-        {
-          "label": "Current pivot manuscript",
-          "url": ""
-        }
-      ],
-      "asset": "n0-phase.svg",
-      "subtitle": {
-        "en": "Exact tails; sufficient central interval; no complete phase-diagram claim",
-        "zh": "精确两端区间；充分中心区间；未宣称完整相图"
-      },
-      "backup": true
-    },
-    {
-      "id": "backup-n1",
-      "section": {
-        "en": "Orientation control",
-        "zh": "朝向对照"
-      },
-      "title": {
-        "en": "N1: cancellation at equal weights, activation away from them",
-        "zh": "N1：等权时抵消，偏离等权后激活"
-      },
-      "duration": 0,
-      "layout": "chart",
-      "backup": true,
-      "bullets": {
-        "en": [
-          "At the midpoint and endpoints: \\(h_Q=h_{\\mathrm{BS}}\\).",
-          "Every other interior weight has a strict support gap.",
-          "Opposite shared-party rows give a distinct solved control."
-        ],
-        "zh": [
-          "中点和端点：\\(h_Q=h_{\\mathrm{BS}}\\)。",
-          "其余每个内部权重都有严格支撑间隙。",
-          "共同方种子行相反，给出另一种已解对照。"
-        ]
-      },
-      "notes": {
-        "en": "N1 is nonadjacent to the source facet and has opposite conditioned rows on the shared party. At equal weights the cancellation gives quantum and actual biseparable support equal to one. Away from equal weights, every strictly interior weight has a positive support gap; both endpoint maxima are still biseparably attainable. The figure plots the proved physical branches, not an optimization ansatz. It displays the gap directly because the support curves are close. The exact quantum branch is selected from a sextic, while the actual biseparable branch is the positive solution of its cut-support cubic. The result shows that a midpoint test alone can miss a resource transition. Together with N0 and R5, it provides a controlled orientation comparison, without a universal rule for arbitrary facet pairs.",
-        "zh": "N1 与源 facet 不相邻，共同方的条件种子行相反。等权时抵消，使量子与实际双可分支撑都等于 1。偏离等权后，每个严格内部权重都有正支撑间隙，而两端最大值仍能由双可分策略达到。图中绘制的是已证明的物理分支，而不是某个优化假设空间。两条支撑曲线很接近，因此直接显示间隙。精确量子分支从六次方程中选出；实际双可分分支由各划分支撑的正三次根给出。这个例子说明，只看中点可能错过资源转变。它与 N0、R5 一起形成受控的朝向对照，但没有给出任意 facet pair 的普遍规则。"
-      },
-      "sources": [
-        {
-          "label": "Current pivot manuscript · N1 exact support",
-          "url": ""
-        }
-      ],
-      "asset": "n1-gap.svg"
+      "formula": "\\[\\Delta_p=h_Q(H_p)-h_{\\mathrm{BS}}(H_p)\\]",
+      "phase": "discussion"
     },
     {
       "id": "backup-symmetry",
       "section": {
-        "en": "BACKUP · DISCUSSION",
-        "zh": "备用 · 讨论"
+        "en": "Further ideas: technical backup",
+        "zh": "其他 ideas：技术备份"
       },
       "title": {
         "en": "Which symmetry survives the weighted Bell target?",
@@ -1463,63 +2119,12 @@ window.DECK = {
       "formula": {
         "en": "Symmetry reduction uses \\(\\operatorname{Stab}(H_p)\\) and the constraints",
         "zh": "对称化简使用 \\(\\operatorname{Stab}(H_p)\\) 及约束保留的对称性"
-      }
-    },
-    {
-      "id": "backup-novelty",
-      "backup": true,
-      "duration": 0,
-      "layout": "statement",
-      "section": {
-        "en": "BACKUP · PRIORITY AND SCOPE",
-        "zh": "备用 · 新颖性与范围"
       },
-      "title": {
-        "en": "What is known, and what is the specific contribution?",
-        "zh": "哪些已有先例，具体新增了什么？"
-      },
-      "subtitle": {
-        "en": "Bounded primary-source comparison · no global-firstness claim",
-        "zh": "有界原始文献比较 · 不宣称已证明全球首次"
-      },
-      "bullets": {
-        "en": [
-          "<strong>Known:</strong> pivoting, conditional CHSH self-tests, the midpoint \\(W\\) behavior, and self-testing-to-privacy principles.",
-          "<strong>Specific contribution:</strong> the exact full-weight quantum / all-cut biseparable supports, ridge census, equality structure, and fixed-pair precision comparison.",
-          "<strong>Still open:</strong> two N0 transition strips, a general orientation predictor, and a robust finite-data protocol."
-        ],
-        "zh": [
-          "<strong>已有：</strong>pivoting、条件 CHSH 自测试、中点 \\(W\\) 行为，以及自测试推出隐私的原理。",
-          "<strong>具体贡献：</strong>全权重量子／全划分双可分精确支撑、ridge 普查、等号结构及固定输出对的精度比较。",
-          "<strong>尚未解决：</strong>两段 N0 转变窄区间、一般朝向预测规则和鲁棒有限数据协议。"
-        ]
-      },
-      "notes": {
-        "en": "Novelty is a formula-level comparison, not a claim that nobody has considered Bell geometry or \\(W\\) self-testing. Wu et al. already give the midpoint generalized-\\(W\\) behavior. Holz et al. already give the same midpoint quantum and biseparable numbers for a different functional. Conditional CHSH aggregation, scalar self-testing and privacy implications have clear precedents. The most defensible increment is the complete specified ridge-family support/equality classification with actual all-cut biseparable bounds and fixed-pair operational consequences. The eight ridge orbits are complete at all weights; the fourteen pair orbits are complete at the midpoint. They are not a complete all-weight solution for all ninety-five partners: the two narrow N0 strips remain unresolved. No exact duplicate of the full package was located in the primary formulas examined; this does not prove absence from all literature or establish journal significance.",
-        "zh": "新颖性需要按公式和结论范围逐项比较，不能把它写成从未有人研究 Bell 几何或 \\(W\\) 自测试。Wu 等人已经给出中点广义 \\(W\\) 行为；Holz 等人已经在另一 functional 中给出相同的中点量子与双可分数值。条件 CHSH 组合、标量自测试和隐私推论均有明确先例。最可防守的新增是指定 ridge 家族的完整支撑与等号分类，包括实际全划分双可分界和固定输出对的操作后果。八个 ridge 轨道有完整全权重分类；十四个 pair 轨道有完整中点分类。这不等于九十五个伙伴的全权重问题已全部解决：N0 两段窄区间仍然开放。检阅的原文公式未发现完全相同的结果组合，但这不能证明所有文献均无先例，也不能单独保证期刊重要性。"
-      },
-      "sources": [
-        {
-          "label": "Wu et al. 2014 · generalized W",
-          "url": "https://arxiv.org/abs/1407.5769"
-        },
-        {
-          "label": "Holz et al. 2020",
-          "url": "https://arxiv.org/abs/1910.11360"
-        },
-        {
-          "label": "Curchod et al. 2019 · conditional construction",
-          "url": "https://arxiv.org/abs/1808.10688"
-        },
-        {
-          "label": "Franz et al. 2011 · privacy",
-          "url": "https://arxiv.org/abs/1010.1131"
-        }
-      ]
+      "phase": "discussion"
     }
   ],
   "storyline": {
-    "en": "A useful Bell test is chosen for a resource task. Earlier work finds tight, structured and measurable objectives. The three-party pivot census then resolves how relative orientations alter the actual quantum–biseparable margin. R5 supplies a complete support and equality family, a fixed-source advantage and fixed-pair privacy, while its quadratic precision cost motivates finite-deficit SDP certificates. Surviving symmetry connects those certificates back to the many-body PI program.",
-    "zh": "有用的 Bell 检验围绕资源任务来选择。此前工作找到紧、有结构、可测的目标；三方 pivot 分类进一步分辨相对取向怎样改变量子—双可分余量。R5 给出完整支撑与等号家族、固定源优势及固定输出对私密性；二次精度代价自然引出有限亏损 SDP 证书，保留的对称性再把认证连接回多体 PI 路线。"
+    "en": "23 minutes: original v0 method, benchmark, four-party libraries and violation landscapes. 7 minutes: a separately marked discussion of a certified resource example and open SDP questions.",
+    "zh": "前23分钟：v0 方法、基准验证、四体部分库与违反 landscapes。后7分钟：明确分开的讨论段，展示资源认证例子与开放 SDP 问题。"
   }
 };

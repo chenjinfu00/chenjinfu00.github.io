@@ -1,0 +1,105 @@
+Recursive Facet Expansion of Bell Polytopes
+
+23 minutes: original v0 method, benchmark, four-party libraries and violation landscapes. 7 minutes: a separately marked discussion of a certified resource example and open SDP questions.
+
+01  0:00–0:30  Recursive Facet Expansion of Bell Polytopes
+The main part of this talk follows the supplied v0 manuscript: recursive facet expansion, the complete three-party benchmark, and four-party violation landscapes. Only after that story is complete will I discuss the recent resource ideas. Those ideas have local certificates, but their precise novelty and broader scope still need assessment.
+
+02  0:30–1:40  Earlier Bell-test design work
+These three papers provide context, rather than three additional topics for this talk. The revised first paper explains how coefficient optimization reaches a facet. The PI paper controls structured many-body bounds. The experiment selects few-body symmetric correlators that can be measured. The pivot project asks a different geometric question: once one facet is known, how are other facets connected to it? The first title is from the author-supplied updated manuscript.
+
+03  1:40–2:40  A tight witness gives a starting facet
+The supplied illustration shows coefficient tightening by adding active local vertices. In the revised theorem, a nondegenerate ratio maximum lies at a facet, and a flat maximum admits a tightening path without loss of the ratio, under the stated normalization and coefficient quotient. I use this only to motivate a seed. Pivoting will preserve a shared ridge while moving to another facet, and it does not optimize the quantum value by itself.
+
+04  2:40–3:35  The boundary has a graph structure
+An inequality list describes which tests are tight. The adjacency graph adds how those tests fit together. The geometric vertices are deterministic behaviors, while graph vertices are facets, so these are two different uses of the word vertex. Our goal is to construct the graph and then attach quantum-violation values to it.
+
+05  3:35–4:55  Facet adjacency in the primal and polar pictures
+The original figure uses a symmetric CHSH projection. The highlighted triangle on the left is a supporting facet. On the right, facets become polar vertices and ridge adjacency becomes an edge. A ridge belongs to exactly two facets. The quantum region helps visualize violation, but the pivot is defined entirely by the classical polytope.
+
+06  4:55–6:30  One pivot rotates a supporting inequality
+Use the v0 minimizing convention. The slack is \(I_F(v)-\beta_C\geq0\). The child support \(J\) is nonnegative on \(F\) and vanishes on its ridge. Extend it so that some outside vertex has \(J(v)<0\). Increasing \(t\) preserves the ridge and consumes outside slack. The minimum slack-to-direction ratio is the largest valid step. The new tight face has dimension \(D-1\). Recenter the uniform behavior before comparing violation ratios.
+
+07  6:30–8:00  A difficult facet becomes a child polytope
+Direct double description can solve a small facet boundary. For a large or degenerate facet it can remain unfinished. Treat \(V_F\) as a new vertex set and repeat the facet-expansion problem one dimension lower. A verified child facet supplies a parent ridge and a parent pivot. The recursion tree records completed branches and the open frontier.
+
+08  8:00–9:10  The expansion preserves solved and unfinished tasks
+Canonicalization keeps one representative per global relabeling orbit. The facet stabilizer gives the child symmetry. The diagram separates pending DD, pending recursion, completed tasks and unresolved tasks at the depth limit \(\ell\). A partial call returns verified discoveries without certifying its full boundary. Persistent tasks allow a later restart.
+
+09  9:10–10:15  A closed boundary certifies complete enumeration
+This is the recursive ridge-closure criterion. Exact support, dimension and boundary checks are required. A stable class count is only a search plateau. Completeness is stronger: no ridge from any known facet leads outside the stored set, and the facet graph is connected. The same argument applies recursively when a closed child supplies the parent boundary. We now test the method on a complete known benchmark.
+
+10  10:15–11:35  The expansion recovers all 46 three-party classes
+For the three-party, two-setting, two-outcome scenario, all nonempty correlators give dimension 26. The method reproduces the complete Sliwa classification and its adjacency. The coverage figure expands a collection of seeds ordered by tight-vertex count. It is not a chronological trace from one seed. The solid curve reaches every class before the larger facets are used as seeds.
+
+11  11:35–12:40  The facet graph records which tests share a ridge
+The matrix is the complete symmetry-quotient adjacency for the three-party benchmark. It records existence of a ridge adjacency, not how many ridges realize it. A diagonal entry is not a facet being adjacent to itself. It means two distinct facets from the same relabeling orbit share a ridge. This distinction will matter again in the later four-party resource example.
+
+12  12:40–13:50  Quantum violation supplies a height on the graph
+Use the v0 minimizing convention with \(I(P_{\mathrm{uni}})=0\) and \(\beta_C<0\). An attained see-saw value is an upper bound on the quantum minimum. Dividing by the negative classical bound makes \(\widehat\Delta\) a lower bound on the optimal ratio. Each facet optimizes its own state and measurements. This height does not impose a shared physical strategy.
+
+13  13:50–15:00  The four-party libraries retain different correlators
+The one- and two-body projection contains 8 one-body and 24 two-body coordinates, giving dimension 32 with 256 distinct deterministic vertices. The two- and four-body projection contains 24 two-body and 16 four-body coordinates, giving dimension 40. A global output flip identifies pairs of assignments, leaving 128 vertices. The counts are relabeling classes, not individual physical facets. We use the v0 snapshot consistently rather than mixing it with later database status.
+
+14  15:00–16:30  Small facets reach millions of known classes
+Dashed curves count expanded seeds with at most \(T\) tight vertices. Solid curves also count their neighbors. In the even-correlator library, the 1,068,260 classes with 41 tight vertices reach 4,017,307 classes. At \(T=40\) and \(T=58\), respectively, all stored classes are reached. This is stored-library coverage. The unresolved frontier prevents a completeness claim.
+
+15  16:30–17:35  Verified neighbor patches extend the recorded graph
+The original landscape analysis uses the augmented root-plus-patch graph. In the one- and two-body projection the patch adds 25,727,731 directed links; in the two- and four-body projection it adds 78,085,157. The augmented graph is symmetric, but symmetry does not show that every possible edge or class has been found. The unresolved child-row counts are pending calculations, not a count of missing facets. This matters because an omitted uphill edge can create an artificial stopping point.
+
+16  17:35–18:55  Higher recorded ratios have stronger neighborhoods
+The horizontal axis is a class’s attained ratio. The vertical axis is the mean attained ratio of its distinct neighboring classes. Colors show class counts per bin, and the green curve is the binned mean. The positive trend is an empirical description of the recorded graph. This statistic is not edge assortativity. The larger values 0.9192 and 0.9491 refer to the closed-class and closed-neighbor subset, not this full stored sample. A mean trend does not tell us whether local ascent can become trapped.
+
+17  18:55–20:10  A pivot path follows increasing recorded violation
+Remove self-loops and include classes with recorded \(\widehat\Delta>1+10^{-9}\). Choose the neighbor with the largest strictly improving recorded value, using improvement tolerance \(10^{-9}\). A stopping class has no such neighbor. This is an analysis of recorded heights, not a theorem that a geometric pivot must increase quantum violation.
+
+18  20:10–21:50  Each recorded landscape has one ascent basin
+All 44 included violating classes in the complete three-party graph reach Mermin in at most two pivots. In the one- and two-body projection, 97.0 percent of included classes reach lifted CHSH in exactly two pivots. In the two- and four-body projection the mean is 3.161 pivots and only one class needs six. The attractor is Mermin–Klyshko, with recorded ratio \(2\sqrt2\). This is a one-basin result on discovered augmented graphs. Unknown facets, missing edges or improved quantum values can change the four-party result.
+
+19  21:50–23:00  What the original pivot work establishes
+The original contribution is a restartable recursive exploration of the boundary together with its geometric checks and the landscape analysis. Pivoting is an established polytope operation. The observed one-basin structure is a result of the recorded Bell data, not a universal theorem. At this point the original manuscript story is complete. The following slides open a separate discussion about what the same library could say under a shared physical implementation.
+
+20  23:00–23:50  Shared measurements introduce a resource question
+This is a follow-up question, not the definition of pivoting. A neighboring pair is a geometrically valid candidate, but adjacency alone does not determine its entanglement requirement. Three-party examples help us understand shared-measurement compatibility. Here we ask the corresponding question directly in the original four-party library, and focus on one concrete certified family.
+
+21  23:50–25:10  A concrete pair comes from the four-party library
+Use \(S_{AB}=A_0(B_0+B_1)+A_1(B_0-B_1)\) and \(P_-^{AB}=(I-A_0B_0)/2\); \(S_{CD}\) has the same convention. The flag selects opposite parity. This discussion uses local upper bound one, instead of the landscape’s minimizing convention. Both endpoints belong to class 35 in the 40-dimensional projection. Their facets have dimension 39 and their shared ridge has dimension 38. These are two physical orientations of the same class. They are projection facets, not facets of the full 80-dimensional correlation space. The class is unclosed, but this specified ridge has an independent exact check.
+
+22  25:10–26:30  The combination certifies genuine four-party entanglement
+The exact biseparable curve holds for every \(0\leq\lambda\leq1\). Its midpoint is \(\sqrt2\). One four-qubit state with rational amplitude ratios and rational measurement directions attains \(L=9690593/6654225>\sqrt2\). The same strategy certifies GME for \(0.449189<\lambda<0.550811\). We have not proved global quantum optimality or found the maximal certifiable interval. This is GME certification, not genuine multipartite nonlocality.
+
+23  26:30–27:55  The certificate covers all seven bipartitions
+Quantum biseparability is the convex hull of quantum product models across all seven cuts, so a linear bound for every cut also covers their mixtures. Four singleton cuts reduce to CHSH. Two crossed pair cuts have score at most one. The remaining cut \(AB|CD\) permits two Bell pairs. A nine-word NPA matrix constrains each block’s CHSH score jointly with its flag probability. Sixteen residual-corrected rational Gram certificates validate midpoint bounds for all four sign choices. For negative-negative parity, \(q+(2/3)p_-\leq5/3\) has an exact SOS and yields the all-weight BS bound. A CHSH-maximizing Bell pair with a deterministic opposite block attains the larger-weight branch, making the bound exact. The seven cuts use six analytic bounds and one nontrivial SDP structure, not seven separate SDP solves.
+
+24  27:55–28:55  Verified result and provisional novelty assessment
+The broader conditional-Bell mechanism is established in the literature, including Pironio, Curchod and collaborators, and Zhang and collaborators. The weighted-CHSH support tool is also known. The narrowly specified candidate combines same-orbit projected adjacency, reciprocal parity flags and an exact all-cut biseparable curve. The bounded source audit did not find that full combination, but this does not prove that nobody has obtained it. The next assessment must compare actual formulas, geometry and experimental cost. This discussion is not a claim of a new general principle.
+
+25  28:55–30:00  The next SDP task follows the four-party library
+The original pivot library provides candidates and verified geometric relations. SDP is the subsequent certification tool. For each target we need a physical lower strategy and valid upper bounds for the resource set we exclude. The present example is a reproducible starting point, not a completed general search. PI and SDPBell methods can reduce a future SDP only when the target and its variables retain that symmetry. Quantum optimality, a wider oriented-pair survey, and a fair comparison to existing conditional GME witnesses remain open.
+
+26  BACKUP  Two normalizations of quantum violation
+The identity uses the true quantum value. An attained value gives an attained fraction. In projected coordinates, omitted correlators must remain as auxiliary variables or be eliminated exactly in the nonsignaling optimization. The fraction is undefined if \(\beta_N=\beta_C\). The five recorded near-saturating even-correlator classes have not received exact saturation certificates.
+
+27  BACKUP  Projected adjacency and full-space adjacency differ
+Each endpoint has 96 tight vertices among 128 distinct projected vertices, with augmented rank 40. The negative-negative pair shares 82 projected vertices, with augmented rank 39. The independent check also reconstructs the full-space tight sets. A projection can promote a lower-dimensional full-space face to a facet, so these identities must not be transferred to the full scenario.
+
+28  BACKUP  The aligned cut admits an exact support certificate
+Same-party anticommutator terms cancel between the two squares. With \(k=\sqrt2-1\), the nonnegative part \(x=\max(q-1,0)\) satisfies \(0\leq p\leq1\), \(0\leq x\leq k\), and \(x\leq(2/3)(1-p)\). Vertex-pair maximization bounds the aligned-cut bilinear score. A Bell pair and a deterministic block attain the bound. This solves the BS support without determining global quantum support.
+
+29  BACKUP  R5 has a strict resource gap at every interior weight
+Follow R5 for the rest of the pivoting story. One endpoint tests a conditional CHSH pair with Alice as the flag; the other uses Bob as the flag. Charlie participates in both seeds with the same two settings. This arrangement changes which joint quantum realization can satisfy both scores. The theorem gives the unrestricted quantum support as a uniquely selected physical quartic root and the actual all-cut biseparable support as a positive cubic root. Every interior weight has a strict gap; the curves meet only at the endpoints. At the midpoint the values shown are exact. This is the narrow new support result for the specified facet-pair family, not a claim that conditional Bell tests or GME witnesses are new. To use this curve we need to know why it is a theorem rather than an optimization ansatz. This three-party family is a separate follow-up. Its priority is not established by the mathematical support certificate.
+
+30  BACKUP  The exact maximum identifies a weighted W state
+At every strictly interior weight, every finite-dimensional binary-POVM realization attaining the scalar maximum extracts the displayed weighted W state and the tested effects on occupied support. The unique positive eigenvector fixes its amplitudes. Local block alignment makes the statement valid also with coherent sectors and an external purification. This is the equality consequence of the exact support proof, not just the identification of one successful strategy. Wu et al. already self-tested the midpoint generalized-W behavior; conditional CHSH and tilted-CHSH self-testing are established tools. The increment here is the all-weight scalar support and equality characterization for this specified geometric pair. Endpoint and unused-support measurements are outside this statement. We can now use the known midpoint target to ask a concrete source-design question. The midpoint W behavior has precedent. The weighted-family priority needs a formula-level literature comparison.
+
+31  BACKUP  Finite deficits already admit sufficient R5 certificates
+Here are two completed answers at finite deficit. The state-extraction bound at the midpoint has sufficient constant 66, so a deficit of 0.001 gives fidelity at least 0.934. It does not certify measurement action at nonzero deficit. For privacy, exact rational Gram-matrix duals bound the four output probabilities, and averaging conditional behaviors extends the bound to an external Eve. The simple midpoint bound is G at most 0.441 plus six times the deficit, so it guarantees more than one pair bit when the deficit is below 59 over 6000. Other selected weights have their own validated affine bounds. The plot includes stronger midpoint slope envelopes. These are sufficient certificates, not optimal thresholds or a finite-data security protocol. The remaining problem is how to make such task-specific optimization economical beyond the small tripartite case.
+
+32  BACKUP  Many-body symmetry can keep SDP blocks small
+To test computational scaling, we now switch to a separate permutation-invariant quantum-bound benchmark. Extending R5 resource objectives with their surviving symmetry remains the next step. This closes the loop to PIBell. When the Bell objective and constraints retain full permutation symmetry, SDPBell assembles Hecke overlap blocks whose dimensions stay fixed at a chosen hierarchy level in the stable particle-number range. Level two has blocks 8, 8, 3, 1; level three has 18, 24, 13, 7, 4, 2. Particle number changes coefficients rather than those block sizes. At 500 particles, the PI two-body benchmark has attained value 1.213133491 and a level-three numerical upper estimate 1.213133634, a gap about 1.43 times ten to the minus seven. This is a numerical demonstration of tractability, not a rational exact-optimum certificate. A generic pivot pair is asymmetric: only the stabilizer preserved by its objective and constraints can be used. The proposed next step is therefore resource-specific finite-deficit optimization with the symmetry that actually survives.
+
+33  BACKUP  What exactly does the resource gap exclude?
+The resource benchmark is the set of quantum correlations generated by states separable across at least one bipartition, with quantum measurements inside each group, and then arbitrary convex mixing across cuts. We compare the unrestricted quantum support with that actual all-cut support. An observed score above the latter certifies genuine multipartite entanglement under the Bell assumptions. This is not a Svetlichny-type comparison with unrestricted nonsignaling correlations inside each group. Conversely, if the supports coincide, there is a biseparable realization attaining the optimum, but entangled maximizers may also exist. This distinction is especially important for the six zero-gap ridge orbits. The weighted scalar is generally not a facet, although its local exposed face is the shared intersection of the endpoint facets.
+
+34  BACKUP  Which symmetry survives the weighted Bell target?
+Symmetry reduction must preserve the optimization problem. The PI Hecke construction is appropriate when the objective and all constraints retain the full permutation symmetry. A generic asymmetric pivot pair does not satisfy that condition, so imposing full permutation invariance would remove valid strategies or change the objective. Its actual stabilizer may still reduce the moment matrix. The maintained three-outcome spin-one pilot is a finite-group prototype; its outer relaxation is not restricted to qutrit local dimension, even though the attainable strategy uses qutrits. Likewise, the local draft formulates Lindblad steady-state moment constraints, while numerical PI-Lindblad implementations are still a next target. These are useful development directions, but they must not be presented as completed benchmarks or exact finite-size optima.
