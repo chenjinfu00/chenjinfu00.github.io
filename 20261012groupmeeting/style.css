@@ -59,7 +59,30 @@ mjx-container[jax="SVG"]>svg{overflow:visible}
 .slide table{width:100%;border-collapse:collapse;font-size:27px;line-height:1.4}.slide th,.slide td{padding:15px 18px;border-bottom:1px solid var(--line);text-align:left}.slide th{color:var(--blue);font-weight:500}
 .slide table{margin-bottom:26px}.slide:has(table) ul{font-size:29px;line-height:1.35}.slide:has(table) li{margin-bottom:18px}
 .slide[data-phase="discussion"] .chapter{color:var(--orange)}
-.slide[data-slide-id="pivot-duality"] .figure{height:420px}
+.slide[data-slide-id="pivot-duality"] .figure{height:100%}
+.figure.labelled,.figure:has(figcaption){flex-direction:column;align-items:stretch;gap:12px}
+.figure.labelled img,.figure:has(figcaption) img{flex:1;min-height:0;height:0}
+.diagram-labels{display:grid;grid-template-columns:1fr 1fr;gap:25px;font-size:23px;color:var(--blue);text-align:center;font-weight:600}
+.figure figcaption{font-size:20px;line-height:1.3;color:var(--muted);text-align:center}
+.slide[data-slide-id="pivot-duality"] .formula{font-size:24px;margin-bottom:23px}
+.slide[data-slide-id="pivot-duality"] ul{font-size:24px;line-height:1.4}
+.slide[data-slide-id="pivot-duality"] li{margin-bottom:21px}
+.slide[data-slide-id="pivot-question"] .formula{font-size:33px;margin-bottom:33px}
+.slide[data-slide-id="pivot-question"] ul{font-size:31px}
+.slide[data-slide-id="pivot-step"] .body{padding-top:15px}
+.slide[data-slide-id="pivot-step"] .formula{font-size:35px;line-height:1.35;margin-bottom:27px}
+.slide[data-slide-id="pivot-step"] ul{font-size:29px;line-height:1.4}
+.slide[data-slide-id="pivot-step"] li{margin-bottom:21px}
+.slide[data-slide-id="recursive-child"] ul{font-size:26px;line-height:1.35}
+.slide[data-slide-id="recursive-child"] li{margin-bottom:20px}
+.slide[data-slide-id="recursive-workflow"] ul{font-size:23px;line-height:1.3;gap:29px}
+.slide[data-slide-id="original-conclusion"] .body{padding-top:12px}
+.slide[data-slide-id="original-conclusion"] .formula{font-size:33px;margin-bottom:20px}
+.slide[data-slide-id="original-conclusion"] table{font-size:25px;line-height:1.35;margin-bottom:22px}
+.slide[data-slide-id="original-conclusion"] th,.slide[data-slide-id="original-conclusion"] td{padding:13px 16px}
+.slide[data-slide-id="original-conclusion"] th:first-child,.slide[data-slide-id="original-conclusion"] td:first-child{width:250px}
+.slide[data-slide-id="original-conclusion"] ul{font-size:26px;line-height:1.35}
+.slide[data-slide-id="ascent-rule"] ul{font-size:31px}
 .slide[data-slide-id="four-resource-gap"] .figure{height:325px}
 .slide[data-slide-id="four-resource-gap"] .formula{font-size:29px;margin-bottom:20px}
 .slide[data-slide-id="ascent-results"] table{font-size:26px}

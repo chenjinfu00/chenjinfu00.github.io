@@ -159,10 +159,6 @@ window.DECK = {
         {
           "label": "Optimizing quantum violation yields facet Bell inequalities",
           "url": "https://arxiv.org/abs/2511.07523"
-        },
-        {
-          "label": "Schwarz et al. 2016 · facet extraction precedent",
-          "url": "https://arxiv.org/abs/1511.05253"
         }
       ],
       "formula": null,
@@ -195,8 +191,8 @@ window.DECK = {
     {
       "id": "pivot-question",
       "title": {
-        "en": "The boundary has a graph structure",
-        "zh": "Bell 边界具有图结构"
+        "en": "Facet, ridge, and the graph of Bell tests",
+        "zh": "Facet、ridge 与 Bell 检验的邻接图"
       },
       "section": {
         "en": "Original pivot work",
@@ -206,19 +202,19 @@ window.DECK = {
       "layout": "statement",
       "bullets": {
         "en": [
-          "Vertices of the local polytope are deterministic strategies.",
-          "Facets are tight Bell inequalities.",
-          "A shared ridge connects two facets."
+          "<strong>Facet:</strong> \\(F=\\{p\\in\\mathcal L:I_F(p)=\\beta_C\\}\\), with dimension \\(D-1\\).",
+          "<strong>Ridge:</strong> a face of dimension \\(D-2\\); in 3D it is an edge.",
+          "<strong>Adjacency:</strong> two facets share a ridge. Graph nodes are facets; \\(V\\) contains deterministic behaviors."
         ],
         "zh": [
-          "局域多面体的顶点是确定性策略。",
-          "Facets 对应紧 Bell 不等式。",
-          "共同 ridge 连接两个 facets。"
+          "<strong>Facet：</strong>\\(F=\\{p\\in\\mathcal L:I_F(p)=\\beta_C\\}\\)，维数为 \\(D-1\\)。",
+          "<strong>Ridge：</strong>维数为 \\(D-2\\) 的面；三维中就是一条边。",
+          "<strong>邻接：</strong>两个 facets 共享 ridge。图节点是 facets；\\(V\\) 中是确定性行为。"
         ]
       },
       "notes": {
-        "en": "An inequality list describes which tests are tight. The adjacency graph adds how those tests fit together. The geometric vertices are deterministic behaviors, while graph vertices are facets, so these are two different uses of the word vertex. Our goal is to construct the graph and then attach quantum-violation values to it.",
-        "zh": "不等式列表告诉我们哪些检验是紧的。邻接图进一步告诉我们这些检验如何连接。多面体的顶点是确定性行为，facet graph 的节点却是 facets，要区分这两种节点。我们的目标是先构造图，再把量子违反值放到图上。"
+        "en": "Start with deterministic local behaviors \\(V\\), whose convex hull is the local polytope \\(\\mathcal L\\). The dimension \\(D\\) is its affine dimension in the chosen coordinates. We use the lower-bound convention: \\(I_F(p)\\geq\\beta_C\\) for all local \\(p\\).\n\nThe tight set \\(F=\\{p\\in\\mathcal L:I_F(p)=\\beta_C\\}\\) is a facet only if its dimension is \\(D-1\\). A valid inequality with a smaller tight set is not a facet. A ridge has dimension \\(D-2\\). In three dimensions, a facet is a polygonal face and a ridge is an edge. Every ridge of a convex polytope belongs to exactly two facets, including for a degenerate polytope.\n\nThe facet graph therefore has a node for each facet and an edge for each ridge adjacency. These graph nodes are different from the deterministic vertices in \\(V\\). Later we quotient graph nodes by relabeling symmetry. The question is now concrete: given \\(F\\) and one ridge of \\(F\\), how do we obtain the other facet?",
+        "zh": "从所有确定性局域行为组成的顶点集 \\(V\\) 出发，其凸包是局域多面体 \\(\\mathcal L\\)。\\(D\\) 是在所选坐标中的仿射维数。采用下界约定：所有局域行为 \\(p\\) 都满足 \\(I_F(p)\\geq\\beta_C\\)。\n\n等号集合 \\(F=\\{p\\in\\mathcal L:I_F(p)=\\beta_C\\}\\) 只有在维数为 \\(D-1\\) 时才是 facet；紧集维数更低的有效不等式并不构成 facet。Ridge 的维数是 \\(D-2\\)。三维中，facet 是一个多边形面，ridge 是一条边。凸多面体的每条 ridge 恰好属于两个 facets，这对退化多面体也成立。\n\n因此 facet graph 的节点是 facets，边是 ridge 邻接；这与 \\(V\\) 中的确定性顶点是两种不同对象。之后再按重标记对称性合并图节点。现在的问题很具体：给定 \\(F\\) 及它的一条 ridge，怎样找到另一面？"
       },
       "sources": [
         {
@@ -244,33 +240,39 @@ window.DECK = {
           "zh": "CHSH 投影可以把这个几何关系画出来。"
         }
       },
-      "formula": "\\[\\mathcal L=\\operatorname{conv}(V),\\qquad \\dim F=D-1,\\qquad \\dim R=D-2\\]"
+      "formula": "\\[\\begin{aligned}\\mathcal L&=\\operatorname{conv}(V),\\qquad D=\\dim\\mathcal L,\\\\\\beta_C&=\\min_{v\\in V}I_F(v),\\qquad I_F(p)\\geq\\beta_C\\quad(p\\in\\mathcal L).\\end{aligned}\\]",
+      "subtitle": {
+        "en": "Faces of the local polytope become nodes and edges of a different graph",
+        "zh": "局域多面体的面，构成另一个图的节点与边"
+      }
     },
     {
       "id": "pivot-duality",
       "title": {
-        "en": "Facet adjacency in the primal and polar pictures",
-        "zh": "原始空间与极空间中的 facet 邻接"
+        "en": "One CHSH projection, two coordinate spaces",
+        "zh": "同一个 CHSH 投影，两种坐标空间"
       },
       "section": {
         "en": "Original pivot work",
         "zh": "原来的 pivot 工作"
       },
       "duration": 80,
-      "layout": "wide",
+      "layout": "chart",
       "bullets": {
         "en": [
-          "A facet in the primal picture becomes a vertex in the polar.",
-          "Crossing a ridge corresponds to following a polar edge."
+          "\\(A_x,B_y\\): Alice’s and Bob’s \\(\\pm1\\) observables.",
+          "\\(\\vec a\\): coefficients of \\(\\vec a\\cdot\\vec s\\geq\\beta_C<0\\); \\(\\vec\\lambda\\) is their normalized vector.",
+          "<strong>Facet → polar vertex; ridge → polar edge.</strong>"
         ],
         "zh": [
-          "原始空间的一个 facet 对应极空间的一个顶点。",
-          "跨过 ridge 对应沿极空间的一条边移动。"
+          "\\(A_x,B_y\\)：Alice、Bob 的 \\(\\pm1\\) 观测量。",
+          "\\(\\vec a\\)：不等式 \\(\\vec a\\cdot\\vec s\\geq\\beta_C<0\\) 的系数；\\(\\vec\\lambda\\) 是归一化系数向量。",
+          "<strong>Facet → 极体顶点；ridge → 极体边。</strong>"
         ]
       },
       "notes": {
-        "en": "The original figure uses a symmetric CHSH projection. The highlighted triangle on the left is a supporting facet. On the right, facets become polar vertices and ridge adjacency becomes an edge. A ridge belongs to exactly two facets. The quantum region helps visualize violation, but the pivot is defined entirely by the classical polytope.",
-        "zh": "原图使用对称 CHSH 投影。左侧高亮三角形是一个支撑 facet。右侧把 facets 变成极空间顶点，把 ridge 邻接变成边。一条 ridge 恰好属于两个 facets。量子区域帮助理解违反，但 pivot 完全由经典多面体定义。"
+        "en": "Both plots describe the same exchange-symmetric two-body projection of the \\((2,2,2)\\) CHSH scenario, rather than two different physical scenarios. Alice has observables \\(A_0,A_1\\); Bob has \\(B_0,B_1\\), all with outcomes \\(\\pm1\\). The full scenario has dimension eight, but the figure keeps only three averaged correlators.\n\nDefine \\(S_{00}=A_0B_0\\), \\(S_{11}=A_1B_1\\), and \\(S_{01}=(A_0B_1+A_1B_0)/2\\). The left axes are their expectation values, not coefficients. The six projected deterministic vertices are \\((1,1,\\pm1)\\), \\((-1,-1,\\pm1)\\), \\((1,-1,0)\\), and \\((-1,1,0)\\). Their convex hull has eight triangular facets. Four are trivial coordinate bounds, and four are CHSH bounds \\(\\sigma\\langle S_{00}\\rangle-\\sigma\\langle S_{11}\\rangle+2\\tau\\langle S_{01}\\rangle\\geq-2\\), where \\(\\sigma,\\tau=\\pm1\\). The factor two compensates for the average in \\(S_{01}\\).\n\nThe right axes \\(\\lambda_{00},\\lambda_{11},\\lambda_{01}\\) are normalized Bell coefficients. We use the lower-bound-minus-one convention consistent with the minimizing convention of v0: if \\(I=\\vec a\\cdot\\vec s\\geq\\beta_C<0\\), set \\(\\vec\\lambda=\\vec a/(-\\beta_C)\\), so \\(\\vec\\lambda\\cdot\\vec s\\geq-1\\). These are neither correlators nor hidden variables. In this centrally symmetric example, \\(\\mathcal L=-\\mathcal L\\), so this coefficient set equals the usual polar \\(\\mathcal L^\\circ=\\{\\vec\\mu:\\vec\\mu\\cdot\\vec s\\leq1\\ \\forall\\vec s\\in\\mathcal L\\}\\). Reversing coefficient signs changes between the conventions and changes the facet labels, while leaving the polar shape unchanged. For the CHSH facet above, the plotted coefficient vector is \\((\\sigma/2,-\\sigma/2,\\tau)\\).\n\nA triangular facet on the left becomes a polar vertex with three incident edges on the right. Each primal ridge becomes one polar edge connecting the two facets that contain it. The curved surfaces illustrate the projected quantum set \\(\\mathcal Q\\) and its polar, not additional polytopes. Since \\(\\mathcal L\\subseteq\\mathcal Q\\), their polar inclusion is reversed. Pivoting follows the straight-faced classical geometry.",
+        "zh": "两图描述同一个 \\((2,2,2)\\) CHSH 场景的交换对称二体投影，不是两个不同的物理场景。Alice 有 \\(A_0,A_1\\)，Bob 有 \\(B_0,B_1\\)，输出均为 \\(\\pm1\\)。完整场景的维数为8，这张图只保留三个平均关联量。\n\n定义 \\(S_{00}=A_0B_0\\)、\\(S_{11}=A_1B_1\\)，以及 \\(S_{01}=(A_0B_1+A_1B_0)/2\\)。左图坐标是它们的期望值，不是系数。投影后的六个确定性顶点为 \\((1,1,\\pm1)\\)、\\((-1,-1,\\pm1)\\)、\\((1,-1,0)\\)、\\((-1,1,0)\\)，其凸包有八个三角形 facets。四个是平凡坐标界，另外四个是 CHSH 界：\\(\\sigma\\langle S_{00}\\rangle-\\sigma\\langle S_{11}\\rangle+2\\tau\\langle S_{01}\\rangle\\geq-2\\)，其中 \\(\\sigma,\\tau=\\pm1\\)。\\(S_{01}\\) 是平均值，所以 CHSH 表达式里必须有系数2。\n\n右图的 \\(\\lambda_{00},\\lambda_{11},\\lambda_{01}\\) 是归一化 Bell 系数。沿用 v0 的最小值约定，把下界归一化为负一：若 \\(I=\\vec a\\cdot\\vec s\\geq\\beta_C<0\\)，令 \\(\\vec\\lambda=\\vec a/(-\\beta_C)\\)，便有 \\(\\vec\\lambda\\cdot\\vec s\\geq-1\\)。这里的 \\(\\lambda\\) 不是关联量，也不是隐藏变量。这个例子满足中心对称性 \\(\\mathcal L=-\\mathcal L\\)，所以此系数集合与标准极体 \\(\\mathcal L^\\circ=\\{\\vec\\mu:\\vec\\mu\\cdot\\vec s\\leq1\\ \\forall\\vec s\\in\\mathcal L\\}\\) 是同一个几何集合。把系数整体反号即可切换两个约定；facet 标签随之改变，极体形状不变。上面的 CHSH facet 对应系数向量 \\((\\sigma/2,-\\sigma/2,\\tau)\\)。\n\n左图一个三角形 facet，对应右图一个有三条相接边的极体顶点。左图一条 ridge，对应右图连接两个 facets 的一条边。曲面展示投影量子集合 \\(\\mathcal Q\\) 及其极体，不是额外的多面体。由于 \\(\\mathcal L\\subseteq\\mathcal Q\\)，极体的包含关系反向。Pivot 沿直边的经典几何进行。"
       },
       "sources": [
         {
@@ -297,20 +299,35 @@ window.DECK = {
         }
       },
       "subtitle": {
-        "en": "The original CHSH illustration",
-        "zh": "原稿中的 CHSH 示意图"
+        "en": "Two parties, two settings, binary outcomes: a 3D exchange-symmetric projection",
+        "zh": "两方、两设置、二值输出：三维交换对称投影"
       },
       "asset": "v0-chsh-duality.png",
       "assetAlt": {
         "en": "Facet adjacency in the primal and polar pictures",
         "zh": "原始空间与极空间中的 facet 邻接"
-      }
+      },
+      "figureLabels": {
+        "en": [
+          "Primal: correlator coordinates",
+          "Polar: Bell-coefficient coordinates"
+        ],
+        "zh": [
+          "原空间：关联量坐标",
+          "极空间：Bell 系数坐标"
+        ]
+      },
+      "figureCaption": {
+        "en": "Straight faces: the local polytope / its polar. Curved surfaces: the quantum set / its polar.",
+        "zh": "直边多面体：局域集合／其极体。曲面：量子集合／其极体。"
+      },
+      "formula": "\\[\\begin{aligned}S_{00}&=A_0B_0,\\quad S_{11}=A_1B_1,\\\\S_{01}&=\\tfrac12(A_0B_1+A_1B_0),\\\\\\vec s&=(\\langle S_{00}\\rangle,\\langle S_{11}\\rangle,\\langle S_{01}\\rangle),\\\\\\vec\\lambda\\cdot\\vec s&\\geq-1,\\quad\\vec\\lambda=\\frac{\\vec a}{-\\beta_C}.\\end{aligned}\\]"
     },
     {
       "id": "pivot-step",
       "title": {
-        "en": "One pivot rotates a supporting inequality",
-        "zh": "一步 pivot 旋转支撑不等式"
+        "en": "One pivot keeps a ridge and reaches the next facet",
+        "zh": "一步 pivot：固定 ridge，找到邻接 facet"
       },
       "section": {
         "en": "Original pivot work",
@@ -320,19 +337,19 @@ window.DECK = {
       "layout": "statement",
       "bullets": {
         "en": [
-          "The direction vanishes on the chosen ridge.",
-          "The first outside vertex to become tight fixes the step.",
-          "All minimizing vertices, including ties, join the new tight set."
+          "<strong>\\(J\\):</strong> an affine ridge support: \\(J\\geq0\\) on \\(F\\), with zero set \\(R\\) on \\(F\\).",
+          "<strong>The ratio:</strong> current slack divided by its loss per unit \\(t\\), for each outside vertex with \\(J(v)<0\\).",
+          "<strong>\\(t_*\\):</strong> the first outside vertex becomes tight; all ties are included. The ridge stays fixed."
         ],
         "zh": [
-          "方向在选定 ridge 上为零。",
-          "第一个变紧的面外顶点决定步长。",
-          "所有达到最小比值的顶点都进入新紧集，包括并列者。"
+          "<strong>\\(J\\)：</strong>ridge 的仿射支撑函数：在 \\(F\\) 上 \\(J\\geq0\\)，零点集合恰为 \\(R\\)。",
+          "<strong>比值：</strong>对每个满足 \\(J(v)<0\\) 的面外顶点，计算当前松弛量／每单位 \\(t\\) 的损失。",
+          "<strong>\\(t_*\\)：</strong>第一个面外顶点变紧的步长；保留全部并列者，ridge 始终不动。"
         ]
       },
       "notes": {
-        "en": "Use the v0 minimizing convention. The slack is \\(I_F(v)-\\beta_C\\geq0\\). The child support \\(J\\) is nonnegative on \\(F\\) and vanishes on its ridge. Extend it so that some outside vertex has \\(J(v)<0\\). Increasing \\(t\\) preserves the ridge and consumes outside slack. The minimum slack-to-direction ratio is the largest valid step. The new tight face has dimension \\(D-1\\). Recenter the uniform behavior before comparing violation ratios.",
-        "zh": "沿用 v0 的最小值约定，松弛量为 \\(I_F(v)-\\beta_C\\geq0\\)。子面支撑 \\(J\\) 在 \\(F\\) 上非负，在 ridge 上为零。延拓它，使至少一个面外顶点满足 \\(J(v)<0\\)。增大 \\(t\\) 保持 ridge，同时消耗面外松弛量。最小松弛比给出最大合法步长。新紧面的维数为 \\(D-1\\)。比较违反比值前，把均匀行为得分重新归零。"
+        "en": "The current facet is \\(F=\\{p\\in\\mathcal L:I_F(p)=\\beta_C\\}\\), and we select one of its ridges \\(R\\). Here \\(J\\) is an affine supporting function of a facet of the child polytope \\(F\\): it is nonnegative on \\(F\\), and its zero set within \\(F\\) is exactly \\(R\\). It is not the quantum objective.\n\nExtend \\(J\\) to the ambient affine space so that at least one outside vertex has \\(J(v)<0\\). This is not a claim that \\(J\\geq0\\) on the whole local polytope. Such an extension can be obtained by subtracting a sufficiently large multiple of \\(I_F-\\beta_C\\), which vanishes on \\(F\\). For \\(I_t=I_F+tJ\\), points on \\(R\\) remain tight, and points on \\(F\\setminus R\\) move away from equality.\n\nFor an outside vertex, \\(I_t(v)-\\beta_C=[I_F(v)-\\beta_C]+tJ(v)\\). If \\(J(v)<0\\), its local constraint remains valid only up to \\(t\\leq[I_F(v)-\\beta_C]/[-J(v)]\\). The numerator is its initial slack; the denominator is the slack loss per unit coefficient step. The minimum of these upper limits is \\(t_*\\), the largest step preserving all local constraints. For example, limits \\(6/3=2\\) and \\(5/1=5\\) give \\(t_*=2\\).\n\nAt that step, include every outside vertex attaining the minimum, including ties. Together with the ridge they span a face of dimension \\(D-1\\), which is the unique other facet containing \\(R\\). Verify support and affine rank exactly. The step parameter is not a probability, physical time, or a specified Euclidean angle. Changing the extension of \\(J\\) can reparameterize the same geometric move. After pivoting, recenter the uniform behavior before comparing quantum-violation ratios. Pivot alone does not guarantee a better quantum ratio.",
+        "zh": "当前 facet 是 \\(F=\\{p\\in\\mathcal L:I_F(p)=\\beta_C\\}\\)，选择它的一条 ridge \\(R\\)。这里 \\(J\\) 是子多面体 \\(F\\) 的一个 facet 的仿射支撑函数：在 \\(F\\) 上非负，在 \\(F\\) 内的零点集合恰好是 \\(R\\)。它不是量子优化目标。\n\n把 \\(J\\) 延拓到母空间，使至少一个面外顶点满足 \\(J(v)<0\\)。并不要求 \\(J\\) 在整个局域多面体上非负。可减去足够大的 \\(I_F-\\beta_C\\) 的倍数来实现这一点，因为该项在 \\(F\\) 上为零。令 \\(I_t=I_F+tJ\\)，ridge 上的点始终满足等号，\\(F\\setminus R\\) 上的点则离开等号。\n\n对于面外顶点，\\(I_t(v)-\\beta_C=[I_F(v)-\\beta_C]+tJ(v)\\)。当 \\(J(v)<0\\) 时，局域约束仅在 \\(t\\leq[I_F(v)-\\beta_C]/[-J(v)]\\) 内有效。分子是初始松弛量，分母是每单位系数步长的松弛损失。取所有上限的最小值，得到保持全部局域约束有效的最大步长 \\(t_*\\)。例如两个顶点给出的上限分别为 \\(6/3=2\\)、\\(5/1=5\\)，则 \\(t_*=2\\)。\n\n在该步长下，所有达到最小比值的面外顶点同时进入紧集，不能只取一个并列者。它们与 ridge 一起张成维数为 \\(D-1\\) 的新面，即包含 \\(R\\) 的唯一另一 facet；还需精确检查支撑与仿射秩。\\(t\\) 是系数步长，不是概率、物理时间或规定的欧氏角度。不同的 \\(J\\) 延拓可能重新参数化同一几何移动。Pivot 后比较违反比值前，需重新把均匀行为得分归零；pivot 本身不保证量子违反提高。"
       },
       "sources": [
         {
@@ -359,16 +376,16 @@ window.DECK = {
         }
       },
       "subtitle": {
-        "en": "A classical geometric step; the quantum value is evaluated afterwards",
-        "zh": "经典几何步骤；量子值在之后单独计算"
+        "en": "\\(J\\) defines the direction; \\(t_*\\) is the largest step preserving the local bound",
+        "zh": "\\(J\\) 定义方向；\\(t_*\\) 是保持局域界有效的最大步长"
       },
-      "formula": "\\[\\begin{aligned}I_{\\mathrm{next}}&=I_F+t_*J\\geq\\beta_C,\\\\t_*&=\\min_{\\substack{v\\notin V_F\\\\J(v)<0}}\\frac{I_F(v)-\\beta_C}{-J(v)}.\\end{aligned}\\]"
+      "formula": "\\[\\begin{aligned}I_t&=I_F+tJ,\\qquad t\\geq0,\\\\t_*&=\\min_{\\substack{v\\in V\\setminus F\\\\J(v)<0}}\\frac{I_F(v)-\\beta_C}{-J(v)},\\\\I_{\\mathrm{next}}&=I_F+t_*J\\geq\\beta_C.\\end{aligned}\\]"
     },
     {
       "id": "recursive-child",
       "title": {
-        "en": "A difficult facet becomes a child polytope",
-        "zh": "把困难 facet 变成子多面体"
+        "en": "Finding a ridge is a smaller facet problem",
+        "zh": "寻找 ridge，就是低一维的 facet 问题"
       },
       "section": {
         "en": "Original pivot work",
@@ -378,19 +395,19 @@ window.DECK = {
       "layout": "split",
       "bullets": {
         "en": [
-          "The tight vertices define a polytope of dimension one lower.",
-          "Its facets are the parent facet’s ridges.",
-          "The same expansion procedure can solve the child boundary."
+          "<strong>Child facets</strong> have dimension \\(D-2\\): they are the parent ridges and supply \\(J\\).",
+          "<strong>3D example:</strong> a polygonal facet becomes a 2D child; its edges are the ridges.",
+          "<strong>Recurse:</strong> solve the child boundary, then return to pivot in the parent."
         ],
         "zh": [
-          "紧顶点定义一个低一维的子多面体。",
-          "子多面体的 facets 正是母 facet 的 ridges。",
-          "同一展开过程可以递归求解子边界。"
+          "<strong>子 facets</strong> 的维数为 \\(D-2\\)：它们是母层 ridges，并提供 \\(J\\)。",
+          "<strong>三维例子：</strong>多边形 facet 变成二维子问题；其边就是 ridges。",
+          "<strong>递归：</strong>求解子边界，再返回母层做 pivot。"
         ]
       },
       "notes": {
-        "en": "Direct double description can solve a small facet boundary. For a large or degenerate facet it can remain unfinished. Treat \\(V_F\\) as a new vertex set and repeat the facet-expansion problem one dimension lower. A verified child facet supplies a parent ridge and a parent pivot. The recursion tree records completed branches and the open frontier.",
-        "zh": "直接 DD 可以求解较小 facet 的边界，对大或高退化面则可能无法完成。把 \\(V_F\\) 作为新顶点集，在低一维空间重复 facet 展开。已验证子 facet 给出母 ridge 和母层 pivot。递归树记录已完成分支和开放前沿。"
+        "en": "Page six assumes that a ridge and its supporting function \\(J\\) are known. This page explains where they come from. The tight deterministic vertices \\(V_F\\) define the child polytope \\(P_F=F\\), viewed in its own affine space of dimension \\(D-1\\). Its facets have dimension \\(D-2\\), so they are precisely the parent ridges contained in \\(F\\).\n\nIn the CHSH drawing, a triangular facet is a two-dimensional child and its three edges are its child facets. In the 40-dimensional four-party projection, a facet becomes a 39-dimensional child and its facets have dimension 38. Enumerating those child facets supplies both the ridge vertices and the function \\(J\\) needed for the parent pivot.\n\nFor a small child, direct Double Description can convert vertices to a complete facet list. If that boundary problem is too large, apply the same facet-neighbor expansion to the child; if needed, descend again to its own facets. Each descent lowers the affine dimension by one. A certified child facet gives one certified parent ridge even if other branches remain unfinished. The recursion does not by itself guarantee feasible runtime or global completion. Once all branches of a facet are closed, its full ridge list is available.",
+        "zh": "第六页假定已经知道 ridge 和支撑函数 \\(J\\)，这一页解释它们从哪里来。紧确定性顶点 \\(V_F\\) 定义子多面体 \\(P_F=F\\)，把它放在自身维数为 \\(D-1\\) 的仿射空间中。其 facets 的维数是 \\(D-2\\)，恰好是包含在 \\(F\\) 内的母层 ridges。\n\nCHSH 图里，一个三角形 facet 变成二维子问题，三条边就是子 facets。在40维四体投影里，一个 facet 变成39维子问题，子 facets 的维数为38。枚举这些子 facets，就同时得到母层 ridge 顶点及第六页需要的 \\(J\\)。\n\n较小子问题可用 Double Description 直接从顶点得到完整 facet 列表。若边界问题太大，则对子多面体使用同样的 facet 邻接展开；必要时再进入其 facets，继续下降。每下降一层，仿射维数减少一。即使其他分支未完成，一个已认证子 facet 仍提供一条已认证母 ridge。递归本身不保证运行时间可行或全局完成；只有所有分支闭合，才得到当前 facet 的完整 ridge 列表。"
       },
       "sources": [
         {
@@ -416,18 +433,22 @@ window.DECK = {
           "zh": "接下来用对称性和可恢复任务组织递归。"
         }
       },
-      "formula": "\\[P_F=\\operatorname{conv}(V_F),\\qquad \\dim P_F=D-1\\]",
+      "formula": "\\[\\begin{aligned}V_F&=\\{v\\in V:I_F(v)=\\beta_C\\},\\\\P_F&=\\operatorname{conv}(V_F),\\\\\\dim P_F&=D-1.\\end{aligned}\\]",
       "asset": "v0-recursion-tree.png",
       "assetAlt": {
         "en": "A difficult facet becomes a child polytope",
         "zh": "把困难 facet 变成子多面体"
+      },
+      "figureCaption": {
+        "en": "\\(\\ell\\): recursion depth; \\(n_{V_F}\\): number of tight vertices of the current face.",
+        "zh": "\\(\\ell\\)：递归深度；\\(n_{V_F}\\)：当前面的紧顶点数。"
       }
     },
     {
       "id": "recursive-workflow",
       "title": {
-        "en": "The expansion preserves solved and unfinished tasks",
-        "zh": "展开过程保留已解与未完成的任务"
+        "en": "Recursive expansion records what is still open",
+        "zh": "递归展开明确记录哪些边界仍未解决"
       },
       "section": {
         "en": "Original pivot work",
@@ -437,19 +458,19 @@ window.DECK = {
       "layout": "wide",
       "bullets": {
         "en": [
-          "Relabeling symmetry identifies equivalent facets.",
-          "Direct DD handles small facets first.",
-          "Unfinished facets enter recursion and keep their verified discoveries."
+          "<strong>DD = Double Description:</strong> convert a vertex list to a facet list.",
+          "<strong>Task states:</strong> U = pending direct solve; N = pending recursion; Z = computationally closed; A = unresolved at the depth limit.",
+          "<strong>Keep discoveries:</strong> verified neighbors survive interruptions; an open task prevents a closure claim."
         ],
         "zh": [
-          "重标记对称性识别等价 facets。",
-          "先直接 DD 处理较小 facets。",
-          "未完成的 facets 进入递归，并保留已验证的发现。"
+          "<strong>DD = Double Description：</strong>把顶点列表转换成 facet 列表。",
+          "<strong>任务状态：</strong>U＝待直接求解；N＝待递归；Z＝计算闭合；A＝达到深度限制仍未解。",
+          "<strong>保留发现：</strong>中断后保留已验证邻居；开放任务阻止完整闭合声明。"
         ]
       },
       "notes": {
-        "en": "Canonicalization keeps one representative per global relabeling orbit. The facet stabilizer gives the child symmetry. The diagram separates pending DD, pending recursion, completed tasks and unresolved tasks at the depth limit \\(\\ell\\). A partial call returns verified discoveries without certifying its full boundary. Persistent tasks allow a later restart.",
-        "zh": "规范化为每个全局重标记轨道保留一个代表；facet 的稳定子给出子问题对称性。图中区分待 DD、待递归、已完成，以及在深度限制 \\(\\ell\\) 下未解的任务。部分调用返回已验证发现，但不认证全边界。任务持久化支持后续重启。"
+        "en": "Double Description, abbreviated DD, is a direct conversion between vertex and inequality descriptions. U denotes a task pending direct DD; N denotes one pending recursive expansion; Z is computational ridge closure; A is unresolved at the recursion-depth limit \\(\\ell\\). These labels describe computational completion, not different physical resources. The numerical implementation uses double-precision cddlib. Certified completeness additionally requires exact or independently validated boundary enumeration. Checking each returned candidate alone does not prove that DD omitted no facets.\n\nGlobal relabeling symmetry groups equivalent facets, and canonicalization stores one representative per orbit. At the child level use the stabilizer of the parent facet, namely relabelings that leave that facet invariant. A completed child boundary is lifted back to supply parent ridges and pivots. A partial task can publish independently verified discoveries while retaining an unresolved frontier. Persistent task records allow the work to resume after interruption. To claim complete enumeration, every required boundary task must be closed.",
+        "zh": "Double Description，简称 DD，是顶点描述与不等式描述之间的直接转换。U 表示待直接 DD；N 表示待递归展开；Z 表示计算意义上的 ridge 闭合；A 表示在递归深度限制 \\(\\ell\\) 下仍未解决。这些是计算完成状态，不是物理资源分类。数值实现采用双精度 cddlib；精确完整性还要求边界枚举精确或经过独立验证。逐个核验返回候选，不能单独证明 DD 没有漏掉 facets。\n\n全局重标记对称性把等价 facets 分组，规范化为每个轨道保存一个代表。子层使用母 facet 的稳定子，即保持该 facet 不变的重标记。完整子边界返回母层，提供 ridges 与 pivots。部分完成的任务可以返回已独立验证的发现，同时保留开放前沿。任务持久化支持中断后继续。宣称完整枚举时，所有必要边界任务都必须闭合。"
       },
       "sources": [
         {
@@ -484,8 +505,8 @@ window.DECK = {
     {
       "id": "closure",
       "title": {
-        "en": "A closed boundary certifies complete enumeration",
-        "zh": "闭合边界认证完整枚举"
+        "en": "Complete enumeration requires a closed boundary",
+        "zh": "完整枚举需要边界闭合"
       },
       "section": {
         "en": "Original pivot work",
@@ -495,19 +516,19 @@ window.DECK = {
       "layout": "statement",
       "bullets": {
         "en": [
-          "Every stored facet has a complete ridge list.",
-          "Every exact ridge pivot returns a class already in the library.",
-          "Connectedness of the facet graph then closes the whole polytope."
+          "<strong>Assumption:</strong> every stored facet has a complete, exactly checked ridge list.",
+          "<strong>Closure:</strong> every ridge pivot reaches a facet already represented in the library.",
+          "<strong>Conclusion:</strong> connectivity of the full facet graph implies that the library contains every class."
         ],
         "zh": [
-          "库内每个 facet 都有完整 ridge 列表。",
-          "每次精确 ridge pivot 都返回库内已有类别。",
-          "Facet graph 的连通性由此保证全多面体闭合。"
+          "<strong>前提：</strong>每个已存 facet 都有完整且经过精确核验的 ridge 列表。",
+          "<strong>闭合：</strong>每条 ridge 的 pivot 都到达库中已有代表的 facet。",
+          "<strong>结论：</strong>完整 facet graph 的连通性保证库包含全部类别。"
         ]
       },
       "notes": {
-        "en": "This is the recursive ridge-closure criterion. Exact support, dimension and boundary checks are required. A stable class count is only a search plateau. Completeness is stronger: no ridge from any known facet leads outside the stored set, and the facet graph is connected. The same argument applies recursively when a closed child supplies the parent boundary. We now test the method on a complete known benchmark.",
-        "zh": "这是递归 ridge 闭合判据，需要精确支撑、维数和边界检查。类别数稳定只说明搜索进入平台。完整性要求更强：已知每个 facet 的所有 ridges 都不通向库外，而 facet graph 是连通的。当完整子问题给出母边界时，同一论证递归成立。现在用一个已有完整答案的小场景验证。"
+        "en": "This is a conditional geometric completeness statement. Start from a nonempty set of exactly validated facets. If every stored facet has all of its ridges, and every exact pivot across each ridge returns a represented facet class, no graph edge leaves the set. The full facet graph of a convex polytope is connected, so the set must be the whole graph, up to the stated relabeling symmetry. Support, dimension, and complete child boundaries are essential hypotheses. Stable counts, coverage of stored classes, and numerical quantum values are not substitutes for these hypotheses. The four-party libraries later in the talk retain open tasks and do not satisfy this global certificate.",
+        "zh": "这是一个带前提的几何完整性结论。从一个非空、精确验证的 facet 集合开始，若库内每个 facet 的 ridges 都找全，且每条 ridge 的精确 pivot 都返回已有代表的类别，就没有图边离开已存集合。凸多面体的完整 facet graph 连通，所以该集合必为全图，再按指定重标记对称性取商。支撑、维数以及完整子边界是必要前提。类别数稳定、覆盖全部已存类别、数值量子得分都不能替代这些前提。后面的四体部分库仍有开放任务，尚不满足这个全局证书。"
       },
       "sources": [
         {
@@ -679,8 +700,8 @@ window.DECK = {
         ]
       },
       "notes": {
-        "en": "Use the v0 minimizing convention with \\(I(P_{\\mathrm{uni}})=0\\) and \\(\\beta_C<0\\). An attained see-saw value is an upper bound on the quantum minimum. Dividing by the negative classical bound makes \\(\\widehat\\Delta\\) a lower bound on the optimal ratio. Each facet optimizes its own state and measurements. This height does not impose a shared physical strategy.",
-        "zh": "沿用 v0 的最小值约定，\\(I(P_{\\mathrm{uni}})=0\\)，\\(\\beta_C<0\\)。已实现 see-saw 值是量子最小值的上界；除以负经典界后，\\(\\widehat\\Delta\\) 成为最优比值的下界。每个 facet 分别优化自己的状态和测量，这个高度不要求共同物理策略。"
+        "en": "Use the lower-bound convention \\(I_F(P_{\\mathrm{uni}})=0\\), \\(\\beta_{C,F}<0\\). Let \\(\\widehat\\beta_{Q,F}\\) be the score of a verified attained quantum strategy, and \\(\\beta_{Q,F}\\) the true quantum minimum. Then \\(\\beta_{Q,F}\\leq\\widehat\\beta_{Q,F}\\), so \\(\\widehat\\Delta_F=\\widehat\\beta_{Q,F}/\\beta_{C,F}\\leq\\Delta_F\\).\n\nFor an attained violation \\(\\widehat\\beta_{Q,F}<\\beta_{C,F}<0\\), and \\(0\\leq v\\leq1\\), uniform-behavior noise \\(P_v=vP+(1-v)P_{\\mathrm{uni}}\\) gives \\(I_F(P_v)=v\\widehat\\beta_{Q,F}\\). Strict violation occurs exactly when \\(v>1/\\widehat\\Delta_F\\). A larger attained ratio therefore demonstrates a lower visibility threshold for that particular optimized test. The optimum threshold obeys \\(v_{\\mathrm{crit}}^{\\mathrm{opt}}\\leq1/\\widehat\\Delta_F\\). Comparing attained heights does not certify the ordering of true quantum optima.\n\nUniform behavior is uniform output probability for every setting. It coincides with maximally mixed state noise only for measurements that map the maximally mixed state to that uniform behavior, as for traceless binary qubit observables. Each facet uses its own independently optimized state and measurements; no shared physical implementation is imposed.",
+        "zh": "采用下界约定 \\(I_F(P_{\\mathrm{uni}})=0\\)、\\(\\beta_{C,F}<0\\)。令 \\(\\widehat\\beta_{Q,F}\\) 是已验证可实现量子策略的得分，\\(\\beta_{Q,F}\\) 是真正量子最小值。则 \\(\\beta_{Q,F}\\leq\\widehat\\beta_{Q,F}\\)，因此 \\(\\widehat\\Delta_F=\\widehat\\beta_{Q,F}/\\beta_{C,F}\\leq\\Delta_F\\)。\n\n对于已实现的违反 \\(\\widehat\\beta_{Q,F}<\\beta_{C,F}<0\\)，且 \\(0\\leq v\\leq1\\)，均匀行为噪声\\(P_v=vP+(1-v)P_{\\mathrm{uni}}\\) 给出 \\(I_F(P_v)=v\\widehat\\beta_{Q,F}\\)。严格违反恰好发生于 \\(v>1/\\widehat\\Delta_F\\)。所以较大的已实现比值，展示该优化检验能在更低可见度下保持违反。最优阈值满足 \\(v_{\\mathrm{crit}}^{\\mathrm{opt}}\\leq1/\\widehat\\Delta_F\\)，而已实现高度的排序并不认证真正量子最优值的排序。\n\n均匀行为指每个设置下输出概率均匀。只有测量把最大混态映射到该均匀行为时，它才等同于密度矩阵层面的白噪声，例如无迹二值量子比特观测量。每个 facet 分别优化状态和测量，并不要求共同物理实现。"
       },
       "sources": [
         {
@@ -1034,19 +1055,19 @@ window.DECK = {
       "layout": "statement",
       "bullets": {
         "en": [
-          "At each class, choose the neighbor with largest recorded ratio.",
-          "Move only when the increase exceeds \\(10^{-9}\\).",
-          "A class without an improving neighbor is a stopping class."
+          "Use stored heights \\(\\widehat\\Delta_F\\); \\(\\mathcal N(F)\\) is the set of recorded neighboring classes.",
+          "Choose the largest improving neighbor; require an increase greater than \\(10^{-9}\\).",
+          "A stopping class has no improving neighbor. Its basin contains all classes whose paths end there."
         ],
         "zh": [
-          "每一步选择已记录比值最大的邻居。",
-          "仅当改善超过 \\(10^{-9}\\) 时移动。",
-          "没有改善邻居的类别称为停止类。"
+          "使用已存高度 \\(\\widehat\\Delta_F\\)；\\(\\mathcal N(F)\\) 是已记录的邻居类别集合。",
+          "选择改善最大的邻居，要求增幅超过 \\(10^{-9}\\)。",
+          "没有改善邻居的类别是停止类；所有最终到达它的类别组成其吸引域。"
         ]
       },
       "notes": {
-        "en": "Remove self-loops and include classes with recorded \\(\\widehat\\Delta>1+10^{-9}\\). Choose the neighbor with the largest strictly improving recorded value, using improvement tolerance \\(10^{-9}\\). A stopping class has no such neighbor. This is an analysis of recorded heights, not a theorem that a geometric pivot must increase quantum violation.",
-        "zh": "去掉自环，纳入记录值 \\(\\widehat\\Delta>1+10^{-9}\\) 的类别。选择最大且严格改善的邻居，改善容差为 \\(10^{-9}\\)。没有此类邻居的节点称为停止类。这是对记录高度的分析，不是“几何 pivot 必须提高量子违反”的定理。"
+        "en": "Remove self-loops and include classes with recorded \\(\\widehat\\Delta>1+10^{-9}\\). Here \\(\\mathcal N(F)\\) is the recorded neighboring-class set. At each step look up their already optimized heights and choose the largest strictly improving value, with tolerance \\(10^{-9}\\). If none exists, stop. A basin is the set of starting classes ending at one stopping class under this rule.\n\nStrict increase on a finite graph guarantees termination. Having only one stopping class is a separate numerical observation, not a consequence of finite termination or of the pivot construction. This is a walk in Bell-inequality space using stored scores; it does not run a new quantum optimization at each step or describe physical evolution of a state.",
+        "zh": "去掉自环，纳入记录值 \\(\\widehat\\Delta>1+10^{-9}\\) 的类别。这里 \\(\\mathcal N(F)\\) 是已记录邻居类别集合。每一步查找已经分别优化好的高度，以 \\(10^{-9}\\) 为容差，选择最大且严格改善的邻居；没有则停止。吸引域是在该规则下最终到达同一停止类的所有起始类别。\n\n有限图上的严格上升保证路径终止，这是数学结论。只有一个停止类则是另一个数值观察，不能由有限终止或 pivot 构造直接推出。这里是在 Bell 不等式空间中用已存得分行走，并非每走一步重新求量子最优，也不描述量子态的物理演化。"
       },
       "sources": [
         {
@@ -1099,8 +1120,8 @@ window.DECK = {
         ]
       },
       "notes": {
-        "en": "All 44 included violating classes in the complete three-party graph reach Mermin in at most two pivots. In the one- and two-body projection, 97.0 percent of included classes reach lifted CHSH in exactly two pivots. In the two- and four-body projection the mean is 3.161 pivots and only one class needs six. The attractor is Mermin–Klyshko, with recorded ratio \\(2\\sqrt2\\). This is a one-basin result on discovered augmented graphs. Unknown facets, missing edges or improved quantum values can change the four-party result.",
-        "zh": "完整三体图上，纳入的44个违反类至多两步到达 Mermin。一、二体投影中，97.0%的纳入类别恰好两步到达提升 CHSH。二、四体投影平均3.161步，只有一个类别需要六步，吸引子为记录比值 \\(2\\sqrt2\\) 的 Mermin–Klyshko。这是已发现增强图上的单吸引域结果。未知 facets、缺失边或更精确的量子值可能改变四体结论。"
+        "en": "In the complete three-party graph all 44 included violating classes reach Mermin in at most two pivots. Its geometry is complete, but the height ordering remains subject to quantum-value verification. In the four-party one- and two-body partial library, 97.0 percent of included classes take exactly two pivots to lifted CHSH. In the two- and four-body partial library the mean is 3.161 and the maximum is six, attained by one class; the endpoint is Mermin–Klyshko with recorded ratio \\(2\\sqrt2\\).\n\nThese basin counts exhaustively describe the included classes in the recorded root-plus-patch graphs, with their recorded heights and stated tolerance. They are not a theorem about every four-party Bell facet or the exact quantum landscape. Undiscovered facets and improved quantum values can change the basin structure; additional edges can change paths and step counts. The one- and two-body tolerance sweep from \\(10^{-12}\\) to \\(10^{-3}\\) was stable, which is a robustness check rather than an exact quantum certificate. Every relabeling class has equal statistical weight here; the statistics do not weight by orbit size or by a physical sampling distribution.",
+        "zh": "完整三体图上，纳入的44个违反类别至多两步到达 Mermin。几何完整，但高度排序仍受量子值核验限制。四体一、二体部分库中，97.0%的纳入类别恰好两步到达提升 CHSH。二、四体部分库平均3.161步，最多六步，只有一个类别需要六步；终点为记录比值 \\(2\\sqrt2\\) 的 Mermin–Klyshko。\n\n吸引域计数穷尽描述已记录 root 加 patch 图中纳入的类别、记录高度及指定容差，不是关于全部四体 Bell facets 或精确量子 landscape 的定理。未发现 facets、更准确的量子值可能改变吸引域结构；新增边可能改变路径与步数。一、二体投影在 \\(10^{-12}\\) 到 \\(10^{-3}\\) 的容差扫描中保持稳定，这是鲁棒性检查，不能代替精确量子证书。这里每个重标记类别具有相等统计权重，没有按轨道大小或物理抽样分布加权。"
       },
       "sources": [
         {
@@ -1192,8 +1213,8 @@ window.DECK = {
     {
       "id": "original-conclusion",
       "title": {
-        "en": "What the original pivot work establishes",
-        "zh": "原来的 pivot 工作建立了什么"
+        "en": "What the single ascent basin means physically",
+        "zh": "单一上升吸引域的物理意义"
       },
       "section": {
         "en": "Original pivot work",
@@ -1203,19 +1224,17 @@ window.DECK = {
       "layout": "statement",
       "bullets": {
         "en": [
-          "Recursive expansion explores the connected facet boundary.",
-          "The three-party benchmark validates the geometric construction.",
-          "The four-party libraries reveal empirical violation landscapes."
+          "<strong>Scope:</strong> each test uses its own state and measurements; the four-party library is partial.",
+          "<strong>Next question:</strong> what changes when neighboring tests must share one physical strategy?"
         ],
         "zh": [
-          "递归展开探索连通的 facet 边界。",
-          "三体基准验证几何构造。",
-          "四体部分库展示经验量子违反 landscapes。"
+          "<strong>范围：</strong>每个检验各自选择状态和测量；四体库仍不完整。",
+          "<strong>下一问：</strong>如果相邻检验必须共用一个物理策略，会发生什么？"
         ]
       },
       "notes": {
-        "en": "The original contribution is a restartable recursive exploration of the boundary together with its geometric checks and the landscape analysis. Pivoting is an established polytope operation. The observed one-basin structure is a result of the recorded Bell data, not a universal theorem. At this point the original manuscript story is complete. The following slides open a separate discussion about what the same library could say under a shared physical implementation.",
-        "zh": "原工作给出可恢复的递归边界探索、相应几何检查及 landscape 分析。Pivot 是已有的多面体操作；单吸引域是这批记录 Bell 数据的观察，不是普遍定理。到这里，原稿主线已经完整。下面独立讨论：如果要求共同物理实现，同一个库还能告诉我们什么？"
+        "en": "Separate three claims. First, exact support and rank checks can certify a specific facet, its ridge, and a pivot neighbor. Full closure then certifies enumeration, under the hypotheses on page nine. Second, on each analyzed recorded graph, the greedy rule has one stopping class and one basin. This is an exhaustive numerical graph result for that snapshot, not a theorem about undiscovered facets or exact quantum optima.\n\nThird, there is a precise physical interpretation of the heights. Let \\(P\\) be an attained violating strategy for facet \\(F\\), with \\(\\widehat\\beta_{Q,F}<\\beta_{C,F}<0\\), and \\(P_{\\mathrm{uni}}\\) the uniform behavior; take \\(0\\leq v\\leq1\\). With \\(I_F(P_{\\mathrm{uni}})=0\\), \\(I_F(P_v)=v\\widehat\\beta_{Q,F}\\). Since \\(\\beta_{C,F}<0\\), strict violation is equivalent to \\(v>1/\\widehat\\Delta_F\\); equality is the local-bound threshold. An increasing recorded height therefore means lower demonstrated critical visibility, using a different independently optimized Bell test at each graph node.\n\nThis search path does not evolve a physical state toward an attractor. Nor does a single basin establish genuine four-party entanglement: lifted CHSH can reach its maximum with one entangled pair and unentangled spectators. The Mermin–Klyshko endpoint is a different resource example, but identifying that endpoint does not certify a resource property of every starting facet. Uniform-behavior noise should not automatically be identified with density-matrix white noise for arbitrary measurements.\n\nThe useful research implication is that adjacency may organize the search for robust Bell tests in these libraries. The later resource question adds a new constraint absent here: neighboring endpoints must use the same state and measurement tuple. This requires valid bounds covering every bipartition; SDP offers a practical route to obtain such certificates.",
+        "zh": "区分三层陈述。第一，精确支撑与秩检查能认证一个具体 facet、其 ridge 及 pivot 邻居；满足第九页的全闭合前提后，才能认证完整枚举。第二，在每个已分析的记录图上，贪心规则只有一个停止类和吸引域。这是该快照的穷尽数值图结果，不是关于未发现 facets 或精确量子最优值的定理。\n\n第三，高度具有明确物理解释。令 \\(P\\) 为 facet \\(F\\) 的已实现违反策略，满足 \\(\\widehat\\beta_{Q,F}<\\beta_{C,F}<0\\)，\\(P_{\\mathrm{uni}}\\) 为均匀行为，且 \\(0\\leq v\\leq1\\)。由于 \\(I_F(P_{\\mathrm{uni}})=0\\)，有 \\(I_F(P_v)=v\\widehat\\beta_{Q,F}\\)。因为 \\(\\beta_{C,F}<0\\)，严格违反等价于 \\(v>1/\\widehat\\Delta_F\\)；等号是局域界阈值。因此记录高度上升，意味着展示了更低临界可见度，但每个图节点都换用一个独立优化的 Bell 检验。\n\n这条搜索路径不是把一个物理态演化到吸引子。单吸引域也不证明真正四体纠缠：提升 CHSH 可以由一个纠缠对加不纠缠的旁观方达到最大值。Mermin–Klyshko 终点是另一种资源例子，但识别终点并不认证每个起始 facet 的资源性质。任意测量下，均匀行为噪声不能自动等同于密度矩阵白噪声。\n\n研究上的意义是：邻接关系可能组织这些库中的鲁棒 Bell 检验搜索。后面的资源问题增加了这里没有的约束：两个邻接端点共用同一个状态和测量组。这要求对全部二分切分成立的有效界；SDP 提供获得这些证书的一条实用途径。"
       },
       "sources": [
         {
@@ -1239,6 +1258,49 @@ window.DECK = {
         "transition": {
           "en": "Independent endpoint optimization leaves a shared-strategy question open.",
           "zh": "各端点独立优化之后，还有共同策略问题需要回答。"
+        }
+      },
+      "formula": "\\[P_v=vP+(1-v)P_{\\mathrm{uni}},\\qquad v_{\\mathrm{crit}}^{\\mathrm{demo}}=\\frac1{\\widehat\\Delta_F}\\quad(\\widehat\\Delta_F>1).\\]",
+      "table": {
+        "headers": {
+          "en": [
+            "Status",
+            "What is supported"
+          ],
+          "zh": [
+            "结论层次",
+            "能够支持的陈述"
+          ]
+        },
+        "rows": {
+          "en": [
+            [
+              "Exact geometry",
+              "Verified facet/ridge/pivot relations; completeness only with full boundary closure."
+            ],
+            [
+              "Numerical observation",
+              "One greedy ascent basin on each analyzed recorded graph and its attained heights."
+            ],
+            [
+              "Physical interpretation",
+              "The selected uphill paths lead toward better demonstrated uniform-noise tolerance."
+            ]
+          ],
+          "zh": [
+            [
+              "严格几何",
+              "已验证的 facet／ridge／pivot 关系；完整枚举须满足全边界闭合。"
+            ],
+            [
+              "数值观察",
+              "在已分析的记录图和已实现高度上，贪心上升只有一个吸引域。"
+            ],
+            [
+              "物理解释",
+              "所选择的上升路径通向更好的已展示均匀噪声容忍度。"
+            ]
+          ]
         }
       }
     },
