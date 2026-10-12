@@ -1335,30 +1335,30 @@ window.DECK = {
     {
       "id": "shared-resource-question",
       "title": {
-        "en": "Exploratory direction: shared tests and entanglement",
-        "zh": "探索性方向：共同检验与纠缠资源"
+        "en": "Exploratory direction: one state and one measurement set",
+        "zh": "探索性方向：共用一个态和一组测量"
       },
       "section": {
         "en": "Discussion: ideas under assessment",
         "zh": "讨论：正在评估的新方向"
       },
-      "duration": 50,
+      "duration": 35,
       "layout": "statement",
       "bullets": {
         "en": [
-          "The original landscape optimizes each endpoint independently.",
-          "A combined test uses one state and one measurement tuple.",
-          "Can the combination certify genuine four-party entanglement?"
+          "\\(\\rho\\): the four-party state. \\(\\mathsf M=\\{A_0,A_1,B_0,B_1,C_0,C_1,D_0,D_1\\}\\): all local measurements.",
+          "Each party has settings \\(0,1\\) and outcomes \\(\\pm1\\). \\(O\\) denotes an operator; brackets denote its observed mean.",
+          "The original graph optimizes each test separately. We now evaluate both tests with the same state and measurements."
         ],
         "zh": [
-          "原 landscape 对每个端点独立优化。",
-          "组合检验使用一个状态和同一组测量。",
-          "这样的组合能否认证真正四体纠缠？"
+          "\\(\\rho\\)：四体量子态。\\(\\mathsf M=\\{A_0,A_1,B_0,B_1,C_0,C_1,D_0,D_1\\}\\)：全部局域测量。",
+          "每方有设置 \\(0,1\\)，输出为 \\(\\pm1\\)。\\(O\\) 表示算符；尖括号表示观测平均值。",
+          "原图对每个检验分别优化。现在两个检验共用同一个态、同一组测量。"
         ]
       },
       "notes": {
-        "en": "This is a follow-up question, not the definition of pivoting. A neighboring pair is a geometrically valid candidate, but adjacency alone does not determine its entanglement requirement. Three-party examples help us understand shared-measurement compatibility. Here we ask the corresponding question directly in the original four-party library, and focus on one concrete certified family.",
-        "zh": "这是后续问题，不是 pivot 的定义。邻接配对提供几何合法的候选，但邻接本身不决定纠缠资源需求。三体例子帮助理解共同测量的兼容性；这里把问题直接带回原四体库，集中看一个已有证书的具体家族。"
+        "en": "A physical strategy means the state together with all local measurements. In the original landscape, each facet could choose its own strategy. Here two tests must use the same strategy. Alice’s setting zero, for example, is the same observable in both tests. Brackets mean the expectation, or measured mean, of an operator in the state. This is an additional physical constraint beyond adjacency. We first define the two tests.\n\nReference: A, B, C and D label separated parties. We use binary projective observables with eigenvalues \\(\\pm1\\); binary POVMs are covered by local projective dilation. An operator product on different parties abbreviates a tensor product. The trace sums the diagonal entries of a matrix. Shared strategy does not require identical measurements at different parties. A different interpolation weight may have its own optimized strategy, but both terms at that weight share the full strategy.",
+        "zh": "物理策略就是量子态加全部局域测量。原 landscape 中，每个 facet 可以选择自己的策略；现在两个检验必须共用一个策略。例如，Alice 的设置0在两项里必须是同一个观测量。尖括号是该算符在量子态上的期望值，也就是实验测得的平均值。这是邻接关系之外增加的物理约束。下面先定义具体检验。\n\n参考：A、B、C、D 表示相互分离的四方。这里先用本征值为 \\(\\pm1\\) 的二值投影测量，二值 POVM 可由局域投影扩张覆盖。不同方的算符乘积省略张量积符号。trace 是矩阵对角元之和。“共用测量”不要求不同方使用相同测量。不同组合权重可以分别优化策略，但同一权重下两项必须共用整个策略。"
       },
       "sources": [
         {
@@ -1380,39 +1380,87 @@ window.DECK = {
           "zh": ""
         },
         "transition": {
-          "en": "A reciprocal parity-conditioned pair gives a concrete candidate.",
-          "zh": "互相提供奇偶旗标的配对给出一个具体候选。"
+          "en": "Define CHSH and the opposite-output events.",
+          "zh": "先定义 CHSH 与相反输出事件。"
         }
       },
-      "formula": "\\[H_\\lambda=(1-\\lambda)f+\\lambda g,\\qquad 0\\leq\\lambda\\leq1\\]"
+      "formula": "\\[\\mathsf S=(\\rho,\\mathsf M),\\qquad \\langle O\\rangle_\\rho=\\operatorname{tr}(\\rho O).\\]"
+    },
+    {
+      "id": "four-pair-symbols",
+      "title": {
+        "en": "Exploratory direction: CHSH and the parity flags",
+        "zh": "探索性方向：CHSH 与奇偶旗标"
+      },
+      "section": {
+        "en": "Discussion: ideas under assessment",
+        "zh": "讨论：正在评估的新方向"
+      },
+      "duration": 55,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "\\(S_{AB},S_{CD}\\) are CHSH operators. Their mean is at most \\(2\\) classically and \\(2\\sqrt2\\) quantum mechanically.",
+          "\\(P_-^{AB}\\) selects opposite AB outputs at settings \\(0,0\\): it equals \\(1\\) on opposite parity and \\(0\\) on equal parity.",
+          "The minus sign means output product \\(-1\\). \\(p_{AB}=\\langle P_-^{AB}\\rangle_\\rho\\) is that event’s probability; CD is defined likewise."
+        ],
+        "zh": [
+          "\\(S_{AB},S_{CD}\\) 是 CHSH 算符。其平均值的经典上界为 \\(2\\)，量子上界为 \\(2\\sqrt2\\)。",
+          "\\(P_-^{AB}\\) 选择设置 \\(0,0\\) 下 AB 输出相反的事件：相反奇偶支撑上为 \\(1\\)，相同支撑上为 \\(0\\)。",
+          "下标“−”指输出乘积为 \\(-1\\)。\\(p_{AB}=\\langle P_-^{AB}\\rangle_\\rho\\) 是这个事件的概率；CD 同理。"
+        ]
+      },
+      "notes": {
+        "en": "S AB is the ordinary CHSH operator, with three plus signs and one minus sign. S CD is the same test on the other pair. Their classical upper bound is two and quantum upper bound is two root two.\n\nThe new symbol P minus is a parity flag. At settings zero and zero, the product of two binary outputs is minus one exactly when the outputs differ. Thus one minus the product, divided by two, selects that event. It is one in the opposite-output sector and zero in the equal-output sector. Its expectation is the event probability, denoted p AB or p CD. P is an event projector, not a state. The minus does not mean a negative probability or that one particular party must output minus one.\n\nWe will use CD’s flag to control the AB test, and AB’s flag to control the CD test.\n\nReference: CHSH abbreviates Clauser–Horne–Shimony–Holt. \\(I\\) is identity, not a Bell score. Under projective binary measurements \\(A_0^2=B_0^2=I\\), so \\(P_-^{AB}\\) is a projector on the joint AB Hilbert space. The probability is \\(\\Pr(a\\ne b\\mid x=y=0)\\), where a,b are outputs and x,y are setting labels. For a common local dilation the same operator treatment covers binary POVMs.",
+        "zh": "S AB 就是普通 CHSH 算符，三个正号、一个负号；S CD 是另一对上的相同检验。经典上界为2，量子上界为二倍根号二。\n\n新符号 P 减是奇偶旗标。设置0、0下，两个二值输出相反时，乘积恰好为负1。所以“1减乘积，再除以2”选择这个事件：相反输出的支撑上为1，相同输出的支撑上为0。它的期望值是事件概率，记为 p AB 或 p CD。P 是事件投影，不是量子态；下标减号不是负概率，也不是要求某一方必须输出负1。\n\n下面让 CD 的旗标控制 AB 检验，再让 AB 的旗标控制 CD 检验。\n\n参考：CHSH 是 Clauser–Horne–Shimony–Holt 的缩写。\\(I\\) 是恒等算符，不是 Bell 得分。二值投影测量满足 \\(A_0^2=B_0^2=I\\)，因此 \\(P_-^{AB}\\) 是 AB 联合希尔伯特空间上的投影。对应概率是 \\(\\Pr(a\\ne b\\mid x=y=0)\\)，a、b 是输出，x、y 是设置编号。共同局域扩张使同一算符处理也覆盖二值 POVM。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Four-party local certificate, 11 Oct 2026",
+            "zh": "四体局部证书，2026年10月11日"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "discussion",
+      "story": {
+        "transition": {
+          "en": "Use each pair’s parity flag in the other pair’s CHSH test.",
+          "zh": "用每一对的奇偶旗标控制另一对的 CHSH 检验。"
+        }
+      },
+      "formula": "\\[\\begin{aligned}\nS_{AB}&=A_0B_0+A_0B_1+A_1B_0-A_1B_1,\\\\\nS_{CD}&=C_0D_0+C_0D_1+C_1D_0-C_1D_1,\\\\\nP_-^{AB}&=\\frac{I-A_0B_0}{2},\\qquad\nP_-^{CD}=\\frac{I-C_0D_0}{2}.\n\\end{aligned}\\]",
+      "bodyIntro": {
+        "en": "\\(I\\) is the identity. \\(A_0B_0\\) means \\(A_0\\otimes B_0\\), with identities on the other parties.",
+        "zh": "\\(I\\) 是恒等算符。\\(A_0B_0\\) 表示 \\(A_0\\otimes B_0\\)，其他方上补恒等算符。"
+      }
     },
     {
       "id": "four-resource-pair",
       "title": {
-        "en": "Exploratory direction: a four-party facet pair",
-        "zh": "探索性方向：一个四体 facet 配对"
+        "en": "Exploratory direction: two tests with reciprocal flags",
+        "zh": "探索性方向：两个相互提供旗标的检验"
       },
       "section": {
         "en": "Discussion: ideas under assessment",
         "zh": "讨论：正在评估的新方向"
       },
-      "duration": 80,
+      "duration": 55,
       "layout": "statement",
       "bullets": {
         "en": [
-          "The pair shares a verified ridge in the 40D even-correlator projection. Its tests act on AB and CD.",
-          "Each pair supplies the parity flag for the other test.",
-          "Both endpoint maxima equal \\(2\\sqrt2-1\\), attainable biseparably."
+          "Equal flag outputs contribute \\(1\\). Opposite flag outputs contribute the tested CHSH operator minus \\(I\\). Event probabilities remain in the score.",
+          "Both tests have local upper bound \\(1\\). Each maximum \\(2\\sqrt2-1\\) is attainable by one Bell pair and two deterministic parties."
         ],
         "zh": [
-          "配对在40维偶数阶关联投影中共享一条已核验 ridge，两个检验分别作用于 AB 和 CD。",
-          "每对给另一对的检验提供奇偶旗标。",
-          "两个端点最大值均为 \\(2\\sqrt2-1\\)，都能由双可分态达到。"
+          "旗标输出相同的支撑贡献 \\(1\\)；相反的支撑贡献受测 CHSH 算符减 \\(I\\)。事件概率始终保留在得分里。",
+          "两项的局域上界都是 \\(1\\)。各自最大值 \\(2\\sqrt2-1\\) 都能由一个 Bell 对加两个确定输出方达到。"
         ]
       },
       "notes": {
-        "en": "Use \\(S_{AB}=A_0(B_0+B_1)+A_1(B_0-B_1)\\) and \\(P_-^{AB}=(I-A_0B_0)/2\\); \\(S_{CD}\\) has the same convention. The flag selects opposite parity. This discussion uses local upper bound one, instead of the landscape’s minimizing convention. Both endpoints belong to class 35 in the 40-dimensional projection. Their facets have dimension 39 and their shared ridge has dimension 38. These are two physical orientations of the same class. They are projection facets, not facets of the full 80-dimensional correlation space. The class is unclosed, but this specified ridge has an independent exact check.",
-        "zh": "约定 \\(S_{AB}=A_0(B_0+B_1)+A_1(B_0-B_1)\\)，\\(P_-^{AB}=(I-A_0B_0)/2\\)，\\(S_{CD}\\) 采用同样约定。旗标选择相反奇偶性。本讨论使用局域上界为1的规范，区别于 landscape 的最小值约定。两个端点都属于40维投影的第35类，facet 维数39，共同 ridge 维数38。它们是同一类别的两个物理取向。这些是投影空间中的 facets，不是完整80维关联空间中的 facets。该类尚未闭合，但指定 ridge 已独立精确核验。"
+        "en": "Now f minus tests AB, using CD’s opposite-output event as the flag. The other test g minus swaps the two pairs. If the flag is zero, the operator contributes the constant one. If the flag is one, it contributes the CHSH operator minus identity. The score is always the expectation of the whole expression. Events are not discarded.\n\nExpanding these operators gives only two-body and four-body correlators. Both tests belong to class 35 in the original forty-dimensional library and share a verified ridge. This ties the candidate to pivoting.\n\nEach endpoint can reach its quantum maximum with only one Bell pair and deterministic spectators. Those states are biseparable. Thus an endpoint score alone cannot certify genuine four-party entanglement. We must ask what their combination can exclude.\n\nReference: The inequalities are \\(\\langle f_-\\rangle_\\rho\\le1\\) and \\(\\langle g_-\\rangle_\\rho\\le1\\) for local behaviors. We now use an upper-bound convention rather than the earlier minimizing convention. On CD’s parity sectors, f is I or \\(S_{AB}-I\\). With \\(p_{CD}>0\\),\n\\(\\langle f_-\\rangle_\\rho=1+p_{CD}(\\langle S_{AB}\\rangle_{c\\ne d}-2)\\);\nwhen \\(p_{CD}=0\\), the added contribution is zero. This retains event probabilities and inactive events. Expansion gives \\(f_-=S_{AB}/2-S_{AB}C_0D_0/2+C_0D_0\\), and g swaps the pairs. The facet dimensions are 39, the shared ridge dimension 38. These are projected facets, not full-80D facets. A partial class-35 neighborhood does not invalidate this individually verified ridge. Adjacency alone implies no GME. Both quantum and BS endpoint maxima equal \\(2\\sqrt2-1\\); not every maximizer is thereby classified as BS.",
+        "zh": "现在 f 减检验 AB，用 CD 输出相反的事件作旗标；g 减则交换两对的角色。旗标为0时，算符贡献常数1；旗标为1时，贡献 CHSH 算符减恒等算符。得分始终是完整表达式的期望值，没有丢弃其他事件。\n\n展开后只有二体和四体关联项。两项都属于原40维库的第35类，并共享一条已核验 ridge，这就把候选接回 pivot。\n\n每个端点都可以只用一个 Bell 对、配合确定输出的旁观方，达到量子最大值。这些态是双可分的。因此，单个端点得分不能认证真正四体纠缠；下一步要问组合得分可以排除什么。\n\n参考：局域行为满足 \\(\\langle f_-\\rangle_\\rho\\le1\\)、\\(\\langle g_-\\rangle_\\rho\\le1\\)。这里改用上界约定，区别于此前最小值规范。在 CD 的奇偶支撑上，f 分别是 I 或 \\(S_{AB}-I\\)。若 \\(p_{CD}>0\\)，\n\\(\\langle f_-\\rangle_\\rho=1+p_{CD}(\\langle S_{AB}\\rangle_{c\\ne d}-2)\\)；\n概率为0时，附加贡献为0。事件概率与未激活事件均保留。展开为 \\(f_-=S_{AB}/2-S_{AB}C_0D_0/2+C_0D_0\\)，g 交换两对。facet 维数39，共同 ridge 维数38，是投影 facets，不是完整80维 facets。第35类邻域未闭合，不影响这条独立验证的 ridge。邻接本身不推出 GME。两个端点的量子及 BS 最大值均为 \\(2\\sqrt2-1\\)，但不能由此分类所有最大化态。"
       },
       "sources": [
         {
@@ -1434,37 +1482,131 @@ window.DECK = {
           "zh": ""
         },
         "transition": {
-          "en": "The combined score exceeds a bound valid for every biseparable cut.",
-          "zh": "组合分数超过对所有双可分切分都成立的界。"
+          "en": "The endpoints are BS-attainable; define the stronger GME question.",
+          "zh": "端点可由 BS 达到，接着定义更强的 GME 问题。"
         }
       },
-      "formula": "\\[\\begin{aligned}f_-&=I+(S_{AB}-2I)P_-^{CD},\\\\g_-&=I+(S_{CD}-2I)P_-^{AB},\\\\P_-^{CD}&=(I-C_0D_0)/2.\\end{aligned}\\]"
+      "formula": "\\[\\begin{aligned}f_-&=I+(S_{AB}-2I)P_-^{CD},\\\\g_-&=I+(S_{CD}-2I)P_-^{AB}.\\end{aligned}\\]",
+      "bodyIntro": {
+        "en": "The original 40D two-/four-body library contains this verified adjacent pair, in two orientations of class 35.",
+        "zh": "原40维二、四体库包含这个已核验邻接配对：第35类的两个物理取向。"
+      },
+      "table": {
+        "headers": {
+          "en": [
+            "Bell operator",
+            "Tested pair",
+            "Opposite-output flag"
+          ],
+          "zh": [
+            "Bell 算符",
+            "受测配对",
+            "相反输出旗标"
+          ]
+        },
+        "rows": {
+          "en": [
+            [
+              "\\(f_-\\)",
+              "AB",
+              "\\(P_-^{CD}\\)"
+            ],
+            [
+              "\\(g_-\\)",
+              "CD",
+              "\\(P_-^{AB}\\)"
+            ]
+          ],
+          "zh": [
+            [
+              "\\(f_-\\)",
+              "AB",
+              "\\(P_-^{CD}\\)"
+            ],
+            [
+              "\\(g_-\\)",
+              "CD",
+              "\\(P_-^{AB}\\)"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "four-gme-criterion",
+      "title": {
+        "en": "Exploratory direction: the GME criterion",
+        "zh": "探索性方向：GME 的认证判据"
+      },
+      "section": {
+        "en": "Discussion: ideas under assessment",
+        "zh": "讨论：正在评估的新方向"
+      },
+      "duration": 55,
+      "layout": "statement",
+      "bullets": {
+        "en": [
+          "\\(\\lambda\\) weights two Bell scores using one shared strategy. It does not mix two states.",
+          "\\(B(\\lambda)\\) is the largest score allowed by all BS strategies, including mixtures of different cuts.",
+          "A Bell pair on AB and another on CD is still BS across \\(AB|CD\\). Bell violation alone is insufficient for GME."
+        ],
+        "zh": [
+          "\\(\\lambda\\) 对共用策略的两个 Bell 分数加权，不是混合两个量子态。",
+          "\\(B(\\lambda)\\) 是所有 BS 策略的最大允许分数，包含不同切分的混合。",
+          "AB、CD 各有一个 Bell 对，仍是在 \\(AB|CD\\) 上双可分的态。仅有 Bell 违反不足以认证 GME。"
+        ]
+      },
+      "notes": {
+        "en": "Biseparable does not mean that all four parties are unentangled. It permits entanglement inside either group of a bipartition. For example, two independent Bell pairs on AB and CD are biseparable across AB versus CD. It also permits mixtures whose terms use different cuts. GME means the state admits no such mixture decomposition.\n\nWe combine the two Bell operators with a weight lambda. Both use the same state and measurements. The weight combines scores, not states. B lambda is the largest combined score allowed by any biseparable strategy. If a physical score exceeds B, every biseparable explanation is excluded, which certifies GME. We now compare that threshold with an explicit four-qubit strategy.\n\nReference: BS is the convex hull of product states across all seven nontrivial cuts. For mixed states, entanglement across each fixed cut alone does not exclude mixtures of different cuts. The supremum includes all local dimensions and local measurement tuples, including shared classical randomness. GME is an entanglement statement under quantum Bell assumptions, not a certificate of genuine multipartite nonlocality against arbitrary nonsignaling groups. A value at or below the BS threshold makes this test inconclusive; it does not prove the state BS.",
+        "zh": "双可分不是四方都没有纠缠。它允许一个二分切分内部的两组分别有纠缠。例如 AB 和 CD 各有一个独立 Bell 对，仍是在 AB 对 CD 上双可分的态。它也允许不同混合项使用不同切分。GME 是不能写成这种混合分解的态。\n\n我们用权重 lambda 组合两个 Bell 算符，两项共用同一个态和测量。权重组合得分，不是混合量子态。B lambda 是所有双可分策略能够得到的最大组合分数。实际分数超过 B，就排除全部双可分解释，认证 GME。下面比较这个阈值与一个明确四量子比特策略。\n\n参考：BS 是全部七种非平凡切分上的乘积态凸包。对混合态，仅说明每个固定切分都有纠缠，仍不足以排除不同切分的混合。上确界包含任意局域维数、局域测量组及共享经典随机性。GME 是量子 Bell 假设下的纠缠结论，不是对组内任意无信号模型的真正多体非局域性认证。得分没有超过 BS 阈值，只说明这个检验不够，不能证明态双可分。"
+      },
+      "sources": [
+        {
+          "label": {
+            "en": "Four-party local certificate, 11 Oct 2026",
+            "zh": "四体局部证书，2026年10月11日"
+          }
+        }
+      ],
+      "backup": false,
+      "phase": "discussion",
+      "story": {
+        "transition": {
+          "en": "Compare the all-BS threshold with one explicit physical score.",
+          "zh": "比较全 BS 阈值与一个明确物理策略的得分。"
+        }
+      },
+      "formula": "\\[\\begin{aligned}\nH_\\lambda&=(1-\\lambda)f_-+\\lambda g_-,\\qquad0\\le\\lambda\\le1,\\\\\nB(\\lambda)&=\\sup_{\\rho\\in\\mathrm{BS},\\,\\mathsf M}\\langle H_\\lambda\\rangle_\\rho,\\\\\n\\langle H_\\lambda\\rangle_\\rho&>B(\\lambda)\\quad\\Longrightarrow\\quad\\mathrm{GME}.\n\\end{aligned}\\]",
+      "bodyIntro": {
+        "en": "<strong>Biseparable (BS):</strong> a mixture of states that factor across possibly different bipartitions. <strong>Genuine multipartite entanglement (GME):</strong> no such decomposition.",
+        "zh": "<strong>双可分（BS）：</strong>在某个二分切分上为乘积的态及其混合。<strong>真正多体纠缠（GME）：</strong>不能作这种分解。"
+      }
     },
     {
       "id": "four-resource-gap",
       "title": {
-        "en": "Exploratory direction: a certified four-party resource gap",
-        "zh": "探索性方向：已认证的四体资源间隙"
+        "en": "Exploratory direction: a score above the BS threshold",
+        "zh": "探索性方向：得分超过双可分阈值"
       },
       "section": {
         "en": "Discussion: ideas under assessment",
         "zh": "讨论：正在评估的新方向"
       },
-      "duration": 80,
+      "duration": 70,
       "layout": "wide",
       "bullets": {
         "en": [
-          "The green curve is the exact biseparable support.",
-          "The blue line is one fixed physical strategy, giving a quantum lower bound. Global quantum optimality remains open."
+          "Horizontal axis: weight \\(\\lambda\\). Vertical axis: mean of \\(H_\\lambda\\). Green: exact BS maximum.",
+          "Blue: score \\(L\\) of one shared four-qubit strategy. Above green, that strategy certifies GME. Global quantum optimality is open."
         ],
         "zh": [
-          "绿线是精确双可分支撑值。",
-          "蓝线是一个固定物理策略，给出量子下界。全局量子最优性仍待解决。"
+          "横轴：组合权重 \\(\\lambda\\)。纵轴：\\(H_\\lambda\\) 的平均得分。绿线：精确 BS 最大值。",
+          "蓝线：一个共用四量子比特策略的得分 \\(L\\)。高于绿线的区间认证 GME。全局量子最优性仍待解决。"
         ]
       },
       "notes": {
-        "en": "The exact biseparable curve holds for every \\(0\\leq\\lambda\\leq1\\). Its midpoint is \\(\\sqrt2\\). One four-qubit state with rational amplitude ratios and rational measurement directions attains \\(L=9690593/6654225>\\sqrt2\\). The same strategy certifies GME for \\(0.449189<\\lambda<0.550811\\). We have not proved global quantum optimality or found the maximal certifiable interval. This is GME certification, not genuine multipartite nonlocality.",
-        "zh": "这条精确双可分曲线对全部 \\(0\\leq\\lambda\\leq1\\) 成立，中点为 \\(\\sqrt2\\)。一个具有有理振幅比的四量子比特态，配合有理测量方向，达到 \\(L=9690593/6654225>\\sqrt2\\)。同一策略在 \\(0.449189<\\lambda<0.550811\\) 内认证 GME。全局量子最优性及最大的可认证区间尚未解决。这里认证 GME，没有认证真正多体非局域性。"
+        "en": "The horizontal axis is the weight lambda, and the vertical axis is the combined score. The green curve is the exact maximum over all biseparable strategies, not just product states of four individual parties. The blue horizontal line is the score of one explicit four-qubit state and one fixed measurement tuple.\n\nAt either endpoint, a biseparable strategy reaches two root two minus one. At the midpoint the BS threshold drops to root two. Our shared four-qubit strategy scores about 1.456307, strictly above root two. The excess is the resource certificate. The score need not reach the global quantum maximum to certify GME.\n\nThis same strategy works on an open interval around the midpoint. It is not a procedure that creates entanglement by averaging two experiments. The natural next question is why no biseparable state, including two Bell pairs or mixtures of cuts, can cross the green curve.\n\nReference: \\(L=9690593/6654225\\). The explicit strategy has \\(A_0=B_0=C_0=D_0=Z\\), and each setting-one observable is \\((-13Z+84X)/85\\), with a four-qubit pure state given in the local certificate. X and Z here are Pauli matrices. The two endpoint means are both L, so the same strategy gives L for every weight. Strict GME certification holds for \\(0.4491889885\\ldots<\\lambda<0.5508110115\\ldots\\). Neither the global quantum optimum nor the largest certifiable interval is proved. The all-weight BS curve is exact, analytic, and dimension-independent.",
+        "zh": "横轴是权重 lambda，纵轴是组合得分。绿线是所有双可分策略的精确最大值，不只是四个单方乘积态的最大值。蓝色水平线是一个明确四量子比特态、配合固定测量组的得分。\n\n在两端，双可分策略可达到二倍根号二减1；中点的 BS 阈值降到根号二。我们的共用四体策略得到约1.456307，严格超过根号二。这个超出量就是资源认证，不需要先求出全局量子最大值。\n\n同一策略在中点附近的开放区间有效。这不是平均两个实验来产生纠缠。接下来很自然地要问：为什么所有双可分态，包括两个 Bell 对与不同切分的混合，都不能超过绿线？\n\n参考：\\(L=9690593/6654225\\)。明确策略用 \\(A_0=B_0=C_0=D_0=Z\\)，各方设置1为 \\((-13Z+84X)/85\\)，四量子比特纯态给在本地证书中；X、Z 是 Pauli 矩阵。两个端点期望值都等于 L，因此同一策略在每个权重都给出 L。严格 GME 认证区间为 \\(0.4491889885\\ldots<\\lambda<0.5508110115\\ldots\\)。全局量子最优及最大可认证区间未证明。全权重 BS 曲线则是精确、解析且不依赖局域维数的结果。"
       },
       "sources": [
         {
@@ -1486,44 +1628,42 @@ window.DECK = {
           "zh": ""
         },
         "transition": {
-          "en": "The aligned two-pair cut is the essential certification step.",
-          "zh": "认证的关键是排除对齐的双对切分。"
+          "en": "Prove the green threshold by covering every bipartition.",
+          "zh": "覆盖每一种二分切分，证明绿线阈值。"
         }
       },
-      "formula": "\\[B(\\lambda)=1+2(\\sqrt2-1)\\max\\{\\lambda,1-\\lambda\\},\\qquad L\\approx1.456307>\\sqrt2\\]",
       "asset": "four-party-resource-bridge.png",
       "assetAlt": {
         "en": "The combination certifies genuine four-party entanglement",
         "zh": "组合检验认证真正四体纠缠"
-      }
+      },
+      "formula": "\\[B(\\lambda)=1+2(\\sqrt2-1)\\max\\{\\lambda,1-\\lambda\\},\\qquad B(1/2)=\\sqrt2<L\\approx1.456307.\\]"
     },
     {
       "id": "four-all-cuts",
       "title": {
-        "en": "Exploratory direction: certification across all cuts",
-        "zh": "探索性方向：覆盖全部切分的认证"
+        "en": "Exploratory direction: why all seven cuts are required",
+        "zh": "探索性方向：为什么必须覆盖七种切分"
       },
       "section": {
         "en": "Discussion: ideas under assessment",
         "zh": "讨论：正在评估的新方向"
       },
-      "duration": 85,
+      "duration": 65,
       "layout": "statement",
       "bullets": {
         "en": [
-          "Six cuts have direct analytic bounds.",
-          "The aligned cut needs the joint CHSH and flag-probability constraint.",
-          "Rational SDP certificates and an SOS identity validate the bound."
+          "Linearity extends this common bound to mixtures of different cuts.",
+          "\\(AB|CD\\) allows two Bell pairs. A joint CHSH–flag constraint gives an exact sum-of-squares (SOS) proof."
         ],
         "zh": [
-          "六个切分具有直接解析界。",
-          "对齐切分需要同时约束 CHSH 得分和旗标概率。",
-          "有理 SDP 证书及平方和恒等式验证这个界。"
+          "每行约束同一个组合得分。线性性保证不同切分的混合也满足统一上界。",
+          "\\(AB|CD\\) 允许两个纠缠对。CHSH 与旗标的联合约束给出这个切分的精确平方和（SOS）证书。"
         ]
       },
       "notes": {
-        "en": "Quantum biseparability is the convex hull of quantum product models across all seven cuts, so a linear bound for every cut also covers their mixtures. Four singleton cuts reduce to CHSH. Two crossed pair cuts have score at most one. The remaining cut \\(AB|CD\\) permits two Bell pairs. A nine-word NPA matrix constrains each block’s CHSH score jointly with its flag probability. Sixteen residual-corrected rational Gram certificates validate midpoint bounds for all four sign choices. For negative-negative parity, \\(q+(2/3)p_-\\leq5/3\\) has an exact SOS and yields the all-weight BS bound. A CHSH-maximizing Bell pair with a deterministic opposite block attains the larger-weight branch, making the bound exact. The seven cuts use six analytic bounds and one nontrivial SDP structure, not seven separate SDP solves.",
-        "zh": "量子双可分模型是七种切分上量子乘积模型的凸包，因此逐切分的线性上界也覆盖切分混合。四个单方切分化为 CHSH，两个交叉双对切分的分数不超过1。剩余 \\(AB|CD\\) 切分允许两个 Bell 对。9词 NPA 矩阵联合约束每块的 CHSH 分数和旗标概率。16条残差修正有理 Gram 证书验证四种符号的中点界。负、负情况下，\\(q+(2/3)p_-\\leq5/3\\) 有精确平方和证明，导出全权重 BS 上界。CHSH 最优 Bell 对加另一个确定输出块达到较大权重分支，所以这个界是精确界。七个切分使用六个解析界和一个非平凡 SDP 结构，并非分别求解了七个 SDP。"
+        "en": "To certify genuine four-party entanglement, we must exclude every way of splitting the parties into two groups. There are four singleton-versus-triple cuts and three pair-versus-pair cuts. The vertical bar separates the groups. Entanglement inside either group remains allowed.\n\nThe first two rows follow from elementary CHSH bounds. On the two crossed pair cuts the score cannot exceed one. The aligned AB versus CD cut is the important remaining case: both groups can contain entangled Bell pairs. But the CHSH score of a pair and the probability that it activates the other test come from the same measurements. They cannot be maximized independently.\n\nAn exact sum-of-squares constraint gives the bound in the last row. Its expression also dominates all the other rows. Because the score is linear in the state, mixtures of different cuts satisfy the same bound. A Bell pair plus deterministic spectators reaches it, so the green curve is the true BS maximum.\n\nReference: \\(k=\\sqrt2-1\\). For a product state across AB|CD let \\(q_{AB}=\\langle S_{AB}\\rangle/2\\), \\(p_{AB}=\\langle P_-^{AB}\\rangle\\), and define CD likewise. Then \\(\\langle H_\\lambda\\rangle=1+2[(1-\\lambda)(q_{AB}-1)p_{CD}+\\lambda p_{AB}(q_{CD}-1)]\\). The pair constraint \\(q+(2/3)p\\le5/3\\), together with \\(q\\le\\sqrt2\\) and \\(0\\le p\\le1\\), proves the displayed aligned-cut bound by optimization over an outer polygon. The SOS identity is in the appendix. Six cuts have analytic bounds; the remaining aligned-cut proof uses joint constraints. This is not seven independent SDP solves. Small moment-matrix SDPs supplied broader sign-case certificates, while this negative-parity all-weight curve has an exact analytic proof.",
+        "zh": "认证真正四体纠缠，要排除全部把四方分成两组的方式：四种单方对三方切分，以及三种双对切分。竖线分隔两组，组内仍允许纠缠。\n\n前两行来自基本 CHSH 界；两个交叉双对切分的得分不超过1。剩下最关键的是 AB 对 CD：两组内部都可以有 Bell 对。但每一对的 CHSH 得分，以及激活另一项的旗标概率，来自同一组测量，不能分别最大化。\n\n一个精确平方和约束给出最后一行的界；它同时不低于其他行的界。得分对态是线性的，因此不同切分的混合仍满足同一界。一个 Bell 对加确定输出旁观方能够达到该界，所以绿线确实是 BS 最大值。\n\n参考：\\(k=\\sqrt2-1\\)。AB|CD 的乘积态上令 \\(q_{AB}=\\langle S_{AB}\\rangle/2\\)、\\(p_{AB}=\\langle P_-^{AB}\\rangle\\)，CD 同理，则 \\(\\langle H_\\lambda\\rangle=1+2[(1-\\lambda)(q_{AB}-1)p_{CD}+\\lambda p_{AB}(q_{CD}-1)]\\)。对内约束 \\(q+(2/3)p\\le5/3\\)、\\(q\\le\\sqrt2\\)、\\(0\\le p\\le1\\)，通过外多边形优化给出对齐切分界。平方和恒等式见附录。六种切分有直接解析界，剩下对齐切分使用联合约束，并不是独立求解七个 SDP。小矩阵 SDP 给出其他符号情形的证书，而这里负奇偶全权重曲线有精确解析证明。"
       },
       "sources": [
         {
@@ -1545,56 +1685,70 @@ window.DECK = {
           "zh": ""
         },
         "transition": {
-          "en": "Correctness and literature priority are separate questions.",
-          "zh": "正确性与文献优先权是两个分别需要回答的问题。"
+          "en": "Separate this exact example from established combining methods and priority questions.",
+          "zh": "区分已验证具体例子、已有组合方法与优先权问题。"
         }
+      },
+      "bodyIntro": {
+        "en": "The bar separates two groups; entanglement inside each is allowed. Set \\(k=\\sqrt2-1\\).",
+        "zh": "竖线分隔两组，组内仍允许纠缠。记 \\(k=\\sqrt2-1\\)。"
       },
       "table": {
         "headers": {
           "en": [
             "Cuts",
             "Number",
-            "Upper-bound method"
+            "Upper bound on \\(\\langle H_\\lambda\\rangle\\)"
           ],
           "zh": [
             "切分",
             "数量",
-            "上界方法"
+            "\\(\\langle H_\\lambda\\rangle\\) 的上界"
           ]
         },
         "rows": {
           "en": [
             [
-              "\\(1|3\\)",
-              "4",
-              "Deterministic singleton and CHSH"
+              "\\(A|BCD,\\ B|ACD\\)",
+              "2",
+              "\\(1+2k\\lambda\\)"
+            ],
+            [
+              "\\(C|ABD,\\ D|ABC\\)",
+              "2",
+              "\\(1+2k(1-\\lambda)\\)"
             ],
             [
               "\\(AC|BD,\\ AD|BC\\)",
               "2",
-              "Conditional product-state CHSH"
+              "\\(1\\)"
             ],
             [
               "\\(AB|CD\\)",
               "1",
-              "NPA joint support, then exact SOS"
+              "\\(1+2k\\max\\{\\lambda,1-\\lambda\\}\\)"
             ]
           ],
           "zh": [
             [
-              "\\(1|3\\)",
-              "4",
-              "单方确定输出与 CHSH"
+              "\\(A|BCD,\\ B|ACD\\)",
+              "2",
+              "\\(1+2k\\lambda\\)"
+            ],
+            [
+              "\\(C|ABD,\\ D|ABC\\)",
+              "2",
+              "\\(1+2k(1-\\lambda)\\)"
             ],
             [
               "\\(AC|BD,\\ AD|BC\\)",
               "2",
-              "条件乘积态 CHSH"
+              "\\(1\\)"
             ],
             [
               "\\(AB|CD\\)",
               "1",
-              "NPA 联合支撑，再用精确平方和"
+              "\\(1+2k\\max\\{\\lambda,1-\\lambda\\}\\)"
             ]
           ]
         }
@@ -1603,30 +1757,30 @@ window.DECK = {
     {
       "id": "ideas-status",
       "title": {
-        "en": "Exploratory direction: results and novelty status",
-        "zh": "探索性方向：结果与新颖性判断"
+        "en": "Exploratory direction: established ingredients and specific result",
+        "zh": "探索性方向：已有方法与本例的具体结果"
       },
       "section": {
         "en": "Discussion: ideas under assessment",
         "zh": "讨论：正在评估的新方向"
       },
-      "duration": 60,
+      "duration": 40,
       "layout": "statement",
       "bullets": {
         "en": [
-          "Known ingredients include conditional CHSH lifting and GME aggregation.",
-          "Verified here: this projected ridge, all-cut certificates, and sharp BS support.",
-          "No direct match was found in the bounded audit; priority remains provisional."
+          "<strong>Established:</strong> conditional CHSH tests and combining Bell scores to exclude all biseparable states.",
+          "<strong>Verified here:</strong> this projected ridge pair, reciprocal parity flags, and its exact BS curve for every weight.",
+          "<strong>Still under assessment:</strong> the priority and generality of this particular geometry-to-resource construction."
         ],
         "zh": [
-          "条件 CHSH 提升与条件见证组合认证 GME 已有先例。",
-          "本例已核验：指定投影 ridge、全切分证书及精确 BS 支撑。",
-          "有限检索未找到直接匹配；优先权判断仍为暂定。"
+          "<strong>已有方法：</strong>条件 CHSH 检验，以及组合 Bell 分数来排除全部双可分态。",
+          "<strong>本例已核验：</strong>指定投影 ridge 配对、相互奇偶旗标及全部权重的精确 BS 曲线。",
+          "<strong>仍待评估：</strong>这个具体几何到资源构造的文献优先权与一般适用范围。"
         ]
       },
       "notes": {
-        "en": "The broader conditional-Bell mechanism is established in the literature, including Pironio, Curchod and collaborators, and Zhang and collaborators. The weighted-CHSH support tool is also known. The narrowly specified candidate combines same-orbit projected adjacency, reciprocal parity flags and an exact all-cut biseparable curve. The bounded source audit did not find that full combination, but this does not prove that nobody has obtained it. The next assessment must compare actual formulas, geometry and experimental cost. This discussion is not a claim of a new general principle.",
-        "zh": "更广的条件 Bell 机制已有 Pironio、Curchod 等及 Zhang 等的工作；加权 CHSH 支撑工具也已知。本例的窄范围是同轨道投影邻接、互相提供奇偶旗标和全切分精确双可分曲线的结合。有限原始文献审计未找到这个完整组合，但不能据此证明从未有人得到过。接下来要逐公式比较几何结构和实验开销；这里不宣称发现了一个新普遍原理。"
+        "en": "Combining conditional Bell scores to certify GME is an established idea. It means forming one witness score whose bound excludes every biseparable strategy. It does not mean physically merging states or creating entanglement by averaging measurements.\n\nOur specific result connects a verified ridge pair in the four-party projected facet library to reciprocal parity flags and a sharp BS curve. Ordinary AB and CD seed edges alone are disconnected; their reciprocal flags add the relevant four-body correlations. The mathematical example is verified, but whether this full construction has prior counterparts remains a literature question.\n\nReference: Pironio (2005) establishes outcome-conditioned Bell lifting. Zwerger et al. (2019), followed by Zhang et al. (2022), combine conditional bipartite Bell scores to certify GME with valid biseparable thresholds. Their connected graphs join physical parties, whereas the pivot graph joins facets. Curchod et al. also construct multipartite Bell tests from seeds, with a different hybrid nonsignaling resource model. The weighted-CHSH constraint used in our proof has precedent. A bounded formula-level audit did not identify the complete present combination, which is provisional evidence rather than a priority proof.",
+        "zh": "组合条件 Bell 分数认证 GME 是已有思路：构造一个见证得分，其上界能排除每一种双可分策略。这里组合的是检验分数，不是把量子态物理合并，也不是平均测量来制造纠缠。\n\n本例的具体结果，是将四体投影库里已验证的 ridge 配对，与相互奇偶旗标和精确 BS 曲线联系起来。只看普通 AB、CD 种子边，这个配对图并不连通；相互旗标加入了相关四体关联。数学例子已经核验，但完整构造是否已有对应结果，仍是文献问题。\n\n参考：Pironio（2005）建立输出条件下的 Bell 提升。Zwerger 等（2019）及 Zhang 等（2022）用有效双可分阈值组合条件二方 Bell 分数来认证 GME；其连通图连接物理方，而 pivot graph 连接 facets。Curchod 等也从种子构造多体 Bell 检验，但资源模型为另一种混合无信号模型。本证明使用的加权 CHSH 约束亦有先例。有限逐公式审计没有识别出本例的完整组合，只是暂定证据，不是优先权证明。"
       },
       "sources": [
         {
@@ -1636,6 +1790,10 @@ window.DECK = {
         {
           "label": "Curchod et al.",
           "url": "https://arxiv.org/abs/1808.10688"
+        },
+        {
+          "label": "Zwerger et al. 2019",
+          "url": "https://arxiv.org/abs/1809.02381"
         },
         {
           "label": "Zhang et al.",
@@ -1664,38 +1822,38 @@ window.DECK = {
           "zh": ""
         },
         "transition": {
-          "en": "The next SDP target should follow the resource question.",
-          "zh": "后续 SDP 目标应由明确的资源问题决定。"
+          "en": "Use SDP to extend the certified comparison beyond this analytic pair.",
+          "zh": "用 SDP 将认证比较扩展到这个解析配对之外。"
         }
       }
     },
     {
       "id": "sdp-next",
       "title": {
-        "en": "Exploratory direction: searching the four-party library with SDP",
-        "zh": "探索性方向：用 SDP 搜索四体库"
+        "en": "Exploratory direction: extending the search with SDP",
+        "zh": "探索性方向：用 SDP 扩展搜索"
       },
       "section": {
         "en": "Discussion: ideas under assessment",
         "zh": "讨论：正在评估的新方向"
       },
-      "duration": 65,
+      "duration": 45,
       "layout": "statement",
       "bullets": {
         "en": [
-          "Retain the relative physical orientation of each candidate pair.",
-          "Compare an attained quantum value with valid bounds for every cut.",
-          "Extend to pairs without a simple factorized analytic certificate."
+          "<strong>Pivot library:</strong> choose verified neighboring tests and retain their relative physical orientation.",
+          "<strong>SDP = semidefinite programming:</strong> obtain valid upper bounds for every BS cut, then take their maximum.",
+          "Compare with an explicit shared-strategy score. Use permutation symmetry (PI) only when the target preserves it."
         ],
         "zh": [
-          "保存每个候选配对的相对物理取向。",
-          "把可实现量子值与每个切分的有效上界比较。",
-          "扩展到没有简单因子化解析证书的配对。"
+          "<strong>Pivot 库：</strong>选择已验证邻接检验，并保留相对物理取向。",
+          "<strong>SDP＝半正定规划：</strong>给每种 BS 切分求有效上界，再取最大值。",
+          "将这个界与明确共用策略的得分比较。只有目标保留置换对称性（PI）时，才作相应化简。"
         ]
       },
       "notes": {
-        "en": "The original pivot library provides candidates and verified geometric relations. SDP is the subsequent certification tool. For each target we need a physical lower strategy and valid upper bounds for the resource set we exclude. The present example is a reproducible starting point, not a completed general search. PI and SDPBell methods can reduce a future SDP only when the target and its variables retain that symmetry. Quantum optimality, a wider oriented-pair survey, and a fair comparison to existing conditional GME witnesses remain open.",
-        "zh": "原 pivot 库提供候选及经验证的几何关系，SDP 则是后续认证工具。每个目标都需要物理下界策略，以及对待排除资源集合成立的上界。当前例子是可复算的起点，不是已完成的一般搜索。只有目标和变量保留相应对称性时，PI 与 SDPBell 方法才可用于缩减后续 SDP。量子最优性、更广的有取向配对筛选、以及与已有条件 GME 见证的公平比较仍是开放问题。"
+        "en": "The current example has a short analytic certificate. Most facet pairs will not. This is where the later SDP work enters.\n\nPivoting supplies candidates with verified geometry and physical orientations. A numerical search supplies a state and measurements, giving an attainable lower value L. Semidefinite programming supplies valid outer bounds for biseparable strategies on every cut. Taking the largest cut bound gives U. If L is strictly above U, the gap certifies GME without knowing the global quantum optimum.\n\nThe task is now concrete: repeat this comparison for other pairs in the four-party partial library. SDPBell and PIBell may make the bounds smaller and more economical when the actual objective retains their symmetry.\n\nReference: An SDP optimizes a matrix constrained to be positive semidefinite. Moment matrices contain expectations of operator products and encode relations obeyed by physical quantum models. An outer relaxation must include every excluded BS strategy; an arbitrary restricted-state optimization is not an upper certificate. Ordinary quantum NPA bounds or grouping parties do not impose cut separability: a valid cut relaxation is required, for example a moment-PPT model with the correct tensor structure for a pair-versus-pair cut, or deterministic-output reduction on the isolated party for a singleton cut. Residual correction, rational dual validation, or exact SOS is needed to turn a numerical solver estimate into a rigorous gap. If L does not exceed U, this relaxation is inconclusive. PI means permutational invariance. Full PI symmetry cannot be imposed on a generic asymmetric pair. The present all-cut analytic proof demonstrates the comparison; it does not complete a general scan of the library.",
+        "zh": "当前例子有较短的解析证书，其他 facet 配对未必有。这就是后续 SDP 工作进入故事的位置。\n\nPivot 给出几何已验证、物理取向确定的候选；数值搜索提供一个态和测量组，得到可实现下界 L。半正定规划为每一种切分的双可分策略提供有效外上界，取最大值得 U。若 L 严格超过 U，就认证 GME，而不必知道全局量子最优值。\n\n下一步因此很具体：对原四体部分库的其他配对重复这个比较。目标实际保留相应对称性时，SDPBell 和 PIBell 可使界更紧、计算更经济。\n\n参考：SDP 优化受半正定约束的矩阵。矩阵元是算符乘积期望，编码物理量子模型必须满足的关系。外松弛必须包含全部待排除的 BS 策略；任意受限态优化不构成上界证书。普通量子 NPA 界或仅将各方分组，并未施加切分可分性：必须使用有效切分外松弛，例如双对切分上具有正确张量结构的 moment-PPT 模型，或单方切分上对孤立方作确定输出约化。数值求解器估计需要残差修正、有理对偶验证或精确 SOS，才能给出严格间隙。若 L 不超过 U，只说明该松弛不能判定。PI 指置换不变性，一般不对称配对不能强加完整 PI 对称性。本例解析全切分证明展示比较方法，不代表一般库扫描已经完成。"
       },
       "sources": [
         {
@@ -1717,8 +1875,43 @@ window.DECK = {
           "zh": ""
         },
         "transition": {
-          "en": "Discussion: which of these research questions should we prioritize?",
-          "zh": "讨论：接下来优先解决哪个研究问题？"
+          "en": "The four-party library supplies candidates; resource certificates decide their usefulness.",
+          "zh": "四体库提供候选；资源证书判断候选的作用。"
+        }
+      },
+      "formula": "\\[L(\\lambda)>U(\\lambda)\\quad\\Longrightarrow\\quad\\mathrm{GME}.\\]",
+      "table": {
+        "headers": {
+          "en": [
+            "Symbol",
+            "Meaning"
+          ],
+          "zh": [
+            "符号",
+            "含义"
+          ]
+        },
+        "rows": {
+          "en": [
+            [
+              "\\(L(\\lambda)\\)",
+              "Score of an explicit state and shared measurements"
+            ],
+            [
+              "\\(U(\\lambda)\\)",
+              "Certified upper bound covering every BS cut and mixtures"
+            ]
+          ],
+          "zh": [
+            [
+              "\\(L(\\lambda)\\)",
+              "明确量子态与共用测量实际达到的得分"
+            ],
+            [
+              "\\(U(\\lambda)\\)",
+              "覆盖全部 BS 切分及其混合的认证上界"
+            ]
+          ]
         }
       }
     },
@@ -1843,14 +2036,14 @@ window.DECK = {
       "layout": "statement",
       "bullets": {
         "en": [
-          "Here \\(q=\\langle S\\rangle/2\\) and \\(p_-=(1-\\langle X_0Y_0\\rangle)/2\\).",
-          "The Gram factorization has zero residual.",
-          "The two-party support inequality is an established weighted-CHSH threshold."
+          "Taking expectations gives \\(q_{AB}+\\tfrac23p_{AB}\\le\\tfrac53\\), with \\(q_{AB}=\\langle S_{AB}\\rangle/2\\), \\(p_{AB}=\\langle P_-^{AB}\\rangle\\).",
+          "SOS means a sum of squares of Hermitian operators, hence a nonnegative operator.",
+          "This known weighted-CHSH constraint couples a pair’s score and flag probability; it bounds the aligned AB|CD cut."
         ],
         "zh": [
-          "这里 \\(q=\\langle S\\rangle/2\\)，\\(p_-=(1-\\langle X_0Y_0\\rangle)/2\\)。",
-          "Gram 分解的残差为零。",
-          "这条二方支撑式对应已知的加权 CHSH 阈值。"
+          "取期望得到 \\(q_{AB}+\\tfrac23p_{AB}\\le\\tfrac53\\)，其中 \\(q_{AB}=\\langle S_{AB}\\rangle/2\\)、\\(p_{AB}=\\langle P_-^{AB}\\rangle\\)。",
+          "SOS 指厄米算符的平方和，因此给出非负算符。",
+          "这条已有加权 CHSH 约束联系同一对的得分与旗标概率，用于约束对齐 AB|CD 切分。"
         ]
       },
       "notes": {
@@ -1881,7 +2074,7 @@ window.DECK = {
           "zh": ""
         }
       },
-      "formula": "\\[\\frac53-\\left(q+\\frac23p_-\\right)=\\frac{(2X_0-Y_0-3Y_1)^2}{24}+\\frac{(2X_1-Y_0+Y_1)^2}{8}\\succeq0\\]"
+      "formula": "\\[\\frac53I-\\left(\\frac{S_{AB}}2+\\frac23P_-^{AB}\\right)=\\frac{(2A_0-B_0-3B_1)^2}{24}+\\frac{(2A_1-B_0+B_1)^2}{8}\\succeq0.\\]"
     },
     {
       "id": "r5-family",

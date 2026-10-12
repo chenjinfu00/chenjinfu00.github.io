@@ -136,6 +136,41 @@ mjx-container[jax="SVG"]>svg{overflow:visible}
 .slide[data-slide-id="r5-family"] ul{font-size:27px}
 .slide[data-slide-id="weighted-w"] ul{font-size:27px}
 .slide[data-slide-id="hecke-sdp"] ul{font-size:27px}
+/* The exploratory argument defines each object before comparing resources. */
+.slide[data-slide-id="shared-resource-question"] .formula{font-size:34px}
+.slide[data-slide-id="shared-resource-question"] ul{font-size:31px}
+.slide[data-slide-id="four-pair-symbols"] .body,
+.slide[data-slide-id="four-resource-pair"] .body,
+.slide[data-slide-id="four-gme-criterion"] .body,
+.slide[data-slide-id="four-all-cuts"] .body,
+.slide[data-slide-id="sdp-next"] .body{padding-top:10px}
+.slide[data-slide-id="four-pair-symbols"] .formula{font-size:30px;line-height:1.35;margin-bottom:23px}
+.slide[data-slide-id="four-pair-symbols"] ul{font-size:29px;line-height:1.35}
+.slide[data-slide-id="four-pair-symbols"] li{margin-bottom:21px}
+.slide[data-slide-id="four-pair-symbols"] .body-intro{font-size:27px;margin-bottom:18px}
+.slide[data-slide-id="four-resource-pair"] .formula{font-size:32px;line-height:1.35;margin-bottom:20px}
+.slide[data-slide-id="four-resource-pair"] .body-intro{font-size:28px;margin-bottom:20px}
+.slide[data-slide-id="four-resource-pair"] table{font-size:26px;margin-bottom:21px}
+.slide[data-slide-id="four-resource-pair"] th,.slide[data-slide-id="four-resource-pair"] td{padding:11px 16px}
+.slide[data-slide-id="four-resource-pair"] ul{font-size:28px;line-height:1.35}
+.slide[data-slide-id="four-resource-pair"] li{margin-bottom:18px}
+.slide[data-slide-id="four-gme-criterion"] .body-intro{font-size:29px;line-height:1.4;margin-bottom:24px}
+.slide[data-slide-id="four-gme-criterion"] .formula{font-size:32px;line-height:1.35;margin-bottom:26px}
+.slide[data-slide-id="four-gme-criterion"] ul{font-size:29px;line-height:1.4}
+.slide[data-slide-id="four-gme-criterion"] li{margin-bottom:20px}
+.slide[data-slide-id="four-resource-gap"] .formula{font-size:27px}
+.slide[data-slide-id="four-resource-gap"] ul{font-size:27px;line-height:1.4}
+.slide[data-slide-id="four-all-cuts"] .body-intro{font-size:28px;margin-bottom:22px}
+.slide[data-slide-id="four-all-cuts"] table{font-size:26px;margin-bottom:22px}
+.slide[data-slide-id="four-all-cuts"] th,.slide[data-slide-id="four-all-cuts"] td{padding:11px 16px}
+.slide[data-slide-id="four-all-cuts"] ul{font-size:28px;line-height:1.4}
+.slide[data-slide-id="four-all-cuts"] li{margin-bottom:18px}
+.slide[data-slide-id="ideas-status"] ul{font-size:32px;line-height:1.45}
+.slide[data-slide-id="sdp-next"] .formula{font-size:35px;margin-bottom:22px}
+.slide[data-slide-id="sdp-next"] table{font-size:27px;margin-bottom:26px}
+.slide[data-slide-id="sdp-next"] ul{font-size:29px;line-height:1.4}
+.slide[data-slide-id="sdp-next"] li{margin-bottom:20px}
+.slide[data-slide-id="backup-four-sos"] ul{font-size:29px;line-height:1.4}
 html[lang=zh] .slide h1{font-weight:600;letter-spacing:.015em}html[lang=zh] .slide.title h1{font-size:75px}html[lang=zh] .slide ul{line-height:1.52}
 #toolbar{position:fixed;bottom:0;left:0;right:0;height:48px;display:flex;align-items:center;justify-content:center;gap:12px;background:#182630;color:#cdd9df;font-size:13px;z-index:20}
 #toolbar button{border:0;background:transparent;color:inherit;padding:8px 11px;border-radius:3px}#toolbar button:hover{background:#ffffff18;color:white}#position{min-width:68px;text-align:center}.divider{width:1px;height:17px;background:#475661;margin:0 7px}
