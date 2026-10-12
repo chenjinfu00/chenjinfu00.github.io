@@ -108,6 +108,34 @@ mjx-container[jax="SVG"]>svg{overflow:visible}
 .slide[data-slide-id="recursive-child"] .formula{font-size:29px}
 .slide[data-slide-id="backup-four-sos"] .formula{font-size:35px}
 .slide .small{font-size:.82em;color:var(--muted)}.slide .positive{color:var(--green)}.slide .open{color:var(--orange)}
+/* Scientific qualifications belong to the body; only appendices have a kicker. */
+.slide:not(.backup) h1{margin-top:0}
+.slide .chapter{color:var(--ink);text-transform:none;letter-spacing:.06em}
+.slide.backup .chapter{color:var(--ink)}
+.slide:not(.backup) .body,.slide.wide:not(.backup) .body{top:166px}
+.slide.backup .body,.slide.wide.backup .body{top:214px}
+.slide[data-phase="discussion"]:not(.backup) .body{top:202px}
+.slide.backup[data-phase="discussion"] .body{top:246px}
+.slide[data-phase="discussion"] h1{font-size:46px}
+.slide .body-intro{font-size:28px;line-height:1.4;color:var(--ink);margin:0 0 24px}
+.slide .figure figcaption{font-size:26px;line-height:1.35;color:var(--ink)}
+.slide .small,.slide .paper-id{font-size:1em;color:var(--ink)}
+.slide .foot{color:var(--ink)}
+.slide[data-slide-id="lineage"].wide .figure{height:285px}
+.slide[data-slide-id="lineage"].wide .body-intro{font-size:28px;margin-bottom:20px}
+.slide[data-slide-id="lineage"].wide .explanation{margin-top:18px}
+.slide[data-slide-id="pivot-duality"] .body-intro{font-size:25px;margin-bottom:22px}
+.slide[data-slide-id="pivot-duality"] .figure figcaption{font-size:25px}
+.slide[data-slide-id="recursive-child"] .figure figcaption{font-size:25px}
+.slide[data-slide-id="backup-series"].roadmap .body{padding-top:8px}
+.slide.title h1{margin-top:0}
+.slide.title .body{top:430px}
+.slide.title ul{color:#fff}
+.slide.title .foot{color:#fff}
+.slide[data-slide-id="four-resource-gap"] .figure{height:325px}
+.slide[data-slide-id="r5-family"] ul{font-size:27px}
+.slide[data-slide-id="weighted-w"] ul{font-size:27px}
+.slide[data-slide-id="hecke-sdp"] ul{font-size:27px}
 html[lang=zh] .slide h1{font-weight:600;letter-spacing:.015em}html[lang=zh] .slide.title h1{font-size:75px}html[lang=zh] .slide ul{line-height:1.52}
 #toolbar{position:fixed;bottom:0;left:0;right:0;height:48px;display:flex;align-items:center;justify-content:center;gap:12px;background:#182630;color:#cdd9df;font-size:13px;z-index:20}
 #toolbar button{border:0;background:transparent;color:inherit;padding:8px 11px;border-radius:3px}#toolbar button:hover{background:#ffffff18;color:white}#position{min-width:68px;text-align:center}.divider{width:1px;height:17px;background:#475661;margin:0 7px}

@@ -59,10 +59,6 @@ window.DECK = {
           "en": "The updated first paper explains why facets are sufficient for the robustness optimum.",
           "zh": "第一篇更新稿解释为什么 facets 足以实现最优鲁棒性。"
         }
-      },
-      "subtitle": {
-        "en": "Enumeration and quantum-violation landscapes",
-        "zh": "枚举与量子违反 landscape"
       }
     },
     {
@@ -100,10 +96,6 @@ window.DECK = {
           "url": "https://arxiv.org/abs/2511.07523"
         }
       ],
-      "subtitle": {
-        "en": "Our first paper: Optimizing quantum violation yields facet Bell inequalities",
-        "zh": "第一篇更新稿：Optimizing quantum violation yields facet Bell inequalities"
-      },
       "backup": false,
       "story": {
         "question": {
@@ -129,6 +121,10 @@ window.DECK = {
       "assetAlt": {
         "en": "Tightening a Bell inequality by adding active deterministic vertices; primal and coefficient-space views.",
         "zh": "逐步加入活跃确定性顶点，把 Bell 不等式收紧到 facet；左为原空间，右为系数空间。"
+      },
+      "bodyIntro": {
+        "en": "Our first paper: Optimizing quantum violation yields facet Bell inequalities",
+        "zh": "第一篇更新稿：Optimizing quantum violation yields facet Bell inequalities"
       }
     },
     {
@@ -145,7 +141,7 @@ window.DECK = {
       "layout": "statement",
       "bullets": {
         "en": [
-          "<strong>Actual bottleneck:</strong> some facet-boundary calls do not finish within the allotted resources.",
+          "<strong>Actual bottleneck:</strong> some facet-boundary calls do not finish with the available computing resources.",
           "<strong>Application:</strong> one-/two-body (\\(D=32\\)) and two-/four-body (\\(D=40\\)) projections of \\((4,2,2)\\)."
         ],
         "zh": [
@@ -173,10 +169,6 @@ window.DECK = {
         }
       ],
       "formula": "\\[(4,2,2):\\quad n_V=2^{4\\times2}=256,\\qquad D_{\\mathrm{full}}=3^4-1=80.\\]",
-      "subtitle": {
-        "en": "Double Description converts vertices to facets; large boundaries can exceed available resources",
-        "zh": "Double Description 把顶点转为 facets；复杂边界可能超出可用计算资源"
-      },
       "backup": false,
       "story": {
         "question": {
@@ -242,6 +234,10 @@ window.DECK = {
             ]
           ]
         }
+      },
+      "bodyIntro": {
+        "en": "Double Description (DD) converts vertices to facets. Large boundaries can exceed available computing resources.",
+        "zh": "Double Description（DD）把顶点转为 facets。复杂边界可能超出可用计算资源。"
       }
     },
     {
@@ -296,11 +292,7 @@ window.DECK = {
           "zh": "CHSH 投影可以把这个几何关系画出来。"
         }
       },
-      "formula": "\\[\\begin{aligned}\\mathcal L&=\\operatorname{conv}(V),\\qquad D=\\dim\\mathcal L,\\\\\\beta_C&=\\min_{v\\in V}I_F(v),\\qquad I_F(p)\\geq\\beta_C\\quad(p\\in\\mathcal L).\\end{aligned}\\]",
-      "subtitle": {
-        "en": "Faces of the local polytope become nodes and edges of a different graph",
-        "zh": "局域多面体的面，构成另一个图的节点与边"
-      }
+      "formula": "\\[\\begin{aligned}\\mathcal L&=\\operatorname{conv}(V),\\qquad D=\\dim\\mathcal L,\\\\\\beta_C&=\\min_{v\\in V}I_F(v),\\qquad I_F(p)\\geq\\beta_C\\quad(p\\in\\mathcal L).\\end{aligned}\\]"
     },
     {
       "id": "pivot-duality",
@@ -354,10 +346,6 @@ window.DECK = {
           "zh": "下一页给出这一步的精确计算。"
         }
       },
-      "subtitle": {
-        "en": "Two parties, two settings, binary outcomes: a 3D exchange-symmetric projection",
-        "zh": "两方、两设置、二值输出：三维交换对称投影"
-      },
       "asset": "v0-chsh-duality.png",
       "assetAlt": {
         "en": "Facet adjacency in the primal and polar pictures",
@@ -377,7 +365,11 @@ window.DECK = {
         "en": "Straight faces: the local polytope / its polar. Curved surfaces: the quantum set / its polar.",
         "zh": "直边多面体：局域集合／其极体。曲面：量子集合／其极体。"
       },
-      "formula": "\\[\\begin{aligned}S_{00}&=A_0B_0,\\quad S_{11}=A_1B_1,\\\\S_{01}&=\\tfrac12(A_0B_1+A_1B_0),\\\\\\vec s&=(\\langle S_{00}\\rangle,\\langle S_{11}\\rangle,\\langle S_{01}\\rangle),\\\\\\vec\\lambda\\cdot\\vec s&\\geq-1,\\quad\\vec\\lambda=\\frac{\\vec a}{-\\beta_C}.\\end{aligned}\\]"
+      "formula": "\\[\\begin{aligned}S_{00}&=A_0B_0,\\quad S_{11}=A_1B_1,\\\\S_{01}&=\\tfrac12(A_0B_1+A_1B_0),\\\\\\vec s&=(\\langle S_{00}\\rangle,\\langle S_{11}\\rangle,\\langle S_{01}\\rangle),\\\\\\vec\\lambda\\cdot\\vec s&\\geq-1,\\quad\\vec\\lambda=\\frac{\\vec a}{-\\beta_C}.\\end{aligned}\\]",
+      "bodyIntro": {
+        "en": "A 3D exchange-symmetric projection of \\((2,2,2)\\): two parties, two settings, binary outcomes.",
+        "zh": "\\((2,2,2)\\) 的三维交换对称投影：两方、两设置、二值输出。"
+      }
     },
     {
       "id": "pivot-step",
@@ -395,12 +387,12 @@ window.DECK = {
         "en": [
           "<strong>\\(J\\):</strong> an affine ridge support: \\(J\\geq0\\) on \\(F\\), with zero set \\(R\\) on \\(F\\).",
           "<strong>The ratio:</strong> current slack divided by its loss per unit \\(t\\), for each outside vertex with \\(J(v)<0\\).",
-          "<strong>\\(t_*\\):</strong> the first outside vertex becomes tight; all ties are included. The ridge stays fixed."
+          "<strong>\\(t_*\\):</strong> the largest valid step. The first outside vertices become tight; include all ties and keep the ridge fixed."
         ],
         "zh": [
           "<strong>\\(J\\)：</strong>ridge 的仿射支撑函数：在 \\(F\\) 上 \\(J\\geq0\\)，零点集合恰为 \\(R\\)。",
           "<strong>比值：</strong>对每个满足 \\(J(v)<0\\) 的面外顶点，计算当前松弛量／每单位 \\(t\\) 的损失。",
-          "<strong>\\(t_*\\)：</strong>第一个面外顶点变紧的步长；保留全部并列者，ridge 始终不动。"
+          "<strong>\\(t_*\\)：</strong>保持有效性的最大步长。首批面外顶点变紧，保留全部并列者，ridge 始终不动。"
         ]
       },
       "notes": {
@@ -430,10 +422,6 @@ window.DECK = {
           "en": "The real bottleneck is obtaining all ridges of a large facet.",
           "zh": "真正的瓶颈是找全大 facet 的所有 ridges。"
         }
-      },
-      "subtitle": {
-        "en": "\\(J\\) defines the direction; \\(t_*\\) is the largest step preserving the local bound",
-        "zh": "\\(J\\) 定义方向；\\(t_*\\) 是保持局域界有效的最大步长"
       },
       "formula": "\\[\\begin{aligned}I_t&=I_F+tJ,\\qquad t\\geq0,\\\\t_*&=\\min_{\\substack{v\\in V\\setminus F\\\\J(v)<0}}\\frac{I_F(v)-\\beta_C}{-J(v)},\\\\I_{\\mathrm{next}}&=I_F+t_*J\\geq\\beta_C.\\end{aligned}\\]"
     },
@@ -662,10 +650,6 @@ window.DECK = {
           "en": "The library now contains connections as well as inequalities.",
           "zh": "库现在既包含不等式，也包含它们之间的连接。"
         }
-      },
-      "subtitle": {
-        "en": "Complete geometric benchmark",
-        "zh": "完整的几何基准"
       },
       "asset": "v0-322-coverage.png",
       "assetAlt": {
@@ -898,11 +882,11 @@ window.DECK = {
       "layout": "wide",
       "bullets": {
         "en": [
-          "One- and two-body: all stored classes are covered at \\(T=40\\).",
+          "Coverage of the discovered library: all stored one-/two-body classes are covered at \\(T=40\\).",
           "Two- and four-body: all stored classes are covered at \\(T=58\\)."
         ],
         "zh": [
-          "一、二体：在 \\(T=40\\) 时覆盖所有已存类别。",
+          "已发现库内的覆盖：一、二体投影在 \\(T=40\\) 时覆盖所有已存类别。",
           "二、四体：在 \\(T=58\\) 时覆盖所有已存类别。"
         ]
       },
@@ -933,10 +917,6 @@ window.DECK = {
           "en": "The unfinished frontier also matters when analyzing the graph.",
           "zh": "分析图时也必须交代尚未完成的前沿。"
         }
-      },
-      "subtitle": {
-        "en": "Seed-and-neighbor coverage of the discovered library",
-        "zh": "已发现库内的 seed 与邻居覆盖"
       },
       "asset": "v0-four-coverage.png",
       "assetAlt": {
@@ -1051,11 +1031,11 @@ window.DECK = {
       "layout": "wide",
       "bullets": {
         "en": [
-          "Each distinct neighboring class contributes once to the mean.",
+          "Empirical trend in the recorded v0 graph. Each distinct neighboring class contributes once to the mean.",
           "The full stored-sample rank correlations are \\(0.8689\\) and \\(0.8744\\)."
         ],
         "zh": [
-          "邻居均值对每个不同类别只计一次。",
+          "这是已记录 v0 图中的经验趋势。邻居均值对每个不同类别只计一次。",
           "全部已存样本的秩相关为 \\(0.8689\\) 和 \\(0.8744\\)。"
         ]
       },
@@ -1086,10 +1066,6 @@ window.DECK = {
           "en": "Steepest ascent asks whether an improving path can get stuck.",
           "zh": "最陡上升直接检查改善路径是否会停住。"
         }
-      },
-      "subtitle": {
-        "en": "An empirical neighbor-mean trend in the v0 graph",
-        "zh": "v0 图中的经验邻居均值趋势"
       },
       "asset": "v0-four-neighbor.png",
       "assetAlt": {
@@ -1165,12 +1141,12 @@ window.DECK = {
       "layout": "statement",
       "bullets": {
         "en": [
-          "One stopping class and one basin in each analyzed data set.",
+          "Using attained values on the recorded graph, each analyzed data set has one stopping class and one basin.",
           "Four-party results use the discovered root-plus-patch graphs.",
           "Recorded ratios do not certify the ordering of exact quantum optima."
         ],
         "zh": [
-          "每个分析数据集都有一个停止类和一个吸引域。",
+          "使用已记录图上的已实现值，每个分析数据集都有一个停止类和一个吸引域。",
           "四体结果使用已发现的 root 加 patch 图。",
           "记录比值不能认证精确量子最优值的排序。"
         ]
@@ -1202,10 +1178,6 @@ window.DECK = {
           "en": "This completes the original pivot story before the discussion.",
           "zh": "这先完成原来的 pivot 故事，再进入讨论。"
         }
-      },
-      "subtitle": {
-        "en": "Original v0 result: achieved values on the recorded graph",
-        "zh": "v0 原结果：已记录图上的已实现值"
       },
       "table": {
         "headers": {
@@ -1363,8 +1335,8 @@ window.DECK = {
     {
       "id": "shared-resource-question",
       "title": {
-        "en": "Shared measurements introduce a resource question",
-        "zh": "共同测量引入新的资源问题"
+        "en": "Exploratory direction: shared tests and entanglement",
+        "zh": "探索性方向：共同检验与纠缠资源"
       },
       "section": {
         "en": "Discussion: ideas under assessment",
@@ -1417,8 +1389,8 @@ window.DECK = {
     {
       "id": "four-resource-pair",
       "title": {
-        "en": "A concrete pair comes from the four-party library",
-        "zh": "一个具体配对来自原四体库"
+        "en": "Exploratory direction: a four-party facet pair",
+        "zh": "探索性方向：一个四体 facet 配对"
       },
       "section": {
         "en": "Discussion: ideas under assessment",
@@ -1428,12 +1400,12 @@ window.DECK = {
       "layout": "statement",
       "bullets": {
         "en": [
-          "The seed tests act on two complementary pairs, AB and CD.",
+          "The pair shares a verified ridge in the 40D even-correlator projection. Its tests act on AB and CD.",
           "Each pair supplies the parity flag for the other test.",
           "Both endpoint maxima equal \\(2\\sqrt2-1\\), attainable biseparably."
         ],
         "zh": [
-          "两个种子检验作用于互补的 AB 与 CD 配对。",
+          "配对在40维偶数阶关联投影中共享一条已核验 ridge，两个检验分别作用于 AB 和 CD。",
           "每对给另一对的检验提供奇偶旗标。",
           "两个端点最大值均为 \\(2\\sqrt2-1\\)，都能由双可分态达到。"
         ]
@@ -1466,17 +1438,13 @@ window.DECK = {
           "zh": "组合分数超过对所有双可分切分都成立的界。"
         }
       },
-      "subtitle": {
-        "en": "A verified ridge in the 40-dimensional even-correlator projection",
-        "zh": "40维偶数阶关联投影中的已核验 ridge"
-      },
       "formula": "\\[\\begin{aligned}f_-&=I+(S_{AB}-2I)P_-^{CD},\\\\g_-&=I+(S_{CD}-2I)P_-^{AB},\\\\P_-^{CD}&=(I-C_0D_0)/2.\\end{aligned}\\]"
     },
     {
       "id": "four-resource-gap",
       "title": {
-        "en": "The combination certifies genuine four-party entanglement",
-        "zh": "组合检验认证真正四体纠缠"
+        "en": "Exploratory direction: a certified four-party resource gap",
+        "zh": "探索性方向：已认证的四体资源间隙"
       },
       "section": {
         "en": "Discussion: ideas under assessment",
@@ -1487,11 +1455,11 @@ window.DECK = {
       "bullets": {
         "en": [
           "The green curve is the exact biseparable support.",
-          "The blue line is one fixed physical strategy, a quantum lower bound."
+          "The blue line is one fixed physical strategy, giving a quantum lower bound. Global quantum optimality remains open."
         ],
         "zh": [
           "绿线是精确双可分支撑值。",
-          "蓝线是一个固定物理策略，给出量子下界。"
+          "蓝线是一个固定物理策略，给出量子下界。全局量子最优性仍待解决。"
         ]
       },
       "notes": {
@@ -1522,10 +1490,6 @@ window.DECK = {
           "zh": "认证的关键是排除对齐的双对切分。"
         }
       },
-      "subtitle": {
-        "en": "A verified four-party example; quantum optimality remains open",
-        "zh": "一个已核验四体例子；量子最优性仍待解决"
-      },
       "formula": "\\[B(\\lambda)=1+2(\\sqrt2-1)\\max\\{\\lambda,1-\\lambda\\},\\qquad L\\approx1.456307>\\sqrt2\\]",
       "asset": "four-party-resource-bridge.png",
       "assetAlt": {
@@ -1536,8 +1500,8 @@ window.DECK = {
     {
       "id": "four-all-cuts",
       "title": {
-        "en": "The certificate covers all seven bipartitions",
-        "zh": "证书覆盖全部七种二分切分"
+        "en": "Exploratory direction: certification across all cuts",
+        "zh": "探索性方向：覆盖全部切分的认证"
       },
       "section": {
         "en": "Discussion: ideas under assessment",
@@ -1639,8 +1603,8 @@ window.DECK = {
     {
       "id": "ideas-status",
       "title": {
-        "en": "Verified result and provisional novelty assessment",
-        "zh": "已核验结果与暂定新颖性判断"
+        "en": "Exploratory direction: results and novelty status",
+        "zh": "探索性方向：结果与新颖性判断"
       },
       "section": {
         "en": "Discussion: ideas under assessment",
@@ -1708,8 +1672,8 @@ window.DECK = {
     {
       "id": "sdp-next",
       "title": {
-        "en": "The next SDP task follows the four-party library",
-        "zh": "后续 SDP 任务从四体库出发"
+        "en": "Exploratory direction: searching the four-party library with SDP",
+        "zh": "探索性方向：用 SDP 搜索四体库"
       },
       "section": {
         "en": "Discussion: ideas under assessment",
@@ -1815,8 +1779,8 @@ window.DECK = {
     {
       "id": "backup-full-space",
       "title": {
-        "en": "Projected adjacency and full-space adjacency differ",
-        "zh": "投影邻接与全空间邻接不同"
+        "en": "Exploratory direction: projected and full-space adjacency",
+        "zh": "探索性方向：投影与全空间邻接"
       },
       "section": {
         "en": "Discussion: ideas under assessment",
@@ -1868,8 +1832,8 @@ window.DECK = {
     {
       "id": "backup-four-sos",
       "title": {
-        "en": "The aligned cut admits an exact support certificate",
-        "zh": "对齐切分具有精确支撑证书"
+        "en": "Exploratory direction: an exact certificate for the aligned cut",
+        "zh": "探索性方向：对齐切分的精确证书"
       },
       "section": {
         "en": "Discussion: ideas under assessment",
@@ -1926,19 +1890,19 @@ window.DECK = {
         "zh": "其他 ideas：技术备份"
       },
       "title": {
-        "en": "R5 has a strict resource gap at every interior weight",
-        "zh": "R5 在所有内部权重上都有严格资源间隙"
+        "en": "Exploratory direction: the R5 gap at interior weights",
+        "zh": "探索性方向：R5 的内部权重间隙"
       },
       "duration": 0,
       "layout": "chart",
       "bullets": {
         "en": [
-          "Exact quantum support and actual all-cut biseparable support for \\(0<p<1\\).",
+          "Two differently flagged lifted-CHSH tests share Charlie’s settings, with exact quantum and all-cut BS support for \\(0<p<1\\).",
           "Midpoint: \\(h_Q=\\frac{11}{7}\\), \\(h_{\\mathrm{BS}}=\\frac{5+2\\sqrt{13}}9\\).",
           "The gap closes quadratically as either endpoint is approached."
         ],
         "zh": [
-          "\\(0<p<1\\) 上精确量子支撑与实际全切分双可分支撑。",
+          "两个由不同方标记的 lifted-CHSH 检验共用 Charlie 的设置，在 \\(0<p<1\\) 上具有精确量子与全切分 BS 支撑。",
           "中点：\\(h_Q=\\frac{11}{7}\\)，\\(h_{\\mathrm{BS}}=\\frac{5+2\\sqrt{13}}9\\)。",
           "趋近任一端点时，间隙按二次方闭合。"
         ]
@@ -1955,10 +1919,6 @@ window.DECK = {
       ],
       "asset": "r5-curve.svg",
       "backup": true,
-      "subtitle": {
-        "en": "Two differently flagged lifted-CHSH tests share Charlie’s settings",
-        "zh": "两个由不同方标记的 lifted-CHSH 检验共用 Charlie 的设置"
-      },
       "story": {
         "question": {
           "en": "What is fully solved for the main family?",
@@ -1983,19 +1943,19 @@ window.DECK = {
         "zh": "其他 ideas：技术备份"
       },
       "title": {
-        "en": "The exact maximum identifies a weighted W state",
-        "zh": "精确最大值确定一个加权 W 态"
+        "en": "Exploratory direction: identifying weighted W states",
+        "zh": "探索性方向：确定加权 W 态"
       },
       "duration": 0,
       "layout": "chart",
       "bullets": {
         "en": [
-          "Local isometries extract the state and tested effects.",
-          "Specific extension: the full support and equality family for all interior weights."
+          "At each fixed interior weight, one scalar score extracts the state and tested effects by local isometries.",
+          "The midpoint behavior is known from Wu et al. The extension is the full support and equality family for all interior weights."
         ],
         "zh": [
-          "局域等距映射提取态与受测效应。",
-          "具体扩展：所有内部权重的完整支撑与等号家族。"
+          "每个固定内部权重下，一个标量得分通过局域等距映射提取态与受测效应。",
+          "中点行为已见于 Wu 等。这里的扩展是所有内部权重的完整支撑与等号家族。"
         ]
       },
       "notes": {
@@ -2018,10 +1978,6 @@ window.DECK = {
       ],
       "asset": "w-state.svg",
       "formula": "\\[\\begin{aligned}\\lvert W_p\\rangle={}&\\alpha_p\\lvert100\\rangle\\\\&+\\beta_p\\lvert010\\rangle\\\\&+\\gamma_p\\lvert001\\rangle.\\end{aligned}\\]",
-      "subtitle": {
-        "en": "One scalar score, at each fixed interior weight; midpoint behavior known from Wu et al.",
-        "zh": "每个固定内部权重只用一个标量得分；中点行为已见于 Wu 等"
-      },
       "backup": true,
       "story": {
         "question": {
@@ -2046,8 +2002,8 @@ window.DECK = {
         "zh": "其他 ideas：技术备份"
       },
       "title": {
-        "en": "Finite deficits already admit sufficient R5 certificates",
-        "zh": "有限亏损已有 R5 充分证书"
+        "en": "Exploratory direction: finite-deficit R5 certificates",
+        "zh": "探索性方向：有限亏损的 R5 证书"
       },
       "duration": 0,
       "layout": "chart",
@@ -2076,10 +2032,6 @@ window.DECK = {
       ],
       "asset": "robust.svg",
       "formula": "\\[\\epsilon=h_Q-\\langle H_p\\rangle\\]",
-      "subtitle": {
-        "en": "State extraction and private guessing remain separate guarantees",
-        "zh": "态提取与私密猜测仍是两种独立保证"
-      },
       "story": {
         "question": {
           "en": "What survives a nonzero score deficit?",
@@ -2094,7 +2046,11 @@ window.DECK = {
           "zh": "多体对称性提供控制证书规模的方法。"
         }
       },
-      "phase": "discussion"
+      "phase": "discussion",
+      "bodyIntro": {
+        "en": "State extraction and private guessing have separate guarantees.",
+        "zh": "态提取与私密猜测分别具有各自的保证。"
+      }
     },
     {
       "id": "hecke-sdp",
@@ -2103,19 +2059,19 @@ window.DECK = {
         "zh": "其他 ideas：技术备份"
       },
       "title": {
-        "en": "Many-body symmetry can keep SDP blocks small",
-        "zh": "多体对称性可以保持 SDP 块规模较小"
+        "en": "Exploratory direction: SDP scaling with many-body symmetry",
+        "zh": "探索性方向：多体对称性下的 SDP 扩展"
       },
       "duration": 0,
       "layout": "chart",
       "bullets": {
         "en": [
-          "At fixed PI hierarchy level, stable-range block sizes stay fixed.",
+          "In a separate PIBell benchmark, fixed PI hierarchy levels have fixed stable-range block sizes.",
           "At \\(N=500\\): attained-to-upper numerical gap \\(\\approx1.43\\times10^{-7}\\).",
           "Asymmetric pivot targets require their actual surviving symmetry."
         ],
         "zh": [
-          "固定 PI 层级下，稳定范围中的块尺寸不随粒子数增长。",
+          "在一个独立 PIBell 基准中，固定 PI 层级的稳定范围块尺寸不随粒子数增长。",
           "\\(N=500\\)：达到值与数值上界相差约 \\(1.43\\times10^{-7}\\)。",
           "非对称 pivot 目标只能使用实际保留的对称性。"
         ]
@@ -2135,10 +2091,6 @@ window.DECK = {
         }
       ],
       "asset": "sdp.svg",
-      "subtitle": {
-        "en": "A separate PIBell quantum-bound benchmark tests computational scaling",
-        "zh": "一个独立 PIBell 量子界基准检验计算规模扩展"
-      },
       "backup": true,
       "story": {
         "question": {
@@ -2164,8 +2116,8 @@ window.DECK = {
         "zh": "其他 ideas：技术备份"
       },
       "title": {
-        "en": "What exactly does the resource gap exclude?",
-        "zh": "资源间隙究竟排除了什么？"
+        "en": "Exploratory direction: what the resource gap excludes",
+        "zh": "探索性方向：资源间隙排除的模型"
       },
       "duration": 0,
       "layout": "split",
@@ -2202,8 +2154,8 @@ window.DECK = {
         "zh": "其他 ideas：技术备份"
       },
       "title": {
-        "en": "Which symmetry survives the weighted Bell target?",
-        "zh": "加权 Bell 目标还保留哪些对称性？"
+        "en": "Exploratory direction: symmetry of weighted Bell targets",
+        "zh": "探索性方向：加权 Bell 目标的对称性"
       },
       "duration": 0,
       "layout": "statement",
@@ -2254,14 +2206,14 @@ window.DECK = {
       "layout": "roadmap",
       "bullets": {
         "en": [
-          "<strong>Find a facet by optimization</strong><br>Optimizing quantum violation yields facet Bell inequalities<br><span class=\"small\">arXiv:2511.07523 · supplied revised title</span>",
-          "<strong>Certify structured many-body families</strong><br>Optimizing and Certifying Multipartite Permutationally Invariant Bell Inequalities<br><span class=\"small\">arXiv:2607.08462</span>",
-          "<strong>Design around accessible correlations</strong><br>Experimental certification of multipartite Bell correlations using only few-body symmetric correlations<br><span class=\"small\">arXiv:2609.37442</span>"
+          "<strong>Find a facet by optimization</strong><br>Optimizing quantum violation yields facet Bell inequalities<br><span class=\"paper-id\">arXiv:2511.07523 · supplied revised title</span>",
+          "<strong>Certify structured many-body families</strong><br>Optimizing and Certifying Multipartite Permutationally Invariant Bell Inequalities<br><span class=\"paper-id\">arXiv:2607.08462</span>",
+          "<strong>Design around accessible correlations</strong><br>Experimental certification of multipartite Bell correlations using only few-body symmetric correlations<br><span class=\"paper-id\">arXiv:2609.37442</span>"
         ],
         "zh": [
-          "<strong>通过优化找到 facet</strong><br>Optimizing quantum violation yields facet Bell inequalities<br><span class=\"small\">arXiv:2511.07523 · 作者提供的更新稿标题</span>",
-          "<strong>认证有结构的多体家族</strong><br>Optimizing and Certifying Multipartite Permutationally Invariant Bell Inequalities<br><span class=\"small\">arXiv:2607.08462</span>",
-          "<strong>围绕可测关联项设计检验</strong><br>Experimental certification of multipartite Bell correlations using only few-body symmetric correlations<br><span class=\"small\">arXiv:2609.37442</span>"
+          "<strong>通过优化找到 facet</strong><br>Optimizing quantum violation yields facet Bell inequalities<br><span class=\"paper-id\">arXiv:2511.07523 · 作者提供的更新稿标题</span>",
+          "<strong>认证有结构的多体家族</strong><br>Optimizing and Certifying Multipartite Permutationally Invariant Bell Inequalities<br><span class=\"paper-id\">arXiv:2607.08462</span>",
+          "<strong>围绕可测关联项设计检验</strong><br>Experimental certification of multipartite Bell correlations using only few-body symmetric correlations<br><span class=\"paper-id\">arXiv:2609.37442</span>"
         ]
       },
       "notes": {
@@ -2282,10 +2234,6 @@ window.DECK = {
           "url": "https://arxiv.org/abs/2609.37442"
         }
       ],
-      "subtitle": {
-        "en": "A tight objective, a certified bound, and accessible correlators",
-        "zh": "紧目标、可认证的界与可测关联项"
-      },
       "backup": true,
       "story": {
         "question": {
