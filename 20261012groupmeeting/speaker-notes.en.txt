@@ -1,24 +1,40 @@
 Recursive Facet Expansion of Bell Polytopes
 
-23 minutes: original v0 method, benchmark, four-party libraries and violation landscapes. 7 minutes: a separately marked discussion of a certified resource example and open SDP questions.
+23 minutes: robustness selects facets; DD motivates recursive pivots; the method builds four-party partial libraries and violation landscapes. 7 minutes: a separate discussion of shared-strategy resources and SDP certificates.
 
 01  0:00–0:30  Recursive Facet Expansion of Bell Polytopes
-The main part of this talk follows the supplied v0 manuscript: recursive facet expansion, the complete three-party benchmark, and four-party violation landscapes. Only after that story is complete will I discuss the recent resource ideas. Those ideas have local certificates, but their precise novelty and broader scope still need assessment.
+The story starts with a physical objective: finding Bell tests that tolerate more uniform noise. Our updated first paper shows that searching facets loses no robustness optimum. Direct Double Description supplies facets but can leave large boundary problems unfinished. We therefore explore their adjacency with recursive pivots and apply this to two four-party correlator projections. After the original landscape results, a separate discussion asks about shared-strategy resources and future SDP certificates.
 
-02  0:30–1:40  Earlier Bell-test design work
-These three papers provide context, rather than three additional topics for this talk. The revised first paper explains how coefficient optimization reaches a facet. The PI paper controls structured many-body bounds. The experiment selects few-body symmetric correlators that can be measured. The pivot project asks a different geometric question: once one facet is known, how are other facets connected to it? The first title is from the author-supplied updated manuscript.
+02  0:30–1:55  Robust Bell-test search reduces to facet search
+Speaker script (about 90 seconds):
+Which Bell test tolerates the most uniform noise? Set the uniform behavior’s score to zero. Then the quantum-to-classical ratio is \(\Delta=\beta_Q/\beta_C\), and a violating strategy has critical visibility \(v_c=1/\Delta\). Larger ratios mean greater noise tolerance.
 
-03  1:40–2:40  A tight witness gives a starting facet
-The supplied illustration shows coefficient tightening by adding active local vertices. In the revised theorem, a nondegenerate ratio maximum lies at a facet, and a flat maximum admits a tightening path without loss of the ratio, under the stated normalization and coefficient quotient. I use this only to motivate a seed. Pivoting will preserve a shared ridge while moving to another facet, and it does not optimize the quantum value by itself.
+Our updated first paper shows that restricting this search to facets loses no optimum. A nondegenerate local ratio maximum defines a facet. A nonfacet local maximum has flat coefficient directions along which we can tighten the inequality without decreasing the ratio. The figure shows new classical vertices becoming active until a facet is reached.
 
-04  2:40–3:35  Facet, ridge, and the graph of Bell tests
+This gives us the target for the pivot project. We want to discover and connect facet Bell tests in four-party projections. The next issue is computational: how do we explore that boundary when direct conversion is unfinished?
+
+Reference, outside the timed script:
+Fix the quantum strategy domain and remove normalization/nonsignaling coefficient redundancies. Set \(I(P_{\mathrm{uni}})=0\). The compact coefficient polytope is \(K=\{T:T\cdot v\geq-1\ \forall v\in V\}\); the scale-normalized search lies on its boundary \(\partial K=\{T:\beta_C(T)=-1\}\). Since \(-\beta_Q\) is convex, decomposing a point of \(K\) into its extreme points proves the displayed optimal-value equality. The extreme points correspond to facets. For a restricted coefficient subspace these are projection facets. A fixed variational family is allowed if its true infimum is used; individual numerical see-saw scores do not certify it. The statement does not guarantee that a numerical optimizer reaches the global maximum.
+
+03  1:55–3:20  Direct DD leaves difficult boundary problems
+Speaker script (about 90 seconds):
+We now know that facets are sufficient. Double Description, or DD, converts local vertices into supporting facet inequalities. But a short vertex list can have a very large boundary. The full \((4,2,2)\) scenario already has dimension 80, despite only 256 deterministic behaviors.
+
+Our method starts from one facet and pivots across its ridges to neighboring facets. DD still solves manageable face boundaries. When such a call remains unfinished, recursive expansion enters that face as a lower-dimensional child and explores its boundary progressively. Verified child facets supply parent ridges and pivots, while unresolved work remains recorded.
+
+We apply this to the 32-dimensional one-/two-body projection and the 40-dimensional two-/four-body projection. Both libraries remain partial. The next pages explain exactly what a facet, a ridge, and one pivot mean.
+
+Reference, outside the timed script:
+Four parties fix two binary outputs each, so \(n_V=2^8=256\). Each party is absent from a correlator or contributes one of two settings, giving \(D_{\mathrm{full}}=3^4-1=80\). The one-/two-body projection has 256 vertices. The even-order two-/four-body projection identifies global output reversals and has 128 distinct projected vertices. Neither projection imposes PI coefficients. The v0 libraries have 2,827,535 and 7,573,123 classes, with 99 and 80 unresolved root owners; these open tasks demonstrate remaining boundary difficulty, without establishing a speed comparison with full DD. DD remains part of the method. Recursion does not remove enumeration complexity or guarantee a speedup. Double-precision cddlib candidate checks do not alone prove complete enumeration; page nine states the required exact closure hypotheses.
+
+04  3:20–4:10  Facet, ridge, and the graph of Bell tests
 Start with deterministic local behaviors \(V\), whose convex hull is the local polytope \(\mathcal L\). The dimension \(D\) is its affine dimension in the chosen coordinates. We use the lower-bound convention: \(I_F(p)\geq\beta_C\) for all local \(p\).
 
 The tight set \(F=\{p\in\mathcal L:I_F(p)=\beta_C\}\) is a facet only if its dimension is \(D-1\). A valid inequality with a smaller tight set is not a facet. A ridge has dimension \(D-2\). In three dimensions, a facet is a polygonal face and a ridge is an edge. Every ridge of a convex polytope belongs to exactly two facets, including for a degenerate polytope.
 
 The facet graph therefore has a node for each facet and an edge for each ridge adjacency. These graph nodes are different from the deterministic vertices in \(V\). Later we quotient graph nodes by relabeling symmetry. The question is now concrete: given \(F\) and one ridge of \(F\), how do we obtain the other facet?
 
-05  3:35–4:55  One CHSH projection, two coordinate spaces
+05  4:10–5:30  One CHSH projection, two coordinate spaces
 Both plots describe the same exchange-symmetric two-body projection of the \((2,2,2)\) CHSH scenario, rather than two different physical scenarios. Alice has observables \(A_0,A_1\); Bob has \(B_0,B_1\), all with outcomes \(\pm1\). The full scenario has dimension eight, but the figure keeps only three averaged correlators.
 
 Define \(S_{00}=A_0B_0\), \(S_{11}=A_1B_1\), and \(S_{01}=(A_0B_1+A_1B_0)/2\). The left axes are their expectation values, not coefficients. The six projected deterministic vertices are \((1,1,\pm1)\), \((-1,-1,\pm1)\), \((1,-1,0)\), and \((-1,1,0)\). Their convex hull has eight triangular facets. Four are trivial coordinate bounds, and four are CHSH bounds \(\sigma\langle S_{00}\rangle-\sigma\langle S_{11}\rangle+2\tau\langle S_{01}\rangle\geq-2\), where \(\sigma,\tau=\pm1\). The factor two compensates for the average in \(S_{01}\).
@@ -27,7 +43,7 @@ The right axes \(\lambda_{00},\lambda_{11},\lambda_{01}\) are normalized Bell co
 
 A triangular facet on the left becomes a polar vertex with three incident edges on the right. Each primal ridge becomes one polar edge connecting the two facets that contain it. The curved surfaces illustrate the projected quantum set \(\mathcal Q\) and its polar, not additional polytopes. Since \(\mathcal L\subseteq\mathcal Q\), their polar inclusion is reversed. Pivoting follows the straight-faced classical geometry.
 
-06  4:55–6:30  One pivot keeps a ridge and reaches the next facet
+06  5:30–7:05  One pivot keeps a ridge and reaches the next facet
 The current facet is \(F=\{p\in\mathcal L:I_F(p)=\beta_C\}\), and we select one of its ridges \(R\). Here \(J\) is an affine supporting function of a facet of the child polytope \(F\): it is nonnegative on \(F\), and its zero set within \(F\) is exactly \(R\). It is not the quantum objective.
 
 Extend \(J\) to the ambient affine space so that at least one outside vertex has \(J(v)<0\). This is not a claim that \(J\geq0\) on the whole local polytope. Such an extension can be obtained by subtracting a sufficiently large multiple of \(I_F-\beta_C\), which vanishes on \(F\). For \(I_t=I_F+tJ\), points on \(R\) remain tight, and points on \(F\setminus R\) move away from equality.
@@ -36,57 +52,57 @@ For an outside vertex, \(I_t(v)-\beta_C=[I_F(v)-\beta_C]+tJ(v)\). If \(J(v)<0\),
 
 At that step, include every outside vertex attaining the minimum, including ties. Together with the ridge they span a face of dimension \(D-1\), which is the unique other facet containing \(R\). Verify support and affine rank exactly. The step parameter is not a probability, physical time, or a specified Euclidean angle. Changing the extension of \(J\) can reparameterize the same geometric move. After pivoting, recenter the uniform behavior before comparing quantum-violation ratios. Pivot alone does not guarantee a better quantum ratio.
 
-07  6:30–8:00  Finding a ridge is a smaller facet problem
+07  7:05–8:35  Finding a ridge is a smaller facet problem
 Page six assumes that a ridge and its supporting function \(J\) are known. This page explains where they come from. The tight deterministic vertices \(V_F\) define the child polytope \(P_F=F\), viewed in its own affine space of dimension \(D-1\). Its facets have dimension \(D-2\), so they are precisely the parent ridges contained in \(F\).
 
 In the CHSH drawing, a triangular facet is a two-dimensional child and its three edges are its child facets. In the 40-dimensional four-party projection, a facet becomes a 39-dimensional child and its facets have dimension 38. Enumerating those child facets supplies both the ridge vertices and the function \(J\) needed for the parent pivot.
 
 For a small child, direct Double Description can convert vertices to a complete facet list. If that boundary problem is too large, apply the same facet-neighbor expansion to the child; if needed, descend again to its own facets. Each descent lowers the affine dimension by one. A certified child facet gives one certified parent ridge even if other branches remain unfinished. The recursion does not by itself guarantee feasible runtime or global completion. Once all branches of a facet are closed, its full ridge list is available.
 
-08  8:00–9:10  Recursive expansion records what is still open
+08  8:35–9:40  Recursive expansion records what is still open
 Double Description, abbreviated DD, is a direct conversion between vertex and inequality descriptions. U denotes a task pending direct DD; N denotes one pending recursive expansion; Z is computational ridge closure; A is unresolved at the recursion-depth limit \(\ell\). These labels describe computational completion, not different physical resources. The numerical implementation uses double-precision cddlib. Certified completeness additionally requires exact or independently validated boundary enumeration. Checking each returned candidate alone does not prove that DD omitted no facets.
 
 Global relabeling symmetry groups equivalent facets, and canonicalization stores one representative per orbit. At the child level use the stabilizer of the parent facet, namely relabelings that leave that facet invariant. A completed child boundary is lifted back to supply parent ridges and pivots. A partial task can publish independently verified discoveries while retaining an unresolved frontier. Persistent task records allow the work to resume after interruption. To claim complete enumeration, every required boundary task must be closed.
 
-09  9:10–10:15  Complete enumeration requires a closed boundary
+09  9:40–10:40  Complete enumeration requires a closed boundary
 This is a conditional geometric completeness statement. Start from a nonempty set of exactly validated facets. If every stored facet has all of its ridges, and every exact pivot across each ridge returns a represented facet class, no graph edge leaves the set. The full facet graph of a convex polytope is connected, so the set must be the whole graph, up to the stated relabeling symmetry. Support, dimension, and complete child boundaries are essential hypotheses. Stable counts, coverage of stored classes, and numerical quantum values are not substitutes for these hypotheses. The four-party libraries later in the talk retain open tasks and do not satisfy this global certificate.
 
-10  10:15–11:35  The expansion recovers all 46 three-party classes
+10  10:40–12:00  The expansion recovers all 46 three-party classes
 For the three-party, two-setting, two-outcome scenario, all nonempty correlators give dimension 26. The method reproduces the complete Sliwa classification and its adjacency. The coverage figure expands a collection of seeds ordered by tight-vertex count. It is not a chronological trace from one seed. The solid curve reaches every class before the larger facets are used as seeds.
 
-11  11:35–12:40  The facet graph records which tests share a ridge
+11  12:00–13:00  The facet graph records which tests share a ridge
 The matrix is the complete symmetry-quotient adjacency for the three-party benchmark. It records existence of a ridge adjacency, not how many ridges realize it. A diagonal entry is not a facet being adjacent to itself. It means two distinct facets from the same relabeling orbit share a ridge. This distinction will matter again in the later four-party resource example.
 
-12  12:40–13:50  Quantum violation supplies a height on the graph
+12  13:00–14:10  Quantum violation supplies a height on the graph
 Use the lower-bound convention \(I_F(P_{\mathrm{uni}})=0\), \(\beta_{C,F}<0\). Let \(\widehat\beta_{Q,F}\) be the score of a verified attained quantum strategy, and \(\beta_{Q,F}\) the true quantum minimum. Then \(\beta_{Q,F}\leq\widehat\beta_{Q,F}\), so \(\widehat\Delta_F=\widehat\beta_{Q,F}/\beta_{C,F}\leq\Delta_F\).
 
 For an attained violation \(\widehat\beta_{Q,F}<\beta_{C,F}<0\), and \(0\leq v\leq1\), uniform-behavior noise \(P_v=vP+(1-v)P_{\mathrm{uni}}\) gives \(I_F(P_v)=v\widehat\beta_{Q,F}\). Strict violation occurs exactly when \(v>1/\widehat\Delta_F\). A larger attained ratio therefore demonstrates a lower visibility threshold for that particular optimized test. The optimum threshold obeys \(v_{\mathrm{crit}}^{\mathrm{opt}}\leq1/\widehat\Delta_F\). Comparing attained heights does not certify the ordering of true quantum optima.
 
 Uniform behavior is uniform output probability for every setting. It coincides with maximally mixed state noise only for measurements that map the maximally mixed state to that uniform behavior, as for traceless binary qubit observables. Each facet uses its own independently optimized state and measurements; no shared physical implementation is imposed.
 
-13  13:50–15:00  The four-party libraries retain different correlators
+13  14:10–15:20  The four-party libraries retain different correlators
 The one- and two-body projection contains 8 one-body and 24 two-body coordinates, giving dimension 32 with 256 distinct deterministic vertices. The two- and four-body projection contains 24 two-body and 16 four-body coordinates, giving dimension 40. A global output flip identifies pairs of assignments, leaving 128 vertices. The counts are relabeling classes, not individual physical facets. We use the v0 snapshot consistently rather than mixing it with later database status.
 
-14  15:00–16:30  Small facets reach millions of known classes
+14  15:20–16:50  Small facets reach millions of known classes
 Dashed curves count expanded seeds with at most \(T\) tight vertices. Solid curves also count their neighbors. In the even-correlator library, the 1,068,260 classes with 41 tight vertices reach 4,017,307 classes. At \(T=40\) and \(T=58\), respectively, all stored classes are reached. This is stored-library coverage. The unresolved frontier prevents a completeness claim.
 
-15  16:30–17:35  Verified neighbor patches extend the recorded graph
+15  16:50–17:50  Verified neighbor patches extend the recorded graph
 The original landscape analysis uses the augmented root-plus-patch graph. In the one- and two-body projection the patch adds 25,727,731 directed links; in the two- and four-body projection it adds 78,085,157. The augmented graph is symmetric, but symmetry does not show that every possible edge or class has been found. The unresolved child-row counts are pending calculations, not a count of missing facets. This matters because an omitted uphill edge can create an artificial stopping point.
 
-16  17:35–18:55  Higher recorded ratios have stronger neighborhoods
+16  17:50–19:10  Higher recorded ratios have stronger neighborhoods
 The horizontal axis is a class’s attained ratio. The vertical axis is the mean attained ratio of its distinct neighboring classes. Colors show class counts per bin, and the green curve is the binned mean. The positive trend is an empirical description of the recorded graph. This statistic is not edge assortativity. The larger values 0.9192 and 0.9491 refer to the closed-class and closed-neighbor subset, not this full stored sample. A mean trend does not tell us whether local ascent can become trapped.
 
-17  18:55–20:10  A pivot path follows increasing recorded violation
+17  19:10–20:25  A pivot path follows increasing recorded violation
 Remove self-loops and include classes with recorded \(\widehat\Delta>1+10^{-9}\). Here \(\mathcal N(F)\) is the recorded neighboring-class set. At each step look up their already optimized heights and choose the largest strictly improving value, with tolerance \(10^{-9}\). If none exists, stop. A basin is the set of starting classes ending at one stopping class under this rule.
 
 Strict increase on a finite graph guarantees termination. Having only one stopping class is a separate numerical observation, not a consequence of finite termination or of the pivot construction. This is a walk in Bell-inequality space using stored scores; it does not run a new quantum optimization at each step or describe physical evolution of a state.
 
-18  20:10–21:50  Each recorded landscape has one ascent basin
+18  20:25–22:05  Each recorded landscape has one ascent basin
 In the complete three-party graph all 44 included violating classes reach Mermin in at most two pivots. Its geometry is complete, but the height ordering remains subject to quantum-value verification. In the four-party one- and two-body partial library, 97.0 percent of included classes take exactly two pivots to lifted CHSH. In the two- and four-body partial library the mean is 3.161 and the maximum is six, attained by one class; the endpoint is Mermin–Klyshko with recorded ratio \(2\sqrt2\).
 
 These basin counts exhaustively describe the included classes in the recorded root-plus-patch graphs, with their recorded heights and stated tolerance. They are not a theorem about every four-party Bell facet or the exact quantum landscape. Undiscovered facets and improved quantum values can change the basin structure; additional edges can change paths and step counts. The one- and two-body tolerance sweep from \(10^{-12}\) to \(10^{-3}\) was stable, which is a robustness check rather than an exact quantum certificate. Every relabeling class has equal statistical weight here; the statistics do not weight by orbit size or by a physical sampling distribution.
 
-19  21:50–23:00  What the single ascent basin means physically
+19  22:05–23:00  What the single ascent basin means physically
 Separate three claims. First, exact support and rank checks can certify a specific facet, its ridge, and a pivot neighbor. Full closure then certifies enumeration, under the hypotheses on page nine. Second, on each analyzed recorded graph, the greedy rule has one stopping class and one basin. This is an exhaustive numerical graph result for that snapshot, not a theorem about undiscovered facets or exact quantum optima.
 
 Third, there is a precise physical interpretation of the heights. Let \(P\) be an attained violating strategy for facet \(F\), with \(\widehat\beta_{Q,F}<\beta_{C,F}<0\), and \(P_{\mathrm{uni}}\) the uniform behavior; take \(0\leq v\leq1\). With \(I_F(P_{\mathrm{uni}})=0\), \(I_F(P_v)=v\widehat\beta_{Q,F}\). Since \(\beta_{C,F}<0\), strict violation is equivalent to \(v>1/\widehat\Delta_F\); equality is the local-bound threshold. An increasing recorded height therefore means lower demonstrated critical visibility, using a different independently optimized Bell test at each graph node.
@@ -139,3 +155,6 @@ The resource benchmark is the set of quantum correlations generated by states se
 
 34  BACKUP  Which symmetry survives the weighted Bell target?
 Symmetry reduction must preserve the optimization problem. The PI Hecke construction is appropriate when the objective and all constraints retain the full permutation symmetry. A generic asymmetric pivot pair does not satisfy that condition, so imposing full permutation invariance would remove valid strategies or change the objective. Its actual stabilizer may still reduce the moment matrix. The maintained three-outcome spin-one pilot is a finite-group prototype; its outer relaxation is not restricted to qutrit local dimension, even though the attainable strategy uses qutrits. Likewise, the local draft formulates Lindblad steady-state moment constraints, while numerical PI-Lindblad implementations are still a next target. These are useful development directions, but they must not be presented as completed benchmarks or exact finite-size optima.
+
+35  BACKUP  Context: three connected Bell-design papers
+The opening now concentrates on the first paper’s robustness-to-facet conclusion, because it supplies the direct motivation for pivoting. This backup preserves the three-paper context and their full titles. Coefficient optimization identifies robust tight tests; the PI follow-up optimizes and certifies structured many-body families; the experiment uses few-body symmetric correlations. The pivot project explores the connected facet boundary in four-party projections, after which resource bounds and SDP enter the story.

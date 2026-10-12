@@ -15,7 +15,7 @@ window.DECK = {
   "defaultLanguage": "en",
   "totalDuration": 1800,
   "date": "2026-10-12",
-  "revisionDate": "2026-10-11",
+  "revisionDate": "2026-10-12",
   "slides": [
     {
       "id": "opening",
@@ -40,8 +40,8 @@ window.DECK = {
         ]
       },
       "notes": {
-        "en": "The main part of this talk follows the supplied v0 manuscript: recursive facet expansion, the complete three-party benchmark, and four-party violation landscapes. Only after that story is complete will I discuss the recent resource ideas. Those ideas have local certificates, but their precise novelty and broader scope still need assessment.",
-        "zh": "今天先沿用你提供的 v0 原稿顺序：递归 facet 展开、完整三体验证、四体违反 landscape。把这条线讲完整后，再讨论近期的资源 ideas。后面的具体例子已有局部证书，但准确新颖性和一般适用范围仍待评估。"
+        "en": "The story starts with a physical objective: finding Bell tests that tolerate more uniform noise. Our updated first paper shows that searching facets loses no robustness optimum. Direct Double Description supplies facets but can leave large boundary problems unfinished. We therefore explore their adjacency with recursive pivots and apply this to two four-party correlator projections. After the original landscape results, a separate discussion asks about shared-strategy resources and future SDP certificates.",
+        "zh": "故事从一个物理目标开始：寻找能容忍更多均匀噪声的 Bell 检验。第一篇更新稿说明，限制到 facets 不损失最优鲁棒性。直接 Double Description 可以寻找 facets，但较大的边界问题可能未完成。因此，我们用递归 pivot 探索邻接，把它应用到两个四体关联项投影。讲完原 landscape 结果后，再独立讨论共同策略下的资源与后续 SDP 证书。"
       },
       "sources": [],
       "backup": false,
@@ -56,8 +56,8 @@ window.DECK = {
           "zh": ""
         },
         "transition": {
-          "en": "Our earlier Bell-design work supplies the motivation and a starting facet.",
-          "zh": "此前 Bell 设计工作提供动机和一个起始 facet。"
+          "en": "The updated first paper explains why facets are sufficient for the robustness optimum.",
+          "zh": "第一篇更新稿解释为什么 facets 足以实现最优鲁棒性。"
         }
       },
       "subtitle": {
@@ -68,125 +68,181 @@ window.DECK = {
     {
       "id": "lineage",
       "section": {
-        "en": "Earlier work · 0–5 min",
-        "zh": "此前工作 · 0–5 分钟"
+        "en": "Motivation: robustness selects the target",
+        "zh": "动机：鲁棒性确定搜索目标"
       },
       "title": {
-        "en": "Earlier Bell-test design work",
-        "zh": "此前的 Bell 检验设计工作"
+        "en": "Robust Bell-test search reduces to facet search",
+        "zh": "寻找最鲁棒的 Bell 不等式，可以限制到 facets"
       },
-      "duration": 70,
-      "layout": "roadmap",
+      "duration": 85,
+      "layout": "wide",
       "bullets": {
         "en": [
-          "<strong>Find a facet by optimization</strong><br>Optimizing quantum violation yields facet Bell inequalities<br><span class=\"small\">arXiv:2511.07523 · supplied revised title</span>",
-          "<strong>Certify structured many-body families</strong><br>Optimizing and Certifying Multipartite Permutationally Invariant Bell Inequalities<br><span class=\"small\">arXiv:2607.08462</span>",
-          "<strong>Design around accessible correlations</strong><br>Experimental certification of multipartite Bell correlations using only few-body symmetric correlations<br><span class=\"small\">arXiv:2609.37442</span>"
+          "<strong>Nondegenerate local maximum:</strong> the Bell inequality defines a facet.",
+          "<strong>Nonfacet local maximum:</strong> follow a flat direction to a facet without decreasing the ratio."
         ],
         "zh": [
-          "<strong>通过优化找到 facet</strong><br>Optimizing quantum violation yields facet Bell inequalities<br><span class=\"small\">arXiv:2511.07523 · 作者提供的更新稿标题</span>",
-          "<strong>认证有结构的多体家族</strong><br>Optimizing and Certifying Multipartite Permutationally Invariant Bell Inequalities<br><span class=\"small\">arXiv:2607.08462</span>",
-          "<strong>围绕可测关联项设计检验</strong><br>Experimental certification of multipartite Bell correlations using only few-body symmetric correlations<br><span class=\"small\">arXiv:2609.37442</span>"
+          "<strong>非退化局部最大值：</strong>对应的紧不等式定义一个 facet。",
+          "<strong>非 facet 局部最大值：</strong>沿平坦方向收紧到 facet，比值不下降。"
         ]
       },
       "notes": {
-        "en": "These three papers provide context, rather than three additional topics for this talk. The revised first paper explains how coefficient optimization reaches a facet. The PI paper controls structured many-body bounds. The experiment selects few-body symmetric correlators that can be measured. The pivot project asks a different geometric question: once one facet is known, how are other facets connected to it? The first title is from the author-supplied updated manuscript.",
-        "zh": "这三篇文章是背景，不在今天分别展开。第一篇更新稿解释系数优化如何到达 facet；PI 文章控制有结构的多体界；实验文章选择实际可测的少体对称关联项。Pivot 接着问一个几何问题：已知一个 facet 后，其他 facets 如何与它连接？第一篇采用作者提供的更新标题。"
+        "en": "Speaker script (about 90 seconds):\nWhich Bell test tolerates the most uniform noise? Set the uniform behavior’s score to zero. Then the quantum-to-classical ratio is \\(\\Delta=\\beta_Q/\\beta_C\\), and a violating strategy has critical visibility \\(v_c=1/\\Delta\\). Larger ratios mean greater noise tolerance.\n\nOur updated first paper shows that restricting this search to facets loses no optimum. A nondegenerate local ratio maximum defines a facet. A nonfacet local maximum has flat coefficient directions along which we can tighten the inequality without decreasing the ratio. The figure shows new classical vertices becoming active until a facet is reached.\n\nThis gives us the target for the pivot project. We want to discover and connect facet Bell tests in four-party projections. The next issue is computational: how do we explore that boundary when direct conversion is unfinished?\n\nReference, outside the timed script:\nFix the quantum strategy domain and remove normalization/nonsignaling coefficient redundancies. Set \\(I(P_{\\mathrm{uni}})=0\\). The compact coefficient polytope is \\(K=\\{T:T\\cdot v\\geq-1\\ \\forall v\\in V\\}\\); the scale-normalized search lies on its boundary \\(\\partial K=\\{T:\\beta_C(T)=-1\\}\\). Since \\(-\\beta_Q\\) is convex, decomposing a point of \\(K\\) into its extreme points proves the displayed optimal-value equality. The extreme points correspond to facets. For a restricted coefficient subspace these are projection facets. A fixed variational family is allowed if its true infimum is used; individual numerical see-saw scores do not certify it. The statement does not guarantee that a numerical optimizer reaches the global maximum.",
+        "zh": "口头讲稿（约90秒）：\n我们先问：哪个 Bell 检验能容忍最多均匀噪声？把均匀行为得分归零后，量子与经典界的比值是 \\(\\Delta=\\beta_Q/\\beta_C\\)。对违反策略，临界可见度是 \\(v_c=1/\\Delta\\)，所以比值越大，噪声容忍度越好。\n\n第一篇更新稿说明，把搜索限制到 facets 不会损失最优值。非退化的比值局部最大值定义一个 facet；非 facet 的局部最大值有平坦的系数方向，可以继续收紧，而且不降低比值。图中不断加入新的活跃经典顶点，最后到达 facet。\n\n这就给现在的 pivot 课题明确了目标：发现并连接四体投影中的 facet Bell 检验。接下来是计算问题：直接转换未完成时，怎样继续探索这条边界？\n\n参考说明，不计入口头时长：\n量子策略域固定，去掉归一化与无信号系数冗余，并令 \\(I(P_{\\mathrm{uni}})=0\\)。紧致系数多面体是 \\(K=\\{T:T\\cdot v\\geq-1\\ \\forall v\\in V\\}\\)；固定尺度的搜索位于边界 \\(\\partial K=\\{T:\\beta_C(T)=-1\\}\\)。\\(-\\beta_Q\\) 关于系数凸，将 \\(K\\) 中一点分解为极点凸组合，便得到图示最优值等价；极点对应 facets。系数受限时是对应投影的 facets。固定变分族也适用，但要用真实下确界，单个数值 see-saw 得分不能提供该保证。定理不保证数值优化器找到全局最大值。"
       },
       "sources": [
         {
-          "label": "arXiv:2511.07523",
+          "label": {
+            "en": "First paper, author-supplied revised theorem",
+            "zh": "第一篇文章，作者提供的更新定理"
+          },
           "url": "https://arxiv.org/abs/2511.07523"
-        },
-        {
-          "label": "arXiv:2607.08462",
-          "url": "https://arxiv.org/abs/2607.08462"
-        },
-        {
-          "label": "arXiv:2609.37442",
-          "url": "https://arxiv.org/abs/2609.37442"
         }
       ],
       "subtitle": {
-        "en": "A tight objective, a certified bound, and accessible correlators",
-        "zh": "紧目标、可认证的界与可测关联项"
+        "en": "Our first paper: Optimizing quantum violation yields facet Bell inequalities",
+        "zh": "第一篇更新稿：Optimizing quantum violation yields facet Bell inequalities"
       },
       "backup": false,
       "story": {
         "question": {
-          "en": "How do the three papers lead to this project?",
-          "zh": "前三篇文章如何引出这个课题？"
+          "en": "Which Bell tests tolerate the most uniform noise?",
+          "zh": "哪些 Bell 检验能容忍最多均匀噪声？"
         },
         "takeaway": {
-          "en": "The objective must be tight, certifiable, and suited to the measurement task.",
-          "zh": "Bell 目标需要紧、可以认证，并适合具体测量任务。"
+          "en": "Restricting the search to facets loses no optimum under the stated normalization.",
+          "zh": "在所述归一化下，限制到 facets 不损失最优值。"
         },
         "transition": {
-          "en": "The first step is to understand why coefficient optimization reaches a facet.",
-          "zh": "先解释第一步：系数优化为什么会到达 facet。"
+          "en": "The target is now clear. How do we find and explore these facets?",
+          "zh": "搜索目标已经明确；怎样找到并探索这些 facets？"
         }
       },
-      "formula": null,
-      "phase": "background"
+      "formula": "\\[\\Delta(I)=\\frac{\\beta_Q(I)}{\\beta_C(I)},\\quad v_c=\\frac1{\\Delta}\\quad(\\Delta>1),\\qquad \\max_{\\mathrm{valid}\\ I}\\Delta(I)=\\max_{\\mathrm{facet}\\ F}\\Delta_F.\\]",
+      "phase": "background",
+      "figureCaption": {
+        "en": "Uniform reference: \\(I(P_{\\mathrm{uni}})=0\\). Scale: \\(\\beta_C=-1\\). Fixed quantum strategy domain.",
+        "zh": "均匀参考：\\(I(P_{\\mathrm{uni}})=0\\)；尺度：\\(\\beta_C=-1\\)；量子策略域固定。"
+      },
+      "asset": "illustration_round1.png",
+      "assetAlt": {
+        "en": "Tightening a Bell inequality by adding active deterministic vertices; primal and coefficient-space views.",
+        "zh": "逐步加入活跃确定性顶点，把 Bell 不等式收紧到 facet；左为原空间，右为系数空间。"
+      }
     },
     {
       "id": "ratio-design",
       "section": {
-        "en": "Earlier work · find the objective",
-        "zh": "此前工作 · 找到目标"
+        "en": "Motivation: from the target to a workable search",
+        "zh": "动机：从搜索目标到可执行的方法"
       },
       "title": {
-        "en": "A tight witness gives a starting facet",
-        "zh": "紧见证提供一个起始 facet"
+        "en": "Direct DD leaves difficult boundary problems",
+        "zh": "直接 DD 仍会留下困难的边界问题"
       },
-      "duration": 60,
-      "layout": "chart",
+      "duration": 85,
+      "layout": "statement",
       "bullets": {
         "en": [
-          "Coefficient optimization and tightening can reach a facet.",
-          "The next task is to explore the neighboring boundary."
+          "<strong>Actual bottleneck:</strong> some facet-boundary calls do not finish within the allotted resources.",
+          "<strong>Application:</strong> one-/two-body (\\(D=32\\)) and two-/four-body (\\(D=40\\)) projections of \\((4,2,2)\\)."
         ],
         "zh": [
-          "系数优化与收紧可以到达 facet。",
-          "下一步是探索它周围的边界。"
+          "<strong>实际瓶颈：</strong>部分 facet 的边界调用无法在给定资源内完成。",
+          "<strong>应用：</strong>\\((4,2,2)\\) 的一、二体（\\(D=32\\)）及二、四体（\\(D=40\\)）投影。"
         ]
       },
       "notes": {
-        "en": "The supplied illustration shows coefficient tightening by adding active local vertices. In the revised theorem, a nondegenerate ratio maximum lies at a facet, and a flat maximum admits a tightening path without loss of the ratio, under the stated normalization and coefficient quotient. I use this only to motivate a seed. Pivoting will preserve a shared ridge while moving to another facet, and it does not optimize the quantum value by itself.",
-        "zh": "作者提供的图展示增加活跃局域顶点、收紧系数的过程。更新定理在规定的规范化和系数商空间中表明：非退化比值极大点位于 facet；平坦极大点可以沿不降低比值的路径收紧。这里只用它解释 seed 的来源。接下来的 pivot 保留共同 ridge，移动到另一个 facet，本身不负责优化量子值。"
+        "en": "Speaker script (about 90 seconds):\nWe now know that facets are sufficient. Double Description, or DD, converts local vertices into supporting facet inequalities. But a short vertex list can have a very large boundary. The full \\((4,2,2)\\) scenario already has dimension 80, despite only 256 deterministic behaviors.\n\nOur method starts from one facet and pivots across its ridges to neighboring facets. DD still solves manageable face boundaries. When such a call remains unfinished, recursive expansion enters that face as a lower-dimensional child and explores its boundary progressively. Verified child facets supply parent ridges and pivots, while unresolved work remains recorded.\n\nWe apply this to the 32-dimensional one-/two-body projection and the 40-dimensional two-/four-body projection. Both libraries remain partial. The next pages explain exactly what a facet, a ridge, and one pivot mean.\n\nReference, outside the timed script:\nFour parties fix two binary outputs each, so \\(n_V=2^8=256\\). Each party is absent from a correlator or contributes one of two settings, giving \\(D_{\\mathrm{full}}=3^4-1=80\\). The one-/two-body projection has 256 vertices. The even-order two-/four-body projection identifies global output reversals and has 128 distinct projected vertices. Neither projection imposes PI coefficients. The v0 libraries have 2,827,535 and 7,573,123 classes, with 99 and 80 unresolved root owners; these open tasks demonstrate remaining boundary difficulty, without establishing a speed comparison with full DD. DD remains part of the method. Recursion does not remove enumeration complexity or guarantee a speedup. Double-precision cddlib candidate checks do not alone prove complete enumeration; page nine states the required exact closure hypotheses.",
+        "zh": "口头讲稿（约90秒）：\n现在知道搜索 facets 就足够。Double Description，简称 DD，把局域顶点转换为支撑 facet 不等式。但很短的顶点列表，也可能有非常庞大的边界。完整 \\((4,2,2)\\) 场景只有256个确定性行为，维数却已达到80。\n\n我们从一个 facet 出发，沿 ridges pivot 到邻面。可处理的面内边界仍用 DD；未完成的调用则进入该 facet，把它作为低一维子多面体，逐步探索子边界。已验证子 facets 提供母 ridges 与 pivots，未解任务继续保留。\n\n应用是32维的一、二体投影，以及40维的二、四体投影，两库都仍不完整。下面先明确 facet、ridge 和一步 pivot 的定义。\n\n参考说明，不计入口头时长：\n四方各固定两个二值输出，因此 \\(n_V=2^8=256\\)。每方不出现在关联项中，或贡献两个设置之一，得到 \\(D_{\\mathrm{full}}=3^4-1=80\\)。一、二体投影有256顶点；二、四体只保留偶数阶项，将全体输出同时反号的策略识别为同一点，有128个不同投影顶点。二者均未施加 PI 系数限制。v0 库分别有2,827,535与7,573,123个类别，99与80个未解 root owners；开放任务说明边界困难仍存在，不能据此宣称与整体 DD 的定量速度优势。DD 仍属于方法的一部分；递归不消除枚举复杂度，也不保证一定加速。双精度 cddlib 的候选核验不能单独证明无遗漏，第九页给出严格闭合前提。"
       },
       "sources": [
         {
-          "label": "Optimizing quantum violation yields facet Bell inequalities",
-          "url": "https://arxiv.org/abs/2511.07523"
+          "label": {
+            "en": "DD: cddlib reference manual",
+            "zh": "DD：cddlib 参考手册"
+          },
+          "url": "https://people.inf.ethz.ch/fukudak/cdd_home/cddlibman2021.pdf"
+        },
+        {
+          "label": {
+            "en": "Four-party data: supplied pivot v0",
+            "zh": "四体数据：作者提供的 pivot v0"
+          }
         }
       ],
-      "formula": null,
+      "formula": "\\[(4,2,2):\\quad n_V=2^{4\\times2}=256,\\qquad D_{\\mathrm{full}}=3^4-1=80.\\]",
       "subtitle": {
-        "en": "The revised optimization paper supplies the starting point",
-        "zh": "更新后的优化文章提供起点"
-      },
-      "asset": "illustration_round1.png",
-      "assetAlt": {
-        "en": "Supplied manuscript diagram: adding active classical vertices moves coefficients from T1 through T2 to the facet T3 in primal and polar spaces.",
-        "zh": "作者提供的示意图：逐步加入活跃经典顶点，系数由 T1 经 T2 移动到 facet T3；左为原始空间，右为极空间。"
+        "en": "Double Description converts vertices to facets; large boundaries can exceed available resources",
+        "zh": "Double Description 把顶点转为 facets；复杂边界可能超出可用计算资源"
       },
       "backup": false,
       "story": {
         "question": {
-          "en": "Why begin with facets?",
-          "zh": "为什么从 facets 出发？"
+          "en": "How can we explore facets when direct boundary conversion remains unfinished?",
+          "zh": "直接边界转换未完成时，怎样继续探索 facets？"
         },
         "takeaway": {
-          "en": "Coefficient optimization and tightening provide tight Bell objectives.",
-          "zh": "系数优化与收紧给出紧 Bell 目标。"
+          "en": "Keep DD for manageable faces; recursively expand unfinished boundaries.",
+          "zh": "可处理的面继续用 DD；未完成边界则递归展开。"
         },
         "transition": {
-          "en": "Once a facet is found, the pivot project asks how its neighboring boundary can be explored.",
-          "zh": "找到一个 facet 之后，pivot 课题接着问怎样探索它周围的边界。"
+          "en": "To explain this method, first define the facets and ridges that a pivot connects.",
+          "zh": "解释这个方法，先明确 pivot 连接的 facets 与 ridges。"
         }
       },
-      "phase": "background"
+      "phase": "background",
+      "table": {
+        "headers": {
+          "en": [
+            "Step",
+            "Boundary task",
+            "Computational role"
+          ],
+          "zh": [
+            "步骤",
+            "边界任务",
+            "计算作用"
+          ]
+        },
+        "rows": {
+          "en": [
+            [
+              "Global DD",
+              "All local vertices → all facets",
+              "A full vertex-to-inequality conversion."
+            ],
+            [
+              "Facet DD",
+              "One facet’s tight vertices → its ridges",
+              "Supplies the directions for neighboring pivots."
+            ],
+            [
+              "Recursion",
+              "Unfinished facet → child boundary",
+              "Retain discoveries and return verified ridges."
+            ]
+          ],
+          "zh": [
+            [
+              "整体 DD",
+              "全部局域顶点 → 全部 facets",
+              "直接完成顶点到不等式的转换。"
+            ],
+            [
+              "面内 DD",
+              "一个 facet 的紧顶点 → 其 ridges",
+              "提供邻接 pivot 所需的方向。"
+            ],
+            [
+              "递归展开",
+              "未完成 facet → 低维子问题",
+              "逐步探索边界，保留已验证发现，再返回母层。"
+            ]
+          ]
+        }
+      }
     },
     {
       "id": "pivot-question",
@@ -198,7 +254,7 @@ window.DECK = {
         "en": "Original pivot work",
         "zh": "原来的 pivot 工作"
       },
-      "duration": 55,
+      "duration": 50,
       "layout": "statement",
       "bullets": {
         "en": [
@@ -454,7 +510,7 @@ window.DECK = {
         "en": "Original pivot work",
         "zh": "原来的 pivot 工作"
       },
-      "duration": 70,
+      "duration": 65,
       "layout": "wide",
       "bullets": {
         "en": [
@@ -512,7 +568,7 @@ window.DECK = {
         "en": "Original pivot work",
         "zh": "原来的 pivot 工作"
       },
-      "duration": 65,
+      "duration": 60,
       "layout": "statement",
       "bullets": {
         "en": [
@@ -627,7 +683,7 @@ window.DECK = {
         "en": "Original pivot work",
         "zh": "原来的 pivot 工作"
       },
-      "duration": 65,
+      "duration": 60,
       "layout": "chart",
       "bullets": {
         "en": [
@@ -898,7 +954,7 @@ window.DECK = {
         "en": "Original pivot work",
         "zh": "原来的 pivot 工作"
       },
-      "duration": 65,
+      "duration": 60,
       "layout": "statement",
       "bullets": {
         "en": [
@@ -1220,7 +1276,7 @@ window.DECK = {
         "en": "Original pivot work",
         "zh": "原来的 pivot 工作"
       },
-      "duration": 70,
+      "duration": 55,
       "layout": "statement",
       "bullets": {
         "en": [
@@ -2183,10 +2239,74 @@ window.DECK = {
         "zh": "对称化简使用 \\(\\operatorname{Stab}(H_p)\\) 及约束保留的对称性"
       },
       "phase": "discussion"
+    },
+    {
+      "id": "backup-series",
+      "section": {
+        "en": "Context: earlier Bell-design work",
+        "zh": "背景：此前 Bell 设计工作"
+      },
+      "title": {
+        "en": "Context: three connected Bell-design papers",
+        "zh": "背景：三篇相互连接的 Bell 设计文章"
+      },
+      "duration": 0,
+      "layout": "roadmap",
+      "bullets": {
+        "en": [
+          "<strong>Find a facet by optimization</strong><br>Optimizing quantum violation yields facet Bell inequalities<br><span class=\"small\">arXiv:2511.07523 · supplied revised title</span>",
+          "<strong>Certify structured many-body families</strong><br>Optimizing and Certifying Multipartite Permutationally Invariant Bell Inequalities<br><span class=\"small\">arXiv:2607.08462</span>",
+          "<strong>Design around accessible correlations</strong><br>Experimental certification of multipartite Bell correlations using only few-body symmetric correlations<br><span class=\"small\">arXiv:2609.37442</span>"
+        ],
+        "zh": [
+          "<strong>通过优化找到 facet</strong><br>Optimizing quantum violation yields facet Bell inequalities<br><span class=\"small\">arXiv:2511.07523 · 作者提供的更新稿标题</span>",
+          "<strong>认证有结构的多体家族</strong><br>Optimizing and Certifying Multipartite Permutationally Invariant Bell Inequalities<br><span class=\"small\">arXiv:2607.08462</span>",
+          "<strong>围绕可测关联项设计检验</strong><br>Experimental certification of multipartite Bell correlations using only few-body symmetric correlations<br><span class=\"small\">arXiv:2609.37442</span>"
+        ]
+      },
+      "notes": {
+        "en": "The opening now concentrates on the first paper’s robustness-to-facet conclusion, because it supplies the direct motivation for pivoting. This backup preserves the three-paper context and their full titles. Coefficient optimization identifies robust tight tests; the PI follow-up optimizes and certifies structured many-body families; the experiment uses few-body symmetric correlations. The pivot project explores the connected facet boundary in four-party projections, after which resource bounds and SDP enter the story.",
+        "zh": "开场现在集中讲第一篇的鲁棒性到 facet 的结论，因为它直接解释为什么要做 pivot。本备份保留三篇文章的完整标题和背景。系数优化寻找鲁棒紧检验；PI 后续工作优化并认证有结构多体家族；实验工作使用少体对称关联项。Pivot 课题探索四体投影中相连的 facet 边界，之后再接资源界与 SDP。"
+      },
+      "sources": [
+        {
+          "label": "arXiv:2511.07523",
+          "url": "https://arxiv.org/abs/2511.07523"
+        },
+        {
+          "label": "arXiv:2607.08462",
+          "url": "https://arxiv.org/abs/2607.08462"
+        },
+        {
+          "label": "arXiv:2609.37442",
+          "url": "https://arxiv.org/abs/2609.37442"
+        }
+      ],
+      "subtitle": {
+        "en": "A tight objective, a certified bound, and accessible correlators",
+        "zh": "紧目标、可认证的界与可测关联项"
+      },
+      "backup": true,
+      "story": {
+        "question": {
+          "en": "How do the three papers lead to this project?",
+          "zh": "前三篇文章如何引出这个课题？"
+        },
+        "takeaway": {
+          "en": "The objective must be tight, certifiable, and suited to the measurement task.",
+          "zh": "Bell 目标需要紧、可以认证，并适合具体测量任务。"
+        },
+        "transition": {
+          "en": "The first step is to understand why coefficient optimization reaches a facet.",
+          "zh": "先解释第一步：系数优化为什么会到达 facet。"
+        }
+      },
+      "formula": null,
+      "phase": "background"
     }
   ],
   "storyline": {
-    "en": "23 minutes: original v0 method, benchmark, four-party libraries and violation landscapes. 7 minutes: a separately marked discussion of a certified resource example and open SDP questions.",
-    "zh": "前23分钟：v0 方法、基准验证、四体部分库与违反 landscapes。后7分钟：明确分开的讨论段，展示资源认证例子与开放 SDP 问题。"
+    "en": "23 minutes: robustness selects facets; DD motivates recursive pivots; the method builds four-party partial libraries and violation landscapes. 7 minutes: a separate discussion of shared-strategy resources and SDP certificates.",
+    "zh": "前23分钟：鲁棒性确定 facet 目标；DD 瓶颈引出递归 pivot；方法建立四体部分库与违反 landscapes。后7分钟：独立讨论共同策略资源与 SDP 证书。"
   }
 };
