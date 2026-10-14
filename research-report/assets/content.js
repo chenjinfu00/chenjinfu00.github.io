@@ -6,8 +6,8 @@ window.REPORT = {
       "en": "Jin-Fu Chen"
     },
     "subtitle": {
-      "zh": "制备 · 涨落 · 优化",
-      "en": "Preparation · Fluctuations · Optimization"
+      "zh": "热机 · 涨落 · 非定域性",
+      "en": "Engines · Fluctuations · Nonlocality"
     },
     "homepage": "https://chenjinfu00.github.io/",
     "scholar": "https://scholar.google.ca/citations?user=2n7U598AAAAJ&hl=en"
@@ -29,12 +29,12 @@ window.REPORT = {
         "en": "Jin-Fu Chen · Research talk · 17 October 2026"
       },
       "html": {
-        "zh": "<div class=\"cover-line\">量子多体态 · 随机热力学 · 有限时间控制</div><div class=\"cover-signature\"><strong>陈劲夫 <span>Jin-Fu Chen</span></strong><p>荷兰莱顿大学 · Lorentz 理论物理研究所</p></div><div class=\"pathway\"><span>多体态制备与认证</span><span>随机热力学</span><span>量子热机与控制</span></div>",
-        "en": "<div class=\"cover-line\">Quantum states · Stochastic thermodynamics · Finite-time control</div><div class=\"cover-signature\"><strong>Jin-Fu Chen <span>陈劲夫</span></strong><p>Leiden University · Lorentz Institute for Theoretical Physics</p></div><div class=\"pathway\"><span>Preparation & certification</span><span>Stochastic thermodynamics</span><span>Quantum engines & control</span></div>"
+        "zh": "<div class=\"cover-line\">量子热力学与热机 · 随机热力学 · 量子非定域性</div><div class=\"cover-signature\"><strong>陈劲夫 <span>Jin-Fu Chen</span></strong><p>荷兰莱顿大学 · Lorentz 理论物理研究所</p></div><div class=\"pathway\"><span>量子热力学与热机</span><span>随机热力学</span><span>量子非定域性</span></div>",
+        "en": "<div class=\"cover-line\">Quantum engines · Stochastic thermodynamics · Quantum nonlocality</div><div class=\"cover-signature\"><strong>Jin-Fu Chen <span>陈劲夫</span></strong><p>Leiden University · Lorentz Institute for Theoretical Physics</p></div><div class=\"pathway\"><span>Quantum engines</span><span>Stochastic thermodynamics</span><span>Quantum nonlocality</span></div>"
       },
       "notes": {
-        "zh": "各位老师好，我是陈劲夫，目前在莱顿大学从事博士后研究。今天重点介绍已完成的研究，沿三条相互关联的主线来组织：量子多体态的制备与认证、随机热力学与非平衡过程，以及量子热力学与热机控制。它们共同追问的是，怎样把一个受物理约束的过程变成可设计、可优化、可检验的问题。最后用两页简要介绍未来展望。",
-        "en": "Thank you for the opportunity to present my work. I am Jin-Fu Chen, a postdoctoral researcher at Leiden University. I will focus on completed research in three connected lines: many-body state preparation and certification, stochastic thermodynamics and nonequilibrium processes, and quantum thermodynamics and engine control. Their common question is how to design, optimize and verify dynamics under physical constraints. I will end with two slides of outlook."
+        "zh": "各位老师好，我是陈劲夫，目前在莱顿大学从事博士后研究。今天按照研究发展的时间顺序，介绍三个方面的已完成工作：先是量子热力学与量子热机，随后是随机热力学，最后是量子非定域性及相关的多体态制备与优化。这条路径从热机性能与控制，发展到非平衡过程的统计描述，再拓展到量子关联的制备与认证。最后用两页简要介绍未来展望。",
+        "en": "Thank you for the opportunity to present my work. I am Jin-Fu Chen, a postdoctoral researcher at Leiden University. I will follow the development of my research: quantum thermodynamics and engines, then stochastic thermodynamics, and finally quantum nonlocality with related many-body preparation and optimization. This trajectory connects engine performance and control, consistent nonequilibrium statistics, and quantum-correlation preparation and certification. I will end with two slides of outlook."
       },
       "sources": [
         {
@@ -59,16 +59,16 @@ window.REPORT = {
         "en": "Three research lines, one common question"
       },
       "kicker": {
-        "zh": "过去成果 31 分钟 · 未来仅两页",
-        "en": "31 minutes on research · two slides on future work"
+        "zh": "按研究发展的时间顺序 · 过去成果 31 分钟",
+        "en": "Research trajectory · 31 minutes on past work"
       },
       "html": {
-        "zh": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>量子多体态的<br>制备与认证</h3><p class=\"jt-line-question\">怎样更快得到并检验目标态？</p><p class=\"jt-line-tools\">耗散、谱隙与量子关联</p><div class=\"jt-line-output\">已发表：PRL / PRB<br>预印本：Bell / NITE</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>随机热力学与<br>非平衡过程</h3><p class=\"jt-line-question\">怎样定义过程的涨落与代价？</p><p class=\"jt-line-tools\">轨道概率、协变性与有限时间</p><div class=\"jt-line-output\">联合统计 · 协变涨落<br>有限时间相变</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>量子热力学与<br>热机中的量子优势</h3><p class=\"jt-line-question\">怎样把量子效应变成性能？</p><p class=\"jt-line-tools\">工质、非绝热损耗与几何控制</p><div class=\"jt-line-output\">已发表：量子热机<br>独著：量子几何 / 布朗热机</div></article></div>",
-        "en": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>Many-body preparation<br>and certification</h3><p class=\"jt-line-question\">How can we prepare and verify target states?</p><p class=\"jt-line-tools\">Dissipation, gaps and correlations</p><div class=\"jt-line-output\">Published: PRL / PRB<br>Preprints: Bell / NITE</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>Stochastic thermodynamics<br>and nonequilibrium processes</h3><p class=\"jt-line-question\">How do we define fluctuations and costs?</p><p class=\"jt-line-tools\">Trajectories, covariance and finite time</p><div class=\"jt-line-output\">Joint statistics and covariant relations<br>Finite-time transitions</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>Quantum thermodynamics<br>and engine advantage</h3><p class=\"jt-line-question\">How do quantum effects affect performance?</p><p class=\"jt-line-tools\">Working media and geometric control</p><div class=\"jt-line-output\">Published engine research<br>Sole-author control papers</div></article></div>"
+        "zh": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>量子热力学与<br>量子热机</h3><p class=\"jt-line-question\">怎样把量子效应变成性能？</p><p class=\"jt-line-tools\">工质、非绝热损耗与几何控制</p><div class=\"jt-line-output\">已发表：量子热机<br>独著：量子几何 / 布朗热机</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>随机热力学与<br>非平衡过程</h3><p class=\"jt-line-question\">怎样定义过程的涨落与代价？</p><p class=\"jt-line-tools\">轨道概率、协变性与有限时间</p><div class=\"jt-line-output\">联合统计 · 协变涨落<br>有限时间相变</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>量子非定域性与<br>多体态制备</h3><p class=\"jt-line-question\">怎样制备并认证量子关联？</p><p class=\"jt-line-tools\">Bell 检验、谱隙与量子优化</p><div class=\"jt-line-output\">已发表：PRL / PRB<br>预印本：Bell / NITE</div></article></div>",
+        "en": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>Quantum thermodynamics<br>and engines</h3><p class=\"jt-line-question\">How do quantum effects affect performance?</p><p class=\"jt-line-tools\">Working media and geometric control</p><div class=\"jt-line-output\">Published engine research<br>Sole-author control papers</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>Stochastic thermodynamics<br>and nonequilibrium processes</h3><p class=\"jt-line-question\">How do we define fluctuations and costs?</p><p class=\"jt-line-tools\">Trajectories, covariance and finite time</p><div class=\"jt-line-output\">Joint statistics and covariant relations<br>Finite-time transitions</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>Quantum nonlocality<br>and many-body preparation</h3><p class=\"jt-line-question\">How can we prepare and certify quantum correlations?</p><p class=\"jt-line-tools\">Bell tests, gaps and quantum optimization</p><div class=\"jt-line-output\">Published: PRL / PRB<br>Preprints: Bell / NITE</div></article></div>"
       },
       "notes": {
-        "zh": "这里将已完成的工作组织成三条相互关联的研究线。第一条从制备动力学到关联认证；第二条从功热统计到一致的复杂过程描述；第三条从量子热机性能到独立构造的最优控制。各部分都先讲问题和方法，再讲系列结果。报告安排是经历四分钟、研究成果三十一分钟、未来四分钟和最后一分钟收束。",
-        "en": "I organize the completed work in three connected scientific progressions. The first connects preparation dynamics with certification. The second develops consistent descriptions of fluctuating processes. The third connects engine performance with independently developed control methods. The timing is four minutes of background, thirty-one minutes of research, four minutes of future work and one minute to close. "
+        "zh": "报告按研究发展的时间顺序展开。第一部分从早期量子热机研究出发，讲工质、非绝热损耗和两篇已发表独著的几何控制工作；第二部分介绍随后发展的随机热力学，围绕联合统计、协变涨落和有限时间相变组织成果；第三部分介绍近年的量子非定域性，并连接多体态制备、谱隙优化和量子变分优化。每一部分仍以科学问题和方法串起系列成果。时间安排保持经历四分钟、研究成果三十一分钟、未来两页四分钟和最后一分钟收束。",
+        "en": "The talk follows my research trajectory. The first part starts with quantum engines, nonadiabatic losses and the two published sole-author geometric-control studies. The second develops stochastic thermodynamics through joint statistics, covariant fluctuations and finite-time phase transitions. The third covers recent quantum nonlocality and its connections to many-body preparation, gap optimization and variational quantum optimization. Each part remains a connected progression of questions and methods. The timing stays at four minutes of background, thirty-one minutes of research, four minutes on two outlook slides and one minute to close."
       },
       "sources": [
         {
@@ -170,149 +170,118 @@ window.REPORT = {
         "en": "Common thread: target, constraints, dynamics, verification"
       },
       "html": {
-        "zh": "<div class=\"pathway\"><span>明确目标与约束</span><span>识别速度或代价限制</span><span>构造更好的动力学</span><span>给出可检验的结果</span></div><div class=\"cols-3\"><article class=\"card\"><h3>制备</h3><p>目标态不变，改变生成元或母哈密顿量。</p></article><article class=\"card\"><h3>涨落</h3><p>保留足够的统计量，建立一致的过程描述。</p></article><article class=\"card\"><h3>热机</h3><p>从损耗机制出发，寻找可达的最优协议。</p></article></div>",
-        "en": "<div class=\"pathway\"><span>Specify target & constraints</span><span>Identify limits</span><span>Design better dynamics</span><span>Verify the result</span></div><div class=\"cols-3\"><article class=\"card\"><h3>Preparation</h3><p>Keep the target, change the generator or parent Hamiltonian.</p></article><article class=\"card\"><h3>Fluctuations</h3><p>Retain the statistics required for a consistent process description.</p></article><article class=\"card\"><h3>Engines</h3><p>Identify loss mechanisms and construct attainable protocols.</p></article></div>"
+        "zh": "<div class=\"pathway\"><span>明确目标与约束</span><span>识别速度或代价限制</span><span>构造更好的动力学</span><span>给出可检验的结果</span></div><div class=\"cols-3\"><article class=\"card\"><h3>热机</h3><p>从损耗机制出发，寻找可达的最优协议。</p></article><article class=\"card\"><h3>涨落</h3><p>保留足够的统计量，建立一致的过程描述。</p></article><article class=\"card\"><h3>非定域性</h3><p>优化量子态制备与 Bell 检验，认证量子关联。</p></article></div>",
+        "en": "<div class=\"pathway\"><span>Specify target & constraints</span><span>Identify limits</span><span>Design better dynamics</span><span>Verify the result</span></div><div class=\"cols-3\"><article class=\"card\"><h3>Engines</h3><p>Identify loss mechanisms and construct attainable protocols.</p></article><article class=\"card\"><h3>Fluctuations</h3><p>Retain the statistics required for a consistent process description.</p></article><article class=\"card\"><h3>Nonlocality</h3><p>Optimize state preparation and Bell tests to certify quantum correlations.</p></article></div>"
       },
       "notes": {
-        "zh": "贯穿这些工作的不是某一个具体模型，而是一个分析方式：先固定目标和允许的资源，再识别限制过程的物理量，最后设计动力学并检验改进是否成立。不同方向分别使用谱结构、轨道概率和几何度量。下面先从最直接的量子多体问题开始：目标态已经给定，制备过程是否还能更快？",
-        "en": "The common thread is an approach rather than a single model: specify the target and allowed resources, identify the limiting quantity, design the dynamics and verify the improvement. The three lines use spectral structure, trajectory probabilities and geometry. I will begin with the many-body question: can preparation be faster while keeping the same target state?"
+        "zh": "贯穿这些工作的不是某一个具体模型，而是一个分析方式：先固定目标和允许的资源，再识别限制过程的物理量，最后设计动力学并检验改进是否成立。沿研究发展的路径，我依次使用几何度量、轨道概率与谱结构。下面先从早期的量子热机问题开始：量子效应怎样影响性能，有限时间损耗又能否通过控制减小？",
+        "en": "The common thread is an approach rather than a single model: specify the target and allowed resources, identify the limiting quantity, design the dynamics and verify the improvement. Along this trajectory I use geometry, trajectory probabilities and spectral structure. I will begin with quantum engines: how do quantum effects affect performance, and how can control reduce finite-time losses?"
       },
       "sources": [],
       "backup": false
     },
     {
-      "id": "manybody-line",
+      "id": "engine-line",
       "section": {
-        "zh": "多体制备与认证",
-        "en": "State preparation"
+        "zh": "量子热力学与热机",
+        "en": "Quantum thermodynamics & engines"
       },
       "minutes": 1,
       "title": {
-        "zh": "目标态固定，制备与认证共同优化",
-        "en": "Optimize preparation and certification at a fixed target"
+        "zh": "从量子效应，到可达到的热机性能",
+        "en": "From quantum effects to attainable engine performance"
       },
       "kicker": {
-        "zh": "研究线一 · 量子多体态的制备与认证",
-        "en": "Line 1 · Many-body preparation and certification"
+        "zh": "研究线一 · 量子热力学与量子热机",
+        "en": "Line 1 · Quantum thermodynamics and quantum engines"
       },
       "html": {
-        "zh": "<div class=\"cols\"><article class=\"card\"><h3>制备：怎样更快？</h3><p>热态：优化耗散生成元<br>纯态：优化母哈密顿量谱隙</p></article><article class=\"card\"><h3>认证：怎样可信？</h3><p>优化 Bell 检验的抗噪能力<br>用低阶关联与半定规划建立证书</p></article></div><div class=\"pathway\"><span>保持目标</span><span>优化动力学或检验</span><span>检验速度与可信度</span></div><div class=\"jt-badges\"><span class=\"jt-badge\">已发表：PRB / PRL</span><span class=\"jt-badge jt-badge--growth\">发展：Bell / NITE 预印本</span></div>",
-        "en": "<div class=\"cols\"><article class=\"card\"><h3>Preparation: how can it be faster?</h3><p>Thermal states: optimize the dissipative generator<br>Pure states: optimize parent-Hamiltonian gaps</p></article><article class=\"card\"><h3>Certification: how can it be reliable?</h3><p>Optimize noise-robust Bell tests<br>Use low-order correlations and SDP certificates</p></article></div><div class=\"pathway\"><span>Keep the target</span><span>Optimize dynamics or tests</span><span>Check speed & reliability</span></div><div class=\"jt-badges\"><span class=\"jt-badge\">Published: PRB / PRL</span><span class=\"jt-badge jt-badge--growth\">Development: Bell / NITE preprints</span></div>"
+        "zh": "<div class=\"cols\"><article class=\"card\"><h3>物理机制</h3><p>工质统计与能量结构<br>有限时间的非绝热激发<br>相干动力学与功率—效率权衡</p></article><article class=\"card\"><h3>设计方法</h3><p>动力学量子几何：设计低激发路径<br>热力学几何：构造可达功率界<br>最优控制：决定循环结构</p></article></div><div class=\"pathway\"><span>理解优势或损耗来源</span><span>构造独立控制方法</span><span>在给定约束下检验性能</span></div>",
+        "en": "<div class=\"cols\"><article class=\"card\"><h3>Physical mechanisms</h3><p>Statistics and energy structure<br>Finite-time nonadiabatic excitations<br>Coherent dynamics and power–efficiency tradeoffs</p></article><article class=\"card\"><h3>Design methods</h3><p>Dynamical quantum geometry: low-excitation paths<br>Thermodynamic geometry: attainable bounds<br>Optimal control: cycle structure</p></article></div><div class=\"pathway\"><span>Identify mechanisms</span><span>Develop independent control methods</span><span>Test constrained performance</span></div>"
       },
       "notes": {
-        "zh": "第一条研究线把制备与认证放在一起。一个多体态要成为可用资源，首先要能够制备，其次要能够检验。制备部分的共同思想是保持目标态，但利用动力学的不唯一性来加快过程：对热态改变耗散生成元，对纯态改变母哈密顿量。认证部分则优化检验本身，使量子关联更容易被可靠识别。接下来的几页依次说明这个设计思想、已发表结果和正在发展的量子优化工作。",
-        "en": "A many-body state must be prepared and verified before it becomes a useful resource. The shared preparation idea is to keep the target while exploiting freedom in its dynamics: dissipative generators for thermal states and parent Hamiltonians for pure states. Certification instead optimizes the test so that quantum correlations can be identified more robustly. I will trace this progression through published results and current quantum-optimization preprints."
+        "zh": "第一部分从我早期的量子热力学与量子热机研究出发，关注性能怎样实现。早期我研究工质统计、有限时间绝热段和效率功率的关系；之后不满足于比较给定循环，而是独立发展两类几何控制方法。量子几何用于抑制非绝热激发，布朗热机则提供能够明确构造最优协议的基准。它们进一步延伸到膜分离与最优循环结构。下面从工质与损耗机制，讲到几何控制及可达到的性能，展示这一阶段研究的连续发展。",
+        "en": "The first part starts with my early research in quantum thermodynamics and engines, asking how performance can be achieved. Earlier work studied statistics, finite-time adiabatic strokes and power–efficiency relations. I then independently developed two geometric-control approaches: quantum geometry to suppress excitations, and Brownian engines as a benchmark with explicitly attainable protocols. These methods extend to membrane separation and optimal cycle structure. I will trace this progression through mechanisms, geometric control and attainable performance."
       },
       "sources": [
         {
-          "label": "PRB 113, 184313 (2026)",
-          "url": "https://doi.org/10.1103/r43j-qfj5"
+          "label": "PRE 100, 032144 (2019)",
+          "url": "https://doi.org/10.1103/PhysRevE.100.032144"
         },
         {
-          "label": "PRL 135, 090602 (2025)",
-          "url": "https://doi.org/10.1103/cslt-x32n"
+          "label": "PRR 4, 023252 (2022)",
+          "url": "https://doi.org/10.1103/PhysRevResearch.4.023252"
         },
         {
-          "label": "arXiv:2511.07523 · 预印本 / Preprint",
-          "url": "https://arxiv.org/abs/2511.07523"
+          "label": "PRE 106, 054108 (2022)",
+          "url": "https://doi.org/10.1103/PhysRevE.106.054108"
         }
       ],
       "backup": false
     },
     {
-      "id": "thermalization-framework",
+      "id": "quantum-engine",
       "section": {
-        "zh": "多体制备与认证",
-        "en": "State preparation"
+        "zh": "量子热力学与热机",
+        "en": "Quantum thermodynamics & engines"
       },
       "minutes": 1.5,
       "title": {
-        "zh": "固定热态，把动力学变成设计变量",
-        "en": "Keep the thermal state and design the dynamics"
+        "zh": "量子效应如何进入热机的性能？",
+        "en": "How do quantum effects enter engine performance?"
       },
       "kicker": {
-        "zh": "已发表 · PRB 2026 · 第一作者、共同通讯",
-        "en": "Published · PRB 2026 · First & co-corresponding"
+        "zh": "已发表系列 · 工质、非绝热损耗与效率—功率",
+        "en": "Published series · Working media, nonadiabatic loss and performance"
       },
       "html": {
-        "zh": "<div class=\"pathway\"><span>一致性构造</span><span>对称性降维</span><span>张量网络</span><span>梯度优化</span></div><div class=\"cols\"><article class=\"card\"><h3>理论框架</h3><p>构造以目标 Gibbs 态为稳态的 Lindbladian<br>利用对称性减少优化复杂度</p></article><article class=\"card\"><h3>规模与验证</h3><p>张量网络处理更大系统<br>谱隙下界与变分上界辅助验证<br>覆盖经典与量子多体模型</p></article></div><div class=\"callout\">我的贡献：核心理论框架、优化方法与主要结果；第一作者、共同通讯作者。</div>",
-        "en": "<div class=\"pathway\"><span>Consistent construction</span><span>Symmetry reduction</span><span>Tensor networks</span><span>Gradient optimization</span></div><div class=\"cols\"><article class=\"card\"><h3>Theory</h3><p>Construct Lindbladians with the target Gibbs state as stationary state<br>Reduce complexity using symmetry</p></article><article class=\"card\"><h3>Scale & verification</h3><p>Use tensor networks for larger systems<br>Certified lower and variational upper gap bounds<br>Classical and quantum many-body models</p></article></div><div class=\"callout\">My contribution: core framework, optimization method and principal results; first and co-corresponding author.</div>"
+        "zh": "<div class=\"cols\"><article class=\"card\"><h3>工质与动力学</h3><p>Bose–Fermi 对偶：工质的统计与能量结构。<br>两能级／谐振子等模型中，绝热段额外功有振荡结构。<br>调整时间与协议，可以利用该动力学改善循环。</p></article><article class=\"card\"><h3>真正的比较问题</h3><p>固定工质、热库与允许控制。<br>分别比较输出功、周期时间和最大功率下效率。<br>识别哪些量子效应在条件内有用。</p></article></div><p class=\"jt-section-note\">自然引出：能否直接设计低激发的绝热路径，而不只优化一个预设时间表？</p>",
+        "en": "<div class=\"cols\"><article class=\"card\"><h3>Working medium and dynamics</h3><p>Bose–Fermi duality links statistics and energy structure.<br>Two-level and harmonic-oscillator models show oscillatory adiabatic excess work.<br>Timing and protocols can exploit this dynamics.</p></article><article class=\"card\"><h3>A well-defined comparison</h3><p>Fix the medium, reservoirs and allowed controls.<br>Compare work, cycle time and efficiency at maximum power.<br>Identify useful quantum effects in that setting.</p></article></div><p class=\"jt-section-note\">Next question: can we design low-excitation adiabatic paths directly, beyond retiming a prescribed cycle?</p>"
       },
       "notes": {
-        "zh": "这项二〇二六年正式发表于 PRB 的工作，可以分成四个步骤。首先构造保持目标热态的 Lindbladian，保证目标与动力学是一致的；其次利用对称性减少自由参数和计算维数；第三引入张量网络，超越只做小尺寸精确对角化的范围；最后通过梯度方法优化谱隙。对于较大系统，我们结合可验证的下界与变分上界判断谱隙，而不是只依赖一次数值优化的输出。我的贡献集中在核心理论框架、优化方法与主要结果，担任第一作者和共同通讯作者。报告时应强调这是结构设计加数值验证相结合的工作，并说明不同模型采用的约束。 这里的统一设计思想是“目标不变、动力学可变”。这与稍后优化母哈密顿量是一致的；区别在于此处研究开放系统的弛豫。合作涉及 Jordi Tura、Patrick Emonts、Maciej Lewenstein 等多体与量子信息研究者。下一页用原论文图说明实际改善。",
-        "en": "The 2026 PRB combines four ingredients. We first construct Lindbladians that preserve the target Gibbs state, then use symmetry to reduce parameters and dimension. Tensor networks extend the analysis beyond small-system exact diagonalization, and gradient optimization improves the gap. For larger systems, certified lower and variational upper bounds support validation instead of relying solely on an optimizer output. My contributions were the core theoretical framework, optimization method and principal results, as first and co-corresponding author. The constraints are model-specific and should be stated when discussing particular examples. The unifying principle is a fixed target with variable dynamics. The later parent-Hamiltonian work uses the same design freedom for a different process. Collaborators include Jordi Tura, Patrick Emonts and Maciej Lewenstein. The next slide shows the original numerical result."
+        "zh": "量子热机的性能取决于工质，也取决于有限时间动力学。早期工作研究了囚禁玻色气体的 Bose–Fermi 对偶性，说明统计和能量结构如何进入循环描述。在有限时间量子 Otto 热机中，绝热段产生的额外功并非总是平滑变化，而有振荡结构；这为控制时间和协议提供了可利用的自由度。随后我们进一步分析最大功率下效率。对优势的判断，始终需要说明工质、热库和允许控制。由这些机制研究，一个自然的独立问题出现了：能否从量子动力学本身构造抑制激发的最优路径？",
+        "en": "Quantum-engine performance depends on the medium and finite-time dynamics. Early work studied Bose–Fermi duality for trapped gases. In finite-time quantum Otto cycles, adiabatic excess work has an oscillatory structure that provides useful timing and protocol freedom. Further work examined efficiency at maximum power. Any advantage comparison must specify the medium, reservoirs and allowed control. These mechanisms motivate an independent question: can the quantum dynamics itself provide a systematic way to design low-excitation paths?"
       },
       "sources": [
         {
-          "label": "PRB 113, 184313 (2026)",
-          "url": "https://doi.org/10.1103/r43j-qfj5"
+          "label": "PRE 98, 062119 (2018)",
+          "url": "https://doi.org/10.1103/PhysRevE.98.062119"
+        },
+        {
+          "label": "PRE 100, 032144 (2019)",
+          "url": "https://doi.org/10.1103/PhysRevE.100.032144"
+        },
+        {
+          "label": "PRE 100, 062140 (2019)",
+          "url": "https://doi.org/10.1103/PhysRevE.100.062140"
         }
       ],
       "backup": false
     },
     {
-      "id": "gap-principle",
+      "id": "quantum-geometry",
       "section": {
-        "zh": "多体制备与认证",
-        "en": "State preparation"
+        "zh": "量子热力学与热机",
+        "en": "Quantum thermodynamics & engines"
       },
-      "minutes": 2.5,
+      "minutes": 2,
       "title": {
-        "zh": "设计自由度能带来可检验的谱隙提升",
-        "en": "Design freedom produces a testable gap improvement"
+        "zh": "用量子几何设计低激发的控制路径",
+        "en": "Use quantum geometry to design low-excitation paths"
       },
       "kicker": {
-        "zh": "已发表 · 经典多体基准，连接量子热态制备",
-        "en": "Published · Classical benchmark for a quantum preparation framework"
+        "zh": "独立性 ① · 已发表独著 · PRR 2022",
+        "en": "Independence 1 · Published sole-author paper · PRR 2022"
       },
       "html": {
-        "zh": "<div class=\"cols\"><div class=\"result-summary\"><h3>低温区的慢模态得到改善</h3><p>横轴 βJ：逆温度 × 耦合强度<br>纵轴 NΔ：归一化谱隙（对数）</p><p>曲线：N = 10 精确对角化<br>符号：N = 40，DMRG<br>插图：SDP 认证结果</p><div class=\"callout\">蓝：单自旋翻转；橙：单 + 双翻转。<br>实线/实心为优化；虚线/空心为基准。</div></div><figure class=\"paper-figure\"><img src=\"assets/thermalization-result.png\" alt=\"作者版图1(b)：kinetic Ising模型谱隙随逆温度变化，比较基准和优化动力学\"><figcaption>作者版原图 1(b) · arXiv:2411.03420v2。<br>谱隙以外，还需检查有限时间收敛与资源约束。</figcaption></figure></div><div class=\"jt-badges\"><span class=\"jt-badge\">第一作者、共同通讯 · PRB 2026</span></div>",
-        "en": "<div class=\"cols\"><div class=\"result-summary\"><h3>Improved slow modes at low temperature</h3><p>Horizontal: βJ, inverse temperature × coupling<br>Vertical: NΔ, normalized gap (log scale)</p><p>Lines: N = 10 exact diagonalization<br>Symbols: N = 40 DMRG<br>Inset: SDP-certified results</p><div class=\"callout\">Blue: single flips; orange: single + double flips.<br>Solid/filled: optimized; dashed/open: baseline.</div></div><figure class=\"paper-figure\"><img src=\"assets/thermalization-result.png\" alt=\"Author-version Figure 1(b): kinetic Ising gap versus inverse temperature, baseline and optimized dynamics\"><figcaption>Original author-version Fig. 1(b) · arXiv:2411.03420v2.<br>Also check finite-time convergence and resource constraints.</figcaption></figure></div><div class=\"jt-badges\"><span class=\"jt-badge\">First & co-corresponding · PRB 2026</span></div>"
+        "zh": "<div class=\"cols\"><article class=\"card\"><h3>从动力学得到度量</h3><p>把能隙与跃迁结构纳入<br>动力学量子几何张量。<br>度量告诉我们哪些参数变化更容易产生激发。</p></article><article class=\"card\"><h3>从度量得到协议</h3><p>沿测地线以恒定几何速度驱动。<br>在 Landau–Zener 与横场 Ising 模型中检验。<br>由结构设计路径，而不只调整总时间。</p></article></div><div class=\"pathway\"><span>量子动力学</span><span>动力学度量</span><span>测地线与恒定几何速度</span></div><div class=\"jt-badges\"><span class=\"jt-badge jt-badge--independence\">Jin-Fu Chen · Sole author</span></div>",
+        "en": "<div class=\"cols\"><article class=\"card\"><h3>A metric from dynamics</h3><p>Include gaps and transition structure<br>in a dynamical quantum geometric tensor.<br>The metric identifies costly parameter changes.</p></article><article class=\"card\"><h3>A protocol from the metric</h3><p>Follow geodesics at constant geometric speed.<br>Test Landau–Zener and transverse-field Ising models.<br>Design paths rather than only total duration.</p></article></div><div class=\"pathway\"><span>Quantum dynamics</span><span>Dynamical metric</span><span>Geodesic at constant geometric speed</span></div><div class=\"jt-badges\"><span class=\"jt-badge jt-badge--independence\">Jin-Fu Chen · Sole author</span></div>"
       },
       "notes": {
-        "zh": "谱隙刻画渐近慢模态，因此是一个自然的动力学优化目标。这里展示原论文的经典一维 kinetic Ising 结果：横轴是逆温度与耦合的乘积，纵轴是归一化谱隙。蓝色表示单自旋翻转，橙色允许单双翻转；同色实线实心为优化结果，虚线空心为基准。低温区的改善更明显。小尺寸精确对角化、较大尺寸 DMRG 与插图中的 SDP 认证相互支持。完整制备速度还要同时指定初态、误差和生成元资源，并检验有限时间收敛。回到本节主线，改变允许的通道和速率，能够在目标平衡态保持不变时改善慢模态。下面把这一设计思想推进到绝热纯态制备。",
-        "en": "The gap characterizes asymptotically slow modes and is a natural design target. This original figure shows the classical one-dimensional kinetic Ising model: inverse temperature times coupling horizontally, normalized gap vertically. Blue denotes single-spin flips; orange allows single and double flips. Within each color, solid lines and filled symbols are optimized, while dashed lines and open symbols are baseline. The improvement is stronger at low temperature. Small-system exact diagonalization, larger-system DMRG and the SDP certificate in the inset support the result. Preparation speed also requires an initial state, error criterion, fixed generator resources and finite-time convergence checks. The common idea is to change allowed channels and rates while preserving the equilibrium target. I now extend it to adiabatic pure-state preparation."
+        "zh": "这是第一项已经发表的独著工作。它延续量子热机中非绝热损耗的问题，但把目标改为直接设计低激发过程。我从绝热动力学出发构造动力学量子几何张量，让能隙和跃迁矩阵元共同决定控制空间的度量。再利用这个度量寻找测地线，并以恒定几何速度驱动，在 Landau–Zener 和横场 Ising 模型中检验抑制激发的效果。独立性体现为由问题、推导到模型检验的一条完整研究经历。这里得到的是具体条件下的低激发控制方法，不需要声称对所有模型普适最优。下一页看相同的几何思维如何在热机基准中给出可达到的功率界。",
+        "en": "This is the first published sole-author study. It develops the nonadiabatic-loss question from quantum engines into direct low-excitation control. A dynamical quantum geometric tensor combines gaps and transition structure into a metric on control space. Geodesic paths with constant geometric speed are tested in Landau–Zener and transverse-field Ising models. The independent contribution spans formulation, derivation and model checks. The result is a model-qualified control method, not a universal optimality claim. Next I use geometric reasoning in an engine benchmark where the power bound is explicitly attainable."
       },
       "sources": [
-        {
-          "label": "PRB 113, 184313 (2026)",
-          "url": "https://doi.org/10.1103/r43j-qfj5"
-        },
-        {
-          "label": "原图 / Original figure · arXiv:2411.03420v2",
-          "url": "https://arxiv.org/abs/2411.03420v2"
-        }
-      ],
-      "backup": false
-    },
-    {
-      "id": "adiabatic",
-      "section": {
-        "zh": "多体制备与认证",
-        "en": "State preparation"
-      },
-      "minutes": 2.5,
-      "title": {
-        "zh": "保持目标纯态，改善绝热制备的瓶颈",
-        "en": "Keep the target state and improve the adiabatic bottleneck"
-      },
-      "kicker": {
-        "zh": "代表 PRL ① · 2025 · 共同通讯作者",
-        "en": "Representative PRL 1 · 2025 · Co-corresponding"
-      },
-      "html": {
-        "zh": "<div class=\"cols\"><article class=\"card\"><h3>封闭系统中的对应问题</h3><p>目标张量网络态固定<br>利用母哈密顿量的非唯一性<br>优化绝热路径的能隙</p></article><article class=\"card\"><h3>研究结果与积累</h3><p>在随机一维张量网络态、AKLT 与 GHZ 等例子中研究<br>连接量子几何、哈密顿量设计与态制备</p></article></div><div class=\"callout\">我的贡献：参与能隙优化思路、理论分析与研究设计；共同通讯作者。</div><p class=\"caption\">相关独著：PRR 4, 023252 (2022)，以动力学量子几何张量研究绝热过程加速。</p><p class=\"jt-collab-inline\">合作：K. S. Rai · Patrick Emonts · Jordi Tura</p>",
-        "en": "<div class=\"cols\"><article class=\"card\"><h3>Closed-system counterpart</h3><p>Fix a target tensor-network state<br>Exploit nonunique parent Hamiltonians<br>Optimize the gap along the adiabatic path</p></article><article class=\"card\"><h3>Results & foundations</h3><p>Examples include random 1D tensor-network states, AKLT and GHZ<br>Connect quantum geometry, Hamiltonian design and preparation</p></article></div><div class=\"callout\">My contribution: gap-optimization concept, theoretical analysis and research design; co-corresponding author.</div><p class=\"caption\">Related sole-author work: PRR 4, 023252 (2022), dynamical quantum geometric tensors for faster adiabatic processes.</p><p class=\"jt-collab-inline\">With K. S. Rai, Patrick Emonts and Jordi Tura</p>"
-      },
-      "notes": {
-        "zh": "固定目标但优化动力学的思路不只适用于开放系统。在封闭系统里，一个目标张量网络态可以对应多个母哈密顿量。我们利用这种自由度，在保持目标态的条件下优化绝热制备路径的能隙，研究了随机一维张量网络态、AKLT 和 GHZ 等例子。我参与优化概念、理论分析和研究设计，是共同通讯作者。它也与我二〇二二年独著的动力学量子几何张量工作相接：前者强调目标态约束下的哈密顿量自由度，后者从动力学几何出发设计加速。两类结果共同构成我在量子控制与制备方面的方法积累。 与前面热化结果合在一起看，制备优化对象由开放系统生成元延伸到了闭系统母哈密顿量。两项工作都不是简单改变目标态来换取速度，而是在保持目标条件下使用可控自由度。这是这一系列工作的系统性。",
-        "en": "The same idea extends to closed systems. A target tensor-network state can admit multiple parent Hamiltonians. We exploit that freedom to optimize the gap along an adiabatic preparation path while preserving the target state, studying random 1D tensor-network states, AKLT and GHZ examples. I contributed to the optimization concept, theory and research design as a co-corresponding author. This connects with my sole-author 2022 work on dynamical quantum geometric tensors, although the two approaches use different optimization freedoms. Together with the thermalization result, this extends the design variable from an open-system generator to a closed-system parent Hamiltonian. Both use controllable freedom while retaining the target. That connection is the central progression of the preparation work."
-      },
-      "sources": [
-        {
-          "label": "PRL 135, 090602 (2025)",
-          "url": "https://doi.org/10.1103/cslt-x32n"
-        },
         {
           "label": "PRR 4, 023252 (2022)",
           "url": "https://doi.org/10.1103/PhysRevResearch.4.023252"
@@ -321,67 +290,102 @@ window.REPORT = {
       "backup": false
     },
     {
-      "id": "nonlocality",
+      "id": "brownian",
       "section": {
-        "zh": "多体制备与认证",
-        "en": "State preparation"
+        "zh": "量子热力学与热机",
+        "en": "Quantum thermodynamics & engines"
       },
-      "minutes": 1.5,
+      "minutes": 2,
       "title": {
-        "zh": "从可制备的态，走向可认证的量子关联",
-        "en": "From state preparation to certifiable correlations"
+        "zh": "在可控基准中构造可达到的功率界",
+        "en": "Construct an attainable power bound in a controlled benchmark"
       },
       "kicker": {
-        "zh": "发展性 · Bell 系列预印本 · 第一作者、共同通讯",
-        "en": "Development · Bell-series preprints · First & co-corresponding"
+        "zh": "独立性 ② · 已发表独著 · PRE 2022",
+        "en": "Independence 2 · Published sole-author paper · PRE 2022"
       },
       "html": {
-        "zh": "<div class=\"cols\"><article class=\"card\"><h3>构造：优化检验本身</h3><p>最大化量子值／经典界的比值<br>迭代寻找抗噪的多体 Bell 检验<br>局部极值落在 facet：数值观察</p></article><article class=\"card\"><h3>认证：让多体规模可计算</h3><p>使用置换不变的一、二体关联<br>构造可扩展的不等式族<br>半定规划认证量子违反</p></article></div><div class=\"pathway\"><span>多面体结构</span><span>抗噪优化</span><span>低阶关联与证书</span></div><p class=\"jt-section-note\">两篇属于同一 Bell 研究系列，作者声明部分内容重叠。合作：Mengyao Hu、Jordi Tura。</p>",
-        "en": "<div class=\"cols\"><article class=\"card\"><h3>Construction: optimize the test</h3><p>Optimize the quantum-to-classical ratio<br>Iteratively find robust multipartite tests<br>Facet local optima: numerical observation</p></article><article class=\"card\"><h3>Certification: make scaling tractable</h3><p>Use permutation-invariant one- and two-body correlations<br>Construct scalable inequality families<br>Certify violations with SDP</p></article></div><div class=\"pathway\"><span>Polyhedral structure</span><span>Robustness optimization</span><span>Low-order certificates</span></div><p class=\"jt-section-note\">The two manuscripts form a partly overlapping Bell series. With Mengyao Hu and Jordi Tura.</p>"
+        "zh": "<div class=\"cols\"><article class=\"card\"><h3>要解决的问题</h3><p>有限时间热机怎样同时选择循环路径和操作速度？</p></article><article class=\"card\"><h3>独立完成的工作</h3><p>利用等温捷径构造有限时间过程<br>建立循环的热力学几何描述<br>得到可达的输出功率界与最优协议</p></article></div><div class=\"formula\">P = W<sub>out</sub> / τ</div><p class=\"caption\">优化对象是整个循环的输出功率。</p><div class=\"callout\">意义：在该捷径模型内，将欠阻尼与过阻尼之外的一般阻尼情形纳入统一描述。</div>",
+        "en": "<div class=\"cols\"><article class=\"card\"><h3>Question</h3><p>How should a finite-time engine choose both its cycle and its schedule?</p></article><article class=\"card\"><h3>Independent work</h3><p>Construct finite-time processes using shortcuts to isothermality<br>Describe the cycle geometrically<br>Obtain an attainable output-power bound and protocol</p></article></div><div class=\"formula\">P = W<sub>out</sub> / τ</div><p class=\"caption\">The optimization concerns output power over the complete cycle.</p><div class=\"callout\">Significance: a unified description for general damping within the shortcut model.</div>"
       },
       "notes": {
-        "zh": "制备更快以后，还要回答所得状态是否具有所需的量子关联。我们把 Bell 检验也变成优化对象，寻找更强且更抗噪的量子违反。第一项预印本中，局部最优点通常落在多面体的 facet 上，这是数值观察。后续工作针对置换不变的一、二体关联构造可扩展的不等式族，并用半定规划认证。两篇有作者明确说明的内容重叠，应当作为同一个持续推进的系列。这里我担任第一作者和共同通讯作者，与Mengyao Hu、Jordi Tura 合作。",
-        "en": "Faster preparation must be complemented by a reliable test of the desired correlations. We optimize Bell tests for stronger and more noise-robust quantum violations. The first preprint numerically observes local optima at facets. The follow-up develops scalable permutation-invariant families using one- and two-body correlations and SDP certification. The authors state that the manuscripts overlap, so I present them as one developing series. I was first and co-corresponding author, working with Mengyao Hu and Jordi Tura."
+        "zh": "这篇论文是我独立完成的研究，适合用来说明从问题提出到理论分析的独立能力。研究对象是布朗热机，我利用等温捷径构造有限时间循环，再用热力学长度描述控制过程。与只在高度欠阻尼或过阻尼极限处理问题相比，这一框架适用于一般阻尼情形。我给出了可达的输出功率界，达到该功率上界的协议需要按热力学长度分配速度。这里一定要区分模型中的捷径控制和普通实验控制；协议的可达性是在所定义的控制集合中成立。稍后的最优控制工作进一步研究循环结构。 将两项独著连起来看，共同推进是由控制空间的几何结构得到协议；量子问题关注低激发，布朗热机进一步允许明确讨论可达功率界。下一项应用展示这套方法怎样从热机走向分离过程。",
+        "en": "This sole-author paper demonstrates independent work from problem formulation to analysis. I studied Brownian heat engines using shortcuts to isothermality, with thermodynamic length describing finite-time cycles. The approach includes general damping, rather than only strongly underdamped or overdamped limits. It gives an attainable output-power bound and an optimal schedule based on thermodynamic length. Attainability refers to the control set defined in the shortcut model. The later optimal-control work investigates the cycle structure directly. The two sole-author studies share a progression from control geometry to protocols: low excitation in quantum dynamics and an attainable power bound in Brownian engines. The next application carries this logic beyond engines to separation."
       },
       "sources": [
         {
-          "label": "arXiv:2511.07523 · 预印本 / Preprint",
-          "url": "https://arxiv.org/abs/2511.07523"
-        },
-        {
-          "label": "arXiv:2607.08462 · 预印本 / Preprint",
-          "url": "https://arxiv.org/abs/2607.08462"
+          "label": "PRE 106, 054108 (2022)",
+          "url": "https://doi.org/10.1103/PhysRevE.106.054108"
         }
       ],
       "backup": false
     },
     {
-      "id": "nite",
+      "id": "membrane",
       "section": {
-        "zh": "多体制备与认证",
-        "en": "State preparation"
+        "zh": "量子热力学与热机",
+        "en": "Quantum thermodynamics & engines"
       },
       "minutes": 2,
       "title": {
-        "zh": "从虚时间演化到量子自然梯度",
-        "en": "From imaginary-time evolution to quantum natural gradients"
+        "zh": "从几何界走向可检验的有限时间协议",
+        "en": "From geometric bounds to testable finite-time protocols"
       },
       "kicker": {
-        "zh": "发展性 · 量子变分优化 · NITE 预印本 · 共同通讯",
-        "en": "Development · Quantum variational optimization · NITE preprint · Co-corresponding"
+        "zh": "系列成果 · PRL 2022 + PRX Energy 2023",
+        "en": "Research sequence · PRL 2022 + PRX Energy 2023"
       },
       "html": {
-        "zh": "<div class=\"pathway\"><span>一般量子代价函数</span><span>Fubini–Study 梯度流</span><span>变分实现与量子自然梯度</span></div><div class=\"cols\"><article class=\"card\"><h3>把优化目标推广</h3><p>从基态能量，推广到可微纯态代价<br>方差最小化 · 量子传感探针 · 激发态</p></article><article class=\"card\"><h3>把收敛性质讲清楚</h3><p>在相应假设下证明局部指数收敛<br>示例中比较标准梯度下降<br>优化对象与几何结构共同设计</p></article></div><div class=\"jt-badges\"><span class=\"jt-badge jt-badge--growth\">预印本 arXiv:2607.09599</span></div><p class=\"jt-collab-inline\">合作：Chenyu Shi、Hao Wang（莱顿 LIACS）。已有结果属于量子变分优化。</p>",
-        "en": "<div class=\"pathway\"><span>General quantum objective</span><span>Fubini–Study gradient flow</span><span>Variational quantum natural gradient</span></div><div class=\"cols\"><article class=\"card\"><h3>Extend the objective</h3><p>From ground-state energy to differentiable pure-state costs<br>Variance, sensing probes and excited states</p></article><article class=\"card\"><h3>Characterize convergence</h3><p>Local exponential convergence under stated assumptions<br>Compare standard gradient descent in examples<br>Design objectives together with geometry</p></article></div><div class=\"jt-badges\"><span class=\"jt-badge jt-badge--growth\">Preprint arXiv:2607.09599</span></div><p class=\"jt-collab-inline\">With Chenyu Shi and Hao Wang (Leiden LIACS). Completed results concern quantum variational optimization.</p>"
+        "zh": "<div class=\"cols\"><div class=\"result-summary\"><h3>几何预测与动力学模拟相符</h3><p>二元气体的有限时间膜分离</p><div class=\"formula\">W<sub>ex</sub> ≥ ℒ² / τ</div><p class=\"caption\">曲线：几何预测；符号：模拟结果。</p><p>对称装置的最优协议可以打破对称性，进一步降低额外功。</p></div><figure class=\"paper-figure\"><img src=\"assets/membrane-result.png\" alt=\"论文图4(c)：额外功随操作时间变化，对称与非对称分离协议比较\"><figcaption>原论文图 4(c) · 红：对称协议；绿：非对称协议。<br>此例的差异较小；插图显示细节。</figcaption></figure></div><div class=\"callout\">PRL 2022：第二作者、编辑推荐 · PRX Energy 2023：共同第一作者。</div>",
+        "en": "<div class=\"cols\"><div class=\"result-summary\"><h3>Geometry agrees with simulations</h3><p>Finite-time binary-gas membrane separation</p><div class=\"formula\">W<sub>ex</sub> ≥ ℒ² / τ</div><p class=\"caption\">Lines: geometric predictions; symbols: simulations.</p><p>An optimal protocol can break device symmetry and reduce excess work.</p></div><figure class=\"paper-figure\"><img src=\"assets/membrane-result.png\" alt=\"Original Figure 4(c): excess work versus duration, comparing symmetric and asymmetric protocols\"><figcaption>Original Fig. 4(c) · Red: symmetric; green: asymmetric.<br>The difference is small in this example; see the inset.</figcaption></figure></div><div class=\"callout\">PRL 2022: second author, Editors’ Suggestion. PRX Energy 2023: co-first author.</div>"
       },
       "notes": {
-        "zh": "这项最新预印本把量子态制备与优化方法直接连接起来。标准虚时间演化主要降低能量；我们将它推广为一般量子代价函数的非线性虚时间演化，也就是 NITE。其几何基础是 Fubini–Study 度量，变分实现对应量子自然梯度。我们研究了方差最小化、量子传感探针优化和带惩罚项的激发态制备，并在给定假设下证明局部指数收敛。这里我是共同通讯作者，与Chenyu Shi和莱顿计算机科学的 Hao Wang 合作。本工作把量子几何方法从基态能量推广到更多量子态优化任务。下一节转向这些优化过程所需要的涨落与代价理论。",
-        "en": "This recent preprint connects quantum-state preparation directly with optimization methods. Standard imaginary-time evolution reduces energy. NITE generalizes it to differentiable quantum objectives, with Fubini–Study gradient flow and a variational implementation related to quantum natural gradients. We study variance minimization, sensing probes and excited-state preparation with penalties, and prove local exponential convergence under stated assumptions. I was a co-corresponding author with Hao Wang, working with Chenyu Shi. This extends geometric quantum optimization beyond ground-state energy to further state-preparation tasks. I now turn to the fluctuation and cost theory needed to describe such processes."
+        "zh": "这组工作把几何方法从公式推进到操作路径。等温捷径的 PRL 证明最小能耗协议与参数空间的测地线对应；随后膜分离工作在具体气体模型中建立有限时间额外功的几何下界，并设计相应路径。这里的原图比较几何预测曲线和动力学模拟符号，说明关系在所研究参数中可检验。对称装置的最优协议还可以破坏对称性，但本图差别很小，不能夸大节能幅度。二〇二二年的 PRL 我是第二作者，二〇二三年的 PRX Energy 我是共同第一作者，与孙昌璞、董辉等合作。再联系早期有限时间标度的实验 PRL，形成的是“几何预测—协议构造—模型或实验检验”的研究链。",
+        "en": "This sequence carries geometry from bounds into operating protocols. The shortcuts-to-isothermality PRL establishes the geodesic principle. The membrane-separation work then derives a geometric excess-work bound in gas models and constructs paths. The original figure compares geometric predictions with dynamical simulations. Symmetry breaking can lower the cost, although the improvement is small for these plotted parameters. I was second author on the 2022 PRL and co-first on the 2023 PRX Energy paper, with C. P. Sun, Hui Dong and colleagues. Together with the earlier experimental scaling PRL, the sequence connects geometric predictions, protocols and model or experimental tests."
       },
       "sources": [
         {
-          "label": "arXiv:2607.09599 · 预印本 / Preprint",
-          "url": "https://arxiv.org/abs/2607.09599"
+          "label": "PRL 128, 230603 (2022)",
+          "url": "https://doi.org/10.1103/PhysRevLett.128.230603"
+        },
+        {
+          "label": "PRX Energy 2, 033003 (2023)",
+          "url": "https://doi.org/10.1103/PRXEnergy.2.033003"
+        },
+        {
+          "label": "PRL 125, 210601 (2020)",
+          "url": "https://doi.org/10.1103/PhysRevLett.125.210601"
+        }
+      ],
+      "backup": false
+    },
+    {
+      "id": "optimal-control",
+      "section": {
+        "zh": "量子热力学与热机",
+        "en": "Quantum thermodynamics & engines"
+      },
+      "minutes": 1.5,
+      "title": {
+        "zh": "从最优路径继续走向最优循环结构",
+        "en": "From optimal paths to optimal cycle structure"
+      },
+      "kicker": {
+        "zh": "研究延续 · PRE 2024 · 第一作者、共同通讯",
+        "en": "Research continuity · PRE 2024 · First & co-corresponding"
+      },
+      "html": {
+        "zh": "<div class=\"cols\"><article class=\"card\"><h3>问题</h3><p>给定可用控制与约束，最大功率循环应具有怎样的结构？</p></article><article class=\"card\"><h3>发现</h3><p>一般阻尼条件下的最优控制分析<br>两段等温、两段绝热<br>高刚度处加入等容弛豫</p></article></div><div class=\"pathway\"><span>等温</span><span>绝热</span><span>等容弛豫</span><span>闭合循环</span></div><div class=\"callout\">我的贡献：第一作者、共同通讯作者；将有限时间热机问题推进到最优控制框架。</div>",
+        "en": "<div class=\"cols\"><article class=\"card\"><h3>Question</h3><p>What cycle structure maximizes power under the specified controls and constraints?</p></article><article class=\"card\"><h3>Finding</h3><p>Optimal-control analysis for general damping<br>Two isothermal and two adiabatic segments<br>Additional isochoric relaxation at high stiffness</p></article></div><div class=\"pathway\"><span>Isothermal</span><span>Adiabatic</span><span>Isochoric relaxation</span><span>Closed cycle</span></div><div class=\"callout\">My contribution: first and co-corresponding author; extending finite-time engine analysis through optimal control.</div>"
+      },
+      "notes": {
+        "zh": "热机研究不只是在预先给定的循环上调时间。一个更深的问题是，最大功率循环本身应该是什么形状。我们在给定控制条件的一般阻尼模型中进行最优控制分析，得到两段等温、两段绝热以及高刚度处的额外等容弛豫结构。这个结果连接欠阻尼与过阻尼的讨论，也说明弛豫过程本身可以是优化方案的一部分。我是第一作者和共同通讯作者。对面试评委，最值得强调的不是循环名称，而是方法上的推进：从猜一个协议再验证，转向在约束下由动力学和优化条件决定协议结构。 这也是第一部分的收束：由量子效应和损耗机制出发，先独立构造几何控制，再向循环结构优化推进。与全海涛的合作使这一方法进入更完整的热机优化问题。 从热机中性能与代价的问题出发，下一部分进一步讨论非平衡过程的涨落统计和一致描述。",
+        "en": "Engine optimization need not be limited to adjusting timings on a predefined cycle. We asked what the maximum-power cycle itself should look like. Under the specified controls in a general-damping model, optimal-control analysis identifies two isothermals, two adiabatics and an extra isochoric relaxation segment at high stiffness. This connects underdamped and overdamped discussions and makes relaxation part of the optimization. I was the first and co-corresponding author. The methodological advance is to let dynamics and constraints determine the protocol structure. This closes the first progression: mechanisms and losses motivate independent geometric control, which then develops into cycle-structure optimization with H. T. Quan. These questions of performance and cost lead to the next part: fluctuation statistics and consistent descriptions of nonequilibrium processes."
+      },
+      "sources": [
+        {
+          "label": "PRE 110, L042105 (2024)",
+          "url": "https://doi.org/10.1103/PhysRevE.110.L042105"
         }
       ],
       "backup": false
@@ -472,8 +476,8 @@ window.REPORT = {
         "en": "Extend fluctuation relations to covariant and quantum descriptions"
       },
       "kicker": {
-        "zh": "代表 PRL ② · 2025 · 共同通讯 · 编辑推荐",
-        "en": "Representative PRL 2 · 2025 · Co-corresponding · Editors’ Suggestion"
+        "zh": "代表 PRL ① · 2025 · 共同通讯 · 编辑推荐",
+        "en": "Representative PRL 1 · 2025 · Co-corresponding · Editors’ Suggestion"
       },
       "html": {
         "zh": "<div class=\"cols\"><article class=\"card\"><span class=\"tag\">PRL 2025</span><h3>已发表：协变功与热</h3><p>能量与动量共同组成四矢量。<br>系统与热库相对运动时，<br>涨落关系保持一致的协变形式。</p></article><article class=\"card\"><span class=\"tag\">预印本 / Preprint · 2026</span><h3>发展：处理量子非对易性</h3><p>功四矢量分量不能简单同时测量。<br>结合 Wigner 与 Margenau–Hill 准概率，<br>将协变框架推进到量子过程。</p></article></div><div class=\"pathway\"><span>正反轨道</span><span>能量—动量协变描述</span><span>量子准概率拓展</span></div><p class=\"jt-collab-inline\">合作：Ji-Hui Pei、Tingzhang Shi、全海涛。量子拓展仍按预印本标注。</p>",
@@ -507,8 +511,8 @@ window.REPORT = {
         "en": "How do transitions change finite-time dissipation scaling?"
       },
       "kicker": {
-        "zh": "代表 PRL ③ · 2025 · 共同通讯作者",
-        "en": "Representative PRL 3 · 2025 · Co-corresponding"
+        "zh": "代表 PRL ② · 2025 · 共同通讯作者",
+        "en": "Representative PRL 2 · 2025 · Co-corresponding"
       },
       "html": {
         "zh": "<div class=\"cols\"><article class=\"card\"><h3>科学问题</h3><p>相变附近，有限时间代价如何随驱动速度和系统尺寸变化？</p></article><article class=\"card\"><h3>核心结果</h3><p>Curie–Weiss 模型中的遍历性破缺<br>大系统：额外功随 v<sup>2/3</sup> 标度<br>小系统：向 v 标度交叉</p></article></div><div class=\"callout\">有限尺寸与极限顺序影响耗散标度；不能默认所有过程都服从同一种慢驱动关系。</div><p class=\"caption\">v 为论文定义的驱动速度；上述结果限于所研究模型与标度区域。</p><p class=\"jt-collab-inline\">合作：Yu-Xin Wu、全海涛。联系：复杂动力学中的亚稳态与慢模态。</p>",
@@ -546,8 +550,8 @@ window.REPORT = {
         "en": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>Model consistency</h3><p class=\"jt-line-question\">When are heat and work well defined?</p><p class=\"jt-line-tools\">Detailed balance, reverse paths and counting statistics</p><div class=\"jt-line-output\">Sole-author Lindbladian preprint</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>Speed–cost relations</h3><p class=\"jt-line-question\">Which finite-time limits can be computed?</p><p class=\"jt-line-tools\">Thermodynamic length and optimal protocols</p><div class=\"jt-line-output\">Published PRE / PRL / PRX Energy</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>Complex dynamics</h3><p class=\"jt-line-question\">How do slow modes and size limit evolution?</p><p class=\"jt-line-tools\">Gaps, metastability and scaling</p><div class=\"jt-line-output\">Published PRL / PRB</div></article></div><p class=\"jt-section-note\">Statistics, geometry and spectra underpin computable, testable dynamics.</p>"
       },
       "notes": {
-        "zh": "这一节的成果最终汇聚到三个问题：模型是否一致、速度与代价有什么限制、复杂动力学中的慢过程怎样形成。除了已发表结果，我的独著预印本还建立热力学一致的 Lindblad 描述，给出功热联合统计和控制框架。它继续体现独立研究，但并不增加两篇已发表独著的数量。这些结果将过程定义、有限时间限制和具体动力学连接起来。接下来转向第三条线，说明几何与控制已经怎样在热机问题中形成可达到的结果。",
-        "en": "The results converge on three questions: model consistency, finite-time speed–cost limits and the origin of slow dynamics. My sole-author preprint on thermodynamically consistent Lindbladians adds a work–heat statistics and control framework; it is separate from the two published sole-author papers. Together, these results connect process definitions, finite-time limits and concrete dynamics. I now move to the third line to show how geometry and control already produce attainable results in heat engines."
+        "zh": "这一节的成果最终汇聚到三个问题：模型是否一致、速度与代价有什么限制、复杂动力学中的慢过程怎样形成。除了已发表结果，我的独著预印本还建立热力学一致的 Lindblad 描述，给出功热联合统计和控制框架。它继续体现独立研究，但并不增加两篇已发表独著的数量。这些结果将过程定义、有限时间限制和具体动力学连接起来。接下来转向近年的量子非定域性研究，讨论多体量子态怎样制备，以及量子关联怎样得到可靠认证。",
+        "en": "The results converge on three questions: model consistency, finite-time speed–cost limits and the origin of slow dynamics. My sole-author preprint on thermodynamically consistent Lindbladians adds a work–heat statistics and control framework; it is separate from the two published sole-author papers. Together, these results connect process definitions, finite-time limits and concrete dynamics. I now turn to recent quantum-nonlocality research: how to prepare many-body states and reliably certify their correlations."
       },
       "sources": [
         {
@@ -566,211 +570,207 @@ window.REPORT = {
       "backup": false
     },
     {
-      "id": "engine-line",
+      "id": "manybody-line",
       "section": {
-        "zh": "量子热机与控制",
-        "en": "Heat engines & control"
+        "zh": "量子非定域性",
+        "en": "Quantum nonlocality"
       },
       "minutes": 1,
       "title": {
-        "zh": "从量子效应，到可达到的热机性能",
-        "en": "From quantum effects to attainable engine performance"
+        "zh": "多体态的制备基础与非定域性认证",
+        "en": "Many-body preparation and nonlocality certification"
       },
       "kicker": {
-        "zh": "研究线三 · 量子热力学与热机中的量子优势",
-        "en": "Line 3 · Quantum thermodynamics and engine advantage"
+        "zh": "研究线三 · 量子非定域性与多体态制备",
+        "en": "Line 3 · Quantum nonlocality and many-body preparation"
       },
       "html": {
-        "zh": "<div class=\"cols\"><article class=\"card\"><h3>物理机制</h3><p>工质统计与能量结构<br>有限时间的非绝热激发<br>相干动力学与功率—效率权衡</p></article><article class=\"card\"><h3>设计方法</h3><p>动力学量子几何：设计低激发路径<br>热力学几何：构造可达功率界<br>最优控制：决定循环结构</p></article></div><div class=\"pathway\"><span>理解优势或损耗来源</span><span>构造独立控制方法</span><span>在给定约束下检验性能</span></div>",
-        "en": "<div class=\"cols\"><article class=\"card\"><h3>Physical mechanisms</h3><p>Statistics and energy structure<br>Finite-time nonadiabatic excitations<br>Coherent dynamics and power–efficiency tradeoffs</p></article><article class=\"card\"><h3>Design methods</h3><p>Dynamical quantum geometry: low-excitation paths<br>Thermodynamic geometry: attainable bounds<br>Optimal control: cycle structure</p></article></div><div class=\"pathway\"><span>Identify mechanisms</span><span>Develop independent control methods</span><span>Test constrained performance</span></div>"
+        "zh": "<div class=\"cols\"><article class=\"card\"><h3>制备：怎样更快？</h3><p>热态：优化耗散生成元<br>纯态：优化母哈密顿量谱隙</p></article><article class=\"card\"><h3>认证：怎样可信？</h3><p>优化 Bell 检验的抗噪能力<br>用低阶关联与半定规划建立证书</p></article></div><div class=\"pathway\"><span>保持目标</span><span>优化动力学或检验</span><span>检验速度与可信度</span></div><div class=\"jt-badges\"><span class=\"jt-badge\">已发表：PRB / PRL</span><span class=\"jt-badge jt-badge--growth\">发展：Bell / NITE 预印本</span></div>",
+        "en": "<div class=\"cols\"><article class=\"card\"><h3>Preparation: how can it be faster?</h3><p>Thermal states: optimize the dissipative generator<br>Pure states: optimize parent-Hamiltonian gaps</p></article><article class=\"card\"><h3>Certification: how can it be reliable?</h3><p>Optimize noise-robust Bell tests<br>Use low-order correlations and SDP certificates</p></article></div><div class=\"pathway\"><span>Keep the target</span><span>Optimize dynamics or tests</span><span>Check speed & reliability</span></div><div class=\"jt-badges\"><span class=\"jt-badge\">Published: PRB / PRL</span><span class=\"jt-badge jt-badge--growth\">Development: Bell / NITE preprints</span></div>"
       },
       "notes": {
-        "zh": "第三条线从量子热机出发，但最终落在性能怎样实现。早期我研究工质统计、有限时间绝热段和效率功率的关系；之后不满足于比较给定循环，而是独立发展两类几何控制方法。量子几何用于抑制非绝热激发，布朗热机则提供能够明确构造最优协议的基准。它们进一步延伸到膜分离与最优循环结构。下面按“机制—控制—可达结果”的顺序来讲，而不按年份逐篇介绍。",
-        "en": "The third line starts with quantum engines and asks how performance can actually be achieved. Earlier work studied statistics, finite-time adiabatic strokes and power–efficiency relations. I then independently developed two geometric-control approaches: quantum geometry to suppress excitations, and Brownian engines as a benchmark with explicitly attainable protocols. These methods extend to membrane separation and optimal cycle structure. I will organize the results by mechanism, control and attainability rather than publication date."
+        "zh": "第三部分介绍近年的量子非定域性研究，以及相关的多体态制备与优化。制备方法回答怎样得到目标态；Bell 检验回答所得关联能否超出经典局域描述。一个多体态要成为可用资源，首先要能够制备，其次要能够检验。制备部分的共同思想是保持目标态，但利用动力学的不唯一性来加快过程：对热态改变耗散生成元，对纯态改变母哈密顿量。非定域性研究优化 Bell 检验本身，使量子关联更容易被可靠识别。接下来的几页依次说明这个设计思想、已发表结果和正在发展的量子优化工作。",
+        "en": "The third part covers recent quantum-nonlocality research and its links to many-body preparation and optimization. A many-body state must be prepared and verified before it becomes a useful resource. The shared preparation idea is to keep the target while exploiting freedom in its dynamics: dissipative generators for thermal states and parent Hamiltonians for pure states. Nonlocality research optimizes the Bell test so that quantum correlations can be identified more robustly. I will trace this progression through published results and current quantum-optimization preprints."
       },
       "sources": [
         {
-          "label": "PRE 100, 032144 (2019)",
-          "url": "https://doi.org/10.1103/PhysRevE.100.032144"
+          "label": "PRB 113, 184313 (2026)",
+          "url": "https://doi.org/10.1103/r43j-qfj5"
+        },
+        {
+          "label": "PRL 135, 090602 (2025)",
+          "url": "https://doi.org/10.1103/cslt-x32n"
+        },
+        {
+          "label": "arXiv:2511.07523 · 预印本 / Preprint",
+          "url": "https://arxiv.org/abs/2511.07523"
+        }
+      ],
+      "backup": false
+    },
+    {
+      "id": "thermalization-framework",
+      "section": {
+        "zh": "量子非定域性",
+        "en": "Quantum nonlocality"
+      },
+      "minutes": 1.5,
+      "title": {
+        "zh": "固定热态，把动力学变成设计变量",
+        "en": "Keep the thermal state and design the dynamics"
+      },
+      "kicker": {
+        "zh": "已发表 · PRB 2026 · 第一作者、共同通讯",
+        "en": "Published · PRB 2026 · First & co-corresponding"
+      },
+      "html": {
+        "zh": "<div class=\"pathway\"><span>一致性构造</span><span>对称性降维</span><span>张量网络</span><span>梯度优化</span></div><div class=\"cols\"><article class=\"card\"><h3>理论框架</h3><p>构造以目标 Gibbs 态为稳态的 Lindbladian<br>利用对称性减少优化复杂度</p></article><article class=\"card\"><h3>规模与验证</h3><p>张量网络处理更大系统<br>谱隙下界与变分上界辅助验证<br>覆盖经典与量子多体模型</p></article></div><div class=\"callout\">我的贡献：核心理论框架、优化方法与主要结果；第一作者、共同通讯作者。</div>",
+        "en": "<div class=\"pathway\"><span>Consistent construction</span><span>Symmetry reduction</span><span>Tensor networks</span><span>Gradient optimization</span></div><div class=\"cols\"><article class=\"card\"><h3>Theory</h3><p>Construct Lindbladians with the target Gibbs state as stationary state<br>Reduce complexity using symmetry</p></article><article class=\"card\"><h3>Scale & verification</h3><p>Use tensor networks for larger systems<br>Certified lower and variational upper gap bounds<br>Classical and quantum many-body models</p></article></div><div class=\"callout\">My contribution: core framework, optimization method and principal results; first and co-corresponding author.</div>"
+      },
+      "notes": {
+        "zh": "这项二〇二六年正式发表于 PRB 的工作，可以分成四个步骤。首先构造保持目标热态的 Lindbladian，保证目标与动力学是一致的；其次利用对称性减少自由参数和计算维数；第三引入张量网络，超越只做小尺寸精确对角化的范围；最后通过梯度方法优化谱隙。对于较大系统，我们结合可验证的下界与变分上界判断谱隙，而不是只依赖一次数值优化的输出。我的贡献集中在核心理论框架、优化方法与主要结果，担任第一作者和共同通讯作者。报告时应强调这是结构设计加数值验证相结合的工作，并说明不同模型采用的约束。 这里的统一设计思想是“目标不变、动力学可变”。这与稍后优化母哈密顿量是一致的；区别在于此处研究开放系统的弛豫。合作涉及 Jordi Tura、Patrick Emonts、Maciej Lewenstein 等多体与量子信息研究者。下一页用原论文图说明实际改善。",
+        "en": "The 2026 PRB combines four ingredients. We first construct Lindbladians that preserve the target Gibbs state, then use symmetry to reduce parameters and dimension. Tensor networks extend the analysis beyond small-system exact diagonalization, and gradient optimization improves the gap. For larger systems, certified lower and variational upper bounds support validation instead of relying solely on an optimizer output. My contributions were the core theoretical framework, optimization method and principal results, as first and co-corresponding author. The constraints are model-specific and should be stated when discussing particular examples. The unifying principle is a fixed target with variable dynamics. The later parent-Hamiltonian work uses the same design freedom for a different process. Collaborators include Jordi Tura, Patrick Emonts and Maciej Lewenstein. The next slide shows the original numerical result."
+      },
+      "sources": [
+        {
+          "label": "PRB 113, 184313 (2026)",
+          "url": "https://doi.org/10.1103/r43j-qfj5"
+        }
+      ],
+      "backup": false
+    },
+    {
+      "id": "gap-principle",
+      "section": {
+        "zh": "量子非定域性",
+        "en": "Quantum nonlocality"
+      },
+      "minutes": 2.5,
+      "title": {
+        "zh": "设计自由度能带来可检验的谱隙提升",
+        "en": "Design freedom produces a testable gap improvement"
+      },
+      "kicker": {
+        "zh": "已发表 · 经典多体基准，连接量子热态制备",
+        "en": "Published · Classical benchmark for a quantum preparation framework"
+      },
+      "html": {
+        "zh": "<div class=\"cols\"><div class=\"result-summary\"><h3>低温区的慢模态得到改善</h3><p>横轴 βJ：逆温度 × 耦合强度<br>纵轴 NΔ：归一化谱隙（对数）</p><p>曲线：N = 10 精确对角化<br>符号：N = 40，DMRG<br>插图：SDP 认证结果</p><div class=\"callout\">蓝：单自旋翻转；橙：单 + 双翻转。<br>实线/实心为优化；虚线/空心为基准。</div></div><figure class=\"paper-figure\"><img src=\"assets/thermalization-result.png\" alt=\"作者版图1(b)：kinetic Ising模型谱隙随逆温度变化，比较基准和优化动力学\"><figcaption>作者版原图 1(b) · arXiv:2411.03420v2。<br>谱隙以外，还需检查有限时间收敛与资源约束。</figcaption></figure></div><div class=\"jt-badges\"><span class=\"jt-badge\">第一作者、共同通讯 · PRB 2026</span></div>",
+        "en": "<div class=\"cols\"><div class=\"result-summary\"><h3>Improved slow modes at low temperature</h3><p>Horizontal: βJ, inverse temperature × coupling<br>Vertical: NΔ, normalized gap (log scale)</p><p>Lines: N = 10 exact diagonalization<br>Symbols: N = 40 DMRG<br>Inset: SDP-certified results</p><div class=\"callout\">Blue: single flips; orange: single + double flips.<br>Solid/filled: optimized; dashed/open: baseline.</div></div><figure class=\"paper-figure\"><img src=\"assets/thermalization-result.png\" alt=\"Author-version Figure 1(b): kinetic Ising gap versus inverse temperature, baseline and optimized dynamics\"><figcaption>Original author-version Fig. 1(b) · arXiv:2411.03420v2.<br>Also check finite-time convergence and resource constraints.</figcaption></figure></div><div class=\"jt-badges\"><span class=\"jt-badge\">First & co-corresponding · PRB 2026</span></div>"
+      },
+      "notes": {
+        "zh": "谱隙刻画渐近慢模态，因此是一个自然的动力学优化目标。这里展示原论文的经典一维 kinetic Ising 结果：横轴是逆温度与耦合的乘积，纵轴是归一化谱隙。蓝色表示单自旋翻转，橙色允许单双翻转；同色实线实心为优化结果，虚线空心为基准。低温区的改善更明显。小尺寸精确对角化、较大尺寸 DMRG 与插图中的 SDP 认证相互支持。完整制备速度还要同时指定初态、误差和生成元资源，并检验有限时间收敛。回到本节主线，改变允许的通道和速率，能够在目标平衡态保持不变时改善慢模态。下面把这一设计思想推进到绝热纯态制备。",
+        "en": "The gap characterizes asymptotically slow modes and is a natural design target. This original figure shows the classical one-dimensional kinetic Ising model: inverse temperature times coupling horizontally, normalized gap vertically. Blue denotes single-spin flips; orange allows single and double flips. Within each color, solid lines and filled symbols are optimized, while dashed lines and open symbols are baseline. The improvement is stronger at low temperature. Small-system exact diagonalization, larger-system DMRG and the SDP certificate in the inset support the result. Preparation speed also requires an initial state, error criterion, fixed generator resources and finite-time convergence checks. The common idea is to change allowed channels and rates while preserving the equilibrium target. I now extend it to adiabatic pure-state preparation."
+      },
+      "sources": [
+        {
+          "label": "PRB 113, 184313 (2026)",
+          "url": "https://doi.org/10.1103/r43j-qfj5"
+        },
+        {
+          "label": "原图 / Original figure · arXiv:2411.03420v2",
+          "url": "https://arxiv.org/abs/2411.03420v2"
+        }
+      ],
+      "backup": false
+    },
+    {
+      "id": "adiabatic",
+      "section": {
+        "zh": "量子非定域性",
+        "en": "Quantum nonlocality"
+      },
+      "minutes": 2.5,
+      "title": {
+        "zh": "保持目标纯态，改善绝热制备的瓶颈",
+        "en": "Keep the target state and improve the adiabatic bottleneck"
+      },
+      "kicker": {
+        "zh": "代表 PRL ③ · 2025 · 共同通讯作者",
+        "en": "Representative PRL 3 · 2025 · Co-corresponding"
+      },
+      "html": {
+        "zh": "<div class=\"cols\"><article class=\"card\"><h3>封闭系统中的对应问题</h3><p>目标张量网络态固定<br>利用母哈密顿量的非唯一性<br>优化绝热路径的能隙</p></article><article class=\"card\"><h3>研究结果与积累</h3><p>在随机一维张量网络态、AKLT 与 GHZ 等例子中研究<br>连接量子几何、哈密顿量设计与态制备</p></article></div><div class=\"callout\">我的贡献：参与能隙优化思路、理论分析与研究设计；共同通讯作者。</div><p class=\"caption\">相关独著：PRR 4, 023252 (2022)，以动力学量子几何张量研究绝热过程加速。</p><p class=\"jt-collab-inline\">合作：K. S. Rai · Patrick Emonts · Jordi Tura</p>",
+        "en": "<div class=\"cols\"><article class=\"card\"><h3>Closed-system counterpart</h3><p>Fix a target tensor-network state<br>Exploit nonunique parent Hamiltonians<br>Optimize the gap along the adiabatic path</p></article><article class=\"card\"><h3>Results & foundations</h3><p>Examples include random 1D tensor-network states, AKLT and GHZ<br>Connect quantum geometry, Hamiltonian design and preparation</p></article></div><div class=\"callout\">My contribution: gap-optimization concept, theoretical analysis and research design; co-corresponding author.</div><p class=\"caption\">Related sole-author work: PRR 4, 023252 (2022), dynamical quantum geometric tensors for faster adiabatic processes.</p><p class=\"jt-collab-inline\">With K. S. Rai, Patrick Emonts and Jordi Tura</p>"
+      },
+      "notes": {
+        "zh": "固定目标但优化动力学的思路不只适用于开放系统。在封闭系统里，一个目标张量网络态可以对应多个母哈密顿量。我们利用这种自由度，在保持目标态的条件下优化绝热制备路径的能隙，研究了随机一维张量网络态、AKLT 和 GHZ 等例子。我参与优化概念、理论分析和研究设计，是共同通讯作者。它也与我二〇二二年独著的动力学量子几何张量工作相接：前者强调目标态约束下的哈密顿量自由度，后者从动力学几何出发设计加速。两类结果共同构成我在量子控制与制备方面的方法积累。 与前面热化结果合在一起看，制备优化对象由开放系统生成元延伸到了闭系统母哈密顿量。两项工作都不是简单改变目标态来换取速度，而是在保持目标条件下使用可控自由度。这是这一系列工作的系统性。",
+        "en": "The same idea extends to closed systems. A target tensor-network state can admit multiple parent Hamiltonians. We exploit that freedom to optimize the gap along an adiabatic preparation path while preserving the target state, studying random 1D tensor-network states, AKLT and GHZ examples. I contributed to the optimization concept, theory and research design as a co-corresponding author. This connects with my sole-author 2022 work on dynamical quantum geometric tensors, although the two approaches use different optimization freedoms. Together with the thermalization result, this extends the design variable from an open-system generator to a closed-system parent Hamiltonian. Both use controllable freedom while retaining the target. That connection is the central progression of the preparation work."
+      },
+      "sources": [
+        {
+          "label": "PRL 135, 090602 (2025)",
+          "url": "https://doi.org/10.1103/cslt-x32n"
         },
         {
           "label": "PRR 4, 023252 (2022)",
           "url": "https://doi.org/10.1103/PhysRevResearch.4.023252"
-        },
-        {
-          "label": "PRE 106, 054108 (2022)",
-          "url": "https://doi.org/10.1103/PhysRevE.106.054108"
         }
       ],
       "backup": false
     },
     {
-      "id": "quantum-engine",
+      "id": "nonlocality",
       "section": {
-        "zh": "量子热机与控制",
-        "en": "Heat engines & control"
+        "zh": "量子非定域性",
+        "en": "Quantum nonlocality"
       },
       "minutes": 1.5,
       "title": {
-        "zh": "量子效应如何进入热机的性能？",
-        "en": "How do quantum effects enter engine performance?"
+        "zh": "量子非定域性：优化 Bell 检验与认证",
+        "en": "Quantum nonlocality: optimize Bell tests and certification"
       },
       "kicker": {
-        "zh": "已发表系列 · 工质、非绝热损耗与效率—功率",
-        "en": "Published series · Working media, nonadiabatic loss and performance"
+        "zh": "发展性 · Bell 系列预印本 · 第一作者、共同通讯",
+        "en": "Development · Bell-series preprints · First & co-corresponding"
       },
       "html": {
-        "zh": "<div class=\"cols\"><article class=\"card\"><h3>工质与动力学</h3><p>Bose–Fermi 对偶：工质的统计与能量结构。<br>两能级／谐振子等模型中，绝热段额外功有振荡结构。<br>调整时间与协议，可以利用该动力学改善循环。</p></article><article class=\"card\"><h3>真正的比较问题</h3><p>固定工质、热库与允许控制。<br>分别比较输出功、周期时间和最大功率下效率。<br>识别哪些量子效应在条件内有用。</p></article></div><p class=\"jt-section-note\">自然引出：能否直接设计低激发的绝热路径，而不只优化一个预设时间表？</p>",
-        "en": "<div class=\"cols\"><article class=\"card\"><h3>Working medium and dynamics</h3><p>Bose–Fermi duality links statistics and energy structure.<br>Two-level and harmonic-oscillator models show oscillatory adiabatic excess work.<br>Timing and protocols can exploit this dynamics.</p></article><article class=\"card\"><h3>A well-defined comparison</h3><p>Fix the medium, reservoirs and allowed controls.<br>Compare work, cycle time and efficiency at maximum power.<br>Identify useful quantum effects in that setting.</p></article></div><p class=\"jt-section-note\">Next question: can we design low-excitation adiabatic paths directly, beyond retiming a prescribed cycle?</p>"
+        "zh": "<div class=\"cols\"><article class=\"card\"><h3>构造：优化检验本身</h3><p>最大化量子值／经典界的比值<br>迭代寻找抗噪的多体 Bell 检验<br>局部极值落在 facet：数值观察</p></article><article class=\"card\"><h3>认证：让多体规模可计算</h3><p>使用置换不变的一、二体关联<br>构造可扩展的不等式族<br>半定规划认证量子违反</p></article></div><div class=\"pathway\"><span>多面体结构</span><span>抗噪优化</span><span>低阶关联与证书</span></div><p class=\"jt-section-note\">两篇属于同一 Bell 研究系列，作者声明部分内容重叠。合作：Mengyao Hu、Jordi Tura。</p>",
+        "en": "<div class=\"cols\"><article class=\"card\"><h3>Construction: optimize the test</h3><p>Optimize the quantum-to-classical ratio<br>Iteratively find robust multipartite tests<br>Facet local optima: numerical observation</p></article><article class=\"card\"><h3>Certification: make scaling tractable</h3><p>Use permutation-invariant one- and two-body correlations<br>Construct scalable inequality families<br>Certify violations with SDP</p></article></div><div class=\"pathway\"><span>Polyhedral structure</span><span>Robustness optimization</span><span>Low-order certificates</span></div><p class=\"jt-section-note\">The two manuscripts form a partly overlapping Bell series. With Mengyao Hu and Jordi Tura.</p>"
       },
       "notes": {
-        "zh": "量子热机的性能取决于工质，也取决于有限时间动力学。早期工作研究了囚禁玻色气体的 Bose–Fermi 对偶性，说明统计和能量结构如何进入循环描述。在有限时间量子 Otto 热机中，绝热段产生的额外功并非总是平滑变化，而有振荡结构；这为控制时间和协议提供了可利用的自由度。随后我们进一步分析最大功率下效率。对优势的判断，始终需要说明工质、热库和允许控制。由这些机制研究，一个自然的独立问题出现了：能否从量子动力学本身构造抑制激发的最优路径？",
-        "en": "Quantum-engine performance depends on the medium and finite-time dynamics. Early work studied Bose–Fermi duality for trapped gases. In finite-time quantum Otto cycles, adiabatic excess work has an oscillatory structure that provides useful timing and protocol freedom. Further work examined efficiency at maximum power. Any advantage comparison must specify the medium, reservoirs and allowed control. These mechanisms motivate an independent question: can the quantum dynamics itself provide a systematic way to design low-excitation paths?"
+        "zh": "制备更快以后，还要回答所得状态是否具有所需的量子关联。我们把 Bell 检验也变成优化对象，寻找更强且更抗噪的量子违反。第一项预印本中，局部最优点通常落在多面体的 facet 上，这是数值观察。后续工作针对置换不变的一、二体关联构造可扩展的不等式族，并用半定规划认证。两篇有作者明确说明的内容重叠，应当作为同一个持续推进的系列。这里我担任第一作者和共同通讯作者，与Mengyao Hu、Jordi Tura 合作。",
+        "en": "Faster preparation must be complemented by a reliable test of the desired correlations. We optimize Bell tests for stronger and more noise-robust quantum violations. The first preprint numerically observes local optima at facets. The follow-up develops scalable permutation-invariant families using one- and two-body correlations and SDP certification. The authors state that the manuscripts overlap, so I present them as one developing series. I was first and co-corresponding author, working with Mengyao Hu and Jordi Tura."
       },
       "sources": [
         {
-          "label": "PRE 98, 062119 (2018)",
-          "url": "https://doi.org/10.1103/PhysRevE.98.062119"
+          "label": "arXiv:2511.07523 · 预印本 / Preprint",
+          "url": "https://arxiv.org/abs/2511.07523"
         },
         {
-          "label": "PRE 100, 032144 (2019)",
-          "url": "https://doi.org/10.1103/PhysRevE.100.032144"
-        },
-        {
-          "label": "PRE 100, 062140 (2019)",
-          "url": "https://doi.org/10.1103/PhysRevE.100.062140"
+          "label": "arXiv:2607.08462 · 预印本 / Preprint",
+          "url": "https://arxiv.org/abs/2607.08462"
         }
       ],
       "backup": false
     },
     {
-      "id": "quantum-geometry",
+      "id": "nite",
       "section": {
-        "zh": "量子热机与控制",
-        "en": "Heat engines & control"
+        "zh": "量子非定域性",
+        "en": "Quantum nonlocality"
       },
       "minutes": 2,
       "title": {
-        "zh": "用量子几何设计低激发的控制路径",
-        "en": "Use quantum geometry to design low-excitation paths"
+        "zh": "从虚时间演化到量子自然梯度",
+        "en": "From imaginary-time evolution to quantum natural gradients"
       },
       "kicker": {
-        "zh": "独立性 ① · 已发表独著 · PRR 2022",
-        "en": "Independence 1 · Published sole-author paper · PRR 2022"
+        "zh": "发展性 · 量子变分优化 · NITE 预印本 · 共同通讯",
+        "en": "Development · Quantum variational optimization · NITE preprint · Co-corresponding"
       },
       "html": {
-        "zh": "<div class=\"cols\"><article class=\"card\"><h3>从动力学得到度量</h3><p>把能隙与跃迁结构纳入<br>动力学量子几何张量。<br>度量告诉我们哪些参数变化更容易产生激发。</p></article><article class=\"card\"><h3>从度量得到协议</h3><p>沿测地线以恒定几何速度驱动。<br>在 Landau–Zener 与横场 Ising 模型中检验。<br>由结构设计路径，而不只调整总时间。</p></article></div><div class=\"pathway\"><span>量子动力学</span><span>动力学度量</span><span>测地线与恒定几何速度</span></div><div class=\"jt-badges\"><span class=\"jt-badge jt-badge--independence\">Jin-Fu Chen · Sole author</span></div>",
-        "en": "<div class=\"cols\"><article class=\"card\"><h3>A metric from dynamics</h3><p>Include gaps and transition structure<br>in a dynamical quantum geometric tensor.<br>The metric identifies costly parameter changes.</p></article><article class=\"card\"><h3>A protocol from the metric</h3><p>Follow geodesics at constant geometric speed.<br>Test Landau–Zener and transverse-field Ising models.<br>Design paths rather than only total duration.</p></article></div><div class=\"pathway\"><span>Quantum dynamics</span><span>Dynamical metric</span><span>Geodesic at constant geometric speed</span></div><div class=\"jt-badges\"><span class=\"jt-badge jt-badge--independence\">Jin-Fu Chen · Sole author</span></div>"
+        "zh": "<div class=\"pathway\"><span>一般量子代价函数</span><span>Fubini–Study 梯度流</span><span>变分实现与量子自然梯度</span></div><div class=\"cols\"><article class=\"card\"><h3>把优化目标推广</h3><p>从基态能量，推广到可微纯态代价<br>方差最小化 · 量子传感探针 · 激发态</p></article><article class=\"card\"><h3>把收敛性质讲清楚</h3><p>在相应假设下证明局部指数收敛<br>示例中比较标准梯度下降<br>优化对象与几何结构共同设计</p></article></div><div class=\"jt-badges\"><span class=\"jt-badge jt-badge--growth\">预印本 arXiv:2607.09599</span></div><p class=\"jt-collab-inline\">合作：Chenyu Shi、Hao Wang（莱顿 LIACS）。已有结果属于量子变分优化。</p>",
+        "en": "<div class=\"pathway\"><span>General quantum objective</span><span>Fubini–Study gradient flow</span><span>Variational quantum natural gradient</span></div><div class=\"cols\"><article class=\"card\"><h3>Extend the objective</h3><p>From ground-state energy to differentiable pure-state costs<br>Variance, sensing probes and excited states</p></article><article class=\"card\"><h3>Characterize convergence</h3><p>Local exponential convergence under stated assumptions<br>Compare standard gradient descent in examples<br>Design objectives together with geometry</p></article></div><div class=\"jt-badges\"><span class=\"jt-badge jt-badge--growth\">Preprint arXiv:2607.09599</span></div><p class=\"jt-collab-inline\">With Chenyu Shi and Hao Wang (Leiden LIACS). Completed results concern quantum variational optimization.</p>"
       },
       "notes": {
-        "zh": "这是第一项已经发表的独著工作。它延续量子热机中非绝热损耗的问题，但把目标改为直接设计低激发过程。我从绝热动力学出发构造动力学量子几何张量，让能隙和跃迁矩阵元共同决定控制空间的度量。再利用这个度量寻找测地线，并以恒定几何速度驱动，在 Landau–Zener 和横场 Ising 模型中检验抑制激发的效果。独立性体现为由问题、推导到模型检验的一条完整研究经历。这里得到的是具体条件下的低激发控制方法，不需要声称对所有模型普适最优。下一页看相同的几何思维如何在热机基准中给出可达到的功率界。",
-        "en": "This is the first published sole-author study. It develops the nonadiabatic-loss question from quantum engines into direct low-excitation control. A dynamical quantum geometric tensor combines gaps and transition structure into a metric on control space. Geodesic paths with constant geometric speed are tested in Landau–Zener and transverse-field Ising models. The independent contribution spans formulation, derivation and model checks. The result is a model-qualified control method, not a universal optimality claim. Next I use geometric reasoning in an engine benchmark where the power bound is explicitly attainable."
+        "zh": "这项最新预印本把量子态制备与优化方法直接连接起来。标准虚时间演化主要降低能量；我们将它推广为一般量子代价函数的非线性虚时间演化，也就是 NITE。其几何基础是 Fubini–Study 度量，变分实现对应量子自然梯度。我们研究了方差最小化、量子传感探针优化和带惩罚项的激发态制备，并在给定假设下证明局部指数收敛。这里我是共同通讯作者，与Chenyu Shi和莱顿计算机科学的 Hao Wang 合作。本工作把量子几何方法从基态能量推广到更多量子态优化任务。至此，三个方面的过去工作介绍完毕。下面归纳这条研究路径中的方法积累与个人贡献。",
+        "en": "This recent preprint connects quantum-state preparation directly with optimization methods. Standard imaginary-time evolution reduces energy. NITE generalizes it to differentiable quantum objectives, with Fubini–Study gradient flow and a variational implementation related to quantum natural gradients. We study variance minimization, sensing probes and excited-state preparation with penalties, and prove local exponential convergence under stated assumptions. I was a co-corresponding author with Hao Wang, working with Chenyu Shi. This extends geometric quantum optimization beyond ground-state energy to further state-preparation tasks. This completes the three parts of my past research. I will now summarize the methods and contributions developed along this trajectory."
       },
       "sources": [
         {
-          "label": "PRR 4, 023252 (2022)",
-          "url": "https://doi.org/10.1103/PhysRevResearch.4.023252"
-        }
-      ],
-      "backup": false
-    },
-    {
-      "id": "brownian",
-      "section": {
-        "zh": "量子热机与控制",
-        "en": "Heat engines & control"
-      },
-      "minutes": 2,
-      "title": {
-        "zh": "在可控基准中构造可达到的功率界",
-        "en": "Construct an attainable power bound in a controlled benchmark"
-      },
-      "kicker": {
-        "zh": "独立性 ② · 已发表独著 · PRE 2022",
-        "en": "Independence 2 · Published sole-author paper · PRE 2022"
-      },
-      "html": {
-        "zh": "<div class=\"cols\"><article class=\"card\"><h3>要解决的问题</h3><p>有限时间热机怎样同时选择循环路径和操作速度？</p></article><article class=\"card\"><h3>独立完成的工作</h3><p>利用等温捷径构造有限时间过程<br>建立循环的热力学几何描述<br>得到可达的输出功率界与最优协议</p></article></div><div class=\"formula\">P = W<sub>out</sub> / τ</div><p class=\"caption\">优化对象是整个循环的输出功率。</p><div class=\"callout\">意义：在该捷径模型内，将欠阻尼与过阻尼之外的一般阻尼情形纳入统一描述。</div>",
-        "en": "<div class=\"cols\"><article class=\"card\"><h3>Question</h3><p>How should a finite-time engine choose both its cycle and its schedule?</p></article><article class=\"card\"><h3>Independent work</h3><p>Construct finite-time processes using shortcuts to isothermality<br>Describe the cycle geometrically<br>Obtain an attainable output-power bound and protocol</p></article></div><div class=\"formula\">P = W<sub>out</sub> / τ</div><p class=\"caption\">The optimization concerns output power over the complete cycle.</p><div class=\"callout\">Significance: a unified description for general damping within the shortcut model.</div>"
-      },
-      "notes": {
-        "zh": "这篇论文是我独立完成的研究，适合用来说明从问题提出到理论分析的独立能力。研究对象是布朗热机，我利用等温捷径构造有限时间循环，再用热力学长度描述控制过程。与只在高度欠阻尼或过阻尼极限处理问题相比，这一框架适用于一般阻尼情形。我给出了可达的输出功率界，达到该功率上界的协议需要按热力学长度分配速度。这里一定要区分模型中的捷径控制和普通实验控制；协议的可达性是在所定义的控制集合中成立。下一项工作则进一步从最优控制出发，直接研究循环结构。 将两项独著连起来看，共同推进是由控制空间的几何结构得到协议；量子问题关注低激发，布朗热机进一步允许明确讨论可达功率界。下一项应用展示这套方法怎样从热机走向分离过程。",
-        "en": "This sole-author paper demonstrates independent work from problem formulation to analysis. I studied Brownian heat engines using shortcuts to isothermality, with thermodynamic length describing finite-time cycles. The approach includes general damping, rather than only strongly underdamped or overdamped limits. It gives an attainable output-power bound and an optimal schedule based on thermodynamic length. Attainability refers to the control set defined in the shortcut model. The next paper instead uses optimal control to investigate the cycle structure directly. The two sole-author studies share a progression from control geometry to protocols: low excitation in quantum dynamics and an attainable power bound in Brownian engines. The next application carries this logic beyond engines to separation."
-      },
-      "sources": [
-        {
-          "label": "PRE 106, 054108 (2022)",
-          "url": "https://doi.org/10.1103/PhysRevE.106.054108"
-        }
-      ],
-      "backup": false
-    },
-    {
-      "id": "membrane",
-      "section": {
-        "zh": "量子热机与控制",
-        "en": "Heat engines & control"
-      },
-      "minutes": 2,
-      "title": {
-        "zh": "从几何界走向可检验的有限时间协议",
-        "en": "From geometric bounds to testable finite-time protocols"
-      },
-      "kicker": {
-        "zh": "系列成果 · PRL 2022 + PRX Energy 2023",
-        "en": "Research sequence · PRL 2022 + PRX Energy 2023"
-      },
-      "html": {
-        "zh": "<div class=\"cols\"><div class=\"result-summary\"><h3>几何预测与动力学模拟相符</h3><p>二元气体的有限时间膜分离</p><div class=\"formula\">W<sub>ex</sub> ≥ ℒ² / τ</div><p class=\"caption\">曲线：几何预测；符号：模拟结果。</p><p>对称装置的最优协议可以打破对称性，进一步降低额外功。</p></div><figure class=\"paper-figure\"><img src=\"assets/membrane-result.png\" alt=\"论文图4(c)：额外功随操作时间变化，对称与非对称分离协议比较\"><figcaption>原论文图 4(c) · 红：对称协议；绿：非对称协议。<br>此例的差异较小；插图显示细节。</figcaption></figure></div><div class=\"callout\">PRL 2022：第二作者、编辑推荐 · PRX Energy 2023：共同第一作者。</div>",
-        "en": "<div class=\"cols\"><div class=\"result-summary\"><h3>Geometry agrees with simulations</h3><p>Finite-time binary-gas membrane separation</p><div class=\"formula\">W<sub>ex</sub> ≥ ℒ² / τ</div><p class=\"caption\">Lines: geometric predictions; symbols: simulations.</p><p>An optimal protocol can break device symmetry and reduce excess work.</p></div><figure class=\"paper-figure\"><img src=\"assets/membrane-result.png\" alt=\"Original Figure 4(c): excess work versus duration, comparing symmetric and asymmetric protocols\"><figcaption>Original Fig. 4(c) · Red: symmetric; green: asymmetric.<br>The difference is small in this example; see the inset.</figcaption></figure></div><div class=\"callout\">PRL 2022: second author, Editors’ Suggestion. PRX Energy 2023: co-first author.</div>"
-      },
-      "notes": {
-        "zh": "这组工作把几何方法从公式推进到操作路径。等温捷径的 PRL 证明最小能耗协议与参数空间的测地线对应；随后膜分离工作在具体气体模型中建立有限时间额外功的几何下界，并设计相应路径。这里的原图比较几何预测曲线和动力学模拟符号，说明关系在所研究参数中可检验。对称装置的最优协议还可以破坏对称性，但本图差别很小，不能夸大节能幅度。二〇二二年的 PRL 我是第二作者，二〇二三年的 PRX Energy 我是共同第一作者，与孙昌璞、董辉等合作。再联系早期有限时间标度的实验 PRL，形成的是“几何预测—协议构造—模型或实验检验”的研究链。",
-        "en": "This sequence carries geometry from bounds into operating protocols. The shortcuts-to-isothermality PRL establishes the geodesic principle. The membrane-separation work then derives a geometric excess-work bound in gas models and constructs paths. The original figure compares geometric predictions with dynamical simulations. Symmetry breaking can lower the cost, although the improvement is small for these plotted parameters. I was second author on the 2022 PRL and co-first on the 2023 PRX Energy paper, with C. P. Sun, Hui Dong and colleagues. Together with the earlier experimental scaling PRL, the sequence connects geometric predictions, protocols and model or experimental tests."
-      },
-      "sources": [
-        {
-          "label": "PRL 128, 230603 (2022)",
-          "url": "https://doi.org/10.1103/PhysRevLett.128.230603"
-        },
-        {
-          "label": "PRX Energy 2, 033003 (2023)",
-          "url": "https://doi.org/10.1103/PRXEnergy.2.033003"
-        },
-        {
-          "label": "PRL 125, 210601 (2020)",
-          "url": "https://doi.org/10.1103/PhysRevLett.125.210601"
-        }
-      ],
-      "backup": false
-    },
-    {
-      "id": "optimal-control",
-      "section": {
-        "zh": "量子热机与控制",
-        "en": "Heat engines & control"
-      },
-      "minutes": 1.5,
-      "title": {
-        "zh": "从最优路径继续走向最优循环结构",
-        "en": "From optimal paths to optimal cycle structure"
-      },
-      "kicker": {
-        "zh": "研究延续 · PRE 2024 · 第一作者、共同通讯",
-        "en": "Research continuity · PRE 2024 · First & co-corresponding"
-      },
-      "html": {
-        "zh": "<div class=\"cols\"><article class=\"card\"><h3>问题</h3><p>给定可用控制与约束，最大功率循环应具有怎样的结构？</p></article><article class=\"card\"><h3>发现</h3><p>一般阻尼条件下的最优控制分析<br>两段等温、两段绝热<br>高刚度处加入等容弛豫</p></article></div><div class=\"pathway\"><span>等温</span><span>绝热</span><span>等容弛豫</span><span>闭合循环</span></div><div class=\"callout\">我的贡献：第一作者、共同通讯作者；将有限时间热机问题推进到最优控制框架。</div>",
-        "en": "<div class=\"cols\"><article class=\"card\"><h3>Question</h3><p>What cycle structure maximizes power under the specified controls and constraints?</p></article><article class=\"card\"><h3>Finding</h3><p>Optimal-control analysis for general damping<br>Two isothermal and two adiabatic segments<br>Additional isochoric relaxation at high stiffness</p></article></div><div class=\"pathway\"><span>Isothermal</span><span>Adiabatic</span><span>Isochoric relaxation</span><span>Closed cycle</span></div><div class=\"callout\">My contribution: first and co-corresponding author; extending finite-time engine analysis through optimal control.</div>"
-      },
-      "notes": {
-        "zh": "热机研究不只是在预先给定的循环上调时间。一个更深的问题是，最大功率循环本身应该是什么形状。我们在给定控制条件的一般阻尼模型中进行最优控制分析，得到两段等温、两段绝热以及高刚度处的额外等容弛豫结构。这个结果连接欠阻尼与过阻尼的讨论，也说明弛豫过程本身可以是优化方案的一部分。我是第一作者和共同通讯作者。对面试评委，最值得强调的不是循环名称，而是方法上的推进：从猜一个协议再验证，转向在约束下由动力学和优化条件决定协议结构。 这也是第三条线的收束：由量子效应和损耗机制出发，先独立构造几何控制，再向循环结构优化推进。与全海涛的合作使这一方法进入更完整的热机优化问题。",
-        "en": "Engine optimization need not be limited to adjusting timings on a predefined cycle. We asked what the maximum-power cycle itself should look like. Under the specified controls in a general-damping model, optimal-control analysis identifies two isothermals, two adiabatics and an extra isochoric relaxation segment at high stiffness. This connects underdamped and overdamped discussions and makes relaxation part of the optimization. I was the first and co-corresponding author. The methodological advance is to let dynamics and constraints determine the protocol structure. This closes the third progression: mechanisms and losses motivate independent geometric control, which then develops into cycle-structure optimization with H. T. Quan."
-      },
-      "sources": [
-        {
-          "label": "PRE 110, L042105 (2024)",
-          "url": "https://doi.org/10.1103/PhysRevE.110.L042105"
+          "label": "arXiv:2607.09599 · 预印本 / Preprint",
+          "url": "https://arxiv.org/abs/2607.09599"
         }
       ],
       "backup": false
@@ -791,12 +791,12 @@ window.REPORT = {
         "en": "Research synthesis: continuity, independence and development"
       },
       "html": {
-        "zh": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>制备与认证</h3><p class=\"jt-line-question\">固定目标，设计更好的动力学与检验。</p><p class=\"jt-line-tools\">生成元 / 母哈密顿量 / Bell 检验</p><div class=\"jt-line-output\">共同通讯 PRL + PRB → Bell / NITE</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>随机热力学</h3><p class=\"jt-line-question\">建立一致的统计与有限时间代价描述。</p><p class=\"jt-line-tools\">联合分布 / 协变功热 / 慢模态</p><div class=\"jt-line-output\">两篇共同通讯 PRL → 量子准概率</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>量子热机与控制</h3><p class=\"jt-line-question\">从量子损耗机制得到可达到的协议。</p><p class=\"jt-line-tools\">量子几何 / 热力学长度 / 最优控制</p><div class=\"jt-line-output\">两篇已发表独著 → 循环结构</div></article></div><p class=\"jt-section-note\">共同通讯 PRL 体现合作中的研究担当；已发表独著体现独立研究；预印本体现持续发展。</p>",
-        "en": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>Preparation and certification</h3><p class=\"jt-line-question\">Fix the target; design dynamics and tests.</p><p class=\"jt-line-tools\">Generators, parent Hamiltonians and Bell tests</p><div class=\"jt-line-output\">Co-corresponding PRL / PRB → Bell / NITE</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>Stochastic thermodynamics</h3><p class=\"jt-line-question\">Build consistent statistics and finite-time costs.</p><p class=\"jt-line-tools\">Joint distributions, covariance and slow modes</p><div class=\"jt-line-output\">Two co-corresponding PRLs → quantum extension</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>Engines and control</h3><p class=\"jt-line-question\">Turn loss mechanisms into attainable protocols.</p><p class=\"jt-line-tools\">Quantum geometry, length and optimal control</p><div class=\"jt-line-output\">Two sole-author papers → cycle structure</div></article></div><p class=\"jt-section-note\">Published results and current preprints show continuity, independence and development.</p>"
+        "zh": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>量子热力学与热机</h3><p class=\"jt-line-question\">从量子损耗机制得到可达到的协议。</p><p class=\"jt-line-tools\">量子几何 / 热力学长度 / 最优控制</p><div class=\"jt-line-output\">两篇已发表独著 → 循环结构</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>随机热力学</h3><p class=\"jt-line-question\">建立一致的统计与有限时间代价描述。</p><p class=\"jt-line-tools\">联合分布 / 协变功热 / 慢模态</p><div class=\"jt-line-output\">两篇共同通讯 PRL → 量子准概率</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>量子非定域性与制备</h3><p class=\"jt-line-question\">固定目标，设计更好的动力学与检验。</p><p class=\"jt-line-tools\">生成元 / 母哈密顿量 / Bell 检验</p><div class=\"jt-line-output\">共同通讯 PRL + PRB → Bell / NITE</div></article></div><p class=\"jt-section-note\">共同通讯 PRL 体现合作中的研究担当；已发表独著体现独立研究；预印本体现持续发展。</p>",
+        "en": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>Quantum engines</h3><p class=\"jt-line-question\">Turn loss mechanisms into attainable protocols.</p><p class=\"jt-line-tools\">Quantum geometry, length and optimal control</p><div class=\"jt-line-output\">Two sole-author papers → cycle structure</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>Stochastic thermodynamics</h3><p class=\"jt-line-question\">Build consistent statistics and finite-time costs.</p><p class=\"jt-line-tools\">Joint distributions, covariance and slow modes</p><div class=\"jt-line-output\">Two co-corresponding PRLs → quantum extension</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>Nonlocality and preparation</h3><p class=\"jt-line-question\">Fix the target; design dynamics and tests.</p><p class=\"jt-line-tools\">Generators, parent Hamiltonians and Bell tests</p><div class=\"jt-line-output\">Co-corresponding PRL / PRB → Bell / NITE</div></article></div><p class=\"jt-section-note\">Published results and current preprints show continuity, independence and development.</p>"
       },
       "notes": {
-        "zh": "把三条线合起来，我希望各位老师看到的不是论文清单，而是持续发展的问题与方法。多体方向研究固定目标下的制备与认证；随机热力学方向研究描述一致性和代价；热机方向研究性能与可达到的协议。三篇共同通讯 PRL、两篇已发表独著和后续预印本分别给出不同层面的贡献证据。多体、涨落和几何方法之间也可以相互迁移。这些成果是在国内外不同合作者的共同研究中形成的，我最后简要介绍这一合作基础。",
-        "en": "Across the three lines, the contribution is a continuous set of questions and methods rather than a publication list. Preparation and certification fix targets; stochastic thermodynamics defines consistency and costs; engines connect performance with attainable protocols. Three co-corresponding PRLs, two published sole-author studies and current preprints give complementary evidence. Spectral, trajectory and geometric tools also transfer between problems. These results emerged from collaborations across several institutions, which I will briefly acknowledge."
+        "zh": "把三条线合起来，我希望各位老师看到的不是论文清单，而是持续发展的问题与方法。沿研究发展顺序，量子热机方向研究性能与可达到的协议；随机热力学方向研究描述一致性和代价；量子非定域性方向研究量子关联的制备与认证。三篇共同通讯 PRL、两篇已发表独著和后续预印本分别给出不同层面的贡献证据。多体、涨落和几何方法之间也可以相互迁移。这些成果是在国内外不同合作者的共同研究中形成的，我最后简要介绍这一合作基础。",
+        "en": "Across the three lines, the contribution is a continuous set of questions and methods rather than a publication list. Along this trajectory, engines connect performance with attainable protocols; stochastic thermodynamics defines consistency and costs; nonlocality connects preparation with correlation certification. Three co-corresponding PRLs, two published sole-author studies and current preprints give complementary evidence. Spectral, trajectory and geometric tools also transfer between problems. These results emerged from collaborations across several institutions, which I will briefly acknowledge."
       },
       "sources": [
         {
@@ -864,12 +864,12 @@ window.REPORT = {
         "en": "OUTLOOK 1 / 2 · THREE CONTINUING RESEARCH LINES"
       },
       "html": {
-        "zh": "<div class=\"jt-plans\"><div class=\"jt-plan\"><span class=\"jt-step-num\">01</span><h3>多体态的制备与认证</h3><p>保持目标分布和任务质量，用几何与谱方法优化有限时间过程。</p><small>热化与控制 → 学习和生成</small></div><div class=\"jt-plan\"><span class=\"jt-step-num\">02</span><h3>随机热力学与人工智能</h3><p>从 Energy Transformer 与 Hopfield 建立自洽随机动力学，分别研究推理和训练。</p><small>涨落理论 → 正反轨迹与代价</small></div><div class=\"jt-plan\"><span class=\"jt-step-num\">03</span><h3>量子热力学与优势</h3><p>以量子 Hopfield 分别检验资源与任务优势，计入编码、制备和测量成本。</p><small>量子几何与 Bell → 完整成本比较</small></div></div><p class=\"jt-note\">先建立模型内可计算的界；联系实际能耗还需指定物理实现。</p>",
-        "en": "<div class=\"jt-plans\"><div class=\"jt-plan\"><span class=\"jt-step-num\">01</span><h3>State preparation &amp; certification</h3><p>Optimize finite-time dynamics with geometry and spectra, at fixed target and task quality.</p><small>Thermalization and control → learning and generation</small></div><div class=\"jt-plan\"><span class=\"jt-step-num\">02</span><h3>Stochastic thermodynamics &amp; AI</h3><p>Model Energy Transformer and Hopfield dynamics; separate inference from training.</p><small>Fluctuations → forward/reverse trajectories and cost</small></div><div class=\"jt-plan\"><span class=\"jt-step-num\">03</span><h3>Quantum thermodynamics</h3><p>Test quantum Hopfield resources and task performance, counting encoding, preparation and readout.</p><small>Quantum geometry and Bell → full-cost comparison</small></div></div><p class=\"jt-note\">Model costs require a specified physical implementation before interpreting actual energy use.</p>"
+        "zh": "<div class=\"jt-plans\"><div class=\"jt-plan\"><span class=\"jt-step-num\">01</span><h3>量子热机与有限时间控制</h3><p>保持目标分布和任务质量，用几何与谱方法优化有限时间过程。</p><small>几何与控制 → 学习和生成</small></div><div class=\"jt-plan\"><span class=\"jt-step-num\">02</span><h3>随机热力学与人工智能</h3><p>从 Energy Transformer 与 Hopfield 建立自洽随机动力学，分别研究推理和训练。</p><small>涨落理论 → 正反轨迹与代价</small></div><div class=\"jt-plan\"><span class=\"jt-step-num\">03</span><h3>量子非定域性与资源认证</h3><p>以量子 Hopfield 分别检验资源与任务优势，计入编码、制备和测量成本。</p><small>量子几何与 Bell → 完整成本比较</small></div></div><p class=\"jt-note\">先建立模型内可计算的界；联系实际能耗还需指定物理实现。</p>",
+        "en": "<div class=\"jt-plans\"><div class=\"jt-plan\"><span class=\"jt-step-num\">01</span><h3>Engines and control</h3><p>Optimize finite-time dynamics with geometry and spectra, at fixed target and task quality.</p><small>Geometry and control → learning and generation</small></div><div class=\"jt-plan\"><span class=\"jt-step-num\">02</span><h3>Stochastic thermodynamics and AI</h3><p>Model Energy Transformer and Hopfield dynamics; separate inference from training.</p><small>Fluctuations → forward/reverse trajectories and cost</small></div><div class=\"jt-plan\"><span class=\"jt-step-num\">03</span><h3>Nonlocality and certification</h3><p>Test quantum Hopfield resources and task performance, counting encoding, preparation and readout.</p><small>Quantum geometry and Bell → full-cost comparison</small></div></div><p class=\"jt-note\">Model costs require a specified physical implementation before interpreting actual energy use.</p>"
       },
       "notes": {
-        "zh": "未来规划延续这三条研究线，把人工智能作为主要的新问题。首先从 Energy Transformer 和可解 Hopfield 出发，明确状态、噪声、驱动与反过程，再分别研究推理和训练。第二步把热力学几何与谱优化用于固定任务质量下的过程；这些已有物理方法能否迁移，需要重新检验。量子方向从记忆任务开始，区分资源见证与任务优势，并计入编码、制备和测量。模型代价联系实际能耗还需要物理实现。下一页介绍分阶段的执行路径。",
-        "en": "The outlook continues these three research lines, with AI as the main new problem. I will begin with Energy Transformer and tractable Hopfield models, specifying states, noise, driving and reverse processes, and treating inference separately from training. The next step is to apply thermodynamic geometry and spectral optimization at fixed task quality. Their validity in these new models must be checked. For quantum models, memory retrieval provides a controlled task. Resource certification and task advantage need separate tests, with encoding, preparation and measurement included. Connecting model costs to actual energy use also requires a physical implementation. Let me now outline a staged path."
+        "zh": "未来展望延续这三个方面，把人工智能作为新的研究对象。量子热机与控制中积累的几何方法，可用于固定目标分布和任务质量下的有限时间过程优化；随机热力学方面，计划从 Energy Transformer 和可解 Hopfield 出发，明确状态、噪声、驱动与反过程，分别研究推理和训练；量子非定域性方面，将资源认证与任务优势分别检验，从量子记忆任务出发，计入编码、制备和测量成本。已有方法能否迁移需要重新检验，模型代价与实际能耗的联系也需要指定物理实现。下一页介绍分阶段的执行路径。",
+        "en": "The outlook extends the same three areas to AI as a new research problem. Geometric methods developed for engines and control can guide finite-time optimization at fixed target distribution and task quality. Stochastic thermodynamics starts with Energy Transformer and tractable Hopfield models, specifying states, noise, driving and reverse processes, with inference and training treated separately. For quantum nonlocality, resource certification and task advantage require separate tests, beginning with quantum-memory tasks and counting encoding, preparation and measurement. The validity of transferred methods must be checked, and actual energy use requires a specified physical implementation. The next slide outlines the staged path."
       },
       "section": {
         "zh": "未来展望",
@@ -939,12 +939,12 @@ window.REPORT = {
         "en": "Thank you to the audience and my collaborators"
       },
       "html": {
-        "zh": "<div class=\"cols-3\"><article class=\"card\"><h3>系统性</h3><p>三条研究线相连：<br>制备与认证、随机热力学、量子热机。</p></article><article class=\"card\"><h3>独立性</h3><p>已发表独著与一作／共同通讯成果，<br>支持独立提出和推进研究问题。</p></article><article class=\"card\"><h3>发展性</h3><p>量子优化与认证预印本，<br>持续拓展制备、测量与控制问题。</p></article></div><p class=\"closing-line\">谢谢，欢迎讨论。</p>",
-        "en": "<div class=\"cols-3\"><article class=\"card\"><h3>Continuity</h3><p>Connected work on preparation, fluctuations and quantum engines.</p></article><article class=\"card\"><h3>Independence</h3><p>Published sole-author and first/co-corresponding work support independent research.</p></article><article class=\"card\"><h3>Development</h3><p>Quantum-optimization and certification preprints extend preparation, measurement and control.</p></article></div><p class=\"closing-line\">Thank you. I welcome your questions.</p>"
+        "zh": "<div class=\"cols-3\"><article class=\"card\"><h3>系统性</h3><p>三条研究线相连：<br>量子热机、随机热力学、量子非定域性。</p></article><article class=\"card\"><h3>独立性</h3><p>已发表独著与一作／共同通讯成果，<br>支持独立提出和推进研究问题。</p></article><article class=\"card\"><h3>发展性</h3><p>量子优化与认证预印本，<br>持续拓展制备、测量与控制问题。</p></article></div><p class=\"closing-line\">谢谢，欢迎讨论。</p>",
+        "en": "<div class=\"cols-3\"><article class=\"card\"><h3>Continuity</h3><p>A trajectory through quantum engines, fluctuations and nonlocality.</p></article><article class=\"card\"><h3>Independence</h3><p>Published sole-author and first/co-corresponding work support independent research.</p></article><article class=\"card\"><h3>Development</h3><p>Quantum-optimization and certification preprints extend preparation, measurement and control.</p></article></div><p class=\"closing-line\">Thank you. I welcome your questions.</p>"
       },
       "notes": {
-        "zh": "最后归纳三点。第一，过去成果有清晰的科学主线：从目标态制备与认证，到一致的随机过程描述，再到量子热机和可达到的控制协议。第二，两篇已发表独著，以及一作和共同通讯的合作成果，体现了独立开展研究与合作推进问题的不同经验。第三，量子优化和认证的预印本显示这些方法仍在发展，进一步发展制备、认证与优化方法。感谢国内外合作者，也感谢各位老师的时间，欢迎就科学问题、个人贡献和下一步研究提出问题。",
-        "en": "I will close with three points. The completed work has a connected progression from preparation and certification, through consistent stochastic descriptions, to quantum engines and attainable control. Published sole-author and first/co-corresponding results demonstrate complementary independent and collaborative experience. Current quantum-optimization and certification preprints show continuing development, extending preparation, certification and control methods. Thank you to my collaborators and to the audience. I welcome questions about the science, contributions and future work."
+        "zh": "最后归纳三点。第一，过去成果有清晰的科学主线：从量子热机和可达到的控制协议，到一致的随机过程描述，再到量子非定域性与多体态制备认证。第二，两篇已发表独著，以及一作和共同通讯的合作成果，体现了独立开展研究与合作推进问题的不同经验。第三，量子优化和认证的预印本显示这些方法仍在发展，进一步发展制备、认证与优化方法。感谢国内外合作者，也感谢各位老师的时间，欢迎就科学问题、个人贡献和下一步研究提出问题。",
+        "en": "I will close with three points. The completed work has a connected progression from quantum engines and attainable control, through consistent stochastic descriptions, to quantum nonlocality and many-body preparation. Published sole-author and first/co-corresponding results demonstrate complementary independent and collaborative experience. Current quantum-optimization and certification preprints show continuing development, extending preparation, certification and control methods. Thank you to my collaborators and to the audience. I welcome questions about the science, contributions and future work."
       },
       "sources": [
         {
@@ -1267,8 +1267,8 @@ window.REPORT = {
         "en": "<div class=\"cols\"><article class=\"card\"><h3>Sources</h3><p>Current bilingual Research Profile and publication list<br>Published articles and public arXiv versions<br>Future work based on research plan v8</p></article><article class=\"card\"><h3>Structure</h3><p>27 main slides, 40 minutes<br>31 minutes of research; two future slides, 4 minutes<br>Indices and Q&A are backup slides</p></article></div><p class=\"jt-section-note\">34 published: August 2026 CV; 5 PRLs / 2 sole-author papers: publication list; Scholar 918 / h16: 13 October 2026.</p>"
       },
       "notes": {
-        "zh": "本次修改以十月十七日报告为目标。主要变化是按简历三条研究线组织过去成果，突出三篇共同通讯 PRL、两篇已发表独著和明确标为预印本的发展性工作。未来仅保留两页，以研究计划 v8 为准。合作者按当前机构分组；未公开探索没有加入主报告。项目具体职责仍需本人依据原始记录核对。",
-        "en": "The revision targets the 17 October talk. Completed research follows the three CV lines, emphasizing three co-corresponding PRLs, two published sole-author papers and explicitly labeled preprints. Future work uses only two slides based on plan v8. Collaborators are grouped by current institutions. Unreviewed private explorations are excluded from the scientific claims. Verify the exact project role against the original record."
+        "zh": "本次修改以十月十七日报告为目标。主要变化是按研究发展的时间顺序组织三个方面的过去成果，突出三篇共同通讯 PRL、两篇已发表独著和明确标为预印本的发展性工作。未来仅保留两页，以研究计划 v8 为准。合作者按当前机构分组；未公开探索没有加入主报告。项目具体职责仍需本人依据原始记录核对。",
+        "en": "The revision targets the 17 October talk. Completed research follows the chronological development of the three areas, emphasizing three co-corresponding PRLs, two published sole-author papers and explicitly labeled preprints. Future work uses only two slides based on plan v8. Collaborators are grouped by current institutions. Unreviewed private explorations are excluded from the scientific claims. Verify the exact project role against the original record."
       },
       "sources": [
         {
