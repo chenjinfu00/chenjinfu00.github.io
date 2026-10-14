@@ -29,12 +29,12 @@ window.REPORT = {
         "en": "Jin-Fu Chen · Research talk · 17 October 2026"
       },
       "html": {
-        "zh": "<div class=\"cover-line\">三条研究主线 · 从物理机制走向 AI＋量子</div><div class=\"cover-signature\"><strong>陈劲夫 <span>Jin-Fu Chen</span></strong><p>荷兰莱顿大学 · Lorentz 理论物理研究所</p></div><div class=\"pathway\"><span>多体态制备与认证</span><span>随机热力学</span><span>量子热机与控制</span></div>",
-        "en": "<div class=\"cover-line\">Three research lines · Physical mechanisms towards AI + quantum</div><div class=\"cover-signature\"><strong>Jin-Fu Chen <span>陈劲夫</span></strong><p>Leiden University · Lorentz Institute for Theoretical Physics</p></div><div class=\"pathway\"><span>Preparation & certification</span><span>Stochastic thermodynamics</span><span>Quantum engines & control</span></div>"
+        "zh": "<div class=\"cover-line\">量子多体态 · 随机热力学 · 有限时间控制</div><div class=\"cover-signature\"><strong>陈劲夫 <span>Jin-Fu Chen</span></strong><p>荷兰莱顿大学 · Lorentz 理论物理研究所</p></div><div class=\"pathway\"><span>多体态制备与认证</span><span>随机热力学</span><span>量子热机与控制</span></div>",
+        "en": "<div class=\"cover-line\">Quantum states · Stochastic thermodynamics · Finite-time control</div><div class=\"cover-signature\"><strong>Jin-Fu Chen <span>陈劲夫</span></strong><p>Leiden University · Lorentz Institute for Theoretical Physics</p></div><div class=\"pathway\"><span>Preparation & certification</span><span>Stochastic thermodynamics</span><span>Quantum engines & control</span></div>"
       },
       "notes": {
-        "zh": "各位老师好，我是陈劲夫，目前在莱顿大学从事博士后研究。今天重点介绍过去的研究成果，按简历中的三条研究线来组织：量子多体态的制备与认证、面向人工智能的随机热力学基础，以及量子热力学与热机中的量子优势。它们共同追问的是，怎样把一个受物理约束的过程变成可设计、可优化、可检验的问题。最后用两页简要介绍下一步计划。",
-        "en": "Thank you for the opportunity to present my work. I am Jin-Fu Chen, a postdoctoral researcher at Leiden University. I will focus on completed research, organized around the three lines in my CV: many-body state preparation and certification, stochastic thermodynamics towards AI, and quantum thermodynamics and heat engines. Their common question is how to design, optimize and verify dynamics under physical constraints. I will end with two slides on the next steps."
+        "zh": "各位老师好，我是陈劲夫，目前在莱顿大学从事博士后研究。今天重点介绍已完成的研究，沿三条相互关联的主线来组织：量子多体态的制备与认证、随机热力学与非平衡过程，以及量子热力学与热机控制。它们共同追问的是，怎样把一个受物理约束的过程变成可设计、可优化、可检验的问题。最后用两页简要介绍未来展望。",
+        "en": "Thank you for the opportunity to present my work. I am Jin-Fu Chen, a postdoctoral researcher at Leiden University. I will focus on completed research in three connected lines: many-body state preparation and certification, stochastic thermodynamics and nonequilibrium processes, and quantum thermodynamics and engine control. Their common question is how to design, optimize and verify dynamics under physical constraints. I will end with two slides of outlook."
       },
       "sources": [
         {
@@ -63,12 +63,12 @@ window.REPORT = {
         "en": "31 minutes on research · two slides on future work"
       },
       "html": {
-        "zh": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>量子多体态的<br>制备与认证</h3><p class=\"jt-line-question\">怎样更快得到并检验目标态？</p><p class=\"jt-line-tools\">耗散、谱隙与量子关联</p><div class=\"jt-line-output\">已发表：PRL / PRB<br>预印本：Bell / NITE</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>面向生成式 AI 的<br>随机热力学理论</h3><p class=\"jt-line-question\">怎样定义过程的涨落与代价？</p><p class=\"jt-line-tools\">轨道概率、协变性与有限时间</p><div class=\"jt-line-output\">已发表：涨落与相变<br>AI 应用：后续拓展</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>量子热力学与<br>热机中的量子优势</h3><p class=\"jt-line-question\">怎样把量子效应变成性能？</p><p class=\"jt-line-tools\">工质、非绝热损耗与几何控制</p><div class=\"jt-line-output\">已发表：量子热机<br>独著：量子几何 / 布朗热机</div></article></div>",
-        "en": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>Many-body preparation<br>and certification</h3><p class=\"jt-line-question\">How can we prepare and verify target states?</p><p class=\"jt-line-tools\">Dissipation, gaps and correlations</p><div class=\"jt-line-output\">Published: PRL / PRB<br>Preprints: Bell / NITE</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>Stochastic thermodynamics<br>for generative AI</h3><p class=\"jt-line-question\">How do we define fluctuations and costs?</p><p class=\"jt-line-tools\">Trajectories, covariance and finite time</p><div class=\"jt-line-output\">Published physical foundations<br>AI applications: next steps</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>Quantum thermodynamics<br>and engine advantage</h3><p class=\"jt-line-question\">How do quantum effects affect performance?</p><p class=\"jt-line-tools\">Working media and geometric control</p><div class=\"jt-line-output\">Published engine research<br>Sole-author control papers</div></article></div>"
+        "zh": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>量子多体态的<br>制备与认证</h3><p class=\"jt-line-question\">怎样更快得到并检验目标态？</p><p class=\"jt-line-tools\">耗散、谱隙与量子关联</p><div class=\"jt-line-output\">已发表：PRL / PRB<br>预印本：Bell / NITE</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>随机热力学与<br>非平衡过程</h3><p class=\"jt-line-question\">怎样定义过程的涨落与代价？</p><p class=\"jt-line-tools\">轨道概率、协变性与有限时间</p><div class=\"jt-line-output\">联合统计 · 协变涨落<br>有限时间相变</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>量子热力学与<br>热机中的量子优势</h3><p class=\"jt-line-question\">怎样把量子效应变成性能？</p><p class=\"jt-line-tools\">工质、非绝热损耗与几何控制</p><div class=\"jt-line-output\">已发表：量子热机<br>独著：量子几何 / 布朗热机</div></article></div>",
+        "en": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>Many-body preparation<br>and certification</h3><p class=\"jt-line-question\">How can we prepare and verify target states?</p><p class=\"jt-line-tools\">Dissipation, gaps and correlations</p><div class=\"jt-line-output\">Published: PRL / PRB<br>Preprints: Bell / NITE</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>Stochastic thermodynamics<br>and nonequilibrium processes</h3><p class=\"jt-line-question\">How do we define fluctuations and costs?</p><p class=\"jt-line-tools\">Trajectories, covariance and finite time</p><div class=\"jt-line-output\">Joint statistics and covariant relations<br>Finite-time transitions</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>Quantum thermodynamics<br>and engine advantage</h3><p class=\"jt-line-question\">How do quantum effects affect performance?</p><p class=\"jt-line-tools\">Working media and geometric control</p><div class=\"jt-line-output\">Published engine research<br>Sole-author control papers</div></article></div>"
       },
       "notes": {
-        "zh": "这里的三条线对应最新简历，但并不是把论文分成三个清单。第一条从制备动力学到关联认证；第二条从功热统计到一致的复杂过程描述；第三条从量子热机性能到独立构造的最优控制。各部分都先讲问题和方法，再讲系列结果。报告安排是经历四分钟、研究成果三十一分钟、未来四分钟和最后一分钟收束。第二条中的生成式人工智能是研究延伸，已完成部分主要是随机热力学基础。",
-        "en": "These are the three lines in my current CV, organized as scientific progressions rather than publication lists. The first connects preparation dynamics with certification. The second develops consistent descriptions of fluctuating processes. The third connects engine performance with independently developed control methods. The timing is four minutes of background, thirty-one minutes of research, four minutes of future work and one minute to close. The AI applications build on completed thermodynamic foundations; they are not yet established application results."
+        "zh": "这里将已完成的工作组织成三条相互关联的研究线。第一条从制备动力学到关联认证；第二条从功热统计到一致的复杂过程描述；第三条从量子热机性能到独立构造的最优控制。各部分都先讲问题和方法，再讲系列结果。报告安排是经历四分钟、研究成果三十一分钟、未来四分钟和最后一分钟收束。",
+        "en": "I organize the completed work in three connected scientific progressions. The first connects preparation dynamics with certification. The second develops consistent descriptions of fluctuating processes. The third connects engine performance with independently developed control methods. The timing is four minutes of background, thirty-one minutes of research, four minutes of future work and one minute to close. "
       },
       "sources": [
         {
@@ -270,8 +270,8 @@ window.REPORT = {
         "en": "<div class=\"cols\"><div class=\"result-summary\"><h3>Improved slow modes at low temperature</h3><p>Horizontal: βJ, inverse temperature × coupling<br>Vertical: NΔ, normalized gap (log scale)</p><p>Lines: N = 10 exact diagonalization<br>Symbols: N = 40 DMRG<br>Inset: SDP-certified results</p><div class=\"callout\">Blue: single flips; orange: single + double flips.<br>Solid/filled: optimized; dashed/open: baseline.</div></div><figure class=\"paper-figure\"><img src=\"assets/thermalization-result.png\" alt=\"Author-version Figure 1(b): kinetic Ising gap versus inverse temperature, baseline and optimized dynamics\"><figcaption>Original author-version Fig. 1(b) · arXiv:2411.03420v2.<br>Also check finite-time convergence and resource constraints.</figcaption></figure></div><div class=\"jt-badges\"><span class=\"jt-badge\">First & co-corresponding · PRB 2026</span></div>"
       },
       "notes": {
-        "zh": "谱隙给出慢模态的时间尺度，因此是一个自然的优化目标。但是面试时如果被问到“谱隙大是不是一定更快”，答案需要有条件。实际收敛还取决于初态、误差范数、非正规性和有限时间瞬态，以及目标稳态误差。我们的多体工作提供谱隙优化的结构与验证方法；未来拓展到更一般的学习模型时，我会同时评估有限时间收敛和累计代价。这个限定很重要，因为只有在比较目标、精度和资源一致时，加速才有清楚的物理或计算意义。图里只是说明谱隙增大的概念，没有画未经核实的倍数。 原图取自作者公开版本，展示经典一维 kinetic Ising 模型。蓝色为单自旋翻转，橙色包含单双翻转；同色的实线实心与虚线空心分别比较优化和基准。低温区改进更明显。小尺寸精确对角化与较大尺寸 DMRG 结果相互支持，插图提供 SDP 认证。此图验证具体模型的谱隙提升，不代表所有量子模型都有相同倍数的加速。 回到本节主线：这些曲线说明改变允许的跃迁通道与速率，可以在目标平衡态保持不变时改善慢模态。讨论制备速度时仍需固定生成元资源，并指定初态、误差与累计代价。下面将同样的“目标不变、动力学可变”推进到绝热纯态制备。",
-        "en": "The gap provides a slow-mode time scale and is a natural optimization target. A larger gap does not automatically guarantee every finite-time performance measure: initial states, norms, non-normality, transients and steady-state error can matter. The many-body work provides construction and verification tools for gap optimization. In broader learning models, I plan to test finite-time convergence and accumulated cost as well. Speedup is meaningful only with matched targets, accuracy and resources. The diagram illustrates the concept without claiming a numerical improvement factor. The original figure is from the public author version for the classical 1D kinetic Ising model. Blue is single-spin flips; orange includes single and double flips. Within each color, solid/filled and dashed/open compare optimized and baseline dynamics. Improvements are more visible at low temperatures. Exact diagonalization and larger-system DMRG support the result, with SDP certification in the inset. This is a model-specific gap result, not a universal speedup factor for quantum models. These curves show that allowed transition channels and rates can improve slow modes while preserving the equilibrium target. Preparation-speed comparisons also require fixed generator resources, an initial state, an error criterion and total cost. I now apply the same fixed-target principle to adiabatic pure-state preparation."
+        "zh": "谱隙刻画渐近慢模态，因此是一个自然的动力学优化目标。这里展示原论文的经典一维 kinetic Ising 结果：横轴是逆温度与耦合的乘积，纵轴是归一化谱隙。蓝色表示单自旋翻转，橙色允许单双翻转；同色实线实心为优化结果，虚线空心为基准。低温区的改善更明显。小尺寸精确对角化、较大尺寸 DMRG 与插图中的 SDP 认证相互支持。完整制备速度还要同时指定初态、误差和生成元资源，并检验有限时间收敛。回到本节主线，改变允许的通道和速率，能够在目标平衡态保持不变时改善慢模态。下面把这一设计思想推进到绝热纯态制备。",
+        "en": "The gap characterizes asymptotically slow modes and is a natural design target. This original figure shows the classical one-dimensional kinetic Ising model: inverse temperature times coupling horizontally, normalized gap vertically. Blue denotes single-spin flips; orange allows single and double flips. Within each color, solid lines and filled symbols are optimized, while dashed lines and open symbols are baseline. The improvement is stronger at low temperature. Small-system exact diagonalization, larger-system DMRG and the SDP certificate in the inset support the result. Preparation speed also requires an initial state, error criterion, fixed generator resources and finite-time convergence checks. The common idea is to change allowed channels and rates while preserving the equilibrium target. I now extend it to adiabatic pure-state preparation."
       },
       "sources": [
         {
@@ -367,16 +367,16 @@ window.REPORT = {
         "en": "From imaginary-time evolution to quantum natural gradients"
       },
       "kicker": {
-        "zh": "AI＋量子的方法交叉 · NITE 预印本 · 共同通讯",
-        "en": "AI + quantum methods · NITE preprint · Co-corresponding"
+        "zh": "发展性 · 量子变分优化 · NITE 预印本 · 共同通讯",
+        "en": "Development · Quantum variational optimization · NITE preprint · Co-corresponding"
       },
       "html": {
         "zh": "<div class=\"pathway\"><span>一般量子代价函数</span><span>Fubini–Study 梯度流</span><span>变分实现与量子自然梯度</span></div><div class=\"cols\"><article class=\"card\"><h3>把优化目标推广</h3><p>从基态能量，推广到可微纯态代价<br>方差最小化 · 量子传感探针 · 激发态</p></article><article class=\"card\"><h3>把收敛性质讲清楚</h3><p>在相应假设下证明局部指数收敛<br>示例中比较标准梯度下降<br>优化对象与几何结构共同设计</p></article></div><div class=\"jt-badges\"><span class=\"jt-badge jt-badge--growth\">预印本 arXiv:2607.09599</span></div><p class=\"jt-collab-inline\">合作：Chenyu Shi、Hao Wang（莱顿 LIACS）。已有结果属于量子变分优化。</p>",
         "en": "<div class=\"pathway\"><span>General quantum objective</span><span>Fubini–Study gradient flow</span><span>Variational quantum natural gradient</span></div><div class=\"cols\"><article class=\"card\"><h3>Extend the objective</h3><p>From ground-state energy to differentiable pure-state costs<br>Variance, sensing probes and excited states</p></article><article class=\"card\"><h3>Characterize convergence</h3><p>Local exponential convergence under stated assumptions<br>Compare standard gradient descent in examples<br>Design objectives together with geometry</p></article></div><div class=\"jt-badges\"><span class=\"jt-badge jt-badge--growth\">Preprint arXiv:2607.09599</span></div><p class=\"jt-collab-inline\">With Chenyu Shi and Hao Wang (Leiden LIACS). Completed results concern quantum variational optimization.</p>"
       },
       "notes": {
-        "zh": "这项最新预印本把量子态制备与优化方法直接连接起来。标准虚时间演化主要降低能量；我们将它推广为一般量子代价函数的非线性虚时间演化，也就是 NITE。其几何基础是 Fubini–Study 度量，变分实现对应量子自然梯度。我们研究了方差最小化、量子传感探针优化和带惩罚项的激发态制备，并在给定假设下证明局部指数收敛。这里我是共同通讯作者，与Chenyu Shi和莱顿计算机科学的 Hao Wang 合作。它是已经形成的量子优化结果，也提供 AI 与量子方法交叉的基础，但尚未给出生成式模型的性能结果。下一节转向这些优化过程所需要的涨落与代价理论。",
-        "en": "This recent preprint connects quantum-state preparation directly with optimization methods. Standard imaginary-time evolution reduces energy. NITE generalizes it to differentiable quantum objectives, with Fubini–Study gradient flow and a variational implementation related to quantum natural gradients. We study variance minimization, sensing probes and excited-state preparation with penalties, and prove local exponential convergence under stated assumptions. I was a co-corresponding author with Hao Wang, working with Chenyu Shi. These are completed quantum-optimization results and a methodological bridge to AI, without an established generative-model benchmark. I now turn to the fluctuation and cost theory needed to describe such processes."
+        "zh": "这项最新预印本把量子态制备与优化方法直接连接起来。标准虚时间演化主要降低能量；我们将它推广为一般量子代价函数的非线性虚时间演化，也就是 NITE。其几何基础是 Fubini–Study 度量，变分实现对应量子自然梯度。我们研究了方差最小化、量子传感探针优化和带惩罚项的激发态制备，并在给定假设下证明局部指数收敛。这里我是共同通讯作者，与Chenyu Shi和莱顿计算机科学的 Hao Wang 合作。本工作把量子几何方法从基态能量推广到更多量子态优化任务。下一节转向这些优化过程所需要的涨落与代价理论。",
+        "en": "This recent preprint connects quantum-state preparation directly with optimization methods. Standard imaginary-time evolution reduces energy. NITE generalizes it to differentiable quantum objectives, with Fubini–Study gradient flow and a variational implementation related to quantum natural gradients. We study variance minimization, sensing probes and excited-state preparation with penalties, and prove local exponential convergence under stated assumptions. I was a co-corresponding author with Hao Wang, working with Chenyu Shi. This extends geometric quantum optimization beyond ground-state energy to further state-preparation tasks. I now turn to the fluctuation and cost theory needed to describe such processes."
       },
       "sources": [
         {
@@ -389,8 +389,8 @@ window.REPORT = {
     {
       "id": "stochastic-line",
       "section": {
-        "zh": "随机热力学与AI",
-        "en": "Fluctuations & AI"
+        "zh": "随机热力学",
+        "en": "Fluctuations"
       },
       "minutes": 0.75,
       "title": {
@@ -398,16 +398,16 @@ window.REPORT = {
         "en": "From trajectory statistics to consistent process descriptions"
       },
       "kicker": {
-        "zh": "研究线二 · 面向生成式 AI 的随机热力学基础",
-        "en": "Line 2 · Stochastic thermodynamic foundations for AI"
+        "zh": "研究线二 · 随机热力学与非平衡过程",
+        "en": "Line 2 · Stochastic thermodynamics and nonequilibrium processes"
       },
       "html": {
-        "zh": "<div class=\"cols\"><article class=\"card\"><h3>已完成的科学问题</h3><p>联合功热统计保留什么信息？<br>改变参考系，涨落关系怎样成立？<br>相变与慢模态如何改写有限时间代价？</p></article><article class=\"card\"><h3>统一的方法积累</h3><p>正反过程与轨道概率<br>协变功热与量子准概率<br>有限尺寸、极限顺序和耗散标度</p></article></div><p class=\"jt-section-note\">从已发表物理结果出发，为学习与生成动力学建立可检验的理论。</p>",
-        "en": "<div class=\"cols\"><article class=\"card\"><h3>Completed scientific questions</h3><p>Which information survives in joint work–heat statistics?<br>How do fluctuation relations transform between frames?<br>How do transitions affect finite-time costs?</p></article><article class=\"card\"><h3>Shared methodological foundations</h3><p>Forward and reverse trajectories<br>Covariant work–heat and quantum quasiprobabilities<br>Finite size, limits and dissipation scaling</p></article></div><p class=\"jt-section-note\">Published physical results provide testable foundations for learning and generative dynamics.</p>"
+        "zh": "<div class=\"cols\"><article class=\"card\"><h3>已完成的科学问题</h3><p>联合功热统计保留什么信息？<br>改变参考系，涨落关系怎样成立？<br>相变与慢模态如何改写有限时间代价？</p></article><article class=\"card\"><h3>统一的方法积累</h3><p>正反过程与轨道概率<br>协变功热与量子准概率<br>有限尺寸、极限顺序和耗散标度</p></article></div><p class=\"jt-section-note\">从联合统计到动力学标度，建立一致且可检验的物理描述。</p>",
+        "en": "<div class=\"cols\"><article class=\"card\"><h3>Completed scientific questions</h3><p>Which information survives in joint work–heat statistics?<br>How do fluctuation relations transform between frames?<br>How do transitions affect finite-time costs?</p></article><article class=\"card\"><h3>Shared methodological foundations</h3><p>Forward and reverse trajectories<br>Covariant work–heat and quantum quasiprobabilities<br>Finite size, limits and dissipation scaling</p></article></div><p class=\"jt-section-note\">Connect joint statistics with dynamical scaling in a consistent, testable physical description.</p>"
       },
       "notes": {
-        "zh": "第二条研究线强调描述的一致性。不能在一个过程里只保留方便计算的变量，却丢掉涨落关系成立所需要的信息；也不能在不同参考系或量子测量方式之间随意移用经典定义。这一系列工作从联合功热分布出发，扩展到协变与量子描述，并研究复杂动力学下的有限时间代价。面向 AI 的部分建立在这些已完成的物理基础上，具体计划最后再讲。",
-        "en": "The second line emphasizes consistency. A convenient reduced description may discard information required by a fluctuation relation. Definitions also cannot be transferred freely across reference frames or quantum measurement schemes. This sequence develops joint work–heat statistics, covariant and quantum descriptions, and finite-time costs in complex dynamics. The AI direction builds on these completed physical foundations; I will state the specific plan at the end."
+        "zh": "第二条研究线强调描述的一致性。不能在一个过程里只保留方便计算的变量，却丢掉涨落关系成立所需要的信息；也不能在不同参考系或量子测量方式之间随意移用经典定义。这一系列工作从联合功热分布出发，扩展到协变与量子描述，并研究复杂动力学下的有限时间代价。接下来依次讨论联合统计、协变描述和有限时间相变。",
+        "en": "The second line emphasizes consistency. A convenient reduced description may discard information required by a fluctuation relation. Definitions also cannot be transferred freely across reference frames or quantum measurement schemes. This sequence develops joint work–heat statistics, covariant and quantum descriptions, and finite-time costs in complex dynamics. I will discuss joint statistics, covariant descriptions and finite-time phase transitions in turn."
       },
       "sources": [
         {
@@ -428,8 +428,8 @@ window.REPORT = {
     {
       "id": "fluctuation",
       "section": {
-        "zh": "随机热力学与AI",
-        "en": "Fluctuations & AI"
+        "zh": "随机热力学",
+        "en": "Fluctuations"
       },
       "minutes": 1.5,
       "title": {
@@ -463,8 +463,8 @@ window.REPORT = {
     {
       "id": "covariant",
       "section": {
-        "zh": "随机热力学与AI",
-        "en": "Fluctuations & AI"
+        "zh": "随机热力学",
+        "en": "Fluctuations"
       },
       "minutes": 2.25,
       "title": {
@@ -498,8 +498,8 @@ window.REPORT = {
     {
       "id": "phase-transition",
       "section": {
-        "zh": "随机热力学与AI",
-        "en": "Fluctuations & AI"
+        "zh": "随机热力学",
+        "en": "Fluctuations"
       },
       "minutes": 2.5,
       "title": {
@@ -515,8 +515,8 @@ window.REPORT = {
         "en": "<div class=\"cols\"><article class=\"card\"><h3>Question</h3><p>How does finite-time cost near a phase transition depend on driving speed and size?</p></article><article class=\"card\"><h3>Core result</h3><p>Ergodicity breaking in the Curie–Weiss model<br>Large systems: excess-work scaling as v<sup>2/3</sup><br>Small systems: crossover to v scaling</p></article></div><div class=\"callout\">Finite size and the order of limits matter; a single slow-driving law cannot be assumed for every process.</div><p class=\"caption\">v is the driving speed defined in the paper; statements apply to the studied model and scaling regimes.</p><p class=\"jt-collab-inline\">With Yu-Xin Wu and H. T. Quan. Connection: metastability and slow modes in complex dynamics.</p>"
       },
       "notes": {
-        "zh": "这一工作提醒我们，几何慢驱动图像也有适用边界。相变附近存在长弛豫时间和遍历性问题，系统尺寸与驱动速度的极限顺序会影响耗散。在 Curie–Weiss 模型中，我们分析了有限时间一阶相变的遍历性破缺，看到大系统中的额外功具有速度的三分之二次幂标度，而小系统会交叉到线性速度标度。我是第二作者和共同通讯作者。它与后面多体热化的联系是：当动力学变慢时，既要理解慢的来源，也要研究能否在保持物理目标的前提下改变动力学。 将它与前面的涨落工作合起来看，既要有一致的过程定义，也要知道具体动力学在哪个区域支持什么标度。亚稳态、慢模态以及有限尺寸对结果的影响，是后续研究学习动力学时可以迁移的分析工具；本页不把相变模型结果直接当作神经网络实验。",
-        "en": "This paper illustrates a limitation of simple slow-driving pictures. Near phase transitions, long relaxation times and ergodicity issues make the order of size and driving-speed limits important. In the Curie–Weiss model, excess work scales with speed to the two-thirds power for large systems, with a crossover to linear scaling in small systems. I was the second and co-corresponding author. The link to many-body thermalization is that we must understand why dynamics becomes slow and ask whether it can be redesigned without changing the physical target. Together with the fluctuation work, this shows that consistent definitions must be combined with model-specific dynamical regimes. Metastability, slow modes and finite-size effects provide analytical tools for later learning-dynamics research; these physical results are not neural-network experiments."
+        "zh": "这一工作提醒我们，几何慢驱动图像也有适用边界。相变附近存在长弛豫时间和遍历性问题，系统尺寸与驱动速度的极限顺序会影响耗散。在 Curie–Weiss 模型中，我们分析了有限时间一阶相变的遍历性破缺，看到大系统中的额外功具有速度的三分之二次幂标度，而小系统会交叉到线性速度标度。我是第二作者和共同通讯作者。它与后面多体热化的联系是：当动力学变慢时，既要理解慢的来源，也要研究能否在保持物理目标的前提下改变动力学。 将它与前面的涨落工作合起来看，既要有一致的过程定义，也要知道具体动力学在哪个区域支持什么标度。亚稳态、慢模态和有限尺寸共同决定了所研究物理过程中标度成立的条件。",
+        "en": "This paper illustrates a limitation of simple slow-driving pictures. Near phase transitions, long relaxation times and ergodicity issues make the order of size and driving-speed limits important. In the Curie–Weiss model, excess work scales with speed to the two-thirds power for large systems, with a crossover to linear scaling in small systems. I was the second and co-corresponding author. The link to many-body thermalization is that we must understand why dynamics becomes slow and ask whether it can be redesigned without changing the physical target. Together with the fluctuation work, this shows that consistent definitions must be combined with model-specific dynamical regimes. Metastability, slow modes and finite-size effects determine the scaling regimes of the physical processes studied here."
       },
       "sources": [
         {
@@ -527,27 +527,27 @@ window.REPORT = {
       "backup": false
     },
     {
-      "id": "ai-foundations",
+      "id": "stochastic-foundations",
       "section": {
-        "zh": "随机热力学与AI",
-        "en": "Fluctuations & AI"
+        "zh": "随机热力学",
+        "en": "Fluctuations"
       },
       "minutes": 1,
       "title": {
-        "zh": "一致性、几何与谱结构汇成 AI 理论基础",
-        "en": "Consistency, geometry and spectra form the AI foundations"
+        "zh": "一致性、几何与谱结构的共同基础",
+        "en": "Common foundations: consistency, geometry and spectra"
       },
       "kicker": {
-        "zh": "已有成果的汇合 · 生成式 AI 是后续迁移对象",
-        "en": "Synthesis of existing results · Generative AI is the next application"
+        "zh": "研究线二的汇合：模型、限制与复杂动力学",
+        "en": "Research synthesis: models, limits and complex dynamics"
       },
       "html": {
-        "zh": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>模型一致性</h3><p class=\"jt-line-question\">热与功在什么条件下有一致定义？</p><p class=\"jt-line-tools\">量子详细平衡、正反过程、全计数统计</p><div class=\"jt-line-output\">独著预印本：一致 Lindbladian</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>速度—代价关系</h3><p class=\"jt-line-question\">有限时间操作有什么可计算限制？</p><p class=\"jt-line-tools\">热力学长度、几何界、最优协议</p><div class=\"jt-line-output\">已发表：PRE / PRL / PRX Energy</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>复杂动力学</h3><p class=\"jt-line-question\">慢模态与有限尺寸如何限制过程？</p><p class=\"jt-line-tools\">谱隙、亚稳态、相变标度</p><div class=\"jt-line-output\">已发表：PRL / PRB</div></article></div><p class=\"jt-section-note\">这些是已完成的物理基础；ET / Hopfield / Transformer 的具体应用在最后两页列为规划。</p>",
-        "en": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>Model consistency</h3><p class=\"jt-line-question\">When are heat and work well defined?</p><p class=\"jt-line-tools\">Detailed balance, reverse paths and counting statistics</p><div class=\"jt-line-output\">Sole-author Lindbladian preprint</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>Speed–cost relations</h3><p class=\"jt-line-question\">Which finite-time limits can be computed?</p><p class=\"jt-line-tools\">Thermodynamic length and optimal protocols</p><div class=\"jt-line-output\">Published PRE / PRL / PRX Energy</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>Complex dynamics</h3><p class=\"jt-line-question\">How do slow modes and size limit evolution?</p><p class=\"jt-line-tools\">Gaps, metastability and scaling</p><div class=\"jt-line-output\">Published PRL / PRB</div></article></div><p class=\"jt-section-note\">Completed physical foundations; ET, Hopfield and Transformer applications appear in the final two planning slides.</p>"
+        "zh": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>模型一致性</h3><p class=\"jt-line-question\">热与功在什么条件下有一致定义？</p><p class=\"jt-line-tools\">量子详细平衡、正反过程、全计数统计</p><div class=\"jt-line-output\">独著预印本：一致 Lindbladian</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>速度—代价关系</h3><p class=\"jt-line-question\">有限时间操作有什么可计算限制？</p><p class=\"jt-line-tools\">热力学长度、几何界、最优协议</p><div class=\"jt-line-output\">已发表：PRE / PRL / PRX Energy</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>复杂动力学</h3><p class=\"jt-line-question\">慢模态与有限尺寸如何限制过程？</p><p class=\"jt-line-tools\">谱隙、亚稳态、相变标度</p><div class=\"jt-line-output\">已发表：PRL / PRB</div></article></div><p class=\"jt-section-note\">功热统计、几何界与谱方法，共同支持可计算、可检验的动力学。</p>",
+        "en": "<div class=\"jt-lines\"><article class=\"jt-line\"><span class=\"jt-line-number\">01</span><h3>Model consistency</h3><p class=\"jt-line-question\">When are heat and work well defined?</p><p class=\"jt-line-tools\">Detailed balance, reverse paths and counting statistics</p><div class=\"jt-line-output\">Sole-author Lindbladian preprint</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">02</span><h3>Speed–cost relations</h3><p class=\"jt-line-question\">Which finite-time limits can be computed?</p><p class=\"jt-line-tools\">Thermodynamic length and optimal protocols</p><div class=\"jt-line-output\">Published PRE / PRL / PRX Energy</div></article><article class=\"jt-line\"><span class=\"jt-line-number\">03</span><h3>Complex dynamics</h3><p class=\"jt-line-question\">How do slow modes and size limit evolution?</p><p class=\"jt-line-tools\">Gaps, metastability and scaling</p><div class=\"jt-line-output\">Published PRL / PRB</div></article></div><p class=\"jt-section-note\">Statistics, geometry and spectra underpin computable, testable dynamics.</p>"
       },
       "notes": {
-        "zh": "这一节的成果最终汇聚到三个问题：模型是否一致、速度与代价有什么限制、复杂动力学中的慢过程怎样形成。除了已发表结果，我的独著预印本还建立热力学一致的 Lindblad 描述，给出功热联合统计和控制框架。它继续体现独立研究，但并不增加两篇已发表独著的数量。面向人工智能，我希望迁移的是这些明确的方法与问题，而不是给普通优化算法贴一个热力学名称。接下来转向第三条线，说明几何与控制已经怎样在热机问题中形成可达到的结果。",
-        "en": "The results converge on three questions: model consistency, finite-time speed–cost limits and the origin of slow dynamics. My sole-author preprint on thermodynamically consistent Lindbladians adds a work–heat statistics and control framework; it is separate from the two published sole-author papers. The future AI direction transfers explicit tools and questions, rather than thermodynamic labels. I now move to the third line to show how geometry and control already produce attainable results in heat engines."
+        "zh": "这一节的成果最终汇聚到三个问题：模型是否一致、速度与代价有什么限制、复杂动力学中的慢过程怎样形成。除了已发表结果，我的独著预印本还建立热力学一致的 Lindblad 描述，给出功热联合统计和控制框架。它继续体现独立研究，但并不增加两篇已发表独著的数量。这些结果将过程定义、有限时间限制和具体动力学连接起来。接下来转向第三条线，说明几何与控制已经怎样在热机问题中形成可达到的结果。",
+        "en": "The results converge on three questions: model consistency, finite-time speed–cost limits and the origin of slow dynamics. My sole-author preprint on thermodynamically consistent Lindbladians adds a work–heat statistics and control framework; it is separate from the two published sole-author papers. Together, these results connect process definitions, finite-time limits and concrete dynamics. I now move to the third line to show how geometry and control already produce attainable results in heat engines."
       },
       "sources": [
         {
@@ -872,8 +872,8 @@ window.REPORT = {
         "en": "The outlook continues these three research lines, with AI as the main new problem. I will begin with Energy Transformer and tractable Hopfield models, specifying states, noise, driving and reverse processes, and treating inference separately from training. The next step is to apply thermodynamic geometry and spectral optimization at fixed task quality. Their validity in these new models must be checked. For quantum models, memory retrieval provides a controlled task. Resource certification and task advantage need separate tests, with encoding, preparation and measurement included. Connecting model costs to actual energy use also requires a physical implementation. Let me now outline a staged path."
       },
       "section": {
-        "zh": "科研规划",
-        "en": "Research agenda"
+        "zh": "未来展望",
+        "en": "Outlook"
       },
       "minutes": 2,
       "sources": [
@@ -907,8 +907,8 @@ window.REPORT = {
         "en": "The practical starting point is a controlled model size. Near-term work will establish ET and solvable Hopfield benchmarks with explicit assumptions, forward and reverse processes, and observables, checking analysis against simulations. The next stage adds training weights and optimizer memory, tests geometric or spectral protocols, and uses diffusion models to probe their range of validity. Tractable quantum models can be explored in parallel, followed by comparisons with classical methods on the same task and cost basis. The stages are organized around verifiable outputs, without assuming universal speed or energy gains. This is mainly theoretical and computational work, supported by a workstation, shared computing resources and a gradually growing team. I will close by returning to the central question of this talk."
       },
       "section": {
-        "zh": "科研规划",
-        "en": "Research agenda"
+        "zh": "未来展望",
+        "en": "Outlook"
       },
       "minutes": 2,
       "sources": [
@@ -939,12 +939,12 @@ window.REPORT = {
         "en": "Thank you to the audience and my collaborators"
       },
       "html": {
-        "zh": "<div class=\"cols-3\"><article class=\"card\"><h3>系统性</h3><p>三条研究线相连：<br>制备与认证、随机热力学、量子热机。</p></article><article class=\"card\"><h3>独立性</h3><p>已发表独著与一作／共同通讯成果，<br>支持独立提出和推进研究问题。</p></article><article class=\"card\"><h3>发展性</h3><p>量子优化与认证预印本，<br>继续走向 AI＋量子交叉问题。</p></article></div><p class=\"closing-line\">谢谢，欢迎讨论。</p>",
-        "en": "<div class=\"cols-3\"><article class=\"card\"><h3>Continuity</h3><p>Connected work on preparation, fluctuations and quantum engines.</p></article><article class=\"card\"><h3>Independence</h3><p>Published sole-author and first/co-corresponding work support independent research.</p></article><article class=\"card\"><h3>Development</h3><p>Quantum-optimization and certification preprints lead towards AI + quantum questions.</p></article></div><p class=\"closing-line\">Thank you. I welcome your questions.</p>"
+        "zh": "<div class=\"cols-3\"><article class=\"card\"><h3>系统性</h3><p>三条研究线相连：<br>制备与认证、随机热力学、量子热机。</p></article><article class=\"card\"><h3>独立性</h3><p>已发表独著与一作／共同通讯成果，<br>支持独立提出和推进研究问题。</p></article><article class=\"card\"><h3>发展性</h3><p>量子优化与认证预印本，<br>持续拓展制备、测量与控制问题。</p></article></div><p class=\"closing-line\">谢谢，欢迎讨论。</p>",
+        "en": "<div class=\"cols-3\"><article class=\"card\"><h3>Continuity</h3><p>Connected work on preparation, fluctuations and quantum engines.</p></article><article class=\"card\"><h3>Independence</h3><p>Published sole-author and first/co-corresponding work support independent research.</p></article><article class=\"card\"><h3>Development</h3><p>Quantum-optimization and certification preprints extend preparation, measurement and control.</p></article></div><p class=\"closing-line\">Thank you. I welcome your questions.</p>"
       },
       "notes": {
-        "zh": "最后归纳三点。第一，过去成果有清晰的科学主线：从目标态制备与认证，到一致的随机过程描述，再到量子热机和可达到的控制协议。第二，两篇已发表独著，以及一作和共同通讯的合作成果，体现了独立开展研究与合作推进问题的不同经验。第三，量子优化和认证的预印本显示这些方法仍在发展，未来以明确的 AI 与量子任务为下一步。感谢国内外合作者，也感谢各位老师的时间，欢迎就科学问题、个人贡献和下一步研究提出问题。",
-        "en": "I will close with three points. The completed work has a connected progression from preparation and certification, through consistent stochastic descriptions, to quantum engines and attainable control. Published sole-author and first/co-corresponding results demonstrate complementary independent and collaborative experience. Current quantum-optimization and certification preprints show continuing development, with explicitly defined AI and quantum tasks as the next step. Thank you to my collaborators and to the audience. I welcome questions about the science, contributions and future work."
+        "zh": "最后归纳三点。第一，过去成果有清晰的科学主线：从目标态制备与认证，到一致的随机过程描述，再到量子热机和可达到的控制协议。第二，两篇已发表独著，以及一作和共同通讯的合作成果，体现了独立开展研究与合作推进问题的不同经验。第三，量子优化和认证的预印本显示这些方法仍在发展，进一步发展制备、认证与优化方法。感谢国内外合作者，也感谢各位老师的时间，欢迎就科学问题、个人贡献和下一步研究提出问题。",
+        "en": "I will close with three points. The completed work has a connected progression from preparation and certification, through consistent stochastic descriptions, to quantum engines and attainable control. Published sole-author and first/co-corresponding results demonstrate complementary independent and collaborative experience. Current quantum-optimization and certification preprints show continuing development, extending preparation, certification and control methods. Thank you to my collaborators and to the audience. I welcome questions about the science, contributions and future work."
       },
       "sources": [
         {
