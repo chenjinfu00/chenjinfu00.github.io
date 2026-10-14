@@ -41,3 +41,9 @@ The meeting prototype is available at `http://127.0.0.1:8765/meetingroom/`.
 ## Research presentation
 
 The English and Chinese homepages link to `/research-report/`. It is a standalone bilingual presentation; switch language within the report. The report assets live in `research-report/assets/`. `research-report/Jinfu-Chen-Research-Report.html` is the single-file offline version. Keep both versions in sync when updating presentation content.
+
+The 17 October 2026 research talk contains 27 main slides (40 minutes), with two future-work slides and 11 backup slides. Rebuild the offline version after changing report content or styles:
+
+```sh
+/opt/anaconda3/bin/python scripts/package_research_report.py
+```

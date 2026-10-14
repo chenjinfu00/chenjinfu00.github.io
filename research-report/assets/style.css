@@ -59,3 +59,604 @@
 @media(min-height:850px){.paper-figure img{max-height:350px}.paper-figure figcaption{font-size:14px}}
 @media(max-width:650px){.paper-figure img{max-height:none}.paper-figure figcaption{font-size:12px}.result-summary p{font-size:.95em}}
 @media print{.paper-figure img{max-height:43vh}.paper-figure figcaption{font-size:1.6vh}.result-summary .callout{font-size:.73em}}
+
+/*
+ * Additional layouts for the existing bilingual research presentation.
+ * Append after assets/style.css. All selectors are isolated by the jt- prefix.
+ * No JavaScript changes or external assets are required.
+ * Keep captions, author roles and planning status in the authored HTML.
+ */
+
+/* Three research lines: three equal cards, one question and one result each. */
+.slide-body .jt-lines,
+.slide-body .jt-evidence,
+.slide-body .jt-plans {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 1.8vw, 28px);
+  align-items: stretch;
+  margin: 0;
+}
+
+.slide-body .jt-line,
+.slide-body .jt-proof,
+.slide-body .jt-plan {
+  min-width: 0;
+  padding: clamp(19px, 1.85vw, 30px);
+  background: #f3f5ed;
+  border: 1px solid #dfe5d8;
+  border-top: 3px solid var(--teal);
+  border-radius: 3px;
+  position: relative;
+  break-inside: avoid;
+}
+
+.slide-body .jt-line:nth-child(2) {
+  border-top-color: var(--copper);
+}
+
+.slide-body .jt-line:nth-child(3) {
+  border-top-color: var(--ink);
+}
+
+.slide-body .jt-line-number,
+.slide-body .jt-plan-index,
+.slide-body .jt-step-index {
+  display: inline-block;
+  color: var(--copper);
+  font-variant-numeric: tabular-nums;
+  font-size: .72em;
+  font-weight: 600;
+  letter-spacing: .06em;
+  line-height: 1.3;
+  margin: 0 0 13px;
+}
+
+.slide-body .jt-line h3,
+.slide-body .jt-plan h3 {
+  color: var(--teal);
+  font-size: 1.05em;
+  font-weight: 650;
+  line-height: 1.38;
+  text-wrap: balance;
+  margin: 0 0 14px;
+}
+
+.slide-body .jt-line-question {
+  color: var(--ink);
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.slide-body .jt-line-tools {
+  color: var(--muted);
+  font-size: .8em;
+  line-height: 1.55;
+  margin: 0 0 17px;
+}
+
+.slide-body .jt-line-output {
+  border-top: 1px solid #d7ded0;
+  padding-top: 12px;
+  color: var(--teal);
+  font-size: .83em;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Optional small conceptual SVG above a research-line heading. */
+.slide-body .jt-line-symbol {
+  display: block;
+  width: 100%;
+  height: 54px;
+  max-height: 54px;
+  margin: 0 0 14px;
+  color: var(--teal);
+}
+
+.slide-body .jt-line-symbol path,
+.slide-body .jt-line-symbol line,
+.slide-body .jt-line-symbol circle,
+.slide-body .jt-line-symbol ellipse {
+  vector-effect: non-scaling-stroke;
+}
+
+/* Publication evidence: put numbers in text, never generate claims in CSS. */
+.slide-body .jt-proof {
+  padding-top: 21px;
+  background: #f6f5ef;
+}
+
+.slide-body .jt-proof--level {
+  border-top-color: var(--teal);
+}
+
+.slide-body .jt-proof--independence {
+  border-top-color: var(--copper);
+}
+
+.slide-body .jt-proof--growth {
+  border-top-color: var(--ink);
+}
+
+.slide-body .jt-proof-label {
+  color: var(--muted);
+  display: block;
+  font-size: .75em;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 13px;
+}
+
+.slide-body .jt-proof-value {
+  font-family: var(--serif);
+  font-size: clamp(34px, 3.3vw, 55px);
+  font-weight: 600;
+  line-height: 1.12;
+  color: var(--teal);
+  margin: 0 0 12px;
+  font-variant-numeric: lining-nums tabular-nums;
+  overflow-wrap: break-word;
+}
+
+.slide-body .jt-proof--independence .jt-proof-value {
+  color: var(--copper);
+}
+
+.slide-body .jt-proof--growth .jt-proof-value {
+  color: var(--ink);
+  font-size: clamp(27px, 2.3vw, 40px);
+  line-height: 1.3;
+}
+
+.slide-body .jt-proof-value small {
+  font-family: var(--sans);
+  display: inline;
+  font-size: .41em;
+  font-weight: 500;
+  color: var(--muted);
+  margin-left: .15em;
+}
+
+.slide-body .jt-proof-detail {
+  color: var(--ink);
+  font-size: .95em;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.slide-body .jt-proof-subline {
+  font-size: .77em;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 10px 0 0;
+}
+
+/* Compact evidence labels can also sit under a particular paper or result. */
+.slide-body .jt-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin: 12px 0 0;
+}
+
+.slide-body .jt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px;
+  border: 1px solid #cadccf;
+  background: #eaf1e9;
+  color: var(--teal);
+  border-radius: 3px;
+  font-size: .7em;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.slide-body .jt-badge--independence {
+  border-color: #ddc8b7;
+  background: #f6eee3;
+  color: #8b5938;
+}
+
+.slide-body .jt-badge--growth {
+  border-color: #cad5d9;
+  background: #ecf0f0;
+  color: var(--ink);
+}
+
+/* Domestic and international collaborations: two equally weighted groups. */
+.slide-body .jt-collaborations {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 2.4vw, 38px);
+  margin: 0;
+}
+
+.slide-body .jt-collaboration-group {
+  min-width: 0;
+  padding: 21px 24px 23px;
+  border: 1px solid #dfe5d8;
+  border-top: 3px solid var(--teal);
+  background: #f4f5ee;
+  border-radius: 3px;
+  break-inside: avoid;
+}
+
+.slide-body .jt-collaboration-group:nth-child(2) {
+  border-top-color: var(--copper);
+}
+
+.slide-body .jt-collaboration-group h3 {
+  color: var(--teal);
+  font-size: 1em;
+  line-height: 1.35;
+  margin: 0 0 17px;
+}
+
+.slide-body .jt-people {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 21px;
+}
+
+.slide-body .jt-person {
+  min-width: 0;
+  padding: 12px 0 0;
+  border-top: 1px solid #d3ddcf;
+  break-inside: avoid;
+}
+
+.slide-body .jt-person-name {
+  display: block;
+  font-size: 1em;
+  font-weight: 650;
+  line-height: 1.4;
+  color: var(--ink);
+  overflow-wrap: break-word;
+}
+
+.slide-body .jt-person-affiliation {
+  display: block;
+  font-size: .72em;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-top: 4px;
+  overflow-wrap: anywhere;
+}
+
+.slide-body .jt-person-topic {
+  display: block;
+  font-size: .75em;
+  line-height: 1.45;
+  color: var(--teal);
+  margin-top: 5px;
+}
+
+.slide-body .jt-collaboration-note {
+  padding-top: 13px;
+  margin: 17px 0 0;
+  border-top: 1px solid #d3ddcf;
+  font-size: .79em;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* AI-to-quantum roadmap; use an ordered list for accessible reading order. */
+.slide-body .jt-roadmap {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: clamp(24px, 2.7vw, 42px);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.slide-body .jt-roadmap--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.slide-body .jt-step {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 22px 22px 23px;
+  min-width: 0;
+  background: #f1f5ed;
+  border: 1px solid #dbe4d6;
+  border-top: 3px solid var(--teal);
+  border-radius: 3px;
+  break-inside: avoid;
+}
+
+.slide-body .jt-step + .jt-step::before {
+  content: "→";
+  position: absolute;
+  left: calc(-1 * clamp(24px, 2.7vw, 42px) / 2 - 10px);
+  top: 45%;
+  width: 20px;
+  text-align: center;
+  color: var(--copper);
+  font-family: var(--sans);
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.slide-body .jt-step:last-child {
+  background: #eaf2ed;
+}
+
+.slide-body .jt-step h3 {
+  color: var(--teal);
+  font-size: 1.05em;
+  line-height: 1.4;
+  margin: 0 0 15px;
+  text-wrap: balance;
+}
+
+.slide-body .jt-step p {
+  font-size: .94em;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 15px;
+}
+
+.slide-body .jt-step-output {
+  font-size: .81em;
+  line-height: 1.5;
+  color: var(--teal);
+  font-weight: 600;
+  border-top: 1px solid #d3ddcf;
+  padding-top: 12px;
+}
+
+/* Three future directions: question, method, then a concrete output. */
+.slide-body .jt-plan {
+  background: #f5f5ed;
+}
+
+.slide-body .jt-plan:nth-child(2) {
+  background: #eef4ee;
+}
+
+.slide-body .jt-plan:nth-child(3) {
+  border-top-color: var(--copper);
+}
+
+.slide-body .jt-plan-question {
+  font-size: 1em;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 18px;
+}
+
+.slide-body .jt-plan-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+.slide-body .jt-plan-grid dt {
+  color: var(--copper);
+  font-size: .69em;
+  line-height: 1.5;
+  font-weight: 600;
+  margin: 0;
+}
+
+.slide-body .jt-plan-grid dd {
+  font-size: .87em;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+.slide-body .jt-plan-grid dd:last-child {
+  margin-bottom: 0;
+}
+
+.slide-body .jt-section-note {
+  padding: 13px 18px;
+  border-left: 3px solid var(--copper);
+  background: #f5f0e6;
+  margin: 18px 0 0;
+  color: var(--ink);
+  font-size: .91em;
+  line-height: 1.48;
+}
+
+.slide-body .jt-section-note strong {
+  color: var(--ink);
+}
+
+/* Laptop/projector height: preserve readable body text, trim spacing first. */
+@media (min-width: 1000px) and (max-height: 780px) {
+  .slide-body .jt-line,
+  .slide-body .jt-proof,
+  .slide-body .jt-plan,
+  .slide-body .jt-step {
+    padding: 17px 19px 19px;
+  }
+  .slide-body .jt-line h3,
+  .slide-body .jt-plan h3,
+  .slide-body .jt-step h3 {
+    margin-bottom: 11px;
+  }
+  .slide-body .jt-line-symbol {
+    height: 43px;
+    margin-bottom: 10px;
+  }
+  .slide-body .jt-line-number,
+  .slide-body .jt-plan-index,
+  .slide-body .jt-step-index {
+    margin-bottom: 10px;
+  }
+  .slide-body .jt-line-question,
+  .slide-body .jt-plan-question {
+    margin-bottom: 13px;
+  }
+  .slide-body .jt-line-tools {
+    margin-bottom: 12px;
+  }
+  .slide-body .jt-proof-value {
+    font-size: 37px;
+    margin-bottom: 9px;
+  }
+  .slide-body .jt-proof--growth .jt-proof-value {
+    font-size: 29px;
+  }
+  .slide-body .jt-collaboration-group {
+    padding: 17px 21px 19px;
+  }
+  .slide-body .jt-collaboration-group h3 {
+    margin-bottom: 12px;
+  }
+  .slide-body .jt-people {
+    row-gap: 12px;
+  }
+  .slide-body .jt-person {
+    padding-top: 10px;
+  }
+  .slide-body .jt-section-note {
+    padding: 11px 16px;
+    margin-top: 15px;
+  }
+}
+
+/* Keep the two balanced collaboration groups on a tablet. */
+@media (max-width: 900px) {
+  .slide-body .jt-line,
+  .slide-body .jt-proof,
+  .slide-body .jt-plan,
+  .slide-body .jt-step {
+    padding: 18px 16px;
+  }
+  .slide-body .jt-collaboration-group {
+    padding: 18px;
+  }
+  .slide-body .jt-people {
+    column-gap: 14px;
+  }
+  .slide-body .jt-person-name {
+    font-size: .98em;
+  }
+}
+
+/* Mobile reading follows the same order, with no clipped or hidden text. */
+@media (max-width: 650px) {
+  .slide-body .jt-lines,
+  .slide-body .jt-evidence,
+  .slide-body .jt-collaborations,
+  .slide-body .jt-roadmap,
+  .slide-body .jt-roadmap--four,
+  .slide-body .jt-plans {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .slide-body .jt-line,
+  .slide-body .jt-proof,
+  .slide-body .jt-plan,
+  .slide-body .jt-step,
+  .slide-body .jt-collaboration-group {
+    padding: 22px;
+  }
+  .slide-body .jt-line-question,
+  .slide-body .jt-plan-question,
+  .slide-body .jt-proof-detail,
+  .slide-body .jt-step p {
+    font-size: 1em;
+  }
+  .slide-body .jt-line-tools,
+  .slide-body .jt-line-output,
+  .slide-body .jt-step-output,
+  .slide-body .jt-plan-grid dd {
+    font-size: .9em;
+  }
+  .slide-body .jt-person-affiliation {
+    font-size: .76em;
+  }
+  .slide-body .jt-step + .jt-step::before {
+    content: "↓";
+    left: calc(50% - 10px);
+    top: -23px;
+    font-size: 22px;
+  }
+  .slide-body .jt-proof-value {
+    font-size: 40px;
+  }
+  .slide-body .jt-proof--growth .jt-proof-value {
+    font-size: 31px;
+  }
+}
+
+/* Print keeps the three research/planning columns on one landscape page. */
+@media print {
+  .slide-body .jt-lines,
+  .slide-body .jt-evidence,
+  .slide-body .jt-plans,
+  .slide-body .jt-roadmap {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.7vw;
+  }
+  .slide-body .jt-roadmap--four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .slide-body .jt-collaborations {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3.5vw;
+  }
+  .slide-body .jt-line,
+  .slide-body .jt-proof,
+  .slide-body .jt-plan,
+  .slide-body .jt-step,
+  .slide-body .jt-collaboration-group {
+    padding: 2.9vh 2.2vw;
+    border-top-width: 2px;
+  }
+  .slide-body .jt-line-symbol {
+    height: 7vh;
+    max-height: 7vh;
+    margin-bottom: 1.8vh;
+  }
+  .slide-body .jt-proof-value {
+    font-size: 6.5vh;
+  }
+  .slide-body .jt-proof--growth .jt-proof-value {
+    font-size: 4.6vh;
+  }
+  .slide-body .jt-people {
+    gap: 2vh 2vw;
+  }
+  .slide-body .jt-person-name {
+    font-size: 1em;
+  }
+  .slide-body .jt-person-affiliation {
+    font-size: .73em;
+  }
+  .slide-body .jt-step + .jt-step::before {
+    content: "→";
+    left: calc(-1.35vw - 10px);
+    top: 45%;
+    font-size: 3vh;
+  }
+  .slide-body .jt-section-note {
+    padding: 1.7vh 1.9vw;
+    margin-top: 2.4vh;
+  }
+}
+
+/* Compact navigation for the three research chapters and short future section. */
+@media(min-width:900px){.section-rail{gap:4px;padding:12px}.rail-item{gap:4px;padding:4px 0}.rail-number{width:23px;height:23px}.rail-label{font-size:9px;line-height:1.2;max-width:56px}}
+.jt-collab-inline{font-size:.71em;color:var(--muted);margin:11px 0 0!important;line-height:1.4}
+.slide-body .jt-note{font-size:.82em;line-height:1.45;color:var(--muted);margin-top:15px}
+.slide-body .jt-step-num{display:block;font-size:.72em;color:var(--copper);margin-bottom:10px}
+.slide-body .jt-plan small,.slide-body .jt-step small{display:block;font-size:.76em;line-height:1.45;color:var(--muted)}
+html[lang="en"] .slide--first h1{font-size:41px;line-height:1.18;max-width:100%}
+.closing-line{margin-top:26px!important;font:1.5em var(--serif);color:var(--teal)}
