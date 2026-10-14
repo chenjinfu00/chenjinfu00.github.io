@@ -11,6 +11,7 @@ This is a self-contained, template-free personal website served as static files.
 - generated HTML routes for the English and Chinese website
 - `.nojekyll`, `robots.txt`, and `sitemap.xml`: deployment files
 - `meetingroom/`: a browser-based peer-to-peer meeting room with room passwords and administrator controls
+- `research-report/`: the bilingual 40-minute research presentation, with speaker notes and an offline HTML download
 
 ## What is deliberately excluded
 
@@ -19,7 +20,7 @@ This is a self-contained, template-free personal website served as static files.
 - notebooks and one-off content generators
 - the game prototype and map prototype
 - sample PDFs and slides
-- local screenshots, temporary output, interview material, and unpublished PDFs
+- local screenshots, temporary output, private drafts, and unpublished PDFs
 
 ## Rebuild
 
@@ -36,3 +37,7 @@ python3 -m http.server 8765 --bind 127.0.0.1
 Open `http://127.0.0.1:8765/`.
 
 The meeting prototype is available at `http://127.0.0.1:8765/meetingroom/`.
+
+## Research presentation
+
+The English and Chinese homepages link to `/research-report/`. It is a standalone bilingual presentation; switch language within the report. The report assets live in `research-report/assets/`. `research-report/Jinfu-Chen-Research-Report.html` is the single-file offline version. Keep both versions in sync when updating presentation content.

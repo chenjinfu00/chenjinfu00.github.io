@@ -84,6 +84,7 @@ for alias, destination in [("/about/", "/cv/"), ("/about.html", "/cv/"), ("/resu
 render("/404.html", "404.html", page="404", title="Page not found | Jinfu Chen")
 urls = [profile["site_url"] + ("/" + p.removesuffix("index.html")) for p in written
         if p.removeprefix('zh/') not in {"404.html", "about.html", "about/index.html", "resume/index.html"}]
+urls.append(profile["site_url"] + "/research-report/")
 (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' +
     "".join("<url><loc>" + escape(u) + "</loc></url>" for u in urls) + "</urlset>\n")

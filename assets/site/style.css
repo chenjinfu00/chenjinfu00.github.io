@@ -102,3 +102,6 @@ h1,h2,h3,h4,h5,h6,.hero-statement{font-style:normal}
 }
 @media(max-width:360px){.page-home .hero h1,html:lang(zh-CN) .page-home .hero h1{font-size:54px}.page-home .hero-statement{font-size:23px}.page-home .hero-links{gap:15px}.page-home .hero-copy{padding-top:32px}.page-home .hero-description{max-width:280px}}
 @media print{.site-header,.site-footer,.print-page,.skip-link,.toast{display:none!important}.container{width:100%;max-width:none}.page-heading{padding:0 0 20px}.page-heading h1{font-size:34px}.bio-grid{grid-template-columns:1fr 140px;gap:30px}.bio-portrait{grid-row:auto;width:auto}.section{padding-block:25px}.timeline article{grid-template-columns:120px 1fr;padding-block:15px;break-inside:avoid}.bio-main p:not(.lead),.timeline article p:last-child{font-size:11px}.bio-main .lead{font-size:18px}.social-links{display:none}body{font-size:12px}.teaching-section>h2,.timeline-section>h2{font-size:27px}a{color:inherit}.course-row{break-inside:avoid}.portrait img{max-height:160px;width:160px}.page-heading h1 br{display:none}@page{margin:18mm}}
+
+/* Allow the homepage research report link to wrap on narrow screens. */
+.page-home .hero-links{flex-wrap:wrap}
