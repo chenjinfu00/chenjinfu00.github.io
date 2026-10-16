@@ -9,4 +9,13 @@ venue_url: "https://www.qtech-budapest.eu/welcome"
 date: 2025-09-22
 event_date: "Sep. 22-25, 2025"
 location: "Budapest, Hungary"
+materials:
+  - label: "Slides"
+    file: /assets/presentations/2025-thermalization-qtech25.pdf
+    pptx: /assets/presentations/2025-thermalization-qtech25.pptx
+    pptx_slides: 33
+    preview: /assets/presentations/2025-thermalization-qtech25.webp
+    pages: 30
+    preview_width: 1000
+    preview_height: 562
 ---

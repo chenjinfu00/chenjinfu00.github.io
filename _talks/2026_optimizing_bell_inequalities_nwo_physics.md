@@ -9,4 +9,13 @@ venue_url: "https://nwophysics.nl/programme-items/focus-sessions-0"
 date: 2026-01-20
 event_date: "Jan. 20-21, 2026"
 location: "Veldhoven, The Netherlands"
+materials:
+  - label: "Slides"
+    file: /assets/presentations/2026-bell-nwo.pdf
+    pptx: /assets/presentations/2026-bell-nwo.pptx
+    pptx_slides: 26
+    preview: /assets/presentations/2026-bell-nwo.webp
+    pages: 25
+    preview_width: 1000
+    preview_height: 562
 ---

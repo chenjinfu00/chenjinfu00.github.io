@@ -9,4 +9,13 @@ venue_url: "https://nwophysics.nl/programme-booklet-2025"
 date: 2025-01-21
 event_date: "Jan. 21-22, 2025"
 location: "Veldhoven, The Netherlands"
+materials:
+  - label: "Slides"
+    file: /assets/presentations/2025-thermalization-nwo.pdf
+    pptx: /assets/presentations/2025-thermalization-nwo.pptx
+    pptx_slides: 16
+    preview: /assets/presentations/2025-thermalization-nwo.webp
+    pages: 16
+    preview_width: 1000
+    preview_height: 563
 ---

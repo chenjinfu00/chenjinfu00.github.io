@@ -9,4 +9,13 @@ venue_url: "https://mpl.mpg.de/divisions/marquardt-division/workshops/2019-quant
 date: 2019-07-08
 event_date: "Jul. 8-10, 2019"
 location: "Erlangen, Germany"
+materials:
+  - label: "Poster"
+    file: /assets/presentations/2019-bose-fermi-duality-poster.pdf
+    pptx: /assets/presentations/2019-bose-fermi-duality-poster.pptx
+    pptx_slides: 1
+    preview: /assets/presentations/2019-bose-fermi-duality-poster.webp
+    pages: 1
+    preview_width: 750
+    preview_height: 1000
 ---
