@@ -105,3 +105,30 @@ h1,h2,h3,h4,h5,h6,.hero-statement{font-style:normal}
 
 /* Allow the homepage research report link to wrap on narrow screens. */
 .page-home .hero-links{flex-wrap:wrap}
+
+/* Archived presentation materials */
+.event-materials{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:15px;color:var(--primary)}
+.event-materials>a{display:inline-flex;align-items:center;gap:7px;font-size:12px;line-height:1.6}
+.event-materials>a:hover{text-decoration:underline;text-underline-offset:4px}
+.event-materials .lucide{width:15px;height:15px}
+.material-format{font-size:10px;color:var(--muted)}
+.event-website{margin-top:20px}
+.presentation-materials{margin-top:46px;border-top:1px solid var(--line);padding-top:28px}
+.presentation-materials>h2{font-size:30px;line-height:1.3}
+.materials-note{color:var(--muted);font-size:13px;margin-top:14px;max-width:650px}
+.presentation-material{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:34px;align-items:center;margin-top:28px}
+.presentation-material+.presentation-material{margin-top:36px;padding-top:36px;border-top:1px solid var(--line)}
+.material-preview{display:block;border:1px solid var(--line);background:white;transition:border-color .2s}
+.material-preview:hover{border-color:var(--primary)}
+.material-preview>img{width:100%;height:auto}
+.poster-material .material-preview{max-width:330px;justify-self:center}
+.material-info h3{font:24px/1.4 var(--serif);color:var(--primary)}
+.material-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted);margin:12px 0 22px}
+.material-download{display:flex;width:max-content;margin-top:18px}
+@media(max-width:620px){.presentation-material{grid-template-columns:1fr;gap:20px}.presentation-materials>h2{font-size:27px}.poster-material .material-preview{max-width:280px}.material-info h3{font-size:23px}.event-materials{gap:12px 18px}.event-materials>a{font-size:11px}}
+.event-material-links{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.event-material-links>span{font-size:11px;color:var(--muted)}
+.event-materials a{display:inline-flex;align-items:center;gap:5px;font-size:12px;line-height:1.6}
+.event-materials a:hover{text-decoration:underline;text-underline-offset:4px}
+.material-downloads{display:flex;flex-wrap:wrap;gap:0 22px}
+.material-pptx-meta{margin-top:12px;color:var(--muted);font-size:11px}

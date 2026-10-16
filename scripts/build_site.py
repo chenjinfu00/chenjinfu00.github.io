@@ -59,6 +59,21 @@ for work in works:
     work["authors"] = work["citation"].split(" (" + work["year"] + ")")[0]
 works.sort(key=lambda x: str(x.get("selected_sort", x["date"])), reverse=True)
 talks = sorted(records("_talks"), key=lambda x: str(x["date"]), reverse=True)
+for talk in talks:
+    for material in talk.get("materials", []):
+        for field in ("file", "preview", "pptx"):
+            path = material[field]
+            if not path.startswith("/assets/presentations/") or ".." in Path(path).parts:
+                raise ValueError(f"Invalid presentation asset: {path}")
+            if not (ROOT / path.lstrip("/")).is_file():
+                raise FileNotFoundError(f"Missing presentation asset: {path}")
+        size = (ROOT / material["file"].lstrip("/")).stat().st_size
+        material["file_size"] = f"{size / 1_000_000:.1f} MB"
+        pptx_size = (ROOT / material["pptx"].lstrip("/")).stat().st_size
+        material["pptx_size"] = f"{pptx_size / 1_000_000:.1f} MB"
+        material["format"] = Path(material["file"]).suffix.lstrip(".").upper()
+        if material["format"] not in {"PDF", "PPTX"}:
+            raise ValueError(f"Unsupported presentation format: {material['file']}")
 teaching = sorted(records("_teaching"), key=lambda x: str(x["date"]), reverse=True)
 featured_slugs = ["boosting-thermalization-many-body-systems", "optimizing-quantum-violation-bell-inequalities",
                   "spectral-gap-optimization", "geodesic-lower-bound-membrane-separation"]
