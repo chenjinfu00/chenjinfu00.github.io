@@ -7,6 +7,7 @@ This is a self-contained, template-free personal website served as static files.
 - `site_src/`: original page templates, profile data, translations, and work metadata
 - `_publications/`, `_talks/`, `_teaching/`: public academic records used by the generator
 - `assets/site/`: the site's original design, scripts, portrait, artwork, icons, and third-party licenses
+- `assets/presentations/`: archived talk slides and posters, with cover previews
 - `scripts/build_site.py` and `scripts/localize_site.py`: the small static-site generator
 - generated HTML routes for the English and Chinese website
 - `.nojekyll`, `robots.txt`, and `sitemap.xml`: deployment files
@@ -35,6 +36,15 @@ python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
 Open `http://127.0.0.1:8765/`.
+
+## Presentation archive
+
+Each `_talks/` record can list `materials` with a public asset path, cover preview,
+PDF page count, corresponding PPTX path and slide count, and preview dimensions.
+The generator validates asset paths and renders PDF reading and PDF/PPTX download
+links on the English and Chinese pages. Public PPTX copies omit speaker notes and
+comments. The two 2023 Brownian-engine poster
+entries explicitly share the same archived poster.
 
 The meeting prototype is available at `http://127.0.0.1:8765/meetingroom/`.
 
