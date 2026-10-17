@@ -12,7 +12,6 @@ This is a self-contained, template-free personal website served as static files.
 - generated HTML routes for the English and Chinese website
 - `.nojekyll`, `robots.txt`, and `sitemap.xml`: deployment files
 - `meetingroom/`: a browser-based peer-to-peer meeting room with room passwords and administrator controls
-- `research-report/`: the bilingual 40-minute research presentation, with speaker notes and an offline HTML download
 
 ## What is deliberately excluded
 
@@ -48,12 +47,5 @@ entries explicitly share the same archived poster.
 
 The meeting prototype is available at `http://127.0.0.1:8765/meetingroom/`.
 
-## Research presentation
 
-The job talk at `/research-report/` is kept as an unlisted, standalone bilingual presentation for direct sharing. Do not link it from either homepage or include it in `sitemap.xml`. The original URL remains publicly accessible; switch language within the report. The report assets live in `research-report/assets/`. `research-report/Jinfu-Chen-Research-Report.html` is the single-file offline version. Keep both versions in sync when updating presentation content.
-
-The 17 October 2026 research talk contains 27 main slides (40 minutes), with two future-work slides and 11 backup slides. Rebuild the offline version after changing report content or styles:
-
-```sh
-/opt/anaconda3/bin/python scripts/package_research_report.py
-```
+Private interview presentations and speaker scripts are stored outside this repository. Public presentation PDFs and PPTX files omit internal notes and comments.
