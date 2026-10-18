@@ -45,6 +45,8 @@ Buttons within each navigation, shortcut, filter, or action group share the same
 width, including when switching languages. Narrow screens wrap or scroll groups.
 Edit the templates in `site_src/templates/` and translations in `site_src/zh.yml`,
 then rebuild to update both language versions.
+All headings, body text, and controls use Arial for Latin characters and Hei
+fonts for Chinese characters (SimHei or Heiti SC, with system sans-serif fallbacks).
 
 The three research directions also define publication tags: quantum thermodynamics,
 finite-time and stochastic thermodynamics, and quantum nonlocality and many-body systems. Each
