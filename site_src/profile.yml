@@ -9,43 +9,49 @@ orcid: https://orcid.org/0000-0002-7207-969X
 github: https://github.com/chenjinfu00
 site_url: https://chenjinfu00.github.io
 topics:
-  - id: nonlocality_many_body
-    short: Quantum & many-body
-    title: Quantum nonlocality
-    question: What makes quantum correlations different?
-    text: Symmetry and polyhedral optimization help turn multipartite Bell inequalities into noise-robust, experimentally feasible tests of correlations beyond classical physics.
-    methods: Bell inequalities · Symmetry · Optimization
-  - id: thermalization
-    short: Many-body dynamics
-    title: Many-body thermalization
-    question: How quickly can a quantum system relax?
-    text: By shaping dissipation and optimizing Lindbladian spectral gaps, I develop ways to prepare thermal states faster. Tensor networks make these questions accessible beyond small systems.
-    methods: Open systems · Spectral gaps · Tensor networks
-  - id: finite_time_heat_engines
-    short: Heat engines & control
-    title: Thermodynamic geometry
-    question: How much does it cost to go faster?
-    text: Geometric methods identify low-dissipation control protocols, revealing how finite operating time limits the power and efficiency of quantum and Brownian heat engines.
-    methods: Finite-time control · Geometry · Heat engines
-  - id: stochastic_thermodynamics
-    short: Stochastic thermodynamics
-    title: Thermodynamics and generative AI
-    question: Can thermodynamics improve learning and sampling?
-    text: Building on stochastic and finite-time thermodynamics, this direction explores how low-dissipation protocols and optimal control can improve learning and sampling in generative AI, including diffusion models and Transformers.
-    methods: Stochastic thermodynamics · Finite-time optimization · Generative AI
+  - id: quantum_thermodynamics
+    short: Quantum thermodynamics
+    title: Quantum thermodynamics
+    icon: orbit
+    question: How can we control quantum dynamics and prepare useful states?
+    text: I study quantum heat engines, thermalization, state preparation, and monitored transport. Geometric and spectral methods connect thermodynamic performance with the control of quantum dynamics.
+    methods: Quantum heat engines · Thermalization · Quantum control
+  - id: finite_time_stochastic_thermodynamics
+    short: Finite-time & stochastic
+    title: Finite-time and stochastic thermodynamics
+    icon: route
+    question: What sets the cost and fluctuations of fast processes?
+    text: Thermodynamic geometry, optimal control, and fluctuation relations reveal the energetic cost of finite-time processes, from Brownian heat engines and membrane separation to quantum work and heat statistics.
+    methods: Thermodynamic geometry · Optimal control · Fluctuations
+  - id: quantum_nonlocality
+    short: Nonlocality & many-body
+    title: Quantum nonlocality and many-body systems
+    icon: network
+    question: How can we prepare and certify quantum many-body states?
+    text: I use symmetry, spectral-gap optimization, and Lindblad dynamics to prepare and control many-body states. Multipartite Bell inequalities provide tests and certification of correlations beyond classical physics.
+    methods: Bell inequalities · Spectral gaps · Lindblad dynamics
 timeline:
   - years: 2024–present
     title: Postdoctoral researcher
     place: Leiden University
     detail: Working with Jordi Tura on quantum nonlocality and open quantum many-body systems.
+    topics: [quantum_thermodynamics, quantum_nonlocality]
+    topic_names:
+      quantum_nonlocality: Quantum nonlocality
   - years: 2021–2024
     title: Postdoctoral researcher
     place: Peking University
     detail: Working with H. T. Quan on stochastic thermodynamics, fluctuation theorems, and optimal control.
+    topics: [finite_time_stochastic_thermodynamics, quantum_thermodynamics]
+    topic_names:
+      finite_time_stochastic_thermodynamics: Finite-time thermodynamics
   - years: 2016–2021
     title: Ph.D. in Quantum Physics
     place: Beijing Computational Science Research Center
     detail: Supervised by C. P. Sun. Research on finite-time quantum thermodynamics and heat engines.
+    topics: [finite_time_stochastic_thermodynamics, quantum_thermodynamics]
+    topic_names:
+      finite_time_stochastic_thermodynamics: Finite-time thermodynamics
   - years: 2012–2016
     title: B.S. in Physics & Mathematics
     place: Peking University

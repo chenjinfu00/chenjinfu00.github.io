@@ -3,6 +3,7 @@ title: "Geodesic path for the minimal energy cost in shortcuts to isothermality"
 collection: talks
 type: "Seminar"
 presentation_group: "talk"
+topics: [finite_time_stochastic_thermodynamics]
 permalink: /talks/2021_geodesic
 venue: "Online seminar, Gentaro Watanabe group, Zhejiang University"
 venue_url: "https://person.zju.edu.cn/en/gentaro"

@@ -3,6 +3,7 @@ title: "Optimizing quantum violation for multipartite facet Bell inequalities"
 collection: talks
 type: "Talk"
 presentation_group: "talk"
+topics: [quantum_nonlocality]
 permalink: /talks/2026_optimizing_bell_inequalities_nwo_physics
 venue: "NWO Physics"
 venue_url: "https://nwophysics.nl/programme-items/focus-sessions-0"

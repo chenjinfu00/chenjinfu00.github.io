@@ -3,6 +3,7 @@ title: "Bose-Fermi duality in quantum Otto heat engine with trapped repulsive Bo
 collection: talks
 type: "Poster"
 presentation_group: "poster"
+topics: [quantum_thermodynamics]
 permalink: /talks/2019_bose_fermi_duality_qtm_poster
 venue: "Quantum Thermal Machines Workshop, Max Planck Institute for the Science of Light"
 venue_url: "https://mpl.mpg.de/divisions/marquardt-division/workshops/2019-quantum-thermal-machines"

@@ -3,6 +3,7 @@ title: "Thermodynamics and finite-time optimization of small quantum systems"
 collection: talks
 type: "Talk"
 presentation_group: "talk"
+topics: [quantum_thermodynamics, finite_time_stochastic_thermodynamics]
 permalink: /talks/2021_thermodynamics
 venue: "The First Boyou Forum"
 date: 2021-06-16

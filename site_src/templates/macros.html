@@ -1,14 +1,26 @@
+{% macro topic_tags(labels, destination='/publications/') %}
+<div class="paper-topics" aria-label="Research topics">{% for topic in labels %}<a class="work-topic" data-direction="{{ topic.id }}" href="{{ destination }}?topic={{ topic.id }}">{{ topic.title }}</a>{% endfor %}</div>
+{% endmacro %}
+{% macro topic_filters(groups, label, compact=false) %}
+<div class="filter-list" role="group" aria-label="{{ label }}"><button class="filter active" data-filter="all" aria-pressed="true">All topics</button>{% for id, title in groups %}<button class="filter" data-filter="{{ id }}" aria-pressed="false"{% if compact %} aria-label="{{ title }}" title="{{ title }}"{% endif %}>{{ topic_short_labels[id] if compact else title }}</button>{% endfor %}</div>
+{% endmacro %}
+{% macro topic_icons(labels, destination='/talks/') %}
+<div class="topic-icons" aria-label="Research topics">{% for topic in labels %}<a class="topic-icon" data-direction="{{ topic.id }}" href="{{ destination }}?topic={{ topic.id }}" aria-label="{{ topic.title }}" title="{{ topic.title }}"><i data-lucide="{{ topic.icon }}" aria-hidden="true"></i></a>{% endfor %}</div>
+{% endmacro %}
+{% macro publication_status(work) %}
+<span class="publication-badge {{ 'publication-preprint' if work.preprint else 'publication-published' }}"><span class="publication-kind">{{ 'PREPRINT' if work.preprint else 'ARTICLE' }}</span><span class="venue">{{ work.venue }}</span></span>
+{% endmacro %}
 {% macro paper(work, number) %}
-<article class="paper-row" data-result data-topic="{{ work.topic_group }}" data-search="{{ (work.title ~ ' ' ~ work.citation ~ ' ' ~ work.summary)|lower }}">
+<article class="paper-row" data-result data-topics="{{ work.topics|join(' ') }}" data-search="{{ (work.title ~ ' ' ~ work.citation ~ ' ' ~ work.summary ~ ' ' ~ (work.topic_labels|map(attribute='title')|join(' ')))|lower }}">
   <div class="paper-index">{{ '%02d' % number }}<span>{{ work.year }}</span></div>
-  <div class="paper-main"><div class="paper-meta"><span class="venue {% if work.journal_highlight %}venue-highlight{% endif %}">{{ work.venue }}</span>{% if work.preprint %}<span class="preprint">PREPRINT</span>{% endif %}</div>
+  <div class="paper-main"><div class="paper-meta">{{ publication_status(work) }}{{ topic_icons(work.topic_labels, '/publications/') }}</div>
     <h3><a href="{{ work.url }}">{{ work.title }}</a></h3><p class="paper-authors">{{ work.authors }}</p><p class="paper-summary">{{ work.summary }}</p>
     <div class="paper-actions"><a href="{{ work.paper_url }}">{{ work.paper_label }} <i data-lucide="arrow-up-right"></i></a><button class="text-button copy-citation" data-citation="{{ work.citation }}" title="Copy citation"><i data-lucide="copy"></i> Cite</button></div>
   </div><a class="paper-open icon-button" href="{{ work.url }}" aria-label="Details: {{ work.title }}" title="Paper details"><i data-lucide="arrow-up-right"></i></a>
 </article>
 {% endmacro %}
 {% macro event(item) %}
-<article class="event-row" data-result data-topic="{{ item.presentation_group }}" data-search="{{ (item.title ~ ' ' ~ item.venue ~ ' ' ~ item.location ~ ' ' ~ item.year)|lower }}"><div class="event-date">{{ item.event_date }}<span>{{ item.type }}</span></div><div><h3><a href="{{ item.permalink }}/">{{ item.title }}</a></h3><p>{% if item.venue_url %}<a class="event-venue" href="{{ item.venue_url }}">{{ item.venue }} <i data-lucide="arrow-up-right"></i></a>{% else %}{{ item.venue }}{% endif %}</p><span class="event-location"><i data-lucide="map-pin"></i>{{ item.location }}</span>
+<article class="event-row" data-result data-topics="{{ item.topics|join(' ') }}" data-format="{{ item.presentation_group }}" data-search="{{ (item.title ~ ' ' ~ item.venue ~ ' ' ~ item.location ~ ' ' ~ item.year ~ ' ' ~ (item.topic_labels|map(attribute='title')|join(' ')))|lower }}"><div class="event-date">{{ item.event_date }}<div class="event-kinds"><span class="event-format">{{ item.type }}</span>{{ topic_icons(item.topic_labels) }}</div></div><div><h3><a href="{{ item.permalink }}/">{{ item.title }}</a></h3><p>{% if item.venue_url %}<a class="event-venue" href="{{ item.venue_url }}">{{ item.venue }} <i data-lucide="arrow-up-right"></i></a>{% else %}{{ item.venue }}{% endif %}</p><span class="event-location"><i data-lucide="map-pin"></i>{{ item.location }}</span>
 {% if item.materials %}<div class="event-materials">{% for material in item.materials %}<div class="event-material-links"><span>{{ material.label }}</span><a href="{{ material.file }}" target="_blank" rel="noopener">PDF <i data-lucide="arrow-up-right"></i></a><a href="{{ material.pptx }}" download>PPT <i data-lucide="download"></i></a></div>{% endfor %}</div>{% endif %}
 </div></article>
 {% endmacro %}

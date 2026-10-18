@@ -3,6 +3,7 @@ title: "Finite-time thermodynamic optimization: thermodynamic geometry"
 collection: talks
 type: "Seminar"
 presentation_group: "talk"
+topics: [quantum_thermodynamics, finite_time_stochastic_thermodynamics]
 permalink: /talks/2025_finite_time_thermodynamic_optimization_jizhiclub
 venue: "Online seminar, Jizhiclub @ Non-equilibrium Statistical Physics Reading Group"
 venue_url: "https://swarma.org/?p=53519"

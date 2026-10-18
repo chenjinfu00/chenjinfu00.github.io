@@ -3,6 +3,7 @@ title: "Boosting thermalization of classical and quantum many-body systems"
 collection: talks
 type: "Talk"
 presentation_group: "talk"
+topics: [quantum_thermodynamics, quantum_nonlocality]
 permalink: /talks/2025_boosting_thermalization_nwo_physics
 venue: "NWO Physics"
 venue_url: "https://nwophysics.nl/programme-booklet-2025"

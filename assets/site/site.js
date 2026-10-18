@@ -5,8 +5,8 @@
   const switcher = document.querySelector('.language-switch');
   let renderedPath=location.pathname,languageBusy=false;
   const languagePages=new Map();
-  const stableHeightSelectors=['.hero-copy','.hero h1','.hero-statement','.hero-description','.hero-links','.section-heading','.research-topic','.paper-row','.about-copy','.event-row','.page-heading','.filter-toolbar','.archive-meta','.group-title','.bio-grid','.timeline-section>.eyebrow','.timeline-section>h2','.timeline article','.teaching-section>.eyebrow','.teaching-section>h2','.teaching-section>p:not(.eyebrow)','.course-row','.detail-page>h1','.detail-summary','.citation-block','.footer-top','.footer-bottom'];
-  const stableWidthSelectors=['.wordmark','#navigation>a','.language-switch','.hero-copy','.hero h1','.hero-statement','.hero-description','.hero-links'];
+  const stableHeightSelectors=['.hero-copy','.hero h1','.hero-statement','.hero-description','.hero-links','.section-heading','.research-topic','.paper-row','.about-copy','.event-row','.page-heading','.archive-meta','.group-title','.bio-grid','.timeline-section>.eyebrow','.timeline-section>h2','.timeline article','.teaching-section>.eyebrow','.teaching-section>h2','.teaching-section>p:not(.eyebrow)','.course-row','.detail-page>h1','.detail-summary','.citation-block','.footer-top','.footer-bottom'];
+  const stableWidthSelectors=['.wordmark','.language-switch','.hero-copy','.hero h1','.hero-statement','.hero-description','.hero-links'];
   const children = node => [...node.childNodes].filter(child=>child.nodeType!==Node.TEXT_NODE||child.nodeValue.trim());
   const iconPair = (current,next) => current.nodeType===Node.ELEMENT_NODE&&next.nodeType===Node.ELEMENT_NODE
     &&current.matches('svg.lucide')&&next.matches('i[data-lucide]');
@@ -28,7 +28,7 @@
   }
   async function languagePage(target) {
     const key=target.pathname;
-    if(!languagePages.has(key))languagePages.set(key,fetch(target,{headers:{'X-Requested-With':'language-switch'}}).then(async response=>{
+    if(!languagePages.has(key))languagePages.set(key,fetch(target,{cache:'no-cache',headers:{'X-Requested-With':'language-switch'}}).then(async response=>{
       if(!response.ok)throw new Error(`Language page returned ${response.status}`);
       return new DOMParser().parseFromString(await response.text(),'text/html');
     }));
@@ -160,15 +160,29 @@
     const search = root.querySelector('input[type="search"]');
     const clear = root.querySelector('.clear-search');
     const filters = [...root.querySelectorAll('[data-filter]')];
+    const formatFilters = [...root.querySelectorAll('button[data-format]')];
     const results = [...root.querySelectorAll('[data-result]')];
     const params = new URLSearchParams(location.search);
-    let selected = filters.some(button => button.dataset.filter === params.get('topic')) ? params.get('topic') : 'all';
-    search.value = params.get('q') || '';
+    const topicAliases = {
+      nonlocality_many_body: 'quantum_nonlocality',
+      thermalization: 'quantum_thermodynamics',
+      finite_time_heat_engines: 'finite_time_stochastic_thermodynamics',
+      stochastic_thermodynamics: 'finite_time_stochastic_thermodynamics'
+    };
+    const legacyFormat = formatFilters.some(button => button.dataset.format === params.get('topic')) ? params.get('topic') : null;
+    const requestedTopic = legacyFormat ? null : (topicAliases[params.get('topic')] || params.get('topic'));
+    let selected = filters.some(button => button.dataset.filter === requestedTopic) ? requestedTopic : 'all';
+    const requestedFormat = params.get('format') || legacyFormat;
+    let selectedFormat = formatFilters.some(button => button.dataset.format === requestedFormat) ? requestedFormat : 'all';
+    if (search) search.value = params.get('q') || '';
     function update(syncUrl = true) {
-      const query = search.value.trim().toLowerCase();
+      const query = (search?.value || '').trim().toLowerCase();
       let count = 0;
       results.forEach(result => {
-        result.hidden = !((selected === 'all' || selected === result.dataset.topic) && query.split(/\s+/).every(word => result.dataset.search.includes(word)));
+        const topics = (result.dataset.topics || result.dataset.topic || '').split(/\s+/);
+        const matchesTopic = selected === 'all' || topics.includes(selected);
+        const matchesFormat = selectedFormat === 'all' || selectedFormat === result.dataset.format;
+        result.hidden = !(matchesTopic && matchesFormat && query.split(/\s+/).every(word => (result.dataset.search || '').includes(word)));
         if (!result.hidden) count++;
       });
       filters.forEach(button => {
@@ -176,24 +190,33 @@
         button.classList.toggle('active', active);
         button.setAttribute('aria-pressed', String(active));
       });
+      formatFilters.forEach(button => {
+        const active = button.dataset.format === selectedFormat;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
       root.querySelectorAll('[data-group]').forEach(group => {
         group.hidden = [...group.querySelectorAll('[data-result]')].every(result => result.hidden);
       });
       const noun = document.body.classList.contains('page-works') ? 'work' : 'presentation';
-      root.querySelector('[data-count]').textContent = zh ? `${count} ${noun === 'work' ? '项成果' : '场报告与海报'}` : `${count} ${noun}${count === 1 ? '' : 's'}`;
-      root.querySelector('.empty-state').hidden = count !== 0;
-      clear.hidden = !search.value;
+      const counter = root.querySelector('[data-count]');
+      if (counter) counter.textContent = zh ? `${count} ${noun === 'work' ? '项成果' : '场报告与海报'}` : `${count} ${noun}${count === 1 ? '' : 's'}`;
+      const emptyState = root.querySelector('.empty-state');
+      if (emptyState) emptyState.hidden = count !== 0;
+      if (clear) clear.hidden = !search.value;
       if (syncUrl) {
         const url = new URL(location.href);
         selected === 'all' ? url.searchParams.delete('topic') : url.searchParams.set('topic', selected);
+        selectedFormat === 'all' ? url.searchParams.delete('format') : url.searchParams.set('format', selectedFormat);
         query ? url.searchParams.set('q', search.value.trim()) : url.searchParams.delete('q');
         history.replaceState(null, '', url);
       }
     }
     filters.forEach(button => button.addEventListener('click', () => { selected = button.dataset.filter; update(); }));
-    search.addEventListener('input', () => update());
-    clear.addEventListener('click', () => { search.value = ''; update(); search.focus(); });
-    root.querySelector('.reset-filters').addEventListener('click', () => { selected = 'all'; search.value = ''; update(); search.focus(); });
+    formatFilters.forEach(button => button.addEventListener('click', () => { selectedFormat = button.dataset.format; update(); }));
+    search?.addEventListener('input', () => update());
+    clear?.addEventListener('click', () => { search.value = ''; update(); search.focus(); });
+    root.querySelector('.reset-filters')?.addEventListener('click', () => { selected = 'all'; selectedFormat = 'all'; if (search) { search.value = ''; search.focus(); } update(); });
     document.addEventListener('site:languagechange',()=>update(false));
     update(false);
   });

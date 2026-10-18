@@ -3,6 +3,7 @@ title: "An introduction to large deviation theory"
 collection: talks
 type: "Lecture"
 presentation_group: "talk"
+topics: [finite_time_stochastic_thermodynamics]
 permalink: /talks/2025_large_deviation_theory_aqa
 venue: "Thursday lecture in aQa, Leiden University"
 venue_url: "https://www.universiteitleiden.nl/en/science/computer-science/theory-old/quantum-lab"

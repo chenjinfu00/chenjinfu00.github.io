@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% from 'macros.html' import topic_tags %}
 {% block content %}
 <article class="container detail-page">
   <a class="back-link" href="{{ '/talks/' if item.collection == 'talks' else '/teaching/' }}"><i data-lucide="arrow-left"></i> {{ 'Presentations' if item.collection == 'talks' else 'Teaching' }}</a>
@@ -6,6 +6,7 @@
   <h1>{{ item.title }}</h1>
   <p class="lead">{{ item.venue }}</p>
   <p>{{ item.location }}</p>
+  {% if item.topic_labels %}{{ topic_tags(item.topic_labels, '/talks/') }}{% endif %}
   {% if item.venue_url %}<a class="{{ 'text-link event-website' if item.collection == 'talks' else 'button primary' }}" href="{{ item.venue_url }}">Event website <i data-lucide="arrow-up-right"></i></a>{% endif %}
   {% if item.materials %}
   <section class="presentation-materials" aria-labelledby="materials-heading">

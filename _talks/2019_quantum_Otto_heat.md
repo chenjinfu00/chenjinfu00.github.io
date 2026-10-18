@@ -3,6 +3,7 @@ title: "Quantum Otto heat engine on piston model: the effect of interaction and 
 collection: talks
 type: "Talk"
 presentation_group: "talk"
+topics: [quantum_thermodynamics, finite_time_stochastic_thermodynamics]
 permalink: /talks/2019_quantum_Otto_heat
 venue: "2019 Symposium on Quantum Physics, Northeast Normal University"
 date: 2019-01-04

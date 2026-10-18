@@ -3,6 +3,7 @@ title: "Optimizing Brownian heat engine with shortcut strategy"
 collection: talks
 type: "Talk"
 presentation_group: "talk"
+topics: [finite_time_stochastic_thermodynamics]
 permalink: /talks/2023_Optimizing_Brownian
 venue: "XXVII Sitges Conference on Statistical Mechanics"
 venue_url: "https://www.ub.edu/fisestub/xxvii-sitges-conference-on-statistical-mechanics/"

@@ -15,9 +15,10 @@
   <meta property="og:image" content="{{ profile.site_url }}/assets/site/quantum-geometry-social.png">
   <meta property="og:type" content="website">
   <link rel="icon" href="/assets/site/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/site/style.css">
+  <link rel="stylesheet" href="/assets/site/style.css?v={{ asset_versions['style.css'] }}">
+  <link rel="stylesheet" href="/assets/site/interface.css?v={{ asset_versions['interface.css'] }}">
   <script defer src="/assets/site/lucide.min.js"></script>
-  <script defer src="/assets/site/site.js"></script>
+  <script defer src="/assets/site/site.js?v={{ asset_versions['site.js'] }}"></script>
   <script defer src="/assets/site/matter.min.js"></script>
   <script defer src="/assets/site/geometry-field.js"></script>
   {% block head %}{% endblock %}

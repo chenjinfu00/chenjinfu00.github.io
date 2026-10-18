@@ -3,6 +3,7 @@ title: "Optimizing Brownian heat engine with shortcut strategy"
 collection: talks
 type: "Poster"
 presentation_group: "poster"
+topics: [finite_time_stochastic_thermodynamics]
 permalink: /talks/2023_optimizing_brownian_yitp_poster
 venue: "YITP-YSF Symposium: Perspectives on Non-Equilibrium Statistical Mechanics, Kyoto University"
 venue_url: "https://www2.yukawa.kyoto-u.ac.jp/~yitp-ysf2022/"

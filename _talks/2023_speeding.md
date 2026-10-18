@@ -3,6 +3,7 @@ title: "Speeding up quantum adiabatic processes with dynamical quantum geometric
 collection: talks
 type: "Seminar"
 presentation_group: "talk"
+topics: [quantum_thermodynamics]
 permalink: /talks/2023_speeding
 venue: "Online seminar, aQa group, Leiden University"
 venue_url: "https://www.universiteitleiden.nl/en/science/computer-science/theory-old/quantum-lab"

@@ -1,5 +1,6 @@
 """Build the original static website from public research records and templates."""
 import json
+import hashlib
 import re
 from pathlib import Path
 from urllib.parse import quote
@@ -14,8 +15,25 @@ SOURCE = ROOT / "site_src"
 env = Environment(loader=FileSystemLoader(SOURCE / "templates"), autoescape=select_autoescape())
 profile = yaml.safe_load((SOURCE / "profile.yml").read_text())
 extra = yaml.safe_load((SOURCE / "works.yml").read_text())
-env.globals.update(profile=profile)
+asset_versions = {
+    name: hashlib.sha256((ROOT / 'assets/site' / name).read_bytes()).hexdigest()[:10]
+    for name in ('style.css', 'interface.css', 'site.js')
+}
+env.globals.update(profile=profile, asset_versions=asset_versions)
+topics = {topic["id"]: topic for topic in profile["topics"]}
+groups = [(topic["id"], topic["title"]) for topic in profile["topics"]]
+env.globals["topic_short_labels"] = {topic["id"]: topic["short"] for topic in profile["topics"]}
 written = []
+
+
+def topic_labels(item):
+    names = item.get("topic_names", {})
+    return [{**topics[topic], "title": names.get(topic, topics[topic]["title"])}
+            for topic in item.get("topics", [])]
+
+
+for position in profile["timeline"]:
+    position["topic_labels"] = topic_labels(position)
 
 
 def records(folder):
@@ -49,6 +67,7 @@ for work in works:
     work["slug"] = slug
     work["url"] = work["permalink"].rstrip("/") + "/"
     work["summary"] = work.get("summary", work["excerpt"])
+    work["topic_labels"] = topic_labels(work)
     work["roles"] = work.get("roles", ["First author"] if work.get("first_author") else [])
     work["preprint"] = work["venue"] == "arXiv"
     arxiv = re.search(r"arXiv:(\d+\.\d+)", work["citation"])
@@ -60,6 +79,7 @@ for work in works:
 works.sort(key=lambda x: str(x.get("selected_sort", x["date"])), reverse=True)
 talks = sorted(records("_talks"), key=lambda x: str(x["date"]), reverse=True)
 for talk in talks:
+    talk["topic_labels"] = topic_labels(talk)
     for material in talk.get("materials", []):
         for field in ("file", "preview", "pptx"):
             path = material[field]
@@ -78,15 +98,9 @@ teaching = sorted(records("_teaching"), key=lambda x: str(x["date"]), reverse=Tr
 featured_slugs = ["boosting-thermalization-many-body-systems", "optimizing-quantum-violation-bell-inequalities",
                   "spectral-gap-optimization", "geodesic-lower-bound-membrane-separation"]
 featured = [next(w for w in works if w["slug"] == s) for s in featured_slugs]
-groups = [
-    ("nonlocality_many_body", "Quantum nonlocality and many-body systems"),
-    ("stochastic_thermodynamics", "Stochastic thermodynamics"),
-    ("finite_time_heat_engines", "Finite-time thermodynamics and heat engines"),
-    ("transport_nonequilibrium", "Transport and nonequilibrium physics"),
-]
 render("/", "home.html", page="home", title="Jinfu Chen | Quantum & Statistical Physics", works=featured, talks=talks[:3])
 render("/publications/", "works.html", page="works", title="Selected Works | Jinfu Chen", works=works, groups=groups)
-render("/talks/", "talks.html", page="talks", title="Presentations | Jinfu Chen", talks=talks)
+render("/talks/", "talks.html", page="talks", title="Presentations | Jinfu Chen", talks=talks, groups=groups)
 render("/cv/", "about.html", page="about", title="About & CV | Jinfu Chen", teaching=teaching)
 render("/teaching/", "teaching.html", page="teaching", title="Teaching | Jinfu Chen", teaching=teaching)
 for work in works:

@@ -46,6 +46,12 @@ quantum systems.: 量子系统。
 Exploring the correlations, dynamics, and thermodynamic limits that make the quantum world different.: 探索量子世界独特的关联与动力学，理解其热力学极限，并寻找更高效的控制方式。
 Explore my work: 查看研究成果
 Explore research: 了解研究方向
+EXPLORE RESEARCH: 探索研究方向
+Research shortcuts: 研究方向快捷入口
+Nonlocality: 量子非局域性
+Thermalization: 多体热化
+Geometry & control: 几何与控制
+Thermodynamics & AI: 热力学与 AI
 QUANTUM NONLOCALITY / MANY-BODY PHYSICS / THERMODYNAMICS: 量子非局域性 / 多体物理 / 热力学
 01 / RESEARCH: 01 / 研究方向
 Small systems.: 从微观世界，
@@ -78,7 +84,7 @@ on a: 理解
 quantum world.: 量子世界。
 I am a postdoctoral researcher at Leiden University’s Lorentz Institute, working with: 我目前在莱顿大学洛伦兹理论物理研究所从事博士后研究，与
 '. My research connects quantum information, nonequilibrium statistical physics, and optimal control.': 合作。我的研究连接量子信息、非平衡统计物理与最优控制。
-My path began with physics and mathematics at Peking University, followed by a Ph.D. at the Beijing Computational Science Research Center and postdoctoral research with H. T. Quan at Peking University.: 我在北京大学学习物理与数学，之后于北京计算科学研究中心获得博士学位，并在北京大学与权海涛教授合作开展博士后研究。
+My path began with physics and mathematics at Peking University, followed by a Ph.D. at the Beijing Computational Science Research Center and postdoctoral research with H. T. Quan at Peking University.: 我在北京大学学习物理与数学，之后于北京计算科学研究中心获得博士学位，并在北京大学与全海涛教授合作开展博士后研究。
 Academic background & CV: 学术经历
 04 / PRESENTATIONS: 04 / 学术交流
 Research in: 在交流中
@@ -92,7 +98,7 @@ Complete publication list on Google Scholar: 在谷歌学术查看完整论文�
 Filter works by topic: 按研究主题筛选
 All topics: 全部主题
 Quantum nonlocality & many-body systems: 量子非局域性与多体系统
-Quantum nonlocality and many-body systems: 量子非局域性与多体系统
+Quantum nonlocality and many-body systems: 量子非局域性和量子多体系统
 Stochastic thermodynamics: 随机热力学
 Finite-time thermodynamics & heat engines: 有限时间热力学与热机
 Finite-time thermodynamics and heat engines: 有限时间热力学与热机
@@ -106,6 +112,7 @@ No matching works: 未找到匹配成果
 Try another title, author, or year.: 试试其他标题、作者或年份。
 Reset filters: 重置筛选
 PREPRINT: 预印本
+ARTICLE: 期刊论文
 Read preprint: 阅读预印本
 Read paper: 阅读论文
 Find paper: 查找论文
@@ -160,7 +167,7 @@ education.: 教育背景。
 2024–present: 2024 至今
 Working with Jordi Tura on quantum nonlocality and open quantum many-body systems.: 与 Jordi Tura 合作，研究量子非局域性与开放量子多体系统。
 Peking University: 北京大学
-Working with H. T. Quan on stochastic thermodynamics, fluctuation theorems, and optimal control.: 与权海涛教授合作，研究随机热力学、涨落定理与最优控制。
+Working with H. T. Quan on stochastic thermodynamics, fluctuation theorems, and optimal control.: 与全海涛教授合作，研究随机热力学、涨落定理与最优控制。
 Ph.D. in Quantum Physics: 量子物理博士
 Beijing Computational Science Research Center: 北京计算科学研究中心
 Supervised by C. P. Sun. Research on finite-time quantum thermodynamics and heat engines.: 导师为孙昌璞教授，研究有限时间量子热力学与量子热机。
@@ -239,7 +246,7 @@ Online seminar, aQa group, Leiden University: 莱顿大学 aQa 研究组线上�
 2019 Symposium on Quantum Physics, Northeast Normal University: 2019 年量子物理研讨会，东北师范大学
 'YITP-YSF Symposium: Perspectives on Non-Equilibrium Statistical Mechanics, Kyoto University': YITP-YSF 非平衡统计力学展望研讨会，京都大学
 XXVII Sitges Conference on Statistical Mechanics: 第 27 届 Sitges 统计力学会议
-The First Boyou Forum: 首届博游论坛
+The First Boyou Forum: 首届博优论坛
 Thursday lecture in aQa, Leiden University: 莱顿大学 aQa 研究组周四讲座
 Online seminar, Gentaro Watanabe group, Zhejiang University: 浙江大学渡边源太郎研究组线上研讨会
 Beijing, China: 中国，北京
@@ -284,3 +291,22 @@ Geometry, control and learning in nonequilibrium systems: 非平衡系统的几�
 'A bilingual research presentation: background, representative results, and future plans.': 中英文科研报告：个人背景、代表性研究成果与未来科研规划。
 
 Preparation, fluctuations and optimization in quantum and nonequilibrium systems: 量子与非平衡系统的制备、涨落与优化
+Quantum thermodynamics: 量子热力学
+Finite-time and stochastic thermodynamics: 有限时间和随机热力学
+Finite-time & stochastic: 有限时间和随机热力学
+Research topics: 研究标签
+How can we control quantum dynamics and prepare useful states?: 如何调控量子动力学，制备有用的量子态？
+? I study quantum heat engines, thermalization, state preparation, and monitored transport. Geometric and spectral methods connect thermodynamic performance with the control of quantum dynamics.
+: 研究量子热机、热化、态制备与监测输运，利用几何和谱方法，将热力学性能与量子动力学调控联系起来。
+Quantum heat engines · Thermalization · Quantum control: 量子热机 · 热化 · 量子控制
+What sets the cost and fluctuations of fast processes?: 快速过程的代价与涨落，由什么决定？
+? Thermodynamic geometry, optimal control, and fluctuation relations reveal the energetic cost of finite-time processes, from Brownian heat engines and membrane separation to quantum work and heat statistics.
+: 利用热力学几何、最优控制与涨落关系，研究有限时间过程的能量代价，涵盖布朗热机、膜分离，以及量子功与热的统计规律。
+Thermodynamic geometry · Optimal control · Fluctuations: 热力学几何 · 最优控制 · 涨落
+Nonlocality & many-body: 量子非局域性和量子多体系统
+How can we prepare and certify quantum many-body states?: 如何制备和认证量子多体态？
+I use symmetry, spectral-gap optimization, and Lindblad dynamics to prepare and control many-body states. Multipartite Bell inequalities provide tests and certification of correlations beyond classical physics.: 利用对称性、谱隙优化和 Lindblad 动力学制备与调控多体态，并通过多体贝尔不等式检验和认证超越经典物理的关联。
+Bell inequalities · Spectral gaps · Lindblad dynamics: 贝尔不等式 · 谱隙 · Lindblad 动力学
+Filter presentations by topic: 按研究方向筛选学术交流
+All formats: 全部形式
+Finite-time thermodynamics: 有限时间热力学
