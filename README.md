@@ -47,6 +47,10 @@ Edit the templates in `site_src/templates/` and translations in `site_src/zh.yml
 then rebuild to update both language versions.
 All headings, body text, and controls use Arial for Latin characters and Hei
 fonts for Chinese characters (SimHei or Heiti SC, with system sans-serif fallbacks).
+The homepage presents its three research directions as equal-width disclosure
+rows. They start collapsed; clicking a row reveals its introduction, methods,
+and related works. Topic shortcuts and direct topic links open the matching
+row, and language switching preserves which rows are expanded.
 
 The three research directions also define publication tags: quantum thermodynamics,
 finite-time and stochastic thermodynamics, and quantum nonlocality and many-body systems. Each

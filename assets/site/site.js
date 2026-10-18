@@ -5,7 +5,7 @@
   const switcher = document.querySelector('.language-switch');
   let renderedPath=location.pathname,languageBusy=false;
   const languagePages=new Map();
-  const stableHeightSelectors=['.hero-copy','.hero h1','.hero-statement','.hero-description','.hero-links','.section-heading','.research-topic','.paper-row','.about-copy','.event-row','.page-heading','.archive-meta','.group-title','.bio-grid','.timeline-section>.eyebrow','.timeline-section>h2','.timeline article','.teaching-section>.eyebrow','.teaching-section>h2','.teaching-section>p:not(.eyebrow)','.course-row','.detail-page>h1','.detail-summary','.citation-block','.footer-top','.footer-bottom'];
+  const stableHeightSelectors=['.hero-copy','.hero h1','.hero-statement','.hero-description','.hero-links','.section-heading','.research-summary','.paper-row','.about-copy','.event-row','.page-heading','.archive-meta','.group-title','.bio-grid','.timeline-section>.eyebrow','.timeline-section>h2','.timeline article','.teaching-section>.eyebrow','.teaching-section>h2','.teaching-section>p:not(.eyebrow)','.course-row','.detail-page>h1','.detail-summary','.citation-block','.footer-top','.footer-bottom'];
   const stableWidthSelectors=['.wordmark','.language-switch','.hero-copy','.hero h1','.hero-statement','.hero-description','.hero-links'];
   const children = node => [...node.childNodes].filter(child=>child.nodeType!==Node.TEXT_NODE||child.nodeValue.trim());
   const iconPair = (current,next) => current.nodeType===Node.ELEMENT_NODE&&next.nodeType===Node.ELEMENT_NODE
@@ -21,8 +21,9 @@
   function syncTree(current,next) {
     if(iconPair(current,next))return;
     if(current.nodeType===Node.TEXT_NODE){current.nodeValue=next.nodeValue;return;}
-    for(const attribute of [...current.attributes])if(!next.hasAttribute(attribute.name))current.removeAttribute(attribute.name);
-    for(const attribute of [...next.attributes])current.setAttribute(attribute.name,attribute.value);
+    const preserveOpen=current.matches('details.research-disclosure');
+    for(const attribute of [...current.attributes])if(!(preserveOpen&&attribute.name==='open')&&!next.hasAttribute(attribute.name))current.removeAttribute(attribute.name);
+    for(const attribute of [...next.attributes])if(!(preserveOpen&&attribute.name==='open'))current.setAttribute(attribute.name,attribute.value);
     const currentChildren=children(current),nextChildren=children(next);
     currentChildren.forEach((child,index)=>syncTree(child,nextChildren[index]));
   }
@@ -47,6 +48,8 @@
     document.body.append(sandbox);
     try{window.lucide?.createIcons({nodes:[...sandbox.querySelectorAll('i[data-lucide]')]});}catch{}
     const heights=Object.fromEntries(stableHeightSelectors.map(selector=>[selector,selectedNodes(sandbox,selector).map((node,index)=>Math.max(currentHeights[selector][index]||0,node.getBoundingClientRect().height))]));
+    const summaryHeights=heights['.research-summary'];
+    if(summaryHeights.length)heights['.research-summary']=summaryHeights.map(()=>Math.max(...summaryHeights));
     const widths=Object.fromEntries(stableWidthSelectors.map(selector=>[selector,selectedNodes(sandbox,selector).map((node,index)=>Math.max(currentWidths[selector][index]||0,node.getBoundingClientRect().width))]));
     sandbox.remove();document.documentElement.lang=previousLang;
     return {heights,widths};
@@ -117,6 +120,13 @@
   });
   if (window.lucide) window.lucide.createIcons();
   prepareLanguageLayout();
+  function revealResearchTopic(hash=location.hash) {
+    const topic=document.getElementById(hash.slice(1));
+    if(topic?.matches('details.research-disclosure'))topic.open=true;
+  }
+  document.querySelectorAll('.topic-chip').forEach(link=>link.addEventListener('click',()=>revealResearchTopic(new URL(link.href).hash)));
+  addEventListener('hashchange',()=>revealResearchTopic());
+  revealResearchTopic();
   const menu = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#navigation');
   const fieldTools = document.querySelector('.field-tools');
