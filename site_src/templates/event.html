@@ -20,12 +20,12 @@
       <div class="material-info">
         <h3>{{ material.label }}</h3>
         <p class="material-meta"><span>{{ material.format }}</span><span>{{ material.pages }} <span>{{ 'slides' if material.format == 'PPTX' else 'page' if material.pages == 1 else 'pages' }}</span></span><span>{{ material.file_size }}</span></p>
-        <a class="button primary" href="{{ material.file }}" target="_blank" rel="noopener">{{ 'Read poster' if item.presentation_group == 'poster' else 'Read slides' }} <i data-lucide="arrow-up-right"></i></a>
+        {% if material.format != 'PPTX' %}<a class="button primary" href="{{ material.file }}" target="_blank" rel="noopener">{{ 'Read poster' if item.presentation_group == 'poster' else 'Read slides' }} <i data-lucide="arrow-up-right"></i></a>{% endif %}
         <div class="material-downloads">
-        <a class="text-link material-download" href="{{ material.file }}" download>Download PDF <i data-lucide="download"></i></a>
+        {% if material.format == 'PDF' %}<a class="text-link material-download" href="{{ material.file }}" download>Download PDF <i data-lucide="download"></i></a>{% endif %}
         <a class="text-link material-download" href="{{ material.pptx }}" download>Download PPTX <i data-lucide="download"></i></a>
         </div>
-        <p class="material-pptx-meta">PPTX · {{ material.pptx_slides }} <span>slides</span> · {{ material.pptx_size }}</p>
+        {% if material.format != 'PPTX' %}<p class="material-pptx-meta">PPTX · {{ material.pptx_slides }} <span>slides</span> · {{ material.pptx_size }}</p>{% endif %}
       </div>
     </div>
     {% endfor %}
