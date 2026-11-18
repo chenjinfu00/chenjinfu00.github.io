@@ -1,7 +1,7 @@
 # Additional public metadata; titles and archive URLs remain in _publications.
 boosting-thermalization-many-body-systems:
-  doi: 10.1103/r4gj-qfj5
-  roles: [First author, Corresponding author]
+  doi: 10.1103/r43j-qfj5
+  roles: [First author, Co-corresponding author]
   summary: Designing the coupling to an environment offers a way to prepare many-body thermal states faster while preserving the target equilibrium state.
 spectral-gap-optimization:
   doi: 10.1103/cslt-x32n
@@ -14,9 +14,8 @@ geodesic-lower-bound-membrane-separation:
   equal_authors: J. F. Chen and R. X. Zhai contributed equally.
 optimal-control-brownian-heat-engines:
   doi: 10.1103/PhysRevE.110.L042105
-  roles: [First author, Corresponding author]
+  roles: [First author, Co-corresponding author]
 optimizing-quantum-violation-bell-inequalities:
-  roles: [First author, Corresponding author]
   summary: Systematic optimization helps identify multipartite Bell tests with stronger quantum violations, supporting the search for experimentally useful nonlocality witnesses.
 boosting-performance-quantum-otto-heat-engines:
   doi: 10.1103/PhysRevE.100.032144
@@ -27,14 +26,21 @@ extrapolating-thermodynamic-length:
   summary: Finite-duration measurements can estimate thermodynamic length, making a quantity that bounds dissipation accessible without infinitely slow experiments.
 optimizing-brownian-heat-engine:
   doi: 10.1103/PhysRevE.106.054108
+  roles: [Sole author]
 speeding-up-quantum-adiabatic-processes:
   doi: 10.1103/PhysRevResearch.4.023252
+  roles: [Sole author]
+thermodynamically-consistent-lindbladians:
+  doi: 10.1103/9rjy-xfj7
+  roles: [Sole author]
 quantum-classical-correspondence-heat-distribution:
   doi: 10.3390/e23121602
 ergodicity-breaking-first-order-phase-transition:
   doi: 10.1103/PhysRevLett.134.177101
+  roles: [Co-corresponding author]
 promoting-fluctuation-theorems-covariant-forms:
-  doi: 10.1103/PhysRevLett.134.237102
+  doi: 10.1103/xlmq-g6m5
+  roles: [Co-corresponding author]
 hierarchical-structure-fluctuation-theorems:
   doi: 10.1103/PhysRevE.107.024135
 exploring-quasiprobability-quantum-work:

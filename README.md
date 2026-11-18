@@ -48,15 +48,17 @@ then rebuild to update both language versions.
 All headings, body text, and controls use Arial for Latin characters and Hei
 fonts for Chinese characters (SimHei or Heiti SC, with system sans-serif fallbacks).
 The homepage presents its three research directions as equal-width disclosure
-rows. They start collapsed; clicking a row reveals its introduction, methods,
-and related works. Topic shortcuts and direct topic links open the matching
+rows. They start collapsed. Clicking a row reveals the research narrative and
+numbered references. Topic shortcuts and direct topic links open the matching
 row, and language switching preserves which rows are expanded.
 
-The three research directions also define publication tags: quantum thermodynamics,
-finite-time and stochastic thermodynamics, and quantum nonlocality and many-body systems. Each
+Each homepage direction links to a publication tag. The available tags are
+quantum thermodynamics, finite-time and stochastic thermodynamics, and quantum
+nonlocality and many-body systems. Each
 `_publications/` record has a `topics` list and can belong to multiple directions.
-The archive shows each paper once and filters by any of its assigned tags. Topic
-names and homepage descriptions are maintained together in `site_src/profile.yml`.
+The archive shows each paper once and filters by any of its assigned tags. The
+topic names, homepage descriptions, and selected paper slugs are maintained in
+`site_src/profile.yml`.
 Publication badges use the navigation's selected pale blue for journal articles
 and neutral gray for preprints, with explicit text labels.
 Research topic icons sit beside these badges in publication lists and detail

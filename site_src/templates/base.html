@@ -31,7 +31,6 @@
     <button class="menu-toggle icon-button" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation" title="Open navigation"><i data-lucide="menu"></i></button>
     <nav id="navigation" aria-label="Main navigation">
       <a href="/#research" {% if page == 'home' %}aria-current="page"{% endif %}>Research</a>
-      <a href="/publications/" {% if page == 'works' %}aria-current="page"{% endif %}>Selected Works</a>
       <a href="/talks/" {% if page == 'talks' %}aria-current="page"{% endif %}>Presentations</a>
       <a href="/cv/" {% if page == 'about' or page == 'teaching' %}aria-current="page"{% endif %}>About & CV</a>
       <a class="nav-contact" href="mailto:{{ profile.email }}">Contact <i data-lucide="arrow-up-right"></i></a>

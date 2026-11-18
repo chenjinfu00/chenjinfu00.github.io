@@ -121,8 +121,8 @@
   if (window.lucide) window.lucide.createIcons();
   prepareLanguageLayout();
   function revealResearchTopic(hash=location.hash) {
-    const topic=document.getElementById(hash.slice(1));
-    if(topic?.matches('details.research-disclosure'))topic.open=true;
+    const topic=document.getElementById(hash.slice(1))?.closest('details.research-disclosure');
+    if(topic)topic.open=true;
   }
   document.querySelectorAll('.topic-chip').forEach(link=>link.addEventListener('click',()=>revealResearchTopic(new URL(link.href).hash)));
   addEventListener('hashchange',()=>revealResearchTopic());

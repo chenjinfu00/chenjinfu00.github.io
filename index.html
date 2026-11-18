@@ -16,9 +16,9 @@
   <meta property="og:type" content="website">
   <link rel="icon" href="/assets/site/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/site/style.css?v=ccf17ed34a">
-  <link rel="stylesheet" href="/assets/site/interface.css?v=0f32c7cd6c">
+  <link rel="stylesheet" href="/assets/site/interface.css?v=e520938953">
   <script defer src="/assets/site/lucide.min.js"></script>
-  <script defer src="/assets/site/site.js?v=eacb38fc0b"></script>
+  <script defer src="/assets/site/site.js?v=48c621ea38"></script>
   <script defer src="/assets/site/matter.min.js"></script>
   <script defer src="/assets/site/geometry-field.js"></script>
   <link rel="preload" as="image" href="/assets/site/quantum-geometry.svg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Jinfu Chen","url":"https://chenjinfu00.github.io","jobTitle":"Postdoctoral researcher","affiliation":{"@type":"Organization","name":"Leiden University"},"sameAs":["https://orcid.org/0000-0002-7207-969X","https://github.com/chenjinfu00"]}</script>
@@ -31,7 +31,6 @@
     <button class="menu-toggle icon-button" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation" title="Open navigation"><i data-lucide="menu"></i></button>
     <nav id="navigation" aria-label="Main navigation">
       <a href="/#research" aria-current="page">Research</a>
-      <a href="/publications/" >Selected Works</a>
       <a href="/talks/" >Presentations</a>
       <a href="/cv/" >About & CV</a>
       <a class="nav-contact" href="mailto:jinfuchen@lorentz.leidenuniv.nl">Contact <i data-lucide="arrow-up-right"></i></a>
@@ -77,106 +76,161 @@
 <main id="main">
 <section class="hero">
   <img class="hero-art" src="/assets/site/quantum-geometry.svg" alt="" width="1536" height="1024" fetchpriority="high">
-  <div class="container hero-inner"><div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span>THEORETICAL PHYSICIST · LEIDEN UNIVERSITY</p><h1>Jinfu Chen</h1><p class="hero-statement">Understand control and optimize<br><span>quantum systems</span></p><p class="hero-description">Exploring the correlations, dynamics, and thermodynamic limits that make the quantum world different.</p><div class="hero-links"><a class="button primary" href="/publications/">Explore my work <i data-lucide="arrow-right"></i></a><a class="text-link" href="https://scholar.google.ca/citations?user=2n7U598AAAAJ&amp;hl=en">Google Scholar <i data-lucide="arrow-up-right"></i></a></div></div>
-    <div class="hero-bottom"><span>EXPLORE RESEARCH</span><ul class="research-shortcuts" aria-label="Research shortcuts"><li><a class="topic-chip" data-direction="quantum_thermodynamics" href="#research-quantum_thermodynamics"><i data-lucide="orbit" aria-hidden="true"></i><span>Quantum thermodynamics</span></a></li><li><a class="topic-chip" data-direction="finite_time_stochastic_thermodynamics" href="#research-finite_time_stochastic_thermodynamics"><i data-lucide="route" aria-hidden="true"></i><span>Finite-time &amp; stochastic</span></a></li><li><a class="topic-chip" data-direction="quantum_nonlocality" href="#research-quantum_nonlocality"><i data-lucide="network" aria-hidden="true"></i><span>Nonlocality &amp; many-body</span></a></li></ul><a class="hero-down" href="#research" aria-label="Explore research"><i data-lucide="arrow-down"></i></a></div>
+  <div class="container hero-inner"><div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span>THEORETICAL PHYSICIST · LEIDEN UNIVERSITY</p><h1>Jinfu Chen</h1><p class="hero-statement">Understand control and optimize<br><span>quantum systems</span></p><p class="hero-description">Exploring the correlations, dynamics, and thermodynamic limits that make the quantum world different.</p><div class="hero-links"><a class="button primary" href="#research">Explore my work <i data-lucide="arrow-right"></i></a><a class="text-link" href="https://scholar.google.ca/citations?user=2n7U598AAAAJ&amp;hl=en">Google Scholar <i data-lucide="arrow-up-right"></i></a></div></div>
+    <div class="hero-bottom"><span>EXPLORE RESEARCH</span><ul class="research-shortcuts" aria-label="Research shortcuts"><li><a class="topic-chip" data-direction="finite_time_stochastic_thermodynamics" href="#research-finite_time_stochastic_thermodynamics"><i data-lucide="route" aria-hidden="true"></i><span>Finite-time thermodynamics</span></a></li><li><a class="topic-chip" data-direction="quantum_thermodynamics" href="#research-quantum_thermodynamics"><i data-lucide="orbit" aria-hidden="true"></i><span>State preparation</span></a></li><li><a class="topic-chip" data-direction="quantum_nonlocality" href="#research-quantum_nonlocality"><i data-lucide="network" aria-hidden="true"></i><span>Bell correlations</span></a></li></ul><a class="hero-down" href="#research" aria-label="Explore research"><i data-lucide="arrow-down"></i></a></div>
   </div>
 </section>
 <section id="research" class="section research-section"><div class="container">
-    <div class="section-heading"><div><p class="eyebrow">01 / RESEARCH</p><h2>Small systems<br>Fundamental questions</h2></div><p class="section-intro">From the limits of classical correlations to faster thermalization and more efficient control, I study what quantum systems can do, and how to make them do it.</p></div>
+  <div class="section-heading"><h2>Research</h2><p class="section-intro">Finite-time driving incurs an energy cost, and limited measurements constrain what can be inferred about quantum correlations. These three research directions address those constraints through thermodynamic geometry, quantum dynamics, and many-body symmetry.</p></div>
   <div class="research-list">
-
-    <details class="research-disclosure" id="research-quantum_thermodynamics" data-direction="quantum_thermodynamics">
-      <summary class="research-summary">
-        <span class="research-symbol"><i data-lucide="orbit" aria-hidden="true"></i></span>
-        <span class="research-label"><span class="research-number">01</span><span class="research-title">Quantum thermodynamics</span></span>
-        <span class="research-teaser">How can we control quantum dynamics and prepare useful states?</span>
-        <span class="research-expand" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-      </summary>
-      <div class="research-content">
-        <p>I study quantum heat engines, thermalization, state preparation, and monitored transport. Geometric and spectral methods connect thermodynamic performance with the control of quantum dynamics.</p>
-        <div class="research-footer"><span class="research-methods">Quantum heat engines · Thermalization · Quantum control</span><a class="research-works" href="/publications/?topic=quantum_thermodynamics" aria-label="Works in Quantum thermodynamics">Related works <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
-      </div>
-    </details>
 
     <details class="research-disclosure" id="research-finite_time_stochastic_thermodynamics" data-direction="finite_time_stochastic_thermodynamics">
       <summary class="research-summary">
         <span class="research-symbol"><i data-lucide="route" aria-hidden="true"></i></span>
-        <span class="research-label"><span class="research-number">02</span><span class="research-title">Finite-time and stochastic thermodynamics</span></span>
-        <span class="research-teaser">What sets the cost and fluctuations of fast processes?</span>
+        <span class="research-title">Finite-time thermodynamics, optimal control, and fluctuations</span>
+        <span class="research-teaser">How do finite-time driving and fluctuations shape the cost of a process?</span>
         <span class="research-expand" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
       </summary>
       <div class="research-content">
-        <p>Thermodynamic geometry, optimal control, and fluctuation relations reveal the energetic cost of finite-time processes, from Brownian heat engines and membrane separation to quantum work and heat statistics.</p>
-        <div class="research-footer"><span class="research-methods">Thermodynamic geometry · Optimal control · Fluctuations</span><a class="research-works" href="/publications/?topic=finite_time_stochastic_thermodynamics" aria-label="Works in Finite-time and stochastic thermodynamics">Related works <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
+        <p>
+
+          <span>Shortening the duration of a process typically increases the excess work required to drive it. Thermodynamic length sets a lower bound on this work and can be estimated from finite-time measurements. For shortcuts to isothermality, a geodesic in the space of control parameters gives a minimum-cost protocol. The same geometric approach applies to membrane separation of gas mixtures</span> <span class="research-citation">[<a href="#research-reference-1">1</a>, <a href="#research-reference-2">2</a>, <a href="#research-reference-3">3</a>]</span>.
+
+          <span>When individual strokes form a heat-engine cycle, their energy cost limits the output power of the engine. Shortcuts to isothermality give an attainable power bound for Brownian engines operated in this way. Optimal control also identifies the maximum-power cycle when the available control parameters are constrained</span> <span class="research-citation">[<a href="#research-reference-4">4</a>, <a href="#research-reference-5">5</a>]</span>.
+
+          <span>The cost of faster driving also depends on the system. Across a first-order transition, system size can change how excess work scales with the driving rate. In individual realizations, work and heat also fluctuate. Including both energy and momentum transfer in their definitions gives fluctuation theorems that apply when the system and its heat bath move relative to each other</span> <span class="research-citation">[<a href="#research-reference-6">6</a>, <a href="#research-reference-7">7</a>]</span>.
+
+        </p>
+        <div class="research-papers">
+          <h3>Selected papers</h3>
+          <ol class="research-paper-list" role="list" start="1">
+
+            <li id="research-reference-1">
+              <span>[1]</span>
+              <a href="/publication/extrapolating-thermodynamic-length/">J. F. Chen, C. P. Sun, and H. Dong. Extrapolating the thermodynamic length with finite-time measurements. Physical Review E 104, 034117 (2021).</a>
+            </li>
+
+            <li id="research-reference-2">
+              <span>[2]</span>
+              <a href="/publication/geodesic-path-shortcuts-to-isothermality/">G. Li, J.-F. Chen, C. P. Sun, and H. Dong. Geodesic Path for the Minimal Energy Cost in Shortcuts to Isothermality. Physical Review Letters 128, 230603 (2022).</a>
+            </li>
+
+            <li id="research-reference-3">
+              <span>[3]</span>
+              <a href="/publication/geodesic-lower-bound-membrane-separation/">J. F. Chen, R. X. Zhai, C. P. Sun, and H. Dong. Geodesic lower bound of the energy consumption to achieve membrane separation within finite time. PRX Energy 2, 033003 (2023).</a>
+            </li>
+
+            <li id="research-reference-4">
+              <span>[4]</span>
+              <a href="/publication/optimizing-brownian-heat-engine/">J. F. Chen. Optimizing Brownian heat engine with shortcut strategy. Physical Review E 106, 054108 (2022).</a>
+            </li>
+
+            <li id="research-reference-5">
+              <span>[5]</span>
+              <a href="/publication/optimal-control-brownian-heat-engines/">J. F. Chen and H. T. Quan. Optimal control theory for maximum power of Brownian heat engines. Physical Review E 110, L042105 (2024).</a>
+            </li>
+
+            <li id="research-reference-6">
+              <span>[6]</span>
+              <a href="/publication/ergodicity-breaking-first-order-phase-transition/">Y. X. Wu, J. F. Chen, and H. T. Quan. Ergodicity breaking and scaling relations for finite-time first-order phase transition. Physical Review Letters 134, 177101 (2025).</a>
+            </li>
+
+            <li id="research-reference-7">
+              <span>[7]</span>
+              <a href="/publication/promoting-fluctuation-theorems-covariant-forms/">J. H. Pei, J. F. Chen, and H. T. Quan. Promoting fluctuation theorems into covariant forms. Physical Review Letters 134, 237102 (2025).</a>
+            </li>
+
+          </ol>
+          <a class="research-works" href="/publications/?topic=finite_time_stochastic_thermodynamics" aria-label="Works in Finite-time and stochastic thermodynamics">More in this topic <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </details>
+
+    <details class="research-disclosure" id="research-quantum_thermodynamics" data-direction="quantum_thermodynamics">
+      <summary class="research-summary">
+        <span class="research-symbol"><i data-lucide="orbit" aria-hidden="true"></i></span>
+        <span class="research-title">Many-body state preparation and open-system dynamics</span>
+        <span class="research-teaser">How can quantum states be prepared faster?</span>
+        <span class="research-expand" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+      </summary>
+      <div class="research-content">
+        <p>
+
+          <span>Adiabatic preparation starts from a state that is easy to produce and gradually changes the controls until the system reaches the target state. Driving too quickly can trigger unwanted transitions. Quantum geometry guides the choice of driving protocol, while changing the Hamiltonian without changing the target state can widen the smallest energy gap along the preparation path</span> <span class="research-citation">[<a href="#research-reference-8">8</a>, <a href="#research-reference-9">9</a>]</span>.
+
+          <span>Coupling a system to its environment provides another route when the target is a thermal state. The coupling can be designed to speed up the slowest relaxation process while preserving the target equilibrium. The dynamics of a driven open system can also be formulated to describe the fluctuations in the work done by the drive and in the heat exchanged with the environment</span> <span class="research-citation">[<a href="#research-reference-10">10</a>, <a href="#research-reference-11">11</a>]</span>.
+
+        </p>
+        <div class="research-papers">
+          <h3>Selected papers</h3>
+          <ol class="research-paper-list" role="list" start="8">
+
+            <li id="research-reference-8">
+              <span>[8]</span>
+              <a href="/publication/speeding-up-quantum-adiabatic-processes/">J. F. Chen. Speeding up quantum adiabatic processes with a dynamical quantum geometric tensor. Physical Review Research 4, 023252 (2022).</a>
+            </li>
+
+            <li id="research-reference-9">
+              <span>[9]</span>
+              <a href="/publication/spectral-gap-optimization/">K. S. Rai, J. F. Chen, P. Emonts, and J. Tura. Spectral gap optimization for enhanced adiabatic state preparation. Physical Review Letters 135, 090602 (2025).</a>
+            </li>
+
+            <li id="research-reference-10">
+              <span>[10]</span>
+              <a href="/publication/boosting-thermalization-many-body-systems/">J. F. Chen, K. S. Rai, P. Emonts, D. Farina, M. Plodzien, P. Grzybowski, et al. Boosting thermalization of classical and quantum many-body systems. Physical Review B 113, 184313 (2026).</a>
+            </li>
+
+            <li id="research-reference-11">
+              <span>[11]</span>
+              <a href="/publication/thermodynamically-consistent-lindbladians/">J.-F. Chen. Thermodynamically consistent Lindbladians for quantum stochastic thermodynamics. Physical Review E 114, 054126 (2026).</a>
+            </li>
+
+          </ol>
+          <a class="research-works" href="/publications/?topic=quantum_thermodynamics" aria-label="Works in Quantum thermodynamics">More in this topic <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </div>
       </div>
     </details>
 
     <details class="research-disclosure" id="research-quantum_nonlocality" data-direction="quantum_nonlocality">
       <summary class="research-summary">
         <span class="research-symbol"><i data-lucide="network" aria-hidden="true"></i></span>
-        <span class="research-label"><span class="research-number">03</span><span class="research-title">Quantum nonlocality and many-body systems</span></span>
-        <span class="research-teaser">How can we prepare and certify quantum many-body states?</span>
+        <span class="research-title">Multipartite Bell correlations from limited measurements</span>
+        <span class="research-teaser">Can few-body correlations reveal many-body nonlocality?</span>
         <span class="research-expand" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
       </summary>
       <div class="research-content">
-        <p>I use symmetry, spectral-gap optimization, and Lindblad dynamics to prepare and control many-body states. Multipartite Bell inequalities provide tests and certification of correlations beyond classical physics.</p>
-        <div class="research-footer"><span class="research-methods">Bell inequalities · Spectral gaps · Lindblad dynamics</span><a class="research-works" href="/publications/?topic=quantum_nonlocality" aria-label="Works in Quantum nonlocality and many-body systems">Related works <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
+        <p>
+
+          <span>As the number of measurement parties grows, enumerating the facets of the local polytope becomes impractical. The search for tight Bell inequalities can be formulated as an optimization of the ratio of the quantum value to the classical bound. A nondegenerate local maximum of that ratio gives a facet inequality, providing a way to construct tests without enumerating all facets</span> <span class="research-citation">[<a href="#research-reference-12">12</a>]</span>.
+
+          <span>The next constraint is how many correlations an experiment can measure. Permutation symmetry allows the inequalities to be built from one- and two-body correlations alone. Semidefinite programming certifies the quantum violations in the large-system limit, making these inequalities suitable for testing multipartite nonlocality using low-order correlations</span> <span class="research-citation">[<a href="#research-reference-13">13</a>]</span>.
+
+        </p>
+        <div class="research-papers">
+          <h3>Selected papers</h3>
+          <ol class="research-paper-list" role="list" start="12">
+
+            <li id="research-reference-12">
+              <span>[12]</span>
+              <a href="/publication/optimizing-quantum-violation-bell-inequalities/">J. F. Chen, M. Hu, and J. Tura. Optimizing quantum violation yields facet Bell inequalities. arXiv:2511.07523 (2025).</a>
+            </li>
+
+            <li id="research-reference-13">
+              <span>[13]</span>
+              <a href="/publication/certifying-permutationally-invariant-bell-inequalities/">J.-F. Chen, M. Hu, and J. Tura. Optimizing and Certifying Multipartite Permutationally Invariant Bell Inequalities. arXiv:2607.08462 (2026).</a>
+            </li>
+
+          </ol>
+          <a class="research-works" href="/publications/?topic=quantum_nonlocality" aria-label="Works in Quantum nonlocality and many-body systems">More in this topic <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </div>
       </div>
     </details>
 
   </div>
+  <a class="text-link research-archive-link" href="/publications/">Browse all publications <i data-lucide="arrow-right" aria-hidden="true"></i></a>
 </div></section>
-<section class="section works-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">02 / SELECTED WORKS</p><h2>Selected Works</h2></div><a class="text-link" href="/publications/">All selected works <i data-lucide="arrow-right"></i></a></div><div class="paper-list content-panel">
-<article class="paper-row" data-result data-topics="quantum_thermodynamics quantum_nonlocality" data-search="boosting thermalization of classical and quantum many-body systems j. f. chen, k. s. rai, p. emonts, d. farina, m. plodzien, p. grzybowski, et al. (2026). boosting thermalization of classical and quantum many-body systems. physical review b 113, 184313. designing the coupling to an environment offers a way to prepare many-body thermal states faster while preserving the target equilibrium state. quantum thermodynamics quantum nonlocality and many-body systems">
-  <div class="paper-index">01<span>2026</span></div>
-  <div class="paper-main"><div class="paper-meta">
-<span class="publication-badge publication-published"><span class="publication-kind">ARTICLE</span><span class="venue">Physical Review B</span></span>
-
-<div class="topic-icons" aria-label="Research topics"><a class="topic-icon" data-direction="quantum_thermodynamics" href="/publications/?topic=quantum_thermodynamics" aria-label="Quantum thermodynamics" title="Quantum thermodynamics"><i data-lucide="orbit" aria-hidden="true"></i></a><a class="topic-icon" data-direction="quantum_nonlocality" href="/publications/?topic=quantum_nonlocality" aria-label="Quantum nonlocality and many-body systems" title="Quantum nonlocality and many-body systems"><i data-lucide="network" aria-hidden="true"></i></a></div>
-</div>
-    <h3><a href="/publication/boosting-thermalization-many-body-systems/">Boosting thermalization of classical and quantum many-body systems</a></h3><p class="paper-authors">J. F. Chen, K. S. Rai, P. Emonts, D. Farina, M. Plodzien, P. Grzybowski, et al.</p><p class="paper-summary">Designing the coupling to an environment offers a way to prepare many-body thermal states faster while preserving the target equilibrium state.</p>
-    <div class="paper-actions"><a href="https://doi.org/10.1103/r4gj-qfj5">Read paper <i data-lucide="arrow-up-right"></i></a><button class="text-button copy-citation" data-citation="J. F. Chen, K. S. Rai, P. Emonts, D. Farina, M. Plodzien, P. Grzybowski, et al. (2026). Boosting thermalization of classical and quantum many-body systems. Physical Review B 113, 184313." title="Copy citation"><i data-lucide="copy"></i> Cite</button></div>
-  </div><a class="paper-open icon-button" href="/publication/boosting-thermalization-many-body-systems/" aria-label="Details: Boosting thermalization of classical and quantum many-body systems" title="Paper details"><i data-lucide="arrow-up-right"></i></a>
-</article>
-
-<article class="paper-row" data-result data-topics="quantum_nonlocality" data-search="optimizing quantum violation for multipartite facet bell inequalities j. f. chen, m. hu, and j. tura (2025). optimizing quantum violation for multipartite facet bell inequalities. arxiv:2511.07523. systematic optimization helps identify multipartite bell tests with stronger quantum violations, supporting the search for experimentally useful nonlocality witnesses. quantum nonlocality and many-body systems">
-  <div class="paper-index">02<span>2025</span></div>
-  <div class="paper-main"><div class="paper-meta">
-<span class="publication-badge publication-preprint"><span class="publication-kind">PREPRINT</span><span class="venue">arXiv</span></span>
-
-<div class="topic-icons" aria-label="Research topics"><a class="topic-icon" data-direction="quantum_nonlocality" href="/publications/?topic=quantum_nonlocality" aria-label="Quantum nonlocality and many-body systems" title="Quantum nonlocality and many-body systems"><i data-lucide="network" aria-hidden="true"></i></a></div>
-</div>
-    <h3><a href="/publication/optimizing-quantum-violation-bell-inequalities/">Optimizing quantum violation for multipartite facet Bell inequalities</a></h3><p class="paper-authors">J. F. Chen, M. Hu, and J. Tura</p><p class="paper-summary">Systematic optimization helps identify multipartite Bell tests with stronger quantum violations, supporting the search for experimentally useful nonlocality witnesses.</p>
-    <div class="paper-actions"><a href="https://arxiv.org/abs/2511.07523">Read preprint <i data-lucide="arrow-up-right"></i></a><button class="text-button copy-citation" data-citation="J. F. Chen, M. Hu, and J. Tura (2025). Optimizing quantum violation for multipartite facet Bell inequalities. arXiv:2511.07523." title="Copy citation"><i data-lucide="copy"></i> Cite</button></div>
-  </div><a class="paper-open icon-button" href="/publication/optimizing-quantum-violation-bell-inequalities/" aria-label="Details: Optimizing quantum violation for multipartite facet Bell inequalities" title="Paper details"><i data-lucide="arrow-up-right"></i></a>
-</article>
-
-<article class="paper-row" data-result data-topics="quantum_thermodynamics quantum_nonlocality" data-search="spectral gap optimization for enhanced adiabatic state preparation k. s. rai, j. f. chen, p. emonts, and j. tura (2025). spectral gap optimization for enhanced adiabatic state preparation. physical review letters 135, 090602. optimizing spectral gaps along a preparation path helps reduce the bottlenecks that make adiabatic quantum-state preparation slow. quantum thermodynamics quantum nonlocality and many-body systems">
-  <div class="paper-index">03<span>2025</span></div>
-  <div class="paper-main"><div class="paper-meta">
-<span class="publication-badge publication-published"><span class="publication-kind">ARTICLE</span><span class="venue">Physical Review Letters</span></span>
-
-<div class="topic-icons" aria-label="Research topics"><a class="topic-icon" data-direction="quantum_thermodynamics" href="/publications/?topic=quantum_thermodynamics" aria-label="Quantum thermodynamics" title="Quantum thermodynamics"><i data-lucide="orbit" aria-hidden="true"></i></a><a class="topic-icon" data-direction="quantum_nonlocality" href="/publications/?topic=quantum_nonlocality" aria-label="Quantum nonlocality and many-body systems" title="Quantum nonlocality and many-body systems"><i data-lucide="network" aria-hidden="true"></i></a></div>
-</div>
-    <h3><a href="/publication/spectral-gap-optimization/">Spectral gap optimization for enhanced adiabatic state preparation</a></h3><p class="paper-authors">K. S. Rai, J. F. Chen, P. Emonts, and J. Tura</p><p class="paper-summary">Optimizing spectral gaps along a preparation path helps reduce the bottlenecks that make adiabatic quantum-state preparation slow.</p>
-    <div class="paper-actions"><a href="https://doi.org/10.1103/cslt-x32n">Read paper <i data-lucide="arrow-up-right"></i></a><button class="text-button copy-citation" data-citation="K. S. Rai, J. F. Chen, P. Emonts, and J. Tura (2025). Spectral gap optimization for enhanced adiabatic state preparation. Physical Review Letters 135, 090602." title="Copy citation"><i data-lucide="copy"></i> Cite</button></div>
-  </div><a class="paper-open icon-button" href="/publication/spectral-gap-optimization/" aria-label="Details: Spectral gap optimization for enhanced adiabatic state preparation" title="Paper details"><i data-lucide="arrow-up-right"></i></a>
-</article>
-
-<article class="paper-row" data-result data-topics="finite_time_stochastic_thermodynamics" data-search="geodesic lower bound of the energy consumption to achieve membrane separation within finite time j. f. chen, r. x. zhai, c. p. sun, and h. dong (2023). geodesic lower bound of the energy consumption to achieve membrane separation within finite time. prx energy 2, 033003. a geometric bound quantifies the extra energy needed for fast membrane separation and identifies paths that reduce that cost. finite-time and stochastic thermodynamics">
-  <div class="paper-index">04<span>2023</span></div>
-  <div class="paper-main"><div class="paper-meta">
-<span class="publication-badge publication-published"><span class="publication-kind">ARTICLE</span><span class="venue">PRX Energy</span></span>
-
-<div class="topic-icons" aria-label="Research topics"><a class="topic-icon" data-direction="finite_time_stochastic_thermodynamics" href="/publications/?topic=finite_time_stochastic_thermodynamics" aria-label="Finite-time and stochastic thermodynamics" title="Finite-time and stochastic thermodynamics"><i data-lucide="route" aria-hidden="true"></i></a></div>
-</div>
-    <h3><a href="/publication/geodesic-lower-bound-membrane-separation/">Geodesic lower bound of the energy consumption to achieve membrane separation within finite time</a></h3><p class="paper-authors">J. F. Chen, R. X. Zhai, C. P. Sun, and H. Dong</p><p class="paper-summary">A geometric bound quantifies the extra energy needed for fast membrane separation and identifies paths that reduce that cost.</p>
-    <div class="paper-actions"><a href="https://doi.org/10.1103/PRXEnergy.2.033003">Read paper <i data-lucide="arrow-up-right"></i></a><button class="text-button copy-citation" data-citation="J. F. Chen, R. X. Zhai, C. P. Sun, and H. Dong (2023). Geodesic lower bound of the energy consumption to achieve membrane separation within finite time. PRX Energy 2, 033003." title="Copy citation"><i data-lucide="copy"></i> Cite</button></div>
-  </div><a class="paper-open icon-button" href="/publication/geodesic-lower-bound-membrane-separation/" aria-label="Details: Geodesic lower bound of the energy consumption to achieve membrane separation within finite time" title="Paper details"><i data-lucide="arrow-up-right"></i></a>
-</article>
-</div></div></section>
-<section class="section about-section"><div class="container about-grid"><figure class="portrait"><img src="/assets/site/jinfu-chen.webp" width="640" height="640" alt="Jinfu Chen" loading="lazy"><figcaption>Jinfu Chen</figcaption></figure><div class="about-copy"><p class="eyebrow">03 / ABOUT ME</p><h2>A geometric perspective<br>on the quantum world</h2><p>I am a postdoctoral researcher at Leiden University’s Lorentz Institute, working with <a href="https://jtura.cat">Jordi Tura</a>. My research connects quantum information, nonequilibrium statistical physics, and optimal control.</p><p>My path began with physics and mathematics at Peking University, followed by a Ph.D. at the Beijing Computational Science Research Center and postdoctoral research with H. T. Quan at Peking University.</p><a class="text-link" href="/cv/">Academic background & CV <i data-lucide="arrow-right"></i></a></div></div></section>
-<section class="section"><div class="container"><div class="section-heading"><div><p class="eyebrow">04 / PRESENTATIONS</p><h2>Presentations</h2></div><a class="text-link" href="/talks/">All presentations <i data-lucide="arrow-right"></i></a></div><div class="content-panel">
+<section class="section about-section"><div class="container about-grid"><figure class="portrait"><img src="/assets/site/jinfu-chen.webp" width="640" height="640" alt="Jinfu Chen" loading="lazy"><figcaption>Jinfu Chen</figcaption></figure><div class="about-copy"><p class="eyebrow">ABOUT ME</p><h2>A geometric perspective<br>on the quantum world</h2><p>I am a postdoctoral researcher at Leiden University’s Lorentz Institute, working with <a href="https://jtura.cat">Jordi Tura</a>. My research connects quantum information, nonequilibrium statistical physics, and optimal control.</p><p>My path began with physics and mathematics at Peking University, followed by a Ph.D. at the Beijing Computational Science Research Center and postdoctoral research with H. T. Quan at Peking University.</p><a class="text-link" href="/cv/">Academic background & CV <i data-lucide="arrow-right"></i></a></div></div></section>
+<section class="section"><div class="container"><div class="section-heading"><h2>Presentations</h2><a class="text-link" href="/talks/">All presentations <i data-lucide="arrow-right"></i></a></div><div class="content-panel">
 <article class="event-row" data-result data-topics="quantum_nonlocality" data-format="talk" data-search="finding robust bell inequalities for quantum many-body systems center for theoretical physics, polish academy of sciences warsaw, poland 2026 quantum nonlocality and many-body systems"><div class="event-date">Oct. 30, 2026<div class="event-kinds"><span class="event-format">Talk</span>
 <div class="topic-icons" aria-label="Research topics"><a class="topic-icon" data-direction="quantum_nonlocality" href="/talks/?topic=quantum_nonlocality" aria-label="Quantum nonlocality and many-body systems" title="Quantum nonlocality and many-body systems"><i data-lucide="network" aria-hidden="true"></i></a></div>
 </div></div><div><h3><a href="/talks/2026_robust_bell_inequalities_warsaw/">Finding Robust Bell Inequalities for Quantum Many-Body Systems</a></h3><p><a class="event-venue" href="https://www.cft.edu.pl/en/nauka/seminaria/finding-robust-bell-inequalities-for-quantum-many-body-systems/">Center for Theoretical Physics, Polish Academy of Sciences <i data-lucide="arrow-up-right"></i></a></p><span class="event-location"><i data-lucide="map-pin"></i>Warsaw, Poland</span>

@@ -1,32 +1,47 @@
-{% extends 'base.html' %}{% from 'macros.html' import paper, event %}
+{% extends 'base.html' %}{% from 'macros.html' import event %}
 {% block head %}<link rel="preload" as="image" href="/assets/site/quantum-geometry.svg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Jinfu Chen","url":"https://chenjinfu00.github.io","jobTitle":"Postdoctoral researcher","affiliation":{"@type":"Organization","name":"Leiden University"},"sameAs":["https://orcid.org/0000-0002-7207-969X","https://github.com/chenjinfu00"]}</script>{% endblock %}
 {% block content %}
 <section class="hero">
   <img class="hero-art" src="/assets/site/quantum-geometry.svg" alt="" width="1536" height="1024" fetchpriority="high">
-  <div class="container hero-inner"><div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span>THEORETICAL PHYSICIST · LEIDEN UNIVERSITY</p><h1>Jinfu Chen</h1><p class="hero-statement">Understand control and optimize<br><span>quantum systems</span></p><p class="hero-description">Exploring the correlations, dynamics, and thermodynamic limits that make the quantum world different.</p><div class="hero-links"><a class="button primary" href="/publications/">Explore my work <i data-lucide="arrow-right"></i></a><a class="text-link" href="{{ profile.scholar }}">Google Scholar <i data-lucide="arrow-up-right"></i></a></div></div>
-    <div class="hero-bottom"><span>EXPLORE RESEARCH</span><ul class="research-shortcuts" aria-label="Research shortcuts">{% for topic in profile.topics %}<li><a class="topic-chip" data-direction="{{ topic.id }}" href="#research-{{ topic.id }}"><i data-lucide="{{ topic.icon }}" aria-hidden="true"></i><span>{{ topic.short }}</span></a></li>{% endfor %}</ul><a class="hero-down" href="#research" aria-label="Explore research"><i data-lucide="arrow-down"></i></a></div>
+  <div class="container hero-inner"><div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span>THEORETICAL PHYSICIST · LEIDEN UNIVERSITY</p><h1>Jinfu Chen</h1><p class="hero-statement">Understand control and optimize<br><span>quantum systems</span></p><p class="hero-description">Exploring the correlations, dynamics, and thermodynamic limits that make the quantum world different.</p><div class="hero-links"><a class="button primary" href="#research">Explore my work <i data-lucide="arrow-right"></i></a><a class="text-link" href="{{ profile.scholar }}">Google Scholar <i data-lucide="arrow-up-right"></i></a></div></div>
+    <div class="hero-bottom"><span>EXPLORE RESEARCH</span><ul class="research-shortcuts" aria-label="Research shortcuts">{% for direction in research %}<li><a class="topic-chip" data-direction="{{ direction.topic }}" href="#research-{{ direction.topic }}"><i data-lucide="{{ direction.archive_topic.icon }}" aria-hidden="true"></i><span>{{ direction.short }}</span></a></li>{% endfor %}</ul><a class="hero-down" href="#research" aria-label="Explore research"><i data-lucide="arrow-down"></i></a></div>
   </div>
 </section>
 <section id="research" class="section research-section"><div class="container">
-    <div class="section-heading"><div><p class="eyebrow">01 / RESEARCH</p><h2>Small systems<br>Fundamental questions</h2></div><p class="section-intro">From the limits of classical correlations to faster thermalization and more efficient control, I study what quantum systems can do, and how to make them do it.</p></div>
+  <div class="section-heading"><h2>Research</h2><p class="section-intro">Finite-time driving incurs an energy cost, and limited measurements constrain what can be inferred about quantum correlations. These three research directions address those constraints through thermodynamic geometry, quantum dynamics, and many-body symmetry.</p></div>
   <div class="research-list">
-    {% for topic in profile.topics %}
-    <details class="research-disclosure" id="research-{{ topic.id }}" data-direction="{{ topic.id }}">
+    {% for direction in research %}
+    <details class="research-disclosure" id="research-{{ direction.topic }}" data-direction="{{ direction.topic }}">
       <summary class="research-summary">
-        <span class="research-symbol"><i data-lucide="{{ topic.icon }}" aria-hidden="true"></i></span>
-        <span class="research-label"><span class="research-number">0{{ loop.index }}</span><span class="research-title">{{ topic.title }}</span></span>
-        <span class="research-teaser">{{ topic.question }}</span>
+        <span class="research-symbol"><i data-lucide="{{ direction.archive_topic.icon }}" aria-hidden="true"></i></span>
+        <span class="research-title">{{ direction.title }}</span>
+        <span class="research-teaser">{{ direction.question }}</span>
         <span class="research-expand" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
       </summary>
       <div class="research-content">
-        <p>{{ topic.text }}</p>
-        <div class="research-footer"><span class="research-methods">{{ topic.methods }}</span><a class="research-works" href="/publications/?topic={{ topic.id }}" aria-label="Works in {{ topic.title }}">Related works <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
+        <p>
+          {% for passage in direction.story %}
+          <span>{{ passage.text }}</span> <span class="research-citation">[{% for reference in passage.references %}<a href="#research-reference-{{ reference.number }}">{{ reference.number }}</a>{% if not loop.last %}, {% endif %}{% endfor %}]</span>.
+          {% endfor %}
+        </p>
+        <div class="research-papers">
+          <h3>Selected papers</h3>
+          <ol class="research-paper-list" role="list" start="{{ direction.references[0].number }}">
+            {% for reference in direction.references %}
+            <li id="research-reference-{{ reference.number }}">
+              <span>[{{ reference.number }}]</span>
+              <a href="{{ reference.work.url }}">{{ reference.work.citation }}</a>
+            </li>
+            {% endfor %}
+          </ol>
+          <a class="research-works" href="/publications/?topic={{ direction.topic }}" aria-label="Works in {{ direction.archive_topic.title }}">More in this topic <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </div>
       </div>
     </details>
     {% endfor %}
   </div>
+  <a class="text-link research-archive-link" href="/publications/">Browse all publications <i data-lucide="arrow-right" aria-hidden="true"></i></a>
 </div></section>
-<section class="section works-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">02 / SELECTED WORKS</p><h2>Selected Works</h2></div><a class="text-link" href="/publications/">All selected works <i data-lucide="arrow-right"></i></a></div><div class="paper-list content-panel">{% for work in works %}{{ paper(work, loop.index) }}{% endfor %}</div></div></section>
-<section class="section about-section"><div class="container about-grid"><figure class="portrait"><img src="/assets/site/jinfu-chen.webp" width="640" height="640" alt="Jinfu Chen" loading="lazy"><figcaption>Jinfu Chen</figcaption></figure><div class="about-copy"><p class="eyebrow">03 / ABOUT ME</p><h2>A geometric perspective<br>on the quantum world</h2><p>I am a postdoctoral researcher at Leiden University’s Lorentz Institute, working with <a href="https://jtura.cat">Jordi Tura</a>. My research connects quantum information, nonequilibrium statistical physics, and optimal control.</p><p>My path began with physics and mathematics at Peking University, followed by a Ph.D. at the Beijing Computational Science Research Center and postdoctoral research with H. T. Quan at Peking University.</p><a class="text-link" href="/cv/">Academic background & CV <i data-lucide="arrow-right"></i></a></div></div></section>
-<section class="section"><div class="container"><div class="section-heading"><div><p class="eyebrow">04 / PRESENTATIONS</p><h2>Presentations</h2></div><a class="text-link" href="/talks/">All presentations <i data-lucide="arrow-right"></i></a></div><div class="content-panel">{% for item in talks %}{{ event(item) }}{% endfor %}</div></div></section>
+<section class="section about-section"><div class="container about-grid"><figure class="portrait"><img src="/assets/site/jinfu-chen.webp" width="640" height="640" alt="Jinfu Chen" loading="lazy"><figcaption>Jinfu Chen</figcaption></figure><div class="about-copy"><p class="eyebrow">ABOUT ME</p><h2>A geometric perspective<br>on the quantum world</h2><p>I am a postdoctoral researcher at Leiden University’s Lorentz Institute, working with <a href="https://jtura.cat">Jordi Tura</a>. My research connects quantum information, nonequilibrium statistical physics, and optimal control.</p><p>My path began with physics and mathematics at Peking University, followed by a Ph.D. at the Beijing Computational Science Research Center and postdoctoral research with H. T. Quan at Peking University.</p><a class="text-link" href="/cv/">Academic background & CV <i data-lucide="arrow-right"></i></a></div></div></section>
+<section class="section"><div class="container"><div class="section-heading"><h2>Presentations</h2><a class="text-link" href="/talks/">All presentations <i data-lucide="arrow-right"></i></a></div><div class="content-panel">{% for item in talks %}{{ event(item) }}{% endfor %}</div></div></section>
 {% endblock %}

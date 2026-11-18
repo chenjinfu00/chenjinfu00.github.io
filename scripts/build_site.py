@@ -2,6 +2,7 @@
 import json
 import hashlib
 import re
+from itertools import count
 from pathlib import Path
 from urllib.parse import quote
 from xml.sax.saxutils import escape
@@ -75,7 +76,11 @@ for work in works:
                          "https://arxiv.org/abs/" + arxiv[1] if arxiv else
                          "https://scholar.google.com/scholar?q=" + quote(work["title"]))
     work["paper_label"] = "Read preprint" if arxiv else "Read paper" if work.get("doi") else "Find paper"
-    work["authors"] = work["citation"].split(" (" + work["year"] + ")")[0]
+    year = work["year"]
+    authors, separator, publication = work["citation"].partition(f" ({year}). ")
+    work["authors"] = authors
+    if separator:
+        work["citation"] = f"{authors.rstrip('.')}. {publication.removesuffix('.')} ({year})."
 works.sort(key=lambda x: str(x.get("selected_sort", x["date"])), reverse=True)
 talks = sorted(records("_talks"), key=lambda x: str(x["date"]), reverse=True)
 for talk in talks:
@@ -95,11 +100,25 @@ for talk in talks:
         if material["format"] not in {"PDF", "PPTX"}:
             raise ValueError(f"Unsupported presentation format: {material['file']}")
 teaching = sorted(records("_teaching"), key=lambda x: str(x["date"]), reverse=True)
-featured_slugs = ["boosting-thermalization-many-body-systems", "optimizing-quantum-violation-bell-inequalities",
-                  "spectral-gap-optimization", "geodesic-lower-bound-membrane-separation"]
-featured = [next(w for w in works if w["slug"] == s) for s in featured_slugs]
-render("/", "home.html", page="home", title="Jinfu Chen | Quantum & Statistical Physics", works=featured, talks=talks[:3])
-render("/publications/", "works.html", page="works", title="Selected Works | Jinfu Chen", works=works, groups=groups)
+works_by_slug = {work["slug"]: work for work in works}
+reference_numbers = count(1)
+research = []
+for direction in profile["home_research"]:
+    story = [
+        {"text": passage["text"], "references": [
+            {"work": works_by_slug[slug], "number": next(reference_numbers)}
+            for slug in passage["papers"]
+        ]}
+        for passage in direction["story"]
+    ]
+    research.append({
+        **direction,
+        "archive_topic": topics[direction["topic"]],
+        "story": story,
+        "references": [reference for passage in story for reference in passage["references"]],
+    })
+render("/", "home.html", page="home", title="Jinfu Chen | Quantum & Statistical Physics", research=research, talks=talks[:3])
+render("/publications/", "works.html", page="works", title="Publications | Jinfu Chen", works=works, groups=groups)
 render("/talks/", "talks.html", page="talks", title="Presentations | Jinfu Chen", talks=talks, groups=groups)
 render("/cv/", "about.html", page="about", title="About & CV | Jinfu Chen", teaching=teaching)
 render("/teaching/", "teaching.html", page="teaching", title="Teaching | Jinfu Chen", teaching=teaching)

@@ -13,23 +13,44 @@ topics:
     short: Quantum thermodynamics
     title: Quantum thermodynamics
     icon: orbit
-    question: How can we control quantum dynamics and prepare useful states?
-    text: I study quantum heat engines, thermalization, state preparation, and monitored transport. Geometric and spectral methods connect thermodynamic performance with the control of quantum dynamics.
-    methods: Quantum heat engines · Thermalization · Quantum control
   - id: finite_time_stochastic_thermodynamics
     short: Finite-time & stochastic
     title: Finite-time and stochastic thermodynamics
     icon: route
-    question: What sets the cost and fluctuations of fast processes?
-    text: Thermodynamic geometry, optimal control, and fluctuation relations reveal the energetic cost of finite-time processes, from Brownian heat engines and membrane separation to quantum work and heat statistics.
-    methods: Thermodynamic geometry · Optimal control · Fluctuations
   - id: quantum_nonlocality
     short: Nonlocality & many-body
     title: Quantum nonlocality and many-body systems
     icon: network
-    question: How can we prepare and certify quantum many-body states?
-    text: I use symmetry, spectral-gap optimization, and Lindblad dynamics to prepare and control many-body states. Multipartite Bell inequalities provide tests and certification of correlations beyond classical physics.
-    methods: Bell inequalities · Spectral gaps · Lindblad dynamics
+home_research:
+  - topic: finite_time_stochastic_thermodynamics
+    short: Finite-time thermodynamics
+    title: Finite-time thermodynamics, optimal control, and fluctuations
+    question: How do finite-time driving and fluctuations shape the cost of a process?
+    story:
+      - text: Shortening the duration of a process typically increases the excess work required to drive it. Thermodynamic length sets a lower bound on this work and can be estimated from finite-time measurements. For shortcuts to isothermality, a geodesic in the space of control parameters gives a minimum-cost protocol. The same geometric approach applies to membrane separation of gas mixtures
+        papers: [extrapolating-thermodynamic-length, geodesic-path-shortcuts-to-isothermality, geodesic-lower-bound-membrane-separation]
+      - text: When individual strokes form a heat-engine cycle, their energy cost limits the output power of the engine. Shortcuts to isothermality give an attainable power bound for Brownian engines operated in this way. Optimal control also identifies the maximum-power cycle when the available control parameters are constrained
+        papers: [optimizing-brownian-heat-engine, optimal-control-brownian-heat-engines]
+      - text: The cost of faster driving also depends on the system. Across a first-order transition, system size can change how excess work scales with the driving rate. In individual realizations, work and heat also fluctuate. Including both energy and momentum transfer in their definitions gives fluctuation theorems that apply when the system and its heat bath move relative to each other
+        papers: [ergodicity-breaking-first-order-phase-transition, promoting-fluctuation-theorems-covariant-forms]
+  - topic: quantum_thermodynamics
+    short: State preparation
+    title: Many-body state preparation and open-system dynamics
+    question: How can quantum states be prepared faster?
+    story:
+      - text: Adiabatic preparation starts from a state that is easy to produce and gradually changes the controls until the system reaches the target state. Driving too quickly can trigger unwanted transitions. Quantum geometry guides the choice of driving protocol, while changing the Hamiltonian without changing the target state can widen the smallest energy gap along the preparation path
+        papers: [speeding-up-quantum-adiabatic-processes, spectral-gap-optimization]
+      - text: Coupling a system to its environment provides another route when the target is a thermal state. The coupling can be designed to speed up the slowest relaxation process while preserving the target equilibrium. The dynamics of a driven open system can also be formulated to describe the fluctuations in the work done by the drive and in the heat exchanged with the environment
+        papers: [boosting-thermalization-many-body-systems, thermodynamically-consistent-lindbladians]
+  - topic: quantum_nonlocality
+    short: Bell correlations
+    title: Multipartite Bell correlations from limited measurements
+    question: Can few-body correlations reveal many-body nonlocality?
+    story:
+      - text: As the number of measurement parties grows, enumerating the facets of the local polytope becomes impractical. The search for tight Bell inequalities can be formulated as an optimization of the ratio of the quantum value to the classical bound. A nondegenerate local maximum of that ratio gives a facet inequality, providing a way to construct tests without enumerating all facets
+        papers: [optimizing-quantum-violation-bell-inequalities]
+      - text: The next constraint is how many correlations an experiment can measure. Permutation symmetry allows the inequalities to be built from one- and two-body correlations alone. Semidefinite programming certifies the quantum violations in the large-system limit, making these inequalities suitable for testing multipartite nonlocality using low-order correlations
+        papers: [certifying-permutationally-invariant-bell-inequalities]
 timeline:
   - years: 2024–present
     title: Postdoctoral researcher

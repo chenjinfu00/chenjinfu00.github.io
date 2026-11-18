@@ -1,4 +1,5 @@
 # Public-facing Chinese copy. Journal names, citations and author lists stay unchanged.
+'.': 。
 中文: EN
 Jinfu Chen: 陈劲夫
 © 2026 Jinfu Chen: © 2026 陈劲夫
@@ -8,8 +9,8 @@ GitHub: 代码主页
 Skip to content: 跳至正文
 Jinfu Chen, home: 陈劲夫，首页
 QUANTUM & STATISTICAL PHYSICS: 量子物理与统计物理
-Research: 研究方向
-Selected Works: 代表成果
+Research: 研究
+Publications: 论文档案
 Presentations: 学术交流
 About & CV: 关于我
 Contact: 联系
@@ -74,11 +75,12 @@ What can fluctuations tell us?: 随机涨落中藏着什么规律？
 I study the statistics of heat and work in small systems, and am exploring how stochastic thermodynamics can help analyze learning and sampling, with applications in diffusion models and Transformers.: 研究微小系统中热与功的统计规律，并探索以随机热力学分析学习和采样过程，应用于扩散模型与 Transformer 模型。
 Fluctuation relations · Stochastic processes · Generative AI: 涨落关系 · 随机过程 · 生成式人工智能
 Related works: 相关成果
-02 / SELECTED WORKS: 02 / 代表成果
 Ideas into: 让想法成为
 results.: 研究成果。
-All selected works: 全部代表成果
-03 / ABOUT ME: 03 / 关于我
+ABOUT ME: 关于我
+Selected papers: 代表论文
+More in this topic: 查看该方向的更多论文
+Browse all publications: 浏览全部论文
 A geometric perspective: 以几何的视角
 on a: 理解
 quantum world.: 量子世界。
@@ -104,7 +106,7 @@ Finite-time thermodynamics & heat engines: 有限时间热力学与热机
 Finite-time thermodynamics and heat engines: 有限时间热力学与热机
 Transport & nonequilibrium physics: 输运与非平衡物理
 Transport and nonequilibrium physics: 输运与非平衡物理
-Search selected works: 搜索代表成果
+Search publications: 搜索论文
 Search works, authors, year…: 搜索成果、作者、年份…
 Clear search: 清空搜索
 NEWEST FIRST WITHIN EACH TOPIC: 各主题内按时间倒序
@@ -187,7 +189,7 @@ TA of Group theory: 群论（助教）
 TA of Advanced quantum mechanics: 高等量子力学（助教）
 This page has: 这个页面
 moved out of reach.: 暂时找不到了。
-You can find my research, selected works, and presentations from the homepage.: 可以从首页查看研究方向、代表成果与学术交流。
+You can find my research and presentations from the homepage.: 可以从首页查看我的研究和学术报告。
 Back to home: 返回首页
 Page not found: 页面未找到
 Jinfu Chen | Quantum & Statistical Physics: 陈劲夫 | 量子物理与统计物理
@@ -215,6 +217,11 @@ Clarifies how to model open quantum dynamics without losing thermodynamic consis
 Shows how carefully timed control can improve both power and efficiency in Otto engines.: 表明精心安排控制时序能够同时改善奥托热机的功率与效率。
 Boosting thermalization of classical and quantum many-body systems: 加速经典与量子多体系统的热化
 Optimizing quantum violation for multipartite facet Bell inequalities: 优化多体面贝尔不等式的量子违背
+Optimizing quantum violation yields facet Bell inequalities: 优化量子违背得到面贝尔不等式
+Optimizing and Certifying Multipartite Permutationally Invariant Bell Inequalities: 多体置换不变贝尔不等式的优化与认证
+Geodesic Path for the Minimal Energy Cost in Shortcuts to Isothermality: 等温捷径中实现最低能耗的测地线路径
+For shortcuts to isothermality, minimum-cost protocols follow geodesics in the space of control parameters.: 在等温捷径框架下，最低能耗的调控方式是沿控制参数空间中的测地线改变参数。
+Constructs Bell inequalities from one- and two-body correlators and uses semidefinite programming to certify their quantum violations.: 用一体和二体关联构建贝尔不等式，并以半定规划认证其量子违背。
 Spectral gap optimization for enhanced adiabatic state preparation: 通过谱隙优化改进绝热态制备
 Geodesic lower bound of the energy consumption to achieve membrane separation within finite time: 有限时间膜分离能耗的测地线下界
 Optimal control theory for maximum power of Brownian heat engines: 布朗热机最大功率的最优控制理论
@@ -233,7 +240,7 @@ Efficiency statistics of a quantum Otto cycle: 量子奥托循环的效率统计
 Bose-Fermi duality in a quantum Otto heat engine with trapped repulsive bosons: 囚禁排斥玻色子量子奥托热机中的玻色—费米对偶
 Bose-Fermi duality in quantum Otto heat engine with trapped repulsive Bosons: 囚禁排斥玻色子量子奥托热机中的玻色—费米对偶
 'Monitored quantum transport: full counting statistics of a quantum Hall interferometer': 受监测的量子输运：量子霍尔干涉仪的全计数统计
-Thermodynamically Consistent Lindbladians for Quantum Stochastic Thermodynamics: 量子随机热力学中热力学一致的 Lindblad 生成元
+Thermodynamically consistent Lindbladians for quantum stochastic thermodynamics: 量子随机热力学中热力学一致的 Lindblad 生成元
 'Finite-time thermodynamic optimization: thermodynamic geometry': 有限时间热力学优化：热力学几何
 An introduction to large deviation theory: 大偏差理论简介
 'Quantum Otto heat engine on piston model: the effect of interaction and finite time': 活塞模型中的量子奥托热机：相互作用与有限时间的影响
@@ -295,18 +302,23 @@ Quantum thermodynamics: 量子热力学
 Finite-time and stochastic thermodynamics: 有限时间和随机热力学
 Finite-time & stochastic: 有限时间和随机热力学
 Research topics: 研究标签
-How can we control quantum dynamics and prepare useful states?: 如何调控量子动力学，制备有用的量子态？
-? I study quantum heat engines, thermalization, state preparation, and monitored transport. Geometric and spectral methods connect thermodynamic performance with the control of quantum dynamics.
-: 研究量子热机、热化、态制备与监测输运，利用几何和谱方法，将热力学性能与量子动力学调控联系起来。
-Quantum heat engines · Thermalization · Quantum control: 量子热机 · 热化 · 量子控制
-What sets the cost and fluctuations of fast processes?: 快速过程的代价与涨落，由什么决定？
-? Thermodynamic geometry, optimal control, and fluctuation relations reveal the energetic cost of finite-time processes, from Brownian heat engines and membrane separation to quantum work and heat statistics.
-: 利用热力学几何、最优控制与涨落关系，研究有限时间过程的能量代价，涵盖布朗热机、膜分离，以及量子功与热的统计规律。
-Thermodynamic geometry · Optimal control · Fluctuations: 热力学几何 · 最优控制 · 涨落
 Nonlocality & many-body: 量子非局域性和量子多体系统
-How can we prepare and certify quantum many-body states?: 如何制备和认证量子多体态？
-I use symmetry, spectral-gap optimization, and Lindblad dynamics to prepare and control many-body states. Multipartite Bell inequalities provide tests and certification of correlations beyond classical physics.: 利用对称性、谱隙优化和 Lindblad 动力学制备与调控多体态，并通过多体贝尔不等式检验和认证超越经典物理的关联。
-Bell inequalities · Spectral gaps · Lindblad dynamics: 贝尔不等式 · 谱隙 · Lindblad 动力学
+Finite-time driving incurs an energy cost, and limited measurements constrain what can be inferred about quantum correlations. These three research directions address those constraints through thermodynamic geometry, quantum dynamics, and many-body symmetry.: 有限时间内驱动系统需要付出能量代价，有限的测量数据也会约束对量子关联的判断。这三个方向分别从热力学几何、量子动力学和多体对称性出发，研究如何在这些约束下设计控制和检验方案。
+Finite-time thermodynamics, optimal control, and fluctuations: 有限时间热力学、最优控制与涨落
+How do finite-time driving and fluctuations shape the cost of a process?: 有限时间驱动和涨落如何影响过程的能量代价？
+Shortening the duration of a process typically increases the excess work required to drive it. Thermodynamic length sets a lower bound on this work and can be estimated from finite-time measurements. For shortcuts to isothermality, a geodesic in the space of control parameters gives a minimum-cost protocol. The same geometric approach applies to membrane separation of gas mixtures: 缩短操作时间通常需要付出更多额外功。热力学长度为这部分功给出了下界，也可以利用有限时间测量来估计。在等温捷径框架下，最小能耗的调控方式对应控制参数空间中的一条测地线。这套几何方法也用于混合气体的膜分离
+When individual strokes form a heat-engine cycle, their energy cost limits the output power of the engine. Shortcuts to isothermality give an attainable power bound for Brownian engines operated in this way. Optimal control also identifies the maximum-power cycle when the available control parameters are constrained: 当单个冲程连成热机循环时，各冲程的耗散会限制整台热机的输出功率。等温捷径给出了这类布朗热机循环可达到的功率上界。当控制参数的可调范围有限时，最优控制可以确定最大功率对应的循环
+The cost of faster driving also depends on the system. Across a first-order transition, system size can change how excess work scales with the driving rate. In individual realizations, work and heat also fluctuate. Including both energy and momentum transfer in their definitions gives fluctuation theorems that apply when the system and its heat bath move relative to each other: 加快驱动的代价也取决于系统本身。跨越一阶相变时，系统尺寸会改变额外功随驱动速率的标度。在单次过程中，功和热还会发生涨落。把能量与动量的传递都纳入功和热的定义后，涨落定理也适用于系统与热浴相对运动的情形
+State preparation: 量子态制备
+Many-body state preparation and open-system dynamics: 量子多体态制备与开放系统动力学
+How can quantum states be prepared faster?: 如何更快制备目标量子态？
+Adiabatic preparation starts from a state that is easy to produce and gradually changes the controls until the system reaches the target state. Driving too quickly can trigger unwanted transitions. Quantum geometry guides the choice of driving protocol, while changing the Hamiltonian without changing the target state can widen the smallest energy gap along the preparation path: 绝热制备从容易获得的初态出发，通过逐步改变控制参数使系统到达目标态。驱动过快容易引发非绝热跃迁。量子几何为选择调控方式提供了依据。在保持目标态的条件下调整哈密顿量，还可以增大制备路径上的最小能隙
+Coupling a system to its environment provides another route when the target is a thermal state. The coupling can be designed to speed up the slowest relaxation process while preserving the target equilibrium. The dynamics of a driven open system can also be formulated to describe the fluctuations in the work done by the drive and in the heat exchanged with the environment: 当目标是制备热态时，系统与环境的耦合提供了另一条途径。通过设计这种耦合，可以保持目标热平衡态，同时加快最慢的弛豫过程。同一类开放系统动力学还可以描述外部驱动做的功、系统与环境交换的热，以及这两者的涨落
+Bell correlations: 贝尔关联
+Multipartite Bell correlations from limited measurements: 有限测量下的多体贝尔关联验证
+Can few-body correlations reveal many-body nonlocality?: 怎样用少体关联检验多体非局域性？
+As the number of measurement parties grows, enumerating the facets of the local polytope becomes impractical. The search for tight Bell inequalities can be formulated as an optimization of the ratio of the quantum value to the classical bound. A nondegenerate local maximum of that ratio gives a facet inequality, providing a way to construct tests without enumerating all facets: 随着测量方增多，局域多面体的面迅速增多，逐一枚举变得困难。寻找紧贝尔不等式可以转化为优化量子值与经典上界之比。这个比值的非退化局部极大点对应局域多面体的一个面，因此可以通过优化来构造判据
+The next constraint is how many correlations an experiment can measure. Permutation symmetry allows the inequalities to be built from one- and two-body correlations alone. Semidefinite programming certifies the quantum violations in the large-system limit, making these inequalities suitable for testing multipartite nonlocality using low-order correlations: 判据还需要能用实际可取得的数据检验。利用测量方之间的置换对称性，可以构造只依赖一体和二体关联的不等式。其在大系统极限下的量子违背可由半定规划认证，为通过少体关联检验多体非局域性提供了一条途径
 Filter presentations by topic: 按研究方向筛选学术交流
 All formats: 全部形式
 Finite-time thermodynamics: 有限时间热力学
